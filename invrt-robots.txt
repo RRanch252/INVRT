@@ -1,0 +1,16 @@
+# robots.txt for INVRT website
+# https://invrt.co
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://invrt.co/sitemap.xml
+
+# Crawl-delay (optional, in seconds)
+# Crawl-delay: 1
+
+# Disallow specific bots if needed
+# User-agent: BadBot
+# Disallow: /

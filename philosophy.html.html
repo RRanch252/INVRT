@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INVRT - Our Philosophy</title>
+  <meta name="description" content="Our philosophy centers on quality over scale, systems that adapt, the value of maintenance, and deserved trust networks.">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    
+    .font-serif {
+      font-family: 'Crimson Text', serif;
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Navigation animations */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -4px;
+      left: 0;
+      background-color: #111827;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    
+    /* Timeline */
+    .timeline-dot {
+      transition: all 0.3s ease;
+    }
+    
+    .timeline-card:hover .timeline-dot {
+      transform: scale(1.2);
+      background-color: #111827;
+    }
+    
+    /* Quote animations */
+    .quote-mark {
+      opacity: 0.1;
+      font-size: 8rem;
+      line-height: 1;
+      position: absolute;
+      top: -2rem;
+      left: -2rem;
+    }
+    
+    /* Principle cards */
+    .principle-card {
+      transition: all 0.3s ease;
+      border-bottom: 2px solid transparent;
+    }
+    
+    .principle-card:hover {
+      transform: translateY(-8px);
+      border-bottom-color: #111827;
+    }
+    
+    /* Fade animations */
+    .fade-in {
+      animation: fadeIn 0.8s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Mobile menu */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+    
+    /* Scroll reveal */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    
+    .scroll-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Animated system visualization */
+    .system-node {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .system-node:nth-child(2) { animation-delay: 1s; }
+    .system-node:nth-child(3) { animation-delay: 2s; }
+    .system-node:nth-child(4) { animation-delay: 3s; }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    /* Stagger animations */
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+  </style>
+</head>
+<body class="font-light text-gray-900 bg-white antialiased">
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed w-full bg-white bg-opacity-95 backdrop-blur-sm z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="text-lg font-light tracking-wide text-gray-900">
+          <a href="index.html" class="hover:text-gray-600 transition-colors">
+            INVRT
+          </a>
+        </div>
+        
+        <div class="hidden md:flex items-center space-x-10">
+          <a href="philosophy.html" class="nav-link active text-sm text-gray-900">Philosophy</a>
+          <a href="advisory.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Services</a>
+          <a href="insights.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Insights</a>
+          <a href="clients.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Clients</a>
+          <a href="contact.html" class="text-sm px-5 py-2.5 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
+            Start a Conversation
+          </a>
+        </div>
+        
+        <button id="mobile-menu-button" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+      <div class="fade-in text-center">
+        <p class="text-sm tracking-[0.2em] text-gray-500 mb-6 uppercase">Our Philosophy</p>
+        <h1 class="text-4xl md:text-6xl font-extralight leading-tight mb-8">
+          Building Businesses That<br/>
+          <em class="font-serif font-normal not-italic">Improve With Time</em>
+        </h1>
+        <blockquote class="text-2xl md:text-3xl font-light text-gray-700 italic max-w-3xl mx-auto">
+          "In the short term, adaptation doesn't matter.<br/>
+          In the long term, adaptation is everything."
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Principles -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-extralight mb-6">Four Principles That Guide Everything We Do</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Our philosophy draws from the patterns of businesses that endure for decades and even centuries,
+          combined with insights from natural systems and quality-focused organizations.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Quality Over Scale -->
+        <div class="principle-card bg-white p-8 rounded-lg shadow-sm scroll-reveal">
+          <div class="flex items-start mb-6">
+            <div class="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mr-6 flex-shrink-0">
+              <span class="text-2xl font-light">Q</span>
+            </div>
+            <div>
+              <h3 class="text-2xl font-light mb-3">Quality Over Scale</h3>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                We've studied the patterns of businesses that endure. The common thread isn't rapid growth 
+                but thoughtful evolution—companies that prioritize quality of relationships, products, and 
+                decisions over the quantity of transactions.
+              </p>
+              <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700">
+                "It's far better to buy a wonderful company at a fair price than a fair company at a wonderful price."
+                <cite class="block text-sm mt-2 not-italic">— Warren Buffett</cite>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Systems That Adapt -->
+        <div class="principle-card bg-white p-8 rounded-lg shadow-sm scroll-reveal stagger-1">
+          <div class="flex items-start mb-6">
+            <div class="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mr-6 flex-shrink-0">
+              <span class="text-2xl font-light">S</span>
+            </div>
+            <div>
+              <h3 class="text-2xl font-light mb-3">Systems That Adapt</h3>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                Like natural systems that thrive through adaptation rather than rigid control, we help build 
+                businesses that balance structure with flow, stability with innovation, and short-term needs 
+                with long-term vision.
+              </p>
+              <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700">
+                "The major problems in the world are the result of the difference between how nature works and 
+                the way people think."
+                <cite class="block text-sm mt-2 not-italic">— Gregory Bateson</cite>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        
+        <!-- The Value of Maintenance -->
+        <div class="principle-card bg-white p-8 rounded-lg shadow-sm scroll-reveal stagger-2">
+          <div class="flex items-start mb-6">
+            <div class="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mr-6 flex-shrink-0">
+              <span class="text-2xl font-light">M</span>
+            </div>
+            <div>
+              <h3 class="text-2xl font-light mb-3">The Value of Maintenance</h3>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                The greatest businesses, like the most enduring structures, are designed from the outset with 
+                regeneration in mind. We believe in businesses that get better with age through intentional 
+                care and evolution.
+              </p>
+              <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700">
+                "There is no design that can overcome the cumulative effect of neglect."
+                <cite class="block text-sm mt-2 not-italic">— Stewart Brand</cite>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Deserved Trust Networks -->
+        <div class="principle-card bg-white p-8 rounded-lg shadow-sm scroll-reveal stagger-3">
+          <div class="flex items-start mb-6">
+            <div class="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mr-6 flex-shrink-0">
+              <span class="text-2xl font-light">T</span>
+            </div>
+            <div>
+              <h3 class="text-2xl font-light mb-3">Deserved Trust Networks</h3>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                We focus on building webs of trust with all stakeholders—customers, employees, partners, 
+                and communities. This trust becomes a durable competitive advantage that strengthens over time.
+              </p>
+              <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700">
+                "Remember that reputation and integrity are your most valuable assets—and can be lost in a heartbeat."
+                <cite class="block text-sm mt-2 not-italic">— Charlie Munger</cite>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visual Timeline -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-extralight mb-6">The Evolution of Our Thinking</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Our philosophy has been shaped by decades of studying what makes enterprises last
+        </p>
+      </div>
+      
+      <div class="relative">
+        <!-- Timeline line -->
+        <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gray-200"></div>
+        
+        <div class="space-y-20">
+          <!-- Timeline Item 1 -->
+          <div class="timeline-card relative flex items-center scroll-reveal">
+            <div class="w-1/2 pr-8 text-right">
+              <h3 class="text-xl font-light mb-2">Pattern Recognition</h3>
+              <p class="text-gray-600">
+                Studied 50+ companies that have thrived for over 100 years, identifying common patterns 
+                in their approach to growth, adaptation, and stakeholder relationships.
+              </p>
+            </div>
+            <div class="timeline-dot w-8 h-8 bg-white border-4 border-gray-300 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
+            <div class="w-1/2 pl-8">
+              <p class="text-sm text-gray-500">2000-2010</p>
+            </div>
+          </div>
+          
+          <!-- Timeline Item 2 -->
+          <div class="timeline-card relative flex items-center scroll-reveal">
+            <div class="w-1/2 pr-8 text-right">
+              <p class="text-sm text-gray-500">2010-2015</p>
+            </div>
+            <div class="timeline-dot w-8 h-8 bg-white border-4 border-gray-300 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
+            <div class="w-1/2 pl-8">
+              <h3 class="text-xl font-light mb-2">Systems Thinking Integration</h3>
+              <p class="text-gray-600">
+                Incorporated insights from complexity science, natural systems, and quality movements 
+                to develop a holistic framework for business design.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Timeline Item 3 -->
+          <div class="timeline-card relative flex items-center scroll-reveal">
+            <div class="w-1/2 pr-8 text-right">
+              <h3 class="text-xl font-light mb-2">Practical Application</h3>
+              <p class="text-gray-600">
+                Applied these principles with dozens of founders and business owners, refining our 
+                approach based on real-world outcomes across diverse industries.
+              </p>
+            </div>
+            <div class="timeline-dot w-8 h-8 bg-white border-4 border-gray-300 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
+            <div class="w-1/2 pl-8">
+              <p class="text-sm text-gray-500">2015-2020</p>
+            </div>
+          </div>
+          
+          <!-- Timeline Item 4 -->
+          <div class="timeline-card relative flex items-center scroll-reveal">
+            <div class="w-1/2 pr-8 text-right">
+              <p class="text-sm text-gray-500">2020-Present</p>
+            </div>
+            <div class="timeline-dot w-8 h-8 bg-gray-900 border-4 border-gray-900 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
+            <div class="w-1/2 pl-8">
+              <h3 class="text-xl font-light mb-2">INVRT Founded</h3>
+              <p class="text-gray-600">
+                Established INVRT to share these insights and help more businesses build enterprises 
+                designed to create value for generations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Insights -->
+  <section class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-extralight mb-6">Key Insights from Our Research</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <div class="text-4xl font-extralight text-gray-900 mb-4">2%</div>
+          <h3 class="text-lg font-medium mb-2">Better Each Year</h3>
+          <p class="text-gray-600 text-sm">
+            Charlie Munger observed that less than 2% of S&P 500 companies become meaningfully better 
+            businesses over any 5-year period.
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <div class="text-4xl font-extralight text-gray-900 mb-4">100+</div>
+          <h3 class="text-lg font-medium mb-2">Years of Endurance</h3>
+          <p class="text-gray-600 text-sm">
+            The companies we study have survived world wars, depressions, and technological revolutions 
+            by adapting while maintaining core principles.
+          </p>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm">
+          <div class="text-4xl font-extralight text-gray-900 mb-4">10x</div>
+          <h3 class="text-lg font-medium mb-2">Value of Maintenance</h3>
+          <p class="text-gray-600 text-sm">
+            Our research shows that $1 invested in thoughtful maintenance creates 10x more value over 
+            time than $1 spent on constant reinvention.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Systems Visualization -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-extralight mb-6">How Systems Create Compounding Value</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Quality businesses operate as interconnected systems where each element reinforces the others
+        </p>
+      </div>
+      
+      <div class="relative max-w-4xl mx-auto">
+        <svg class="w-full h-96" viewBox="0 0 800 400">
+          <!-- Center node -->
+          <circle cx="400" cy="200" r="50" fill="#111827" class="system-node"/>
+          <text x="400" y="205" text-anchor="middle" fill="white" class="text-sm">Core<tspan x="400" dy="15">Business</tspan></text>
+          
+          <!-- Surrounding nodes -->
+          <circle cx="250" cy="100" r="40" fill="#374151" class="system-node"/>
+          <text x="250" y="105" text-anchor="middle" fill="white" class="text-xs">Customer<tspan x="250" dy="12">Trust</tspan></text>
+          
+          <circle cx="550" cy="100" r="40" fill="#374151" class="system-node"/>
+          <text x="550" y="105" text-anchor="middle" fill="white" class="text-xs">Team<tspan x="550" dy="12">Excellence</tspan></text>
+          
+          <circle cx="250" cy="300" r="40" fill="#374151" class="system-node"/>
+          <text x="250" y="305" text-anchor="middle" fill="white" class="text-xs">Partner<tspan x="250" dy="12">Networks</tspan></text>
+          
+          <circle cx="550" cy="300" r="40" fill="#374151" class="system-node"/>
+          <text x="550" y="305" text-anchor="middle" fill="white" class="text-xs">Capital<tspan x="550" dy="12">Efficiency</tspan></text>
+          
+          <!-- Connections -->
+          <line x1="350" y1="180" x2="290" y2="130" stroke="#9CA3AF" stroke-width="2" opacity="0.5"/>
+          <line x1="450" y1="180" x2="510" y2="130" stroke="#9CA3AF" stroke-width="2" opacity="0.5"/>
+          <line x1="350" y1="220" x2="290" y2="270" stroke="#9CA3AF" stroke-width="2" opacity="0.5"/>
+          <line x1="450" y1="220" x2="510" y2="270" stroke="#9CA3AF" stroke-width="2" opacity="0.5"/>
+          
+          <!-- Cross connections -->
+          <line x1="290" y1="130" x2="510" y2="130" stroke="#9CA3AF" stroke-width="1" opacity="0.3"/>
+          <line x1="290" y1="270" x2="510" y2="270" stroke="#9CA3AF" stroke-width="1" opacity="0.3"/>
+          <line x1="270" y1="140" x2="270" y2="260" stroke="#9CA3AF" stroke-width="1" opacity="0.3"/>
+          <line x1="530" y1="140" x2="530" y2="260" stroke="#9CA3AF" stroke-width="1" opacity="0.3"/>
+          
+          <!-- Arrows showing reinforcement -->
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#9CA3AF" />
+            </marker>
+          </defs>
+          
+          <path d="M 300 120 Q 400 50 500 120" stroke="#9CA3AF" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.5"/>
+          <path d="M 500 280 Q 400 350 300 280" stroke="#9CA3AF" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.5"/>
+        </svg>
+        
+        <div class="mt-8 grid md:grid-cols-2 gap-6 text-sm text-gray-600">
+          <div class="flex items-start">
+            <div class="w-2 h-2 bg-gray-400 rounded-full mt-1.5 mr-3"></div>
+            <p>Each element strengthens the others through positive feedback loops</p>
+          </div>
+          <div class="flex items-start">
+            <div class="w-2 h-2 bg-gray-400 rounded-full mt-1.5 mr-3"></div>
+            <p>Quality in one area naturally elevates quality in all areas</p>
+          </div>
+          <div class="flex items-start">
+            <div class="w-2 h-2 bg-gray-400 rounded-full mt-1.5 mr-3"></div>
+            <p>Time compounds these advantages exponentially</p>
+          </div>
+          <div class="flex items-start">
+            <div class="w-2 h-2 bg-gray-400 rounded-full mt-1.5 mr-3"></div>
+            <p>The system becomes more resilient as it grows</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Quote -->
+  <section class="py-20 bg-gray-900 text-white">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative">
+      <span class="quote-mark font-serif text-gray-700">"</span>
+      <blockquote class="text-2xl md:text-3xl font-light leading-relaxed mb-6">
+        The greatest achievements take time. We plant seeds today 
+        for forests that future generations will enjoy.
+      </blockquote>
+      <cite class="text-gray-400">— INVRT Philosophy</cite>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-extralight mb-8">
+        Ready to Build Something Enduring?
+      </h2>
+      <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
+        If our philosophy resonates with your vision for creating a business worthy of 
+        persisting through time, let's explore how we might work together.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="advisory.html" class="inline-block px-8 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
+          Explore Our Services
+        </a>
+        <a href="contact.html" class="inline-block px-8 py-4 border border-gray-900 text-gray-900 hover:bg-gray-50 transition-colors">
+          Start a Conversation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-20 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div class="md:col-span-2">
+          <h3 class="text-2xl font-light mb-6">INVRT</h3>
+          <p class="text-gray-400 italic mb-6 text-lg leading-relaxed">
+            "The greatest achievements take time. We plant seeds today 
+            for forests that future generations will enjoy."
+          </p>
+          <p class="text-gray-400 text-sm">
+            Building enduring quality through strategic advisory.
+          </p>
+        </div>
+        
+        <div>
+          <h4 class="font-normal mb-6">Quick Links</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="philosophy.html" class="hover:text-white transition-colors">Philosophy</a></li>
+            <li><a href="advisory.html" class="hover:text-white transition-colors">Services</a></li>
+            <li><a href="insights.html" class="hover:text-white transition-colors">Insights</a></li>
+            <li><a href="clients.html" class="hover:text-white transition-colors">Clients</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-normal mb-6">Connect</h4>
+          <a href="contact.html" class="inline-block px-6 py-3 border border-gray-600 text-gray-300 hover:border-white hover:text-white transition-colors">
+            Schedule a Conversation
+          </a>
+          <p class="text-gray-400 text-sm mt-6">
+            Join 2,400+ founders and advisors
+          </p>
+          <a href="contact.html#subscribe" class="text-gray-400 hover:text-white transition-colors text-sm">
+            Subscribe to insights →
+          </a>
+        </div>
+      </div>
+      
+      <div class="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
+        © 2025 INVRT. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      if (!mobileMenu) {
+        const menu = document.createElement('div');
+        menu.id = 'mobile-menu';
+        menu.className = 'mobile-menu fixed right-0 top-0 h-full w-64 bg-white shadow-lg md:hidden z-50';
+        menu.innerHTML = `
+          <div class="p-6">
+            <button id="close-menu" class="mb-8">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+            <div class="space-y-4">
+              <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Philosophy</a>
+              <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Services</a>
+              <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Insights</a>
+              <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
+              <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
+                Start a Conversation
+              </a>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(menu);
+        
+        setTimeout(() => {
+          menu.classList.add('active');
+          const closeBtn = document.getElementById('close-menu');
+          closeBtn.addEventListener('click', () => {
+            menu.classList.remove('active');
+            setTimeout(() => menu.remove(), 300);
+          });
+        }, 10);
+      }
+    });
+    
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('shadow-lg');
+      } else {
+        navbar.classList.remove('shadow-lg');
+      }
+    });
+    
+    // Scroll reveal
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

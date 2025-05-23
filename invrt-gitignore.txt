@@ -1,0 +1,64 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Dependencies
+node_modules/
+bower_components/
+
+# Build output
+dist/
+build/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Backup files
+*.bak
+backup/
+
+# Compiled files
+*.min.css
+*.min.js
+
+# Package files
+*.zip
+*.tar.gz
+*.rar
+
+# Image source files (keep only optimized versions)
+*.psd
+*.ai
+*.sketch
+
+# Documentation build
+docs/_build/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Local development
+.sass-cache/
+*.css.map
+*.js.map

@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INVRT - Systems thinking for enduring enterprises</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Custom styles beyond Tailwind */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .hover-underline:hover {
+      text-decoration: underline;
+    }
+
+    .nav-shadow {
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    
+    .bg-off-white {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body class="font-light text-gray-900 bg-white antialiased">
+  <!-- Navigation - Ultra minimal with thought leadership focus -->
+  <nav id="navbar" class="fixed w-full bg-white bg-opacity-95 z-50 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="text-sm font-normal tracking-wide text-gray-900 flex items-center">
+          <div class="mr-1 w-5 h-5 border border-gray-900"></div>
+          INVRT
+        </div>
+        <div class="hidden md:flex space-x-12 text-xs tracking-wide">
+          <a href="#philosophy" class="text-gray-500 hover:text-gray-900 transition-colors duration-200">Philosophy</a>
+          <a href="#who-we-work-with" class="text-gray-500 hover:text-gray-900 transition-colors duration-200">Clients</a>
+          <a href="#insights" class="text-gray-500 hover:text-gray-900 transition-colors duration-200">Insights</a>
+          <a href="#advisory" class="text-gray-500 hover:text-gray-900 transition-colors duration-200">Advisory</a>
+        </div>
+        <div class="text-xs tracking-wide">
+          <button class="text-gray-900 hover:text-gray-600 transition-colors duration-200 mr-6">
+            Subscribe
+          </button>
+          <button class="px-4 py-2 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors duration-200">
+            Contact
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Hero - Thought leadership first with subtle system visualization (White) -->
+  <div class="pt-32 pb-24 relative overflow-hidden bg-white">
+    <!-- Abstract system visualization - subtle interconnected nodes -->
+    <div class="absolute inset-0 opacity-5 pointer-events-none">
+      <svg class="w-full h-full" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+        <g stroke="#000" fill="none" stroke-width="1">
+          <line x1="200" y1="200" x2="400" y2="300" />
+          <line x1="400" y1="300" x2="600" y2="250" />
+          <line x1="600" y1="250" x2="700" y2="400" />
+          <line x1="700" y1="400" x2="500" y2="500" />
+          <line x1="500" y1="500" x2="300" y2="450" />
+          <line x1="300" y1="450" x2="200" y2="200" />
+          <line x1="300" y1="450" x2="400" y2="300" />
+          <line x1="500" y1="500" x2="600" y2="250" />
+          <circle cx="200" cy="200" r="8" fill="#000" />
+          <circle cx="400" cy="300" r="8" fill="#000" />
+          <circle cx="600" cy="250" r="8" fill="#000" />
+          <circle cx="700" cy="400" r="8" fill="#000" />
+          <circle cx="500" cy="500" r="8" fill="#000" />
+          <circle cx="300" cy="450" r="8" fill="#000" />
+        </g>
+      </svg>
+    </div>
+    
+    <div class="max-w-4xl mx-auto px-8 relative">
+      <div class="text-center">
+        <h1 class="text-5xl md:text-7xl font-extralight leading-none tracking-tight text-gray-900 mb-8">
+          Systems thinking<br />
+          for <em class="font-light">enduring</em><br />
+          enterprises
+        </h1>
+        <p class="text-lg md:text-xl font-light text-gray-600 max-w-2xl mx-auto leading-relaxed mb-12">
+          Strategic advisory for founders, family businesses, and holding companies focused on building value across generations, not quarters.
+        </p>
+        <div class="space-y-6">
+          <button class="block mx-auto text-sm tracking-wide text-gray-900 border-b border-gray-900 pb-1 hover:border-gray-600 hover:text-gray-600 transition-colors duration-200">
+            Discover Our Approach
+          </button>
+          <p class="text-xs tracking-wide text-gray-500">
+            Building enterprises designed to improve with time
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Featured Insight - Hero level prominence (Off-white) -->
+  <section class="py-16 border-t border-gray-100 bg-off-white">
+    <div class="max-w-4xl mx-auto px-8">
+      <div class="text-center mb-12">
+        <p class="text-xs tracking-widest text-gray-500 mb-4">FEATURED INSIGHT</p>
+        <h2 class="text-2xl md:text-3xl font-extralight tracking-tight text-gray-900 mb-6">
+          The Maintenance Premium: Why Care Creates More Value Than Innovation
+        </h2>
+        <p class="text-base font-light text-gray-600 leading-relaxed max-w-2xl mx-auto mb-8">
+          Most businesses focus obsessively on the next breakthrough while neglecting the systems that compound value over time. 
+          We've studied century-old companies to understand how intentional maintenance creates exponential returns.
+        </p>
+        <div class="flex justify-center space-x-8 text-xs tracking-wide text-gray-500">
+          <span>12 min read</span>
+          <span>Published Jan 2025</span>
+          <span>Strategy & Systems</span>
+        </div>
+      </div>
+      
+      <div class="border border-gray-200 p-8 relative bg-white">
+        <!-- Subtle visual indicator of compounding value -->
+        <div class="absolute top-0 left-0 w-full h-1">
+          <div class="bg-gray-900 h-full w-1/3"></div>
+          <div class="bg-gray-700 h-full w-1/3 ml-1/3"></div>
+          <div class="bg-gray-500 h-full w-1/3 ml-2/3"></div>
+        </div>
+        
+        <blockquote class="text-lg font-light text-gray-700 leading-relaxed italic text-center mb-6">
+          "The greatest businesses, like the most enduring structures, are designed from the outset with regeneration in mind. 
+          They don't just maintain—they improve through maintenance."
+        </blockquote>
+        <div class="text-center">
+          <button class="text-sm tracking-wide text-gray-900 border-b border-gray-900 pb-1 hover:border-gray-600 hover:text-gray-600 transition-colors duration-200">
+            Read Full Essay
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Philosophy - Condensed but prominent (White) -->
+  <section id="philosophy" class="py-32 bg-white">
+    <div class="max-w-4xl mx-auto px-8">
+      <div class="text-center mb-24">
+        <h2 class="text-3xl md:text-4xl font-extralight tracking-tight text-gray-900 mb-6">
+          Our Approach
+        </h2>
+        <div class="w-12 h-px bg-gray-300 mx-auto mb-8"></div>
+        <p class="text-base font-light text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          We apply systems thinking principles to help businesses create sustained value. Our approach is built on four foundational principles that guide our advisory work.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div class="text-center">
+          <div class="w-16 h-16 border border-gray-300 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-light tracking-wide text-gray-900 mb-4">
+            Quality Over Scale
+          </h3>
+          <p class="text-sm font-light text-gray-600 leading-relaxed">
+            The most enduring businesses prioritize thoughtful evolution over rapid expansion, building systems that improve with age rather than degrade.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 border border-gray-300 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-light tracking-wide text-gray-900 mb-4">
+            Systems That Adapt
+          </h3>
+          <p class="text-sm font-light text-gray-600 leading-relaxed">
+            Like natural systems, exceptional businesses balance structure with flow, allowing them to adapt to changing conditions while maintaining their core identity.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 border border-gray-300 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-light tracking-wide text-gray-900 mb-4">
+            The Value of Maintenance
+          </h3>
+          <p class="text-sm font-light text-gray-600 leading-relaxed">
+            Intentional care and evolution create more value than constant reinvention. Sustained excellence comes from systems designed to improve through maintenance.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 border border-gray-300 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-light tracking-wide text-gray-900 mb-4">
+            Deserved Trust Networks
+          </h3>
+          <p class="text-sm font-light text-gray-600 leading-relaxed">
+            Trust becomes a durable competitive advantage that strengthens over time, building networks of relationships that compound in value across generations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Work With (Off-white) -->
+  <section id="who-we-work-with" class="py-32 bg-off-white">
+    <div class="max-w-4xl mx-auto px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-extralight tracking-tight text-gray-900 mb-6">
+          Who We Work With
+        </h2>
+        <div class="w-12 h-px bg-gray-300 mx-auto mb-8"></div>
+        <p class="text-base font-light text-gray-600 leading-relaxed max-w-2xl mx-auto mb-16">
+          Our advisory approach is specifically designed for leaders who measure success in decades rather than quarters.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-lg font-light tracking-wide text-gray-900 mb-4">
+            Experienced Founders
+          </h3>
+          <p class="text-sm font-light text-gray-600 leading-relaxed">
+            Entrepreneurs who have built significant businesses and are now focused on long-term value creation, strategic acquisitions, or thoughtful succession planning. You recognize that the next phase of growth requires different approaches than what brought initial success.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-light tracking-wide text-gray-900 mb-4">
+            Family Offices
+          </h3>
+          <p class="text-sm font-light text-gray-600 leading-relaxed">
+            Multi-generational investment offices seeking strategic guidance on direct investments, portfolio construction, and governance structures that align with family values. We help you develop frameworks that balance wealth preservation with generational wealth creation.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-light tracking-wide text-gray-900 mb-4">
+            Family-Owned Businesses
+          </h3>
+          <p class="text-sm font-light text-gray-600 leading-relaxed">
+            Established companies navigating the complex intersection of family, ownership, and business dynamics. We provide advisory services for succession planning, next-generation leadership development, and strategic growth initiatives that honor legacy while embracing necessary evolution.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-light tracking-wide text-gray-900 mb-4">
+            Private Holding Companies
+          </h3>
+          <p class="text-sm font-light text-gray-600 leading-relaxed">
+            Owner-operated holding structures seeking to optimize portfolio approach, capital allocation strategies, and management across diverse business units. We help transform collections of businesses into coherent systems that create compounding value over time.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Case Studies - Client Stories (White) -->
+  <section class="py-32 bg-white">
+    <div class="max-w-4xl mx-auto px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-extralight tracking-tight text-gray-900 mb-6">
+          Client Stories
+        </h2>
+        <div class="w-12 h-px bg-gray-300 mx-auto mb-8"></div>
+        <p class="text-base font-light text-gray-600 leading-relaxed max-w-2xl mx-auto mb-8">
+          We've helped businesses across generations design systems that compound value over time. Here's how our systems thinking approach has created enduring enterprises.
+        </p>
+      </div>
+      
+      <div class="border border-gray-200 p-8 mb-12 bg-off-white">
+        <div class="mb-6">
+          <p class="text-xs tracking-widest text-gray-500 mb-2">FAMILY BUSINESS</p>
+          <h3 class="text-xl font-light tracking-wide text-gray-900 mb-3">
+            From Regional Operation to Global Institution
+          </h3>
+          <p class="text-sm font-light text-gray-600 leading-relaxed mb-4">
+            How we helped a third-generation family business design governance and capital allocation systems to support global expansion while preserving their quality-focused culture.
+          </p>
+          <div class="flex space-x-8 text-xs tracking-wide text-gray-500 mb-4">
+            <span>7-year partnership</span>
+            <span>Governance redesign</span>
+            <span>Succession planning</span>
+          </div>
+          <div class="text-sm font-light text-gray-700 leading-relaxed italic border-l-2 border-gray-200 pl-4 py-1">
+            "INVRT helped us think beyond the next transaction to design systems that would preserve our values while enabling growth across generations."
+          </div>
+        </div>
+        <div class="text-right">
+          <button class="text-sm tracking-wide text-gray-900 border-b border-gray-900 pb-1 hover:border-gray-600 hover:text-gray-600 transition-colors duration-200">
+            Read Case Study
+          </button>
+        </div>
+      </div>
+      
+      <div class="text-center">
+        <button class="text-sm tracking-wide text-gray-900 border-b border-gray-900 pb-1 hover:border-gray-600 hover:text-gray-600 transition-colors duration-200">
+          View All Case Studies
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Latest Thinking - Clean grid (Off-white) -->
+  <section id="insights" class="py-32 bg-off-white">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="text-center mb-24">
+        <h2 class="text-3xl md:text-4xl font-extralight tracking-tight text-gray-900 mb-6">
+          Latest Thinking
+        </h2>
+        <div class="w-12 h-px bg-gray-300 mx-auto mb-8"></div>
+        <p class="text-base font-light text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          Frameworks and insights from our work with founders and families building for generations. Our research explores the patterns that lead to enduring excellence.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <article class="bg-white border border-gray-200 p-8 hover:shadow-sm transition-shadow duration-300">
+          <div class="mb-4">
+            <p class="text-xs tracking-widest text-gray-500 mb-2">ESSAY</p>
+            <h3 class="text-lg font-light tracking-wide text-gray-900 mb-3 leading-tight">
+              Quality 3.0: The Evolution of Business Excellence
+            </h3>
+            <p class="text-sm font-light text-gray-600 leading-relaxed mb-4">
+              How the definition of quality has evolved from conformance to capability to character—and why only character-based quality compounds over generations.
+            </p>
+          </div>
+          <div class="flex justify-between items-center text-xs tracking-wide text-gray-500">
+            <span>8 min read</span>
+            <button class="text-gray-900 hover:text-gray-600 transition-colors duration-200 border-b border-gray-900 hover:border-gray-600 pb-px">
+              Read
+            </button>
+          </div>
+        </article>
+        
+        <article class="bg-white border border-gray-200 p-8 hover:shadow-sm transition-shadow duration-300">
+          <div class="mb-4">
+            <p class="text-xs tracking-widest text-gray-500 mb-2">FRAMEWORK</p>
+            <h3 class="text-lg font-light tracking-wide text-gray-900 mb-3 leading-tight">
+              The Four Types of Business Compounding
+            </h3>
+            <p class="text-sm font-light text-gray-600 leading-relaxed mb-4">
+              Capital, relationships, systems, and reputation—understanding how each compounds differently and why they're interdependent in creating multi-generational value.
+            </p>
+          </div>
+          <div class="flex justify-between items-center text-xs tracking-wide text-gray-500">
+            <span>15 min read</span>
+            <button class="text-gray-900 hover:text-gray-600 transition-colors duration-200 border-b border-gray-900 hover:border-gray-600 pb-px">
+              Read
+            </button>
+          </div>
+        </article>
+        
+        <article class="bg-white border border-gray-200 p-8 hover:shadow-sm transition-shadow duration-300">
+          <div class="mb-4">
+            <p class="text-xs tracking-widest text-gray-500 mb-2">CASE STUDY</p>
+            <h3 class="text-lg font-light tracking-wide text-gray-900 mb-3 leading-tight">
+              Patterns of Endurance: Lessons from Century-Old Companies
+            </h3>
+            <p class="text-sm font-light text-gray-600 leading-relaxed mb-4">
+              What we learned from studying 50 companies that have thrived for over 100 years, and the surprising patterns that emerge in their governance, culture, and capital allocation.
+            </p>
+          </div>
+          <div class="flex justify-between items-center text-xs tracking-wide text-gray-500">
+            <span>22 min read</span>
+            <button class="text-gray-900 hover:text-gray-600 transition-colors duration-200 border-b border-gray-900 hover:border-gray-600 pb-px">
+              Read
+            </button>
+          </div>
+        </article>
+      </div>
+      
+      <div class="text-center mt-16">
+        <button class="text-sm tracking-wide text-gray-900 border-b border-gray-900 pb-1 hover:border-gray-600 hover:text-gray-600 transition-colors duration-200">
+          View All Insights
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- The Art of Quality Podcast (White) -->
+  <section id="podcast" class="py-32 bg-white">
+    <div class="max-w-4xl mx-auto px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-extralight tracking-tight text-gray-900 mb-6">
+          The Art of Quality
+        </h2>
+        <div class="w-12 h-px bg-gray-300 mx-auto mb-8"></div>
+        <p class="text-base font-light text-gray-600 leading-relaxed max-w-2xl mx-auto mb-8">
+          Our podcast explores the patterns that lead to enduring excellence across disciplines—featuring conversations with leaders of century-old businesses, master craftspeople, and systems thinkers.
+        </p>
+      </div>
+      
+      <div class="border border-gray-200 p-8 mb-8 relative overflow-hidden bg-off-white">
+        <!-- Subtle audio waveform visualization -->
+        <div class="absolute bottom-0 left-0 w-full h-8 opacity-10">
+          <svg viewBox="0 0 100 20" class="w-full h-full">
+            <path d="M0,10 Q5,5 10,10 T20,10 T30,10 T40,10 T50,10 T60,10 T70,10 T80,10 T90,10 T100,10" stroke="black" fill="none" />
+            <path d="M0,10 Q5,15 10,10 T20,10 T30,10 T40,10 T50,10 T60,10 T70,10 T80,10 T90,10 T100,10" stroke="black" fill="none" />
+            <path d="M0,10 Q5,2 10,10 T20,10 T30,10 T40,10 T50,10 T60,10 T70,10 T80,10 T90,10 T100,10" stroke="black" fill="none" />
+            <path d="M0,10 Q5,18 10,10 T20,10 T30,10 T40,10 T50,10 T60,10 T70,10 T80,10 T90,10 T100,10" stroke="black" fill="none" />
+          </svg>
+        </div>
+        
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-6">
+          <div>
+            <p class="text-xs tracking-widest text-gray-500 mb-2">LATEST EPISODE</p>
+            <h3 class="text-xl font-light tracking-wide text-gray-900 mb-2">
+              Building Systems That Learn: Lessons from Adaptive Organizations
+            </h3>
+            <p class="text-sm font-light text-gray-600">
+              A conversation with the head of a 150-year-old family business about how they've adapted through six generations while maintaining their core quality principles.
+            </p>
+          </div>
+          <div class="mt-4 md:mt-0 md:ml-8">
+            <button class="text-sm tracking-wide text-gray-900 border border-gray-900 px-4 py-2 hover:bg-gray-900 hover:text-white transition-colors duration-200 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Listen
+            </button>
+          </div>
+        </div>
+        <div class="flex space-x-8 text-xs tracking-wide text-gray-500">
+          <span>45 min</span>
+          <span>Episode 23</span>
+          <span>Dec 2024</span>
+        </div>
+      </div>
+      
+      <div class="text-center">
+        <button class="text-sm tracking-wide text-gray-900 border-b border-gray-900 pb-1 hover:border-gray-600 hover:text-gray-600 transition-colors duration-200">
+          Browse All Episodes
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Advisory Services - Secondary to thought leadership (Off-white) -->
+  <section id="advisory" class="py-32 bg-off-white">
+    <div class="max-w-4xl mx-auto px-8">
+      <div class="text-center mb-24">
+        <h2 class="text-3xl md:text-4xl font-extralight tracking-tight text-gray-900 mb-6">
+          Advisory Services
+        </h2>
+        <div class="w-12 h-px bg-gray-300 mx-auto mb-8"></div>
+        <p class="text-base font-light text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          We partner with leaders who understand that true value isn't created in quarters but compounds over generations. Our strategic advisory services focus on designing systems that adapt, endure, and create compounding value.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="border border-gray-200 p-8 bg-white">
+          <h3 class="text-lg font-light tracking-wide text-gray-900 mb-4">
+            Compounding Business Value
+          </h3>
+          <p class="text-sm font-light text-gray-600 leading-relaxed mb-6">
+            For experienced founders seeking strategic acquisitions that strengthen rather than dilute their business system. We ensure each transaction builds upon your core advantages.
+          </p>
+          <ul class="text-xs font-light text-gray-600 leading-relaxed space-y-2 mb-6">
+            <li class="flex items-start">
+              <span class="inline-block w-1 h-1 rounded-full bg-gray-400 mt-1.5 mr-2"></span>
+              Quality-focused target identification and evaluation
+            </li>
+            <li class="flex items-start">
+              <span class="inline-block w-1 h-1 rounded-full bg-gray-400 mt-1.5 mr-2"></span>
+              Integration planning that preserves cultural strength
+            </li>
+            <li class="flex items-start">
+              <span class="inline-block w-1 h-1 rounded-full bg-gray-400 mt-1.5 mr-2"></span>
+              Transaction structuring that aligns incentives for long-term success
+            </li>
+          </ul>
+        </div>
+        
+        <div class="border border-gray-200 p-8 bg-white">
+          <h3 class="text-lg font-light tracking-wide text-gray-900 mb-4">
+            Compounding Equity Value
+          </h3>
+          <p class="text-sm font-light text-gray-600 leading-relaxed mb-6">
+            For family offices and holding companies balancing multi-generational wealth preservation with new growth opportunities. We design systems that create sustained value across your portfolio.
+          </p>
+          <ul class="text-xs font-light text-gray-600 leading-relaxed space-y-2 mb-6">
+            <li class="flex items-start">
+              <span class="inline-block w-1 h-1 rounded-full bg-gray-400 mt-1.5 mr-2"></span>
+              Governance frameworks that balance autonomy with alignment
+            </li>
+            <li class="flex items-start">
+              <span class="inline-block w-1 h-1 rounded-full bg-gray-400 mt-1.5 mr-2"></span>
+              Capital allocation strategies that compound returns over decades
+            </li>
+            <li class="flex items-start">
+              <span class="inline-block w-1 h-1 rounded-full bg-gray-400 mt-1.5 mr-2"></span>
+              Succession planning that honors legacy while embracing evolution
+            </li>
+          </ul>
+        </div>
+        
+        <div class="border border-gray-200 p-8 bg-white">
+          <h3 class="text-lg font-light tracking-wide text-gray-900 mb-4">
+            Compounding Investor Value
+          </h3>
+          <p class="text-sm font-light text-gray-600 leading-relaxed mb-6">
+            For businesses seeking capital partners aligned with your long-term vision. We help you attract investors who understand that quality compounds and patience creates value.
+          </p>
+          <ul class="text-xs font-light text-gray-600 leading-relaxed space-y-2 mb-6">
+            <li class="flex items-start">
+              <span class="inline-block w-1 h-1 rounded-full bg-gray-400 mt-1.5 mr-2"></span>
+              Partner identification focused on quality over quantity
+            </li>
+            <li class="flex items-start">
+              <span class="inline-block w-1 h-1 rounded-full bg-gray-400 mt-1.5 mr-2"></span>
+              Valuation frameworks that recognize quality-driven advantages
+            </li>
+            <li class="flex items-start">
+              <span class="inline-block w-1 h-1 rounded-full bg-gray-400 mt-1.5 mr-2"></span>
+              Relationship structures designed for mutual long-term benefit
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="text-center mt-16">
+        <button class="text-sm tracking-wide text-gray-900 border border-gray-900 px-6 py-3 hover:bg-gray-900 hover:text-white transition-colors duration-200">
+          Explore Our Advisory Process
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Newsletter signup - Thought leadership focus (White) -->
+  <section class="py-32 bg-white">
+    <div class="max-w-4xl mx-auto px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-extralight tracking-tight text-gray-900 mb-8">
+        Join Our Thinking
+      </h2>
+      <p class="text-base font-light text-gray-600 leading-relaxed max-w-2xl mx-auto mb-12">
+        Weekly insights on building enterprises designed to improve with time. Receive frameworks and case studies from our work with multi-generational businesses and systems thinkers.
+      </p>
+      
+      <div class="max-w-md mx-auto">
+        <div class="flex">
+          <input 
+            type="email" 
+            placeholder="Your email" 
+            class="flex-1 px-4 py-3 border border-gray-300 text-sm font-light focus:outline-none focus:border-gray-900 transition-colors duration-200"
+          />
+          <button class="px-6 py-3 bg-gray-900 text-white text-sm font-light hover:bg-gray-800 transition-colors duration-200">
+            Subscribe
+          </button>
+        </div>
+        <p class="text-xs text-gray-500 mt-4">
+          Join 2,400+ founders and advisors. Unsubscribe anytime.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact - Conversation starter (Off-white) -->
+  <section class="py-32 bg-off-white">
+    <div class="max-w-4xl mx-auto px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-extralight tracking-tight text-gray-900 mb-8">
+        Start a Conversation
+      </h2>
+      <p class="text-base font-light text-gray-600 leading-relaxed max-w-2xl mx-auto mb-12">
+        Our relationships begin with a conversation about your vision for building an enterprise designed to endure. If our approach resonates with your values and aspirations, we'd welcome the opportunity to explore how we might work together.
+      </p>
+      <div class="inline-flex space-x-4">
+        <button class="text-sm tracking-wide text-white bg-gray-900 border border-gray-900 px-6 py-3 hover:bg-gray-800 transition-colors duration-200">
+          Get in Touch
+        </button>
+        <button class="text-sm tracking-wide text-gray-900 border border-gray-900 px-6 py-3 hover:bg-gray-900 hover:text-white transition-colors duration-200">
+          Download Our Approach
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer - Minimal and clean (White) -->
+  <footer class="py-16 border-t border-gray-100 bg-white">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="text-sm font-light tracking-wide text-gray-900 mb-8 md:mb-0 flex items-center">
+          <div class="mr-1 w-5 h-5 border border-gray-900"></div>
+          INVRT
+        </div>
+        <div class="flex space-x-8 text-xs tracking-wide text-gray-500">
+          <a href="#philosophy" class="hover:text-gray-900 transition-colors duration-200">Philosophy</a>
+          <a href="#who-we-work-with" class="hover:text-gray-900 transition-colors duration-200">Clients</a>
+          <a href="#insights" class="hover:text-gray-900 transition-colors duration-200">Insights</a>
+          <a href="#podcast" class="hover:text-gray-900 transition-colors duration-200">Podcast</a>
+          <a href="#advisory" class="hover:text-gray-900 transition-colors duration-200">Advisory</a>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-100 text-center">
+        <p class="text-xs tracking-wide text-gray-400">
+          © 2025 INVRT. Systems thinking for enduring enterprises.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll behavior for navbar
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('nav-shadow', 'bg-opacity-98');
+      } else {
+        navbar.classList.remove('nav-shadow', 'bg-opacity-98');
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80, // Adjust for navbar height
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

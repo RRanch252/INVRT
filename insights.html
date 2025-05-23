@@ -57,6 +57,38 @@
       border-color: #111827;
     }
     
+    /* Question cards */
+    .question-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      padding: 32px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .question-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 0;
+      background: #111827;
+      transition: height 0.3s ease;
+    }
+    
+    .question-card:hover {
+      border-color: #111827;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+    
+    .question-card:hover::before {
+      height: 100%;
+    }
+    
     /* Category pills */
     .category-pill {
       transition: all 0.2s ease;
@@ -213,7 +245,7 @@
           Podcast Episodes
         </button>
         <button class="category-pill px-6 py-2 rounded-full text-sm border border-gray-300">
-          Case Studies
+          Tools & Templates
         </button>
       </div>
     </div>
@@ -252,17 +284,19 @@
                 <span>Systems thinking principles applied to business</span>
               </li>
             </ul>
-            <a href="#" class="download-link inline-flex items-center px-6 py-3 bg-white text-gray-900 hover:bg-gray-100 transition-all">
+            <a href="https://docs.google.com/presentation/d/1uKJIvrW0NFYeoTcBzKJrxb2tZH8gUoysvkUpZzaCTTA/edit#slide=id.g184dc891c86_0_129" target="_blank" class="download-link inline-flex items-center px-6 py-3 bg-white text-gray-900 hover:bg-gray-100 transition-all">
               <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
               </svg>
-              Download PDF (8.2 MB)
+              View Presentation
             </a>
           </div>
           <div class="bg-gray-800 p-12 flex items-center justify-center">
             <div class="text-center">
-              <div class="w-32 h-40 bg-gray-700 rounded shadow-lg mx-auto mb-6"></div>
-              <p class="text-sm text-gray-500">Preview available after download</p>
+              <svg class="w-32 h-40 mx-auto mb-6 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+              </svg>
+              <p class="text-sm text-gray-500">Google Slides Presentation</p>
             </div>
           </div>
         </div>
@@ -270,119 +304,217 @@
     </div>
   </section>
 
+  <!-- Questions We're Exploring Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <h2 class="text-3xl font-extralight mb-4">Fundamental Questions</h2>
+      <p class="text-gray-600 mb-12 max-w-3xl">
+        Core inquiries that guide our research and shape our understanding of what makes enterprises endure across generations.
+      </p>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="question-card">
+          <p class="text-xs tracking-widest text-gray-500 mb-4">SYSTEMS & ADAPTATION</p>
+          <h3 class="text-lg font-light mb-3 text-gray-900">
+            What patterns allow some businesses to improve with age while most degrade over time?
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Our research into century-old companies reveals specific organizational patterns: they prioritize maintenance over innovation, build redundancy into critical systems, and cultivate adaptive capacity.
+          </p>
+          <div class="mt-4 flex items-center text-sm text-gray-900">
+            <span>Explore this question</span>
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="question-card">
+          <p class="text-xs tracking-widest text-gray-500 mb-4">QUALITY & CRAFT</p>
+          <h3 class="text-lg font-light mb-3 text-gray-900">
+            Why do we struggle to perceive quality in its early stages, yet recognize it instantly in mature form?
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Quality emerges from complex system properties that individual parts don't exhibit. Like identifying a future oak in an acorn, recognizing nascent quality requires understanding patterns of potential.
+          </p>
+          <div class="mt-4 flex items-center text-sm text-gray-900">
+            <span>Explore this question</span>
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="question-card">
+          <p class="text-xs tracking-widest text-gray-500 mb-4">TIME & MAINTENANCE</p>
+          <h3 class="text-lg font-light mb-3 text-gray-900">
+            How does the relationship between maintenance and growth shift as systems mature?
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Geoffrey West's research shows that organisms dedicate increasing energy to maintenance as they mature. We see parallel patterns in enduring businesses that shift from growth-obsession to excellence.
+          </p>
+          <div class="mt-4 flex items-center text-sm text-gray-900">
+            <span>Explore this question</span>
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="question-card">
+          <p class="text-xs tracking-widest text-gray-500 mb-4">VALUE CREATION</p>
+          <h3 class="text-lg font-light mb-3 text-gray-900">
+            What makes trust networks compound in value while transactional relationships decay?
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Peter Kaufman identifies "deserved trust" as creating compound returns through reduced transaction costs, expanded opportunity access, and resilience during disruptions.
+          </p>
+          <div class="mt-4 flex items-center text-sm text-gray-900">
+            <span>Explore this question</span>
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="question-card">
+          <p class="text-xs tracking-widest text-gray-500 mb-4">LEADERSHIP & CULTURE</p>
+          <h3 class="text-lg font-light mb-3 text-gray-900">
+            Why do founder-led businesses dramatically outperform professionally managed ones over decades?
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Todd Combs notes that founders operate as fiduciaries with radically longer time horizons. They make decisions that seem irrational quarterly but compound advantageously over generations.
+          </p>
+          <div class="mt-4 flex items-center text-sm text-gray-900">
+            <span>Explore this question</span>
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="question-card">
+          <p class="text-xs tracking-widest text-gray-500 mb-4">RESILIENCE & RISK</p>
+          <h3 class="text-lg font-light mb-3 text-gray-900">
+            How do enduring enterprises balance redundancy with efficiency in their systems?
+          </h3>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            Century-old companies build strategic redundancy into critical systems while maintaining operational efficiency—a paradox that creates both resilience and competitive advantage.
+          </p>
+          <div class="mt-4 flex items-center text-sm text-gray-900">
+            <span>Explore this question</span>
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="#" class="inline-flex items-center text-sm font-medium text-gray-900 border-b-2 border-gray-900 hover:text-gray-600 hover:border-gray-600 transition-colors">
+          View All Questions We're Exploring
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research & Frameworks -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8">
+      <h2 class="text-3xl font-extralight mb-12">Research & Frameworks</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Framework 1 -->
+        <article class="resource-card bg-white rounded-lg overflow-hidden">
+          <div class="p-8">
+            <p class="text-xs tracking-widest text-gray-500 mb-4">FRAMEWORK</p>
+            <h3 class="text-xl font-light mb-3">Quality Patterns Deck</h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              A comprehensive collection of patterns identified in enduring enterprises, 
+              with visual frameworks and practical applications.
+            </p>
+            <a href="https://docs.google.com/presentation/d/1KbkTRrNWoGFk9yAaYfzM_0hf80Vca-94VNuknQkOPZU/edit#slide=id.g159724dde76_0_36" target="_blank" class="text-sm font-medium text-gray-900 inline-flex items-center group">
+              View Framework 
+              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+        
+        <!-- Framework 2 -->
+        <article class="resource-card bg-white rounded-lg overflow-hidden">
+          <div class="p-8">
+            <p class="text-xs tracking-widest text-gray-500 mb-4">TOOL</p>
+            <h3 class="text-xl font-light mb-3">The Endurance Patterns Matrix</h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              An interactive spreadsheet tool for identifying and analyzing patterns 
+              in companies built for multi-generational success.
+            </p>
+            <a href="https://docs.google.com/spreadsheets/d/18flZbJesoRvgrFXU5qwlFnwKelQ_lhFbOvTUn7AzeIo/edit?gid=1592233509#gid=1592233509" target="_blank" class="text-sm font-medium text-gray-900 inline-flex items-center group">
+              Access Tool 
+              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+        
+        <!-- Framework 3 -->
+        <article class="resource-card bg-white rounded-lg overflow-hidden">
+          <div class="p-8">
+            <p class="text-xs tracking-widest text-gray-500 mb-4">RESEARCH</p>
+            <h3 class="text-xl font-light mb-3">Systems Thinking Applied</h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              Practical applications of complexity science and systems thinking 
+              to business strategy and organizational design.
+            </p>
+            <a href="https://invrt.substack.com/" target="_blank" class="text-sm font-medium text-gray-900 inline-flex items-center group">
+              Read More 
+              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- Articles & Essays -->
   <section class="py-16 bg-gray-50">
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
-      <h2 class="text-3xl font-extralight mb-12">Latest Articles & Essays</h2>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extralight mb-4">Essays & Long-form Thinking</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Deep explorations of quality, systems thinking, and building for the long term
+        </p>
+      </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Article 1 -->
-        <article class="resource-card bg-white rounded-lg overflow-hidden">
-          <div class="p-8">
-            <p class="text-xs tracking-widest text-gray-500 mb-4">ESSAY • 15 MIN READ</p>
-            <h3 class="text-xl font-light mb-3">The Maintenance Premium</h3>
-            <p class="text-gray-600 mb-6 leading-relaxed">
-              Why care creates more value than innovation: lessons from studying businesses 
-              that have thrived for over a century.
-            </p>
-            <a href="#" class="text-sm font-medium text-gray-900 inline-flex items-center group">
-              Read Article 
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
-        
-        <!-- Article 2 -->
-        <article id="patterns" class="resource-card bg-white rounded-lg overflow-hidden">
-          <div class="p-8">
-            <p class="text-xs tracking-widest text-gray-500 mb-4">RESEARCH • 22 MIN READ</p>
-            <h3 class="text-xl font-light mb-3">Patterns of Endurance</h3>
-            <p class="text-gray-600 mb-6 leading-relaxed">
-              What we learned from studying 50 companies that have thrived for over 100 years, 
-              and the surprising patterns that emerge.
-            </p>
-            <a href="#" class="text-sm font-medium text-gray-900 inline-flex items-center group">
-              Read Research 
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
-        
-        <!-- Article 3 -->
-        <article class="resource-card bg-white rounded-lg overflow-hidden">
-          <div class="p-8">
-            <p class="text-xs tracking-widest text-gray-500 mb-4">FRAMEWORK • 12 MIN READ</p>
-            <h3 class="text-xl font-light mb-3">The Four Types of Business Compounding</h3>
-            <p class="text-gray-600 mb-6 leading-relaxed">
-              Capital, relationships, systems, and reputation—understanding how each compounds 
-              differently and why they're interdependent.
-            </p>
-            <a href="#" class="text-sm font-medium text-gray-900 inline-flex items-center group">
-              View Framework 
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
-        
-        <!-- Article 4 -->
-        <article class="resource-card bg-white rounded-lg overflow-hidden">
-          <div class="p-8">
-            <p class="text-xs tracking-widest text-gray-500 mb-4">CASE STUDY • 18 MIN READ</p>
-            <h3 class="text-xl font-light mb-3">From Transaction to System</h3>
-            <p class="text-gray-600 mb-6 leading-relaxed">
-              How a third-generation family business transformed from a collection of assets 
-              into a coherent system creating compounding value.
-            </p>
-            <a href="#" class="text-sm font-medium text-gray-900 inline-flex items-center group">
-              Read Case Study 
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
-        
-        <!-- Article 5 -->
-        <article class="resource-card bg-white rounded-lg overflow-hidden">
-          <div class="p-8">
-            <p class="text-xs tracking-widest text-gray-500 mb-4">INSIGHT • 8 MIN READ</p>
-            <h3 class="text-xl font-light mb-3">Quality as Character</h3>
-            <p class="text-gray-600 mb-6 leading-relaxed">
-              The evolution of quality from conformance to capability to character—and why 
-              only character-based quality compounds over generations.
-            </p>
-            <a href="#" class="text-sm font-medium text-gray-900 inline-flex items-center group">
-              Read Insight 
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
-        
-        <!-- Article 6 -->
-        <article class="resource-card bg-white rounded-lg overflow-hidden">
-          <div class="p-8">
-            <p class="text-xs tracking-widest text-gray-500 mb-4">FRAMEWORK • 10 MIN READ</p>
-            <h3 class="text-xl font-light mb-3">The Quality Web</h3>
-            <p class="text-gray-600 mb-6 leading-relaxed">
-              A visual framework for understanding how quality emerges from the interconnections 
-              between multiple stakeholders over time.
-            </p>
-            <a href="#" class="text-sm font-medium text-gray-900 inline-flex items-center group">
-              View Framework 
-              <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </article>
+      <div class="max-w-3xl mx-auto">
+        <div class="bg-white rounded-lg p-8 text-center border border-gray-200">
+          <svg class="w-16 h-16 mx-auto mb-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M3 3v18h18V3H3zm16 16H5V5h14v14zm-7-7h5v2h-5v5h-2v-5H5v-2h5V7h2v5z"/>
+          </svg>
+          <h3 class="text-2xl font-light mb-4">INVRT on Substack</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            Our collection of essays exploring the intersection of quality, time, and business building. 
+            From the nature of maintenance to the patterns of century-old companies, these pieces 
+            offer frameworks for thinking about enduring value creation.
+          </p>
+          <a href="https://invrt.substack.com/" target="_blank" class="inline-flex items-center px-6 py-3 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+            Read on Substack
+          </a>
+          <p class="text-sm text-gray-500 mt-4">
+            New essays published monthly • Free to subscribe
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -401,118 +533,108 @@
         <!-- Featured Episode -->
         <div class="lg:col-span-2">
           <div class="bg-gray-900 text-white rounded-lg p-8">
-            <p class="text-sm tracking-widest text-gray-400 mb-4">LATEST EPISODE • EP 23</p>
+            <p class="text-sm tracking-widest text-gray-400 mb-4">LATEST EPISODES</p>
             <h3 class="text-2xl font-light mb-4">
-              Building Systems That Learn: Lessons from Adaptive Organizations
+              Deep Conversations on Building for Generations
             </h3>
             <p class="text-gray-300 mb-6 leading-relaxed">
-              A conversation with the head of a 150-year-old family business about how they've 
-              adapted through six generations while maintaining their core quality principles. 
-              We explore the role of maintenance, the power of feedback loops, and how to build 
-              organizations that improve rather than degrade over time.
+              Join us for thoughtful discussions with leaders of century-old businesses, 
+              master craftspeople, systems thinkers, and quality-focused founders. Each 
+              episode explores what it takes to build something worthy of lasting.
             </p>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center space-x-6">
-                <button class="play-button w-16 h-16 bg-white text-gray-900 rounded-full flex items-center justify-center">
-                  <svg class="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </button>
-                <div>
-                  <p class="text-sm text-gray-400">45 minutes</p>
-                  <p class="text-sm text-gray-400">December 15, 2024</p>
-                </div>
-              </div>
-              <div class="flex space-x-4">
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
-                  </svg>
-                </a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2a3 3 0 0 1 3 3v4a3 3 0 0 1-6 0V5a3 3 0 0 1 3-3z"/><path d="M19 9v1a7 7 0 0 1-14 0V9"/><path d="M12 17.75a7.002 7.002 0 0 0 6.93-6h.07v-.75h-2v.75a5 5 0 0 1-10 0V11H5v.25a7.002 7.002 0 0 0 6.93 6.5V21h2v-3.25z"/>
-                  </svg>
-                </a>
-              </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="https://theartofquality.co/" target="_blank" class="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 hover:bg-gray-100 transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                </svg>
+                Visit Website
+              </a>
+              <a href="https://open.spotify.com/show/62autSn7DeWpMURIob0Ox3?si=fdf542b37b004e5c" target="_blank" class="inline-flex items-center justify-center px-6 py-3 bg-green-600 text-white hover:bg-green-700 transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M15.5,16.71L14.5,15.29C16.28,14.17 17,13.04 17,12C17,9.58 14.03,7.55 11,8.68L10.45,7C14.55,5.31 19,8.08 19,12C19,13.83 17.71,15.29 15.5,16.71M11.5,11.71L10.5,10.29C11.28,9.83 12,9.13 12,8.5C12,7.83 11.71,7.29 10.5,6.71L11.5,5.29C13.28,6.17 14,7.33 14,8.5C14,9.67 13.28,10.83 11.5,11.71M7.5,16.71L6.5,15.29C8.28,14.17 9,13.04 9,12C9,10.96 8.28,9.83 6.5,8.71L7.5,7.29C9.71,8.42 11,9.96 11,12C11,14.04 9.71,15.58 7.5,16.71Z"/>
+                </svg>
+                Listen on Spotify
+              </a>
             </div>
           </div>
         </div>
         
-        <!-- Episode List -->
+        <!-- Podcast Info -->
         <div>
-          <h3 class="text-lg font-medium mb-6">Recent Episodes</h3>
+          <h3 class="text-lg font-medium mb-6">Recent Topics</h3>
           <div class="space-y-4">
-            <a href="#" class="podcast-card block p-4 rounded-lg border border-gray-200">
-              <p class="text-xs text-gray-500 mb-1">EP 22 • 38 MIN</p>
+            <div class="pb-4 border-b border-gray-200">
+              <h4 class="font-light mb-1">Building Systems That Learn</h4>
+              <p class="text-sm text-gray-600">Adaptive organizations and multi-generational thinking</p>
+            </div>
+            
+            <div class="pb-4 border-b border-gray-200">
               <h4 class="font-light mb-1">The Japanese Approach to Quality</h4>
-              <p class="text-sm text-gray-600">With master craftsman Takahiro Yagi</p>
-            </a>
+              <p class="text-sm text-gray-600">Shokunin spirit and craftsmanship excellence</p>
+            </div>
             
-            <a href="#" class="podcast-card block p-4 rounded-lg border border-gray-200">
-              <p class="text-xs text-gray-500 mb-1">EP 21 • 42 MIN</p>
-              <h4 class="font-light mb-1">Capital Allocation as an Art Form</h4>
+            <div class="pb-4 border-b border-gray-200">
+              <h4 class="font-light mb-1">Capital Allocation as Art</h4>
               <p class="text-sm text-gray-600">Lessons from the Outsider CEOs</p>
-            </a>
+            </div>
             
-            <a href="#" class="podcast-card block p-4 rounded-lg border border-gray-200">
-              <p class="text-xs text-gray-500 mb-1">EP 20 • 51 MIN</p>
+            <div class="pb-4">
               <h4 class="font-light mb-1">The Maintenance Mindset</h4>
-              <p class="text-sm text-gray-600">With Stewart Brand</p>
-            </a>
-            
-            <a href="#" class="podcast-card block p-4 rounded-lg border border-gray-200">
-              <p class="text-xs text-gray-500 mb-1">EP 19 • 47 MIN</p>
-              <h4 class="font-light mb-1">Systems Thinking in Practice</h4>
-              <p class="text-sm text-gray-600">Applied lessons from complexity science</p>
-            </a>
+              <p class="text-sm text-gray-600">Why care creates more value than innovation</p>
+            </div>
           </div>
           
-          <a href="#" class="inline-block mt-6 text-sm font-medium text-gray-900 border-b-2 border-gray-900 hover:text-gray-600 hover:border-gray-600">
-            View All Episodes →
-          </a>
+          <p class="text-sm text-gray-500 mt-6">
+            New episodes released bi-weekly
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Resource Downloads -->
+  <!-- Quick Access Tools -->
   <section class="py-16 bg-gray-50">
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
-      <h2 class="text-3xl font-extralight mb-12">Downloadable Resources</h2>
+      <h2 class="text-3xl font-extralight mb-12">Quick Access Resources</h2>
       
       <div class="grid md:grid-cols-2 gap-8">
         <div class="bg-white rounded-lg p-8 border border-gray-200">
           <div class="flex items-start justify-between mb-6">
             <div>
-              <h3 class="text-xl font-light mb-2">The INVRT Framework</h3>
+              <h3 class="text-xl font-light mb-2">Core Frameworks Collection</h3>
               <p class="text-gray-600">
-                Our core framework for evaluating and building quality businesses
+                All our primary frameworks and models in one presentation
               </p>
             </div>
             <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"></path>
             </svg>
           </div>
-          <ul class="space-y-2 mb-6 text-sm text-gray-600">
-            <li class="flex items-center">
-              <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mr-3"></span>
-              Financial health indicators
-            </li>
-            <li class="flex items-center">
-              <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mr-3"></span>
-              Cultural quality markers
-            </li>
-            <li class="flex items-center">
-              <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mr-3"></span>
-              Systems thinking metrics
-            </li>
-          </ul>
-          <a href="#" class="text-sm font-medium text-gray-900 inline-flex items-center">
+          <a href="https://docs.google.com/presentation/d/1KbkTRrNWoGFk9yAaYfzM_0hf80Vca-94VNuknQkOPZU/edit#slide=id.g159724dde76_0_36" target="_blank" class="text-sm font-medium text-gray-900 inline-flex items-center">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
             </svg>
-            Download PDF (856 KB)
+            Access Presentation
+          </a>
+        </div>
+        
+        <div class="bg-white rounded-lg p-8 border border-gray-200">
+          <div class="flex items-start justify-between mb-6">
+            <div>
+              <h3 class="text-xl font-light mb-2">Analysis Tools & Templates</h3>
+              <p class="text-gray-600">
+                Practical spreadsheets and templates for quality assessment
+              </p>
+            </div>
+            <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+            </svg>
+          </div>
+          <a href="https://docs.google.com/spreadsheets/d/18flZbJesoRvgrFXU5qwlFnwKelQ_lhFbOvTUn7AzeIo/edit?gid=1592233509#gid=1592233509" target="_blank" class="text-sm font-medium text-gray-900 inline-flex items-center">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+            Open Spreadsheet
           </a>
         </div>
       </div>
@@ -530,24 +652,14 @@
         enterprises designed to improve with time.
       </p>
       
-      <form class="max-w-md mx-auto">
-        <div class="flex flex-col sm:flex-row gap-4">
-          <input 
-            type="email" 
-            placeholder="Your email address" 
-            class="newsletter-input flex-1 px-6 py-4 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none"
-          />
-          <button 
-            type="submit" 
-            class="px-8 py-4 bg-white text-gray-900 rounded-lg hover:bg-gray-100 transition-colors font-medium"
-          >
-            Subscribe
-          </button>
-        </div>
-        <p class="text-sm text-gray-400 mt-4">
-          We respect your privacy. Unsubscribe anytime.
-        </p>
-      </form>
+      <div class="inline-flex flex-col sm:flex-row gap-4">
+        <a href="https://invrt.substack.com/" target="_blank" class="px-8 py-4 bg-white text-gray-900 hover:bg-gray-100 transition-colors">
+          Subscribe on Substack
+        </a>
+        <a href="https://theartofquality.co/" target="_blank" class="px-8 py-4 border border-gray-600 text-gray-300 hover:border-white hover:text-white transition-colors">
+          Listen to Podcast
+        </a>
+      </div>
     </div>
   </section>
 
@@ -602,12 +714,14 @@
           <a href="contact.html" class="inline-block px-6 py-3 border border-gray-600 text-gray-300 hover:border-white hover:text-white transition-colors">
             Schedule a Conversation
           </a>
-          <p class="text-gray-400 text-sm mt-6">
-            Join 2,400+ founders and advisors
-          </p>
-          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">
-            Subscribe to insights →
-          </a>
+          <div class="mt-6 space-y-2">
+            <a href="https://invrt.substack.com/" target="_blank" class="block text-gray-400 hover:text-white transition-colors text-sm">
+              Subscribe on Substack →
+            </a>
+            <a href="https://theartofquality.co/" target="_blank" class="block text-gray-400 hover:text-white transition-colors text-sm">
+              Listen to Podcast →
+            </a>
+          </div>
         </div>
       </div>
       
@@ -697,37 +811,3 @@
   </script>
 </body>
 </html>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-            </svg>
-          </div>
-          <ul class="space-y-2 mb-6 text-sm text-gray-600">
-            <li class="flex items-center">
-              <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mr-3"></span>
-              Systems thinking principles
-            </li>
-            <li class="flex items-center">
-              <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mr-3"></span>
-              Quality assessment criteria
-            </li>
-            <li class="flex items-center">
-              <span class="w-1.5 h-1.5 bg-gray-400 rounded-full mr-3"></span>
-              Implementation roadmap
-            </li>
-          </ul>
-          <a href="#" class="text-sm font-medium text-gray-900 inline-flex items-center">
-            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3"></path>
-            </svg>
-            Download PDF (2.4 MB)
-          </a>
-        </div>
-        
-        <div class="bg-white rounded-lg p-8 border border-gray-200">
-          <div class="flex items-start justify-between mb-6">
-            <div>
-              <h3 class="text-xl font-light mb-2">Quality Company Checklist</h3>
-              <p class="text-gray-600">
-                50-point assessment for identifying businesses built to last
-              </p>
-            </div>
-            <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

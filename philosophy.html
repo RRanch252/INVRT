@@ -45,14 +45,20 @@
       width: 100%;
     }
     
-    /* Timeline */
-    .timeline-dot {
-      transition: all 0.3s ease;
+    /* Pace Layers */
+    .layer {
+      transform: translateX(-100%);
+      animation: slideIn 0.8s ease-out forwards;
     }
     
-    .timeline-card:hover .timeline-dot {
-      transform: scale(1.2);
-      background-color: #111827;
+    .layer:nth-child(1) { animation-delay: 0.1s; }
+    .layer:nth-child(2) { animation-delay: 0.2s; }
+    .layer:nth-child(3) { animation-delay: 0.3s; }
+    .layer:nth-child(4) { animation-delay: 0.4s; }
+    .layer:nth-child(5) { animation-delay: 0.5s; }
+    
+    @keyframes slideIn {
+      to { transform: translateX(0); }
     }
     
     /* Quote animations */
@@ -174,16 +180,13 @@
           Building Businesses That<br/>
           <em class="font-serif font-normal not-italic">Improve With Time</em>
         </h1>
-        <blockquote class="text-2xl md:text-3xl font-light text-gray-700 italic max-w-3xl mx-auto">
-          "In the short term, adaptation doesn't matter.<br/>
-          In the long term, adaptation is everything."
-        </blockquote>
+
       </div>
     </div>
   </section>
 
   <!-- Core Principles -->
-  <section class="py-20 bg-gray-50">
+  <section class="py-20">
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-extralight mb-6">Four Principles That Guide Everything We Do</h2>
@@ -195,7 +198,7 @@
       
       <div class="grid md:grid-cols-2 gap-12">
         <!-- Quality Over Scale -->
-        <div class="principle-card bg-white p-8 rounded-lg shadow-sm scroll-reveal">
+        <div class="principle-card bg-white p-8 rounded-lg border border-gray-200 scroll-reveal">
           <div class="flex items-start mb-6">
             <div class="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mr-6 flex-shrink-0">
               <span class="text-2xl font-light">Q</span>
@@ -216,7 +219,7 @@
         </div>
         
         <!-- Systems That Adapt -->
-        <div class="principle-card bg-white p-8 rounded-lg shadow-sm scroll-reveal stagger-1">
+        <div class="principle-card bg-white p-8 rounded-lg border border-gray-200 scroll-reveal stagger-1">
           <div class="flex items-start mb-6">
             <div class="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mr-6 flex-shrink-0">
               <span class="text-2xl font-light">S</span>
@@ -238,7 +241,7 @@
         </div>
         
         <!-- The Value of Maintenance -->
-        <div class="principle-card bg-white p-8 rounded-lg shadow-sm scroll-reveal stagger-2">
+        <div class="principle-card bg-white p-8 rounded-lg border border-gray-200 scroll-reveal stagger-2">
           <div class="flex items-start mb-6">
             <div class="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mr-6 flex-shrink-0">
               <span class="text-2xl font-light">M</span>
@@ -259,7 +262,7 @@
         </div>
         
         <!-- Deserved Trust Networks -->
-        <div class="principle-card bg-white p-8 rounded-lg shadow-sm scroll-reveal stagger-3">
+        <div class="principle-card bg-white p-8 rounded-lg border border-gray-200 scroll-reveal stagger-3">
           <div class="flex items-start mb-6">
             <div class="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center mr-6 flex-shrink-0">
               <span class="text-2xl font-light">T</span>
@@ -281,94 +284,136 @@
     </div>
   </section>
 
-  <!-- Visual Timeline -->
+  <!-- Layers of Endurance -->
   <section class="py-20 bg-white">
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-extralight mb-6">The Evolution of Our Thinking</h2>
+        <h2 class="text-3xl md:text-4xl font-extralight mb-6">Layers of Endurance</h2>
         <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-          Our philosophy has been shaped by decades of studying what makes enterprises last
+          Like civilizations and ecosystems, enduring businesses operate across multiple time scales. 
+          Understanding these pace layers reveals how to build enterprises that last.
         </p>
       </div>
       
-      <div class="relative">
-        <!-- Timeline line -->
-        <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gray-200"></div>
-        
-        <div class="space-y-20">
-          <!-- Timeline Item 1 -->
-          <div class="timeline-card relative flex items-center scroll-reveal">
-            <div class="w-1/2 pr-8 text-right">
-              <h3 class="text-xl font-light mb-2">Pattern Recognition</h3>
-              <p class="text-gray-600">
-                Studied 50+ companies that have thrived for over 100 years, identifying common patterns 
-                in their approach to growth, adaptation, and stakeholder relationships.
-              </p>
+      <div class="relative max-w-4xl mx-auto">
+        <div class="space-y-4">
+          <!-- Purpose Layer -->
+          <div class="layer relative">
+            <div class="flex items-center">
+              <div class="w-full bg-gray-900 rounded-lg p-6 flex justify-between items-center">
+                <div class="text-white">
+                  <h3 class="text-lg font-normal mb-1">Purpose & Values</h3>
+                  <p class="text-sm opacity-80">The immutable core • Changes generationally</p>
+                </div>
+                <div class="text-right text-white">
+                  <div class="text-2xl font-extralight mb-1">50+ years</div>
+                  <div class="text-xs opacity-60">Pace of change</div>
+                </div>
+              </div>
             </div>
-            <div class="timeline-dot w-8 h-8 bg-white border-4 border-gray-300 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
-            <div class="w-1/2 pl-8">
-              <p class="text-sm text-gray-500">2000-2010</p>
+            <p class="absolute -right-4 top-1/2 transform translate-x-full -translate-y-1/2 text-xs text-gray-500 italic max-w-xs hidden lg:block">
+              "A business that makes nothing but money is a poor business" — Henry Ford
+            </p>
+          </div>
+          
+          <!-- Culture Layer -->
+          <div class="layer relative">
+            <div class="flex items-center">
+              <div class="w-11/12 bg-gray-700 rounded-lg p-6 flex justify-between items-center ml-auto">
+                <div class="text-white">
+                  <h3 class="text-lg font-normal mb-1">Culture & Trust Networks</h3>
+                  <p class="text-sm opacity-80">The organizational DNA • Evolves with generations</p>
+                </div>
+                <div class="text-right text-white">
+                  <div class="text-2xl font-extralight mb-1">10-20 years</div>
+                  <div class="text-xs opacity-60">Pace of change</div>
+                </div>
+              </div>
             </div>
           </div>
           
-          <!-- Timeline Item 2 -->
-          <div class="timeline-card relative flex items-center scroll-reveal">
-            <div class="w-1/2 pr-8 text-right">
-              <p class="text-sm text-gray-500">2010-2015</p>
+          <!-- Business Model Layer -->
+          <div class="layer relative">
+            <div class="flex items-center">
+              <div class="w-10/12 bg-gray-500 rounded-lg p-6 flex justify-between items-center ml-auto">
+                <div class="text-white">
+                  <h3 class="text-lg font-normal mb-1">Business Model & Systems</h3>
+                  <p class="text-sm opacity-80">Value creation engine • Adapts to markets</p>
+                </div>
+                <div class="text-right text-white">
+                  <div class="text-2xl font-extralight mb-1">3-5 years</div>
+                  <div class="text-xs opacity-60">Pace of change</div>
+                </div>
+              </div>
             </div>
-            <div class="timeline-dot w-8 h-8 bg-white border-4 border-gray-300 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
-            <div class="w-1/2 pl-8">
-              <h3 class="text-xl font-light mb-2">Systems Thinking Integration</h3>
-              <p class="text-gray-600">
-                Incorporated insights from complexity science, natural systems, and quality movements 
-                to develop a holistic framework for business design.
-              </p>
+            <p class="absolute -right-4 top-1/2 transform translate-x-full -translate-y-1/2 text-xs text-gray-500 italic max-w-xs hidden lg:block">
+              "Be stubborn on vision, flexible on details" — Jeff Bezos
+            </p>
+          </div>
+          
+          <!-- Operations Layer -->
+          <div class="layer relative">
+            <div class="flex items-center">
+              <div class="w-9/12 bg-gray-400 rounded-lg p-6 flex justify-between items-center ml-auto">
+                <div class="text-white">
+                  <h3 class="text-lg font-normal mb-1">Operations & Processes</h3>
+                  <p class="text-sm opacity-80">Execution excellence • Continuous improvement</p>
+                </div>
+                <div class="text-right text-white">
+                  <div class="text-2xl font-extralight mb-1">Months</div>
+                  <div class="text-xs opacity-60">Pace of change</div>
+                </div>
+              </div>
             </div>
           </div>
           
-          <!-- Timeline Item 3 -->
-          <div class="timeline-card relative flex items-center scroll-reveal">
-            <div class="w-1/2 pr-8 text-right">
-              <h3 class="text-xl font-light mb-2">Practical Application</h3>
-              <p class="text-gray-600">
-                Applied these principles with dozens of founders and business owners, refining our 
-                approach based on real-world outcomes across diverse industries.
-              </p>
-            </div>
-            <div class="timeline-dot w-8 h-8 bg-white border-4 border-gray-300 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
-            <div class="w-1/2 pl-8">
-              <p class="text-sm text-gray-500">2015-2020</p>
-            </div>
-          </div>
-          
-          <!-- Timeline Item 4 -->
-          <div class="timeline-card relative flex items-center scroll-reveal">
-            <div class="w-1/2 pr-8 text-right">
-              <p class="text-sm text-gray-500">2020-Present</p>
-            </div>
-            <div class="timeline-dot w-8 h-8 bg-gray-900 border-4 border-gray-900 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
-            <div class="w-1/2 pl-8">
-              <h3 class="text-xl font-light mb-2">INVRT Founded</h3>
-              <p class="text-gray-600">
-                Established INVRT to share these insights and help more businesses build enterprises 
-                designed to create value for generations.
-              </p>
+          <!-- Products Layer -->
+          <div class="layer relative">
+            <div class="flex items-center">
+              <div class="w-8/12 bg-gray-300 rounded-lg p-6 flex justify-between items-center ml-auto">
+                <div class="text-gray-800">
+                  <h3 class="text-lg font-normal mb-1">Products & Services</h3>
+                  <p class="text-sm opacity-80">Market interface • Rapid iteration</p>
+                </div>
+                <div class="text-right text-gray-800">
+                  <div class="text-2xl font-extralight mb-1">Continuous</div>
+                  <div class="text-xs opacity-60">Pace of change</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        
+        <!-- Vertical labels -->
+        <div class="absolute -left-20 top-1/2 transform -translate-y-1/2 -rotate-90 hidden lg:block">
+          <span class="text-sm tracking-widest text-gray-400 uppercase">Stability</span>
+        </div>
+        
+        <div class="absolute -right-20 top-1/2 transform -translate-y-1/2 rotate-90 hidden lg:block">
+          <span class="text-sm tracking-widest text-gray-400 uppercase">Adaptability</span>
+        </div>
+      </div>
+      
+      <div class="mt-16 max-w-3xl mx-auto text-center">
+        <h3 class="text-xl font-light mb-4">The Paradox of Endurance</h3>
+        <p class="text-gray-600">
+          Lasting businesses maintain rock-solid foundations while staying fluid at the edges. 
+          The slower layers provide stability and identity; the faster layers provide adaptability and relevance. 
+          Disruption happens when these layers fall out of sync.
+        </p>
       </div>
     </div>
   </section>
 
   <!-- Key Insights -->
-  <section class="py-20 bg-gray-50">
+  <section class="py-20">
     <div class="max-w-6xl mx-auto px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-extralight mb-6">Key Insights from Our Research</h2>
       </div>
       
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-sm">
+        <div class="bg-white p-6 rounded-lg border border-gray-200">
           <div class="text-4xl font-extralight text-gray-900 mb-4">2%</div>
           <h3 class="text-lg font-medium mb-2">Better Each Year</h3>
           <p class="text-gray-600 text-sm">
@@ -398,92 +443,6 @@
     </div>
   </section>
 
-  <!-- Systems Visualization -->
-  <section class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-extralight mb-6">How Systems Create Compounding Value</h2>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-          Quality businesses operate as interconnected systems where each element reinforces the others
-        </p>
-      </div>
-      
-      <div class="relative max-w-4xl mx-auto">
-        <svg class="w-full h-96" viewBox="0 0 800 400">
-          <!-- Center node -->
-          <circle cx="400" cy="200" r="50" fill="#111827" class="system-node"/>
-          <text x="400" y="205" text-anchor="middle" fill="white" class="text-sm">Core<tspan x="400" dy="15">Business</tspan></text>
-          
-          <!-- Surrounding nodes -->
-          <circle cx="250" cy="100" r="40" fill="#374151" class="system-node"/>
-          <text x="250" y="105" text-anchor="middle" fill="white" class="text-xs">Customer<tspan x="250" dy="12">Trust</tspan></text>
-          
-          <circle cx="550" cy="100" r="40" fill="#374151" class="system-node"/>
-          <text x="550" y="105" text-anchor="middle" fill="white" class="text-xs">Team<tspan x="550" dy="12">Excellence</tspan></text>
-          
-          <circle cx="250" cy="300" r="40" fill="#374151" class="system-node"/>
-          <text x="250" y="305" text-anchor="middle" fill="white" class="text-xs">Partner<tspan x="250" dy="12">Networks</tspan></text>
-          
-          <circle cx="550" cy="300" r="40" fill="#374151" class="system-node"/>
-          <text x="550" y="305" text-anchor="middle" fill="white" class="text-xs">Capital<tspan x="550" dy="12">Efficiency</tspan></text>
-          
-          <!-- Connections -->
-          <line x1="350" y1="180" x2="290" y2="130" stroke="#9CA3AF" stroke-width="2" opacity="0.5"/>
-          <line x1="450" y1="180" x2="510" y2="130" stroke="#9CA3AF" stroke-width="2" opacity="0.5"/>
-          <line x1="350" y1="220" x2="290" y2="270" stroke="#9CA3AF" stroke-width="2" opacity="0.5"/>
-          <line x1="450" y1="220" x2="510" y2="270" stroke="#9CA3AF" stroke-width="2" opacity="0.5"/>
-          
-          <!-- Cross connections -->
-          <line x1="290" y1="130" x2="510" y2="130" stroke="#9CA3AF" stroke-width="1" opacity="0.3"/>
-          <line x1="290" y1="270" x2="510" y2="270" stroke="#9CA3AF" stroke-width="1" opacity="0.3"/>
-          <line x1="270" y1="140" x2="270" y2="260" stroke="#9CA3AF" stroke-width="1" opacity="0.3"/>
-          <line x1="530" y1="140" x2="530" y2="260" stroke="#9CA3AF" stroke-width="1" opacity="0.3"/>
-          
-          <!-- Arrows showing reinforcement -->
-          <defs>
-            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-              <polygon points="0 0, 10 3.5, 0 7" fill="#9CA3AF" />
-            </marker>
-          </defs>
-          
-          <path d="M 300 120 Q 400 50 500 120" stroke="#9CA3AF" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.5"/>
-          <path d="M 500 280 Q 400 350 300 280" stroke="#9CA3AF" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.5"/>
-        </svg>
-        
-        <div class="mt-8 grid md:grid-cols-2 gap-6 text-sm text-gray-600">
-          <div class="flex items-start">
-            <div class="w-2 h-2 bg-gray-400 rounded-full mt-1.5 mr-3"></div>
-            <p>Each element strengthens the others through positive feedback loops</p>
-          </div>
-          <div class="flex items-start">
-            <div class="w-2 h-2 bg-gray-400 rounded-full mt-1.5 mr-3"></div>
-            <p>Quality in one area naturally elevates quality in all areas</p>
-          </div>
-          <div class="flex items-start">
-            <div class="w-2 h-2 bg-gray-400 rounded-full mt-1.5 mr-3"></div>
-            <p>Time compounds these advantages exponentially</p>
-          </div>
-          <div class="flex items-start">
-            <div class="w-2 h-2 bg-gray-400 rounded-full mt-1.5 mr-3"></div>
-            <p>The system becomes more resilient as it grows</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Quote -->
-  <section class="py-20 bg-gray-900 text-white">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative">
-      <span class="quote-mark font-serif text-gray-700">"</span>
-      <blockquote class="text-2xl md:text-3xl font-light leading-relaxed mb-6">
-        The greatest achievements take time. We plant seeds today 
-        for forests that future generations will enjoy.
-      </blockquote>
-      <cite class="text-gray-400">— INVRT Philosophy</cite>
-    </div>
-  </section>
-
   <!-- Call to Action -->
   <section class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
@@ -498,8 +457,11 @@
         <a href="advisory.html" class="inline-block px-8 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
           Explore Our Services
         </a>
-        <a href="contact.html" class="inline-block px-8 py-4 border border-gray-900 text-gray-900 hover:bg-gray-50 transition-colors">
-          Start a Conversation
+        <a href="https://invrt.substack.com/" target="_blank" class="inline-block px-8 py-4 border border-gray-900 text-gray-900 hover:bg-gray-50 transition-colors">
+          Subscribe on Substack
+        </a>
+        <a href="https://theartofquality.co/" target="_blank" class="inline-block px-8 py-4 border border-gray-900 text-gray-900 hover:bg-gray-50 transition-colors">
+          Listen to Podcast
         </a>
       </div>
     </div>
@@ -511,9 +473,8 @@
       <div class="grid md:grid-cols-4 gap-12 mb-12">
         <div class="md:col-span-2">
           <h3 class="text-2xl font-light mb-6">INVRT</h3>
-          <p class="text-gray-400 italic mb-6 text-lg leading-relaxed">
-            "The greatest achievements take time. We plant seeds today 
-            for forests that future generations will enjoy."
+          <p class="text-gray-400 mb-6 text-lg leading-relaxed">
+            Systems thinking for enduring enterprises
           </p>
           <p class="text-gray-400 text-sm">
             Building enduring quality through strategic advisory.

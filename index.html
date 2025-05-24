@@ -276,16 +276,70 @@
         <div class="text-center scroll-reveal stagger-3">
           <div class="mb-8 h-32 flex items-center justify-center">
             <svg class="w-full h-full max-w-[200px]" viewBox="0 0 200 100">
-              <g class="animate-spin" style="animation-duration: 20s;">
-                <path d="M 100 20 L 120 40 L 120 70 L 100 80 L 80 70 L 80 40 Z" 
-                      fill="none" stroke="#111827" stroke-width="1.5"/>
-                <circle cx="100" cy="20" r="3" fill="#111827"/>
-                <circle cx="120" cy="40" r="3" fill="#111827"/>
-                <circle cx="120" cy="70" r="3" fill="#111827"/>
-                <circle cx="100" cy="80" r="3" fill="#111827"/>
-                <circle cx="80" cy="70" r="3" fill="#111827"/>
-                <circle cx="80" cy="40" r="3" fill="#111827"/>
+              <!-- Layer 1 - Top -->
+              <g opacity="0.3">
+                <circle cx="60" cy="20" r="4" fill="#111827"/>
+                <circle cx="100" cy="20" r="4" fill="#111827"/>
+                <circle cx="140" cy="20" r="4" fill="#111827"/>
+                <line x1="60" y1="20" x2="100" y2="20" stroke="#111827" stroke-width="1"/>
+                <line x1="100" y1="20" x2="140" y2="20" stroke="#111827" stroke-width="1"/>
               </g>
+              
+              <!-- Layer 2 - Middle -->
+              <g opacity="0.6">
+                <circle cx="50" cy="50" r="5" fill="#111827"/>
+                <circle cx="100" cy="50" r="5" fill="#111827"/>
+                <circle cx="150" cy="50" r="5" fill="#111827"/>
+                <line x1="50" y1="50" x2="100" y2="50" stroke="#111827" stroke-width="1.5"/>
+                <line x1="100" y1="50" x2="150" y2="50" stroke="#111827" stroke-width="1.5"/>
+              </g>
+              
+              <!-- Layer 3 - Bottom -->
+              <g opacity="0.9">
+                <circle cx="40" cy="80" r="6" fill="#111827"/>
+                <circle cx="100" cy="80" r="6" fill="#111827"/>
+                <circle cx="160" cy="80" r="6" fill="#111827"/>
+                <line x1="40" y1="80" x2="100" y2="80" stroke="#111827" stroke-width="2"/>
+                <line x1="100" y1="80" x2="160" y2="80" stroke="#111827" stroke-width="2"/>
+              </g>
+              
+              <!-- Cross-layer connections -->
+              <g opacity="0.4">
+                <!-- Vertical connections -->
+                <line x1="100" y1="20" x2="100" y2="50" stroke="#111827" stroke-width="1" stroke-dasharray="2,2"/>
+                <line x1="100" y1="50" x2="100" y2="80" stroke="#111827" stroke-width="1" stroke-dasharray="2,2"/>
+                
+                <!-- Diagonal connections -->
+                <line x1="60" y1="20" x2="50" y2="50" stroke="#111827" stroke-width="0.5"/>
+                <line x1="140" y1="20" x2="150" y2="50" stroke="#111827" stroke-width="0.5"/>
+                <line x1="50" y1="50" x2="40" y2="80" stroke="#111827" stroke-width="0.5"/>
+                <line x1="150" y1="50" x2="160" y2="80" stroke="#111827" stroke-width="0.5"/>
+                
+                <!-- Cross connections -->
+                <line x1="60" y1="20" x2="150" y2="50" stroke="#111827" stroke-width="0.5" opacity="0.3"/>
+                <line x1="140" y1="20" x2="50" y2="50" stroke="#111827" stroke-width="0.5" opacity="0.3"/>
+              </g>
+              
+              <!-- Pulsing effect on connections -->
+              <circle r="2" fill="#111827" opacity="0.8">
+                <animateMotion dur="4s" repeatCount="indefinite">
+                  <mpath href="#path1"/>
+                </animateMotion>
+                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="4s" repeatCount="indefinite"/>
+              </circle>
+              
+              <circle r="2" fill="#111827" opacity="0.8">
+                <animateMotion dur="4s" begin="1s" repeatCount="indefinite">
+                  <mpath href="#path2"/>
+                </animateMotion>
+                <animate attributeName="opacity" values="0.8;0.3;0.8" dur="4s" begin="1s" repeatCount="indefinite"/>
+              </circle>
+              
+              <!-- Hidden paths for animation -->
+              <defs>
+                <path id="path1" d="M 100 20 L 100 50 L 100 80"/>
+                <path id="path2" d="M 60 20 L 100 50 L 160 80"/>
+              </defs>
             </svg>
           </div>
           <h3 class="text-2xl font-light mb-4">Systems Value Creation</h3>

@@ -111,6 +111,11 @@
       }
     }
     
+    /* Stagger animation */
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    
     /* Mobile menu */
     .mobile-menu {
       transform: translateX(100%);
@@ -171,7 +176,7 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="pt-32 pb-20">
+  <section class="min-h-screen flex items-center pt-20 bg-white">
     <div class="max-w-5xl mx-auto px-6 lg:px-8">
       <div class="fade-in">
         <p class="text-sm tracking-[0.2em] text-gray-500 mb-6 uppercase">Who We Work With</p>
@@ -183,6 +188,13 @@
           Our advisory approach is designed for leaders who understand that true value 
           isn't created in quarters but compounds over generations.
         </p>
+      </div>
+      
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 fade-in stagger-3">
+        <div class="w-6 h-10 border border-gray-400 rounded-full flex justify-center">
+          <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
+        </div>
       </div>
     </div>
   </section>

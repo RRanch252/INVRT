@@ -145,11 +145,11 @@
         </div>
         
         <div class="hidden md:flex items-center space-x-10">
-          <a href="#philosophy" class="nav-link text-sm text-gray-600 hover:text-gray-900">Philosophy</a>
-          <a href="#services" class="nav-link text-sm text-gray-600 hover:text-gray-900">Services</a>
-          <a href="#insights" class="nav-link text-sm text-gray-600 hover:text-gray-900">Insights</a>
-          <a href="#founder" class="nav-link text-sm text-gray-600 hover:text-gray-900">About</a>
-          <a href="contact.html" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+          <a href="philosophy.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Philosophy</a>
+          <a href="advisory.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Services</a>
+          <a href="insights.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Insights</a>
+          <a href="clients.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Clients</a>
+          <a href="contact.html" class="text-sm px-5 py-2.5 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
             Contact
           </a>
         </div>
@@ -159,24 +159,6 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
-      </div>
-    </div>
-    
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="mobile-menu fixed right-0 top-0 h-full w-64 bg-white shadow-lg md:hidden">
-      <div class="p-6">
-        <button id="close-menu" class="mb-8">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-        <div class="space-y-4">
-          <a href="#philosophy" class="block text-gray-900 hover:text-gray-600">Philosophy</a>
-          <a href="#services" class="block text-gray-900 hover:text-gray-600">Services</a>
-          <a href="#insights" class="block text-gray-900 hover:text-gray-600">Insights</a>
-          <a href="#founder" class="block text-gray-900 hover:text-gray-600">About</a>
-          <a href="contact.html" class="block text-gray-900 hover:text-gray-600">Contact</a>
-        </div>
       </div>
     </div>
   </nav>
@@ -670,24 +652,44 @@
   </footer>
 
   <script>
-    // Mobile menu
+    // Mobile menu functionality
     const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeMenu = document.getElementById('close-menu');
     
     mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.add('active');
-    });
-    
-    closeMenu.addEventListener('click', () => {
-      mobileMenu.classList.remove('active');
-    });
-    
-    // Close menu when clicking links
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-      });
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (!mobileMenu) {
+        const menu = document.createElement('div');
+        menu.id = 'mobile-menu';
+        menu.className = 'mobile-menu fixed right-0 top-0 h-full w-64 bg-white shadow-lg md:hidden z-50';
+        menu.innerHTML = `
+          <div class="p-6">
+            <button id="close-menu" class="mb-8">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+            <div class="space-y-4">
+              <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Philosophy</a>
+              <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Services</a>
+              <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Insights</a>
+              <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
+              <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
+                Contact
+              </a>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(menu);
+        
+        setTimeout(() => {
+          menu.classList.add('active');
+          const closeBtn = document.getElementById('close-menu');
+          closeBtn.addEventListener('click', () => {
+            menu.classList.remove('active');
+            setTimeout(() => menu.remove(), 300);
+          });
+        }, 10);
+      }
     });
     
     // Navbar scroll effect

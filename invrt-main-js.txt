@@ -50,6 +50,17 @@ const navigation = {
     this.setupSmoothScroll();
   },
 
+// Smooth scroll to Systems Explorer
+document.querySelectorAll('a[href="#systems-explorer"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector('#systems-explorer').scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  });
+});
+
   setupScrollEffects() {
     let lastScrollY = window.scrollY;
     

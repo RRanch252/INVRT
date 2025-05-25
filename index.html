@@ -687,45 +687,46 @@
 </footer>
   
   <script>
-    // Mobile menu functionality
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
     
-    mobileMenuButton.addEventListener('click', () => {
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (!mobileMenu) {
-        const menu = document.createElement('div');
-        menu.id = 'mobile-menu';
-        menu.className = 'mobile-menu fixed right-0 top-0 h-full w-64 bg-white shadow-lg md:hidden z-50';
-        menu.innerHTML = `
-          <div class="p-6">
-            <button id="close-menu" class="mb-8">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-            <div class="space-y-4">
-              <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Philosophy</a>
-              <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Services</a>
-              <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Insights</a>
-              <a href="about.html" class="block text-gray-900 hover:text-gray-600">About</a>
-              <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
-                Contact
-              </a>
-            </div>
-          </div>
-        `;
-        document.body.appendChild(menu);
-        
-        setTimeout(() => {
-          menu.classList.add('active');
-          const closeBtn = document.getElementById('close-menu');
-          closeBtn.addEventListener('click', () => {
-            menu.classList.remove('active');
-            setTimeout(() => menu.remove(), 300);
-          });
-        }, 10);
-      }
-    });
+    // Mobile menu functionality
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+
+mobileMenuButton.addEventListener('click', () => {
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (!mobileMenu) {
+    const menu = document.createElement('div');
+    menu.id = 'mobile-menu';
+    menu.className = 'mobile-menu fixed right-0 top-0 h-full w-64 bg-white shadow-lg md:hidden z-50';
+    menu.innerHTML = `
+      <div class="p-6">
+        <button id="close-menu" class="mb-8">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <div class="space-y-4">
+          <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Philosophy</a>
+          <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Services</a>
+          <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Insights</a>
+          <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
+          <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
+            Contact
+          </a>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(menu);
+    
+    setTimeout(() => {
+      menu.classList.add('active');
+      const closeBtn = document.getElementById('close-menu');
+      closeBtn.addEventListener('click', () => {
+        menu.classList.remove('active');
+        setTimeout(() => menu.remove(), 300);
+      });
+    }, 10);
+  }
+});
     
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');

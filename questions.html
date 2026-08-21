@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>INVRT - Questions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The open questions that guide INVRT's advisory work and writing, arranged by leverage and mapped by the tensions they live inside.">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
+  .font-serif{font-family:'Crimson Text',serif;}
+  html{scroll-behavior:smooth;}
+
+  /* site nav underline + mobile menu (from the rest of the site) */
+  .nav-link{position:relative;transition:color .3s ease;}
+  .nav-link::after{content:'';position:absolute;width:0;height:1px;bottom:-4px;left:0;background-color:#111827;transition:width .3s ease;}
+  .nav-link:hover::after,.nav-link.active::after{width:100%;}
+  .mobile-menu{transform:translateX(100%);transition:transform .3s ease;}
+  .mobile-menu.active{transform:translateX(0);}
+
+  /* ---- questions page, in the site identity ---- */
+  :root{
+    --paper:#ffffff; --panel:#fafafa;
+    --ink:#111827; --ink-2:#6b7280; --ink-3:#9ca3af;
+    --line:#e5e7eb; --line-2:#f3f4f6;
+    --accent:#111827; --accent-soft:#374151;
+    --serif:"Crimson Text",Georgia,serif;
+    --body:"Inter",system-ui,-apple-system,sans-serif;
+    --maxw:980px;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,34px);}
+  .rule{height:1px;background:var(--line);border:0;margin:0;}
+  ::selection{background:var(--ink);color:#fff;}
+
+  /* hero */
+  .hero{padding:clamp(120px,15vw,170px) 0 clamp(34px,5vw,60px);}
+  .eyebrow{font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-2);margin:0 0 22px;}
+  .q-h1{font-weight:200;font-size:clamp(38px,7vw,72px);line-height:1.02;letter-spacing:-0.022em;margin:0 0 26px;max-width:16ch;color:var(--ink);}
+  .q-h1 em{font-family:var(--serif);font-style:normal;font-weight:400;}
+  .hero .lede{font-size:clamp(17px,1.9vw,20px);color:var(--ink-2);max-width:62ch;line-height:1.6;margin:0;font-weight:300;}
+  .meta{font-size:12px;color:var(--ink-3);letter-spacing:0.03em;margin-top:26px;display:flex;flex-wrap:wrap;gap:6px 20px;text-transform:uppercase;}
+
+  section{padding-block:clamp(64px,9vw,128px);}
+  .sec-label{font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-2);margin:0 0 10px;}
+  .sec-h{font-weight:200;font-size:clamp(26px,3.6vw,40px);line-height:1.06;letter-spacing:-0.018em;margin:0 0 14px;color:var(--ink);}
+  .sec-h em{font-family:var(--serif);font-style:italic;font-weight:400;}
+  .sec-sub{color:var(--ink-2);max-width:64ch;margin:0 0 30px;font-size:15.5px;font-weight:300;line-height:1.7;}
+  .sec-sub b{color:var(--ink);font-weight:500;}
+
+  /* leverage */
+  .lev{position:relative;border:1px solid var(--line);overflow:hidden;background:var(--paper);}
+  .lev-depthbar{position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--line),var(--ink));z-index:3;}
+  .lev-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:visible;}
+  .lev-tier{position:relative;display:grid;grid-template-columns:140px 1fr;gap:16px;border-top:1px solid var(--line-2);padding:20px clamp(16px,2.5vw,26px);z-index:2;}
+  .lev-tier:first-child{border-top:0;}
+  .lev-axis{font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-3);padding-top:4px;}
+  .lev-axis b{display:block;color:var(--ink);font-weight:500;font-size:12px;letter-spacing:0;text-transform:none;margin-bottom:3px;}
+  .lev-items{display:flex;flex-wrap:wrap;gap:10px;}
+  .chip{border:1px solid var(--line);background:var(--paper);padding:10px 13px;font-size:13.5px;color:var(--ink);max-width:330px;cursor:default;transition:.18s;line-height:1.35;font-weight:300;}
+  .chip:hover,.chip.hot{border-color:var(--ink);color:var(--ink);box-shadow:0 4px 16px -10px rgba(17,24,39,.4);}
+  .chip.dim{opacity:.32;}
+
+  /* map */
+  .stage{border:1px solid var(--line);overflow:hidden;background:var(--paper);}
+  .stage-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel);}
+  .stage-bar .hint{font-size:11px;color:var(--ink-3);letter-spacing:0.02em;text-transform:uppercase;}
+  .stage-bar .count{font-size:11px;color:var(--ink-2);letter-spacing:0.02em;text-transform:uppercase;}
+  .map-holder{position:relative;width:100%;height:clamp(430px,84vw,560px);touch-action:manipulation;}
+  .map-holder canvas{display:block;width:100%;height:100%;cursor:pointer;}
+  .axlab{position:absolute;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-3);pointer-events:none;user-select:none;}
+  .axlab.x1{left:16px;bottom:10px;} .axlab.x2{right:14px;bottom:10px;}
+  .axlab.y1{left:9px;bottom:34px;writing-mode:vertical-rl;transform:rotate(180deg);}
+  .axlab.y2{left:9px;top:14px;writing-mode:vertical-rl;transform:rotate(180deg);}
+  .cap{padding:18px;border-top:1px solid var(--line);background:var(--panel);min-height:150px;}
+  .cap .lbl{font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-2);margin:0 0 8px;}
+  .cap .q{font-weight:300;font-size:clamp(18px,2.3vw,24px);line-height:1.28;letter-spacing:-0.012em;margin:0;color:var(--ink);}
+  .cap .rl{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);margin:16px 0 8px;}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;}
+  .gochip{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 12px;font-size:12.5px;color:var(--ink-2);cursor:pointer;transition:.16s;line-height:1.3;text-align:left;-webkit-tap-highlight-color:transparent;font-family:var(--body);font-weight:300;}
+  .gochip:hover,.gochip:focus-visible{border-color:var(--ink);color:var(--ink);outline:none;}
+  .gochip b{color:var(--ink);font-weight:500;}
+  .reslinks{display:flex;flex-wrap:wrap;gap:8px;}
+  .res{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);padding:8px 12px;text-decoration:none;color:var(--ink);font-size:13px;transition:.16s;background:var(--paper);font-weight:400;}
+  .res:hover{border-color:var(--ink);}
+  .res .k{font-size:9.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-2);}
+  .res .arw{color:var(--ink-3);}
+
+  /* index list */
+  .idx-band{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .group{border-top:1px solid var(--line);padding-top:22px;margin-top:30px;}
+  .group:first-of-type{border-top:0;margin-top:0;padding-top:0;}
+  .group-h{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-2);margin:0 0 6px;}
+  .qrow{display:grid;grid-template-columns:38px 1fr;gap:15px;padding-block:16px;border-top:1px solid var(--line-2);align-items:baseline;}
+  .qrow:first-of-type{border-top:0;}
+  .qrow .no{font-size:12px;color:var(--ink-3);font-variant-numeric:tabular-nums;}
+  .qrow .qq b{font-weight:400;color:var(--ink);font-size:16.5px;}
+  .qrow .qq .sub{display:block;color:var(--ink-2);font-size:14px;line-height:1.55;margin-top:4px;font-weight:300;}
+  .qrow .qres{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;}
+  .qrow .qres a{font-size:12px;letter-spacing:0.01em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px;}
+  .qrow .qres a:hover{border-color:var(--ink);}
+  .qrow .qres .rk{color:var(--ink-3);}
+
+  /* invitation + recognition */
+  .invite h2{font-weight:200;font-size:clamp(26px,3.6vw,40px);line-height:1.1;margin:0 0 18px;letter-spacing:-0.018em;max-width:24ch;color:var(--ink);}
+  .invite h2 em{font-family:var(--serif);font-style:italic;font-weight:400;}
+  .invite p{color:var(--ink-2);max-width:60ch;margin:0 0 26px;font-weight:300;line-height:1.7;}
+  .cta{display:inline-block;font-size:13px;letter-spacing:0.03em;color:#fff;background:var(--ink);padding:14px 28px;text-decoration:none;transition:background .2s;}
+  .cta:hover{background:#1f2937;}
+  .recog{border-top:1px solid var(--line);margin-top:44px;padding-top:30px;}
+  .recog .rl{font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-3);margin:0 0 18px;}
+  .recog .names{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .recog .names div{border-left:1px solid var(--line);padding-left:16px;}
+  .recog .names h5{font-weight:500;font-size:15px;margin:0 0 5px;color:var(--ink);}
+  .recog .names p{font-size:12px;color:var(--ink-2);line-height:1.45;margin:0;font-weight:300;}
+  .netline{font-size:12.5px;color:var(--ink-2);letter-spacing:0.02em;margin-top:24px;font-weight:300;}
+  .netline b{color:var(--ink-3);font-weight:500;}
+
+  @media (max-width:680px){
+    .lev-tier{grid-template-columns:1fr;gap:8px;}
+    .chip{max-width:none;}
+    .recog .names{grid-template-columns:repeat(2,1fr);gap:18px;}
+  }
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} *{transition:none!important;} }
+</style>
+</head>
+<body class="font-light text-gray-900 bg-white antialiased">
+
+  <!-- Navigation (site) -->
+  <nav id="navbar" class="fixed w-full bg-white bg-opacity-95 backdrop-blur-sm z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="text-lg font-light tracking-wide text-gray-900">
+          <a href="index.html" class="hover:text-gray-600 transition-colors">INVRT</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-10">
+          <a href="insights.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Ideas</a>
+          <a href="clients.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Clients</a>
+          <a href="advisory.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Practice</a>
+          <a href="philosophy.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Perspective</a>
+          <a href="questions.html" class="nav-link active text-sm text-gray-900">Questions</a>
+          <a href="contact.html" class="text-sm px-5 py-2.5 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
+            Contact
+          </a>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="wrap hero">
+    <p class="eyebrow">Questions</p>
+    <h1 class="q-h1">The questions we are <em>working on.</em></h1>
+    <p class="lede">Systems thinking is not a conclusion, it is a standing inquiry. These are the questions that guide the advisory work and the writing, drawn from real engagements and kept deliberately open. Where our own work speaks to a question, it sits underneath, one click away.</p>
+    <div class="meta"><span>A living list</span><span>Revised August 2026</span><span>29 open, and counting</span></div>
+  </div>
+
+  <hr class="rule">
+
+  <!-- LEVERAGE (LEAD) -->
+  <section class="wrap">
+    <p class="sec-label">Start here · depth of leverage</p>
+    <h2 class="sec-h">Some questions move the system more than <em>others.</em></h2>
+    <p class="sec-sub">Donella Meadows taught that the deepest places to intervene are the hardest to see. The questions are stacked by depth: parameters and tactics near the surface, paradigm at the floor, where the leverage is greatest. <b>Hover a shallow question to see the deeper one that really governs it.</b></p>
+
+    <div class="lev" id="lev">
+      <span class="lev-depthbar"></span>
+      <svg class="lev-svg" id="levSvg" aria-hidden="true"></svg>
+      <div class="lev-tier">
+        <div class="lev-axis"><b>Shallow</b> Parameters, tactics</div>
+        <div class="lev-items">
+          <div class="chip" data-id="q2">What early signal predicts durable quality?</div>
+          <div class="chip" data-id="q5">Is this moat being built, or only described?</div>
+          <div class="chip" data-id="q11">Which binds: capital, people, or the capacity to sell?</div>
+          <div class="chip" data-id="q14">What redundancy is prudence, and what is waste?</div>
+        </div>
+      </div>
+      <div class="lev-tier">
+        <div class="lev-axis"><b>Structure</b> How the parts relate</div>
+        <div class="lev-items">
+          <div class="chip" data-id="q4">Best business at a fair price, or a fair business improved yearly?</div>
+          <div class="chip" data-id="q9">Reputation: decades to build, moments to lose. What follows?</div>
+          <div class="chip" data-id="q10">When does a business compound faster with fewer markets?</div>
+        </div>
+      </div>
+      <div class="lev-tier">
+        <div class="lev-axis"><b>System</b> Feedback and flow</div>
+        <div class="lev-items">
+          <div class="chip" data-id="q1">Is quality in the object, or the relationship of use?</div>
+          <div class="chip" data-id="q6">Why is the maintenance premium never on the balance sheet?</div>
+          <div class="chip" data-id="q7">When must a system spend more staying alive than growing?</div>
+          <div class="chip" data-id="q12">How do you transfer judgement, not just ownership?</div>
+        </div>
+      </div>
+      <div class="lev-tier">
+        <div class="lev-axis"><b>Paradigm</b> Deepest leverage</div>
+        <div class="lev-items">
+          <div class="chip" data-id="q3">What actually compounds, and what only looks like it does?</div>
+          <div class="chip" data-id="q8">What makes trust deserved rather than merely extended?</div>
+          <div class="chip" data-id="q13">Why does the average outcome mislead the individual owner?</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- MAP (SECOND ACT) -->
+  <section class="wrap">
+    <p class="sec-label">Then wander · the map</p>
+    <h2 class="sec-h">A map you can <em>walk.</em></h2>
+    <p class="sec-sub">The same questions, placed by the two tensions every enduring enterprise lives inside, and joined by what they share. Select a question to read it, step to anything it connects to, and open the work beneath it. <b>On a phone it is the same by tap.</b></p>
+
+    <div class="stage">
+      <div class="stage-bar">
+        <span class="hint" id="hint">Tap a question, then walk its connections</span>
+        <span class="count">14 shown · 17 links</span>
+      </div>
+      <div class="map-holder">
+        <canvas id="map"></canvas>
+        <span class="axlab x1">Structure</span><span class="axlab x2">Flow</span>
+        <span class="axlab y1">Immediate</span><span class="axlab y2">Generational</span>
+      </div>
+      <div class="cap" id="cap"></div>
+    </div>
+  </section>
+
+  <!-- OPEN INDEX -->
+  <div class="idx-band">
+    <section class="wrap">
+      <p class="sec-label">The whole exploration space</p>
+      <h2 class="sec-h">The open list</h2>
+      <p class="sec-sub">Unanswered on purpose. Several come straight out of recent engagements, abstracted from any client. Where our own writing or research speaks to one, it is linked beneath.</p>
+
+      <div class="group">
+        <p class="group-h">Quality &amp; craft</p>
+        <div class="qrow"><span class="no">01</span><div class="qq"><b>Is quality in the object, or in the relationship between it and the person who uses it?</b><div class="qres"><a href="https://docs.google.com/presentation/d/1uKJIvrW0NFYeoTcBzKJrxb2tZH8gUoysvkUpZzaCTTA/edit" target="_blank" rel="noopener"><span class="rk">Deck ·</span> Project Quality 3.0</a><a href="https://docs.google.com/presentation/d/1KbkTRrNWoGFk9yAaYfzM_0hf80Vca-94VNuknQkOPZU/edit" target="_blank" rel="noopener"><span class="rk">Deck ·</span> Quality Patterns</a></div></div></div>
+        <div class="qrow"><span class="no">02</span><div class="qq"><b>What is the smallest early signal that reliably predicts durable quality?</b><div class="qres"><a href="https://docs.google.com/presentation/d/1KbkTRrNWoGFk9yAaYfzM_0hf80Vca-94VNuknQkOPZU/edit" target="_blank" rel="noopener"><span class="rk">Deck ·</span> Quality Patterns</a></div></div></div>
+        <div class="qrow"><span class="no">03</span><div class="qq"><b>When does scale become an informational advantage rather than a dilution of quality?</b><span class="sub">The Wrigley question: a known brand on a remote shelf beats an unknown one at any price.</span></div></div>
+        <div class="qrow"><span class="no">04</span><div class="qq"><b>Can quality be built in from the start, or only revealed through use and time?</b></div></div>
+      </div>
+
+      <div class="group">
+        <p class="group-h">Capital &amp; compounding</p>
+        <div class="qrow"><span class="no">05</span><div class="qq"><b>What actually compounds, and what only looks like it does?</b><div class="qres"><a href="https://docs.google.com/presentation/d/1uKJIvrW0NFYeoTcBzKJrxb2tZH8gUoysvkUpZzaCTTA/edit" target="_blank" rel="noopener"><span class="rk">Deck ·</span> Project Quality 3.0</a><a href="https://docs.google.com/spreadsheets/d/18flZbJesoRvgrFXU5qwlFnwKelQ_lhFbOvTUn7AzeIo/edit" target="_blank" rel="noopener"><span class="rk">Tool ·</span> Endurance Patterns Matrix</a><a href="https://theartofquality.co/" target="_blank" rel="noopener"><span class="rk">Podcast ·</span> The Art of Quality</a></div></div></div>
+        <div class="qrow"><span class="no">06</span><div class="qq"><b>Over thirty years: the best business at a fair price, or a fair business improved every year?</b><div class="qres"><a href="https://invrt.substack.com/" target="_blank" rel="noopener"><span class="rk">Essay ·</span> INVRT on Substack</a></div></div></div>
+        <div class="qrow"><span class="no">07</span><div class="qq"><b>How do you tell a moat being built from one only being described?</b><span class="sub">Partner sourced share of new revenue is often the tell that separates the two.</span></div></div>
+        <div class="qrow"><span class="no">08</span><div class="qq"><b>When is a euro of retained capital worth more inside the business than returned to owners?</b></div></div>
+        <div class="qrow"><span class="no">09</span><div class="qq"><b>Why do most roll ups destroy the quality they buy, and what do the rare exceptions share?</b></div></div>
+      </div>
+
+      <div class="group">
+        <p class="group-h">Maintenance &amp; time</p>
+        <div class="qrow"><span class="no">10</span><div class="qq"><b>Why is the maintenance premium almost never on the balance sheet?</b><div class="qres"><a href="https://invrt.substack.com/" target="_blank" rel="noopener"><span class="rk">Essay ·</span> The maintenance essay (highlighted by Stewart Brand)</a></div></div></div>
+        <div class="qrow"><span class="no">11</span><div class="qq"><b>When must a growing system spend more on staying alive than on getting bigger?</b><div class="qres"><a href="https://invrt.substack.com/" target="_blank" rel="noopener"><span class="rk">Essay ·</span> The maintenance essay</a><a href="https://docs.google.com/spreadsheets/d/18flZbJesoRvgrFXU5qwlFnwKelQ_lhFbOvTUn7AzeIo/edit" target="_blank" rel="noopener"><span class="rk">Tool ·</span> Endurance Patterns Matrix</a></div></div></div>
+        <div class="qrow"><span class="no">12</span><div class="qq"><b>Which parts of a business should be allowed to age, and which must be renewed continuously?</b></div></div>
+        <div class="qrow"><span class="no">13</span><div class="qq"><b>Is there an optimal rate of change for an institution built to endure?</b></div></div>
+      </div>
+
+      <div class="group">
+        <p class="group-h">Trust &amp; networks</p>
+        <div class="qrow"><span class="no">14</span><div class="qq"><b>What makes trust deserved rather than merely extended?</b><div class="qres"><a href="https://invrt.substack.com/" target="_blank" rel="noopener"><span class="rk">Essay ·</span> The networks essay (featured in Big Think)</a></div></div></div>
+        <div class="qrow"><span class="no">15</span><div class="qq"><b>Reputation takes decades to build and moments to lose. What should that asymmetry change about how it is managed?</b><div class="qres"><a href="https://invrt.substack.com/" target="_blank" rel="noopener"><span class="rk">Essay ·</span> The networks essay</a></div></div></div>
+        <div class="qrow"><span class="no">16</span><div class="qq"><b>Can a trust network be engineered, or only cultivated?</b></div></div>
+        <div class="qrow"><span class="no">17</span><div class="qq"><b>How much of an advisor's value is the network they can convene rather than the work they do directly?</b></div></div>
+      </div>
+
+      <div class="group">
+        <p class="group-h">Focus &amp; constraint</p>
+        <div class="qrow"><span class="no">18</span><div class="qq"><b>When does a business with seven markets compound faster by choosing two?</b></div></div>
+        <div class="qrow"><span class="no">19</span><div class="qq"><b>Which is the binding constraint more often than owners believe: capital, people, or the capacity to sell?</b></div></div>
+        <div class="qrow"><span class="no">20</span><div class="qq"><b>What is the real cost of optionality that is never used?</b></div></div>
+        <div class="qrow"><span class="no">21</span><div class="qq"><b>Why is subtraction the hardest move for a successful founder to make?</b></div></div>
+      </div>
+
+      <div class="group">
+        <p class="group-h">Succession &amp; governance</p>
+        <div class="qrow"><span class="no">22</span><div class="qq"><b>How do you transfer judgement, not just ownership?</b></div></div>
+        <div class="qrow"><span class="no">23</span><div class="qq"><b>What governance gives operating businesses freedom while keeping the whole coherent?</b></div></div>
+        <div class="qrow"><span class="no">24</span><div class="qq"><b>Why do so few businesses survive the third generation, and what do the survivors do differently?</b></div></div>
+        <div class="qrow"><span class="no">25</span><div class="qq"><b>When does professionalising a founder led business kill the thing that made it work?</b></div></div>
+      </div>
+
+      <div class="group">
+        <p class="group-h">Risk, path &amp; endurance</p>
+        <div class="qrow"><span class="no">26</span><div class="qq"><b>Why does the average outcome across many companies tell an individual owner so little about their own?</b><span class="sub">The ergodicity problem: the ensemble average is not the path any single family walks.</span></div></div>
+        <div class="qrow"><span class="no">27</span><div class="qq"><b>How should sequencing risk change the way a family draws on its wealth?</b></div></div>
+        <div class="qrow"><span class="no">28</span><div class="qq"><b>What level of redundancy is prudence, and what is waste?</b><div class="qres"><a href="https://docs.google.com/spreadsheets/d/18flZbJesoRvgrFXU5qwlFnwKelQ_lhFbOvTUn7AzeIo/edit" target="_blank" rel="noopener"><span class="rk">Tool ·</span> Endurance Patterns Matrix</a></div></div></div>
+        <div class="qrow"><span class="no">29</span><div class="qq"><b>Which risks are worth taking because they are survivable, and which end the game?</b></div></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- INVITATION + RECOGNITION -->
+  <section class="wrap invite">
+    <p class="sec-label">An open door</p>
+    <h2>These change as the <em>work</em> does.</h2>
+    <p>If you have spent real time on any of them, or can point me to someone who has, I would like to hear from you. The best conversations start from a shared question, not a pitch.</p>
+    <a class="cta" href="contact.html">Start a conversation</a>
+
+    <div class="recog">
+      <p class="rl">Recognition</p>
+      <div class="names">
+        <div><h5>Stewart Brand</h5><p>&ldquo;Interesting riffs on Maintenance&rdquo;</p></div>
+        <div><h5>Big Think</h5><p>The Nightcrawler feature</p></div>
+        <div><h5>OUTLAST</h5><p>Contributor, Scribner 2027</p></div>
+        <div><h5>In print</h5><p>Boland · Endersen</p></div>
+      </div>
+      <p class="netline"><b>Part of</b>&nbsp; In Practise&nbsp; · &nbsp;The Leading Edge&nbsp; · &nbsp;LTCWRK</p>
+    </div>
+  </section>
+
+  <!-- Footer (site) -->
+  <footer class="bg-gray-900 text-white py-20 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div class="md:col-span-2">
+          <h3 class="text-2xl font-light mb-6">INVRT</h3>
+        </div>
+        <div>
+          <h4 class="font-normal mb-6">Quick Links</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="philosophy.html" class="hover:text-white transition-colors">Perspective</a></li>
+            <li><a href="advisory.html" class="hover:text-white transition-colors">Practice</a></li>
+            <li><a href="insights.html" class="hover:text-white transition-colors">Ideas</a></li>
+            <li><a href="clients.html" class="hover:text-white transition-colors">Clients</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-normal mb-6">Connect</h4>
+          <div class="space-y-3">
+            <a href="https://invrt.substack.com/" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-white transition-colors">Subscribe to Substack</a>
+            <a href="https://open.spotify.com/show/62autSn7DeWpMURIob0Ox3?si=d91a6c886dca4e2c" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-white transition-colors">Subscribe to Podcast</a>
+          </div>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
+        © 2026 INVRT Limited. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // Mobile menu (site)
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  mobileMenuButton.addEventListener('click', () => {
+    if (!document.getElementById('mobile-menu')) {
+      const menu = document.createElement('div');
+      menu.id = 'mobile-menu';
+      menu.className = 'mobile-menu fixed right-0 top-0 h-full w-64 bg-white shadow-lg md:hidden z-50';
+      menu.innerHTML = `
+        <div class="p-6">
+          <button id="close-menu" class="mb-8" aria-label="Close menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+          <div class="space-y-4">
+            <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Ideas</a>
+            <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
+            <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Practice</a>
+            <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Perspective</a>
+            <a href="questions.html" class="block text-gray-900 hover:text-gray-600">Questions</a>
+            <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
+              Contact
+            </a>
+          </div>
+        </div>`;
+      document.body.appendChild(menu);
+      setTimeout(() => {
+        menu.classList.add('active');
+        document.getElementById('close-menu').addEventListener('click', () => {
+          menu.classList.remove('active');
+          setTimeout(() => menu.remove(), 300);
+        });
+      }, 10);
+    }
+  });
+
+  // Navbar shadow on scroll (site)
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) { navbar.classList.add('shadow-lg'); } else { navbar.classList.remove('shadow-lg'); }
+  });
+</script>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var touch  = window.matchMedia && window.matchMedia('(hover: none)').matches;
+
+  var R = {
+    pq3:{k:'Deck',t:'Project Quality 3.0',u:'https://docs.google.com/presentation/d/1uKJIvrW0NFYeoTcBzKJrxb2tZH8gUoysvkUpZzaCTTA/edit'},
+    qp: {k:'Deck',t:'Quality Patterns',u:'https://docs.google.com/presentation/d/1KbkTRrNWoGFk9yAaYfzM_0hf80Vca-94VNuknQkOPZU/edit'},
+    epm:{k:'Tool',t:'Endurance Patterns Matrix',u:'https://docs.google.com/spreadsheets/d/18flZbJesoRvgrFXU5qwlFnwKelQ_lhFbOvTUn7AzeIo/edit'},
+    maint:{k:'Essay',t:'The maintenance essay',u:'https://invrt.substack.com/'},
+    net:{k:'Essay',t:'The networks essay',u:'https://invrt.substack.com/'},
+    sub:{k:'Essay',t:'INVRT on Substack',u:'https://invrt.substack.com/'},
+    pod:{k:'Podcast',t:'The Art of Quality',u:'https://theartofquality.co/'}
+  };
+  var N = [
+    {id:'q1', th:'Quality',     sf:.34, tm:.55, q:'Is quality in the object, or in the relationship between it and the person who uses it?', r:['pq3','qp']},
+    {id:'q2', th:'Quality',     sf:.44, tm:.34, q:'What is the smallest early signal that reliably predicts durable quality?', r:['qp']},
+    {id:'q3', th:'Compounding', sf:.54, tm:.86, q:'What actually compounds, and what only looks like it does?', r:['pq3','epm','pod']},
+    {id:'q4', th:'Capital',     sf:.28, tm:.60, q:'Over thirty years: the best business at a fair price, or a fair business improved every year?', r:['sub']},
+    {id:'q5', th:'Capital',     sf:.62, tm:.40, q:'How do you tell a moat being built from one only being described?', r:[]},
+    {id:'q6', th:'Maintenance', sf:.66, tm:.70, q:'Why is the maintenance premium almost never on the balance sheet?', r:['maint']},
+    {id:'q7', th:'Maintenance', sf:.78, tm:.64, q:'When must a growing system spend more on staying alive than on getting bigger?', r:['maint','epm']},
+    {id:'q8', th:'Trust',       sf:.70, tm:.90, q:'What makes trust deserved rather than merely extended?', r:['net']},
+    {id:'q9', th:'Trust',       sf:.52, tm:.52, q:'Reputation takes decades to build and moments to lose. What follows from that asymmetry?', r:['net']},
+    {id:'q10',th:'Focus',       sf:.40, tm:.48, q:'When does a business compound faster with fewer markets, not more?', r:[]},
+    {id:'q11',th:'Focus',       sf:.33, tm:.28, q:'Which is the binding constraint: capital, people, or the capacity to sell?', r:[]},
+    {id:'q12',th:'Succession',  sf:.60, tm:.95, q:'How do you transfer judgement, not just ownership?', r:[]},
+    {id:'q13',th:'Risk',        sf:.82, tm:.76, q:'Why does the average outcome mislead the individual owner?', r:[]},
+    {id:'q14',th:'Risk',        sf:.74, tm:.44, q:'What level of redundancy is prudence, and what is waste?', r:['epm']}
+  ];
+  var E = [['q1','q2'],['q1','q3'],['q2','q9'],['q3','q4'],['q3','q6'],['q3','q8'],['q3','q10'],
+    ['q3','q13'],['q4','q5'],['q4','q10'],['q5','q11'],['q6','q7'],['q7','q14'],['q8','q9'],['q8','q12'],['q10','q11'],['q13','q14']];
+  var byId={}, nbr={}; N.forEach(function(n){byId[n.id]=n;nbr[n.id]=[];});
+  E.forEach(function(e){nbr[e[0]].push(e[1]);nbr[e[1]].push(e[0]);});
+  function trunc(s,n){return s.length>n?s.slice(0,n-1)+'…':s;}
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+
+  /* ============ LEVERAGE ============ */
+  (function(){
+    var host=document.getElementById('lev'), svg=document.getElementById('levSvg'); if(!host) return;
+    var chips=[].slice.call(host.querySelectorAll('.chip'));
+    function center(el){var r=el.getBoundingClientRect(), h=host.getBoundingClientRect();return {x:r.left-h.left+r.width/2,y:r.top-h.top+r.height/2};}
+    function chipEl(id){for(var i=0;i<chips.length;i++)if(chips[i].getAttribute('data-id')===id)return chips[i];}
+    function drawAll(active){
+      var h=host.getBoundingClientRect(); svg.setAttribute('viewBox','0 0 '+h.width+' '+h.height);
+      var s='';
+      E.forEach(function(e){var A=chipEl(e[0]),B=chipEl(e[1]);if(!A||!B)return;var a=center(A),b=center(B);
+        var on=active&&(e[0]===active||e[1]===active);
+        var mx=(a.x+b.x)/2, my=(a.y+b.y)/2-Math.abs(a.y-b.y)*0.12-14;
+        s+='<path d="M'+a.x+' '+a.y+' Q'+mx+' '+my+' '+b.x+' '+b.y+'" fill="none" stroke="'+(on?'#111827':'rgba(17,24,39,0.10)')+'" stroke-width="'+(on?1.6:1)+'"/>';});
+      svg.innerHTML=s;
+    }
+    function hoverChip(id){chips.forEach(function(c){var cid=c.getAttribute('data-id');var on=cid===id||nbr[id].indexOf(cid)>-1;
+      c.classList.toggle('hot',on);c.classList.toggle('dim',!!id&&!on);});drawAll(id);}
+    chips.forEach(function(c){
+      c.addEventListener('mouseenter',function(){hoverChip(c.getAttribute('data-id'));});
+      c.addEventListener('mouseleave',function(){chips.forEach(function(x){x.classList.remove('hot','dim');});drawAll(null);});
+    });
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting)drawAll(null);});},{threshold:0.05});
+    function boot(){drawAll(null);io.observe(host);}
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(boot);else setTimeout(boot,60);
+    var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){drawAll(null);},150);});
+  })();
+
+  /* ============ MAP ============ */
+  (function(){
+    var cv=document.getElementById('map'); if(!cv) return;
+    var ctx=cv.getContext('2d'), cap=document.getElementById('cap'), hint=document.getElementById('hint');
+    var DPR=Math.min(2,window.devicePixelRatio||1);
+    var W=0,H=0,padX=0,padTop=30,padBot=40,P={},sel=null,hov=null,raf=null,t0=null,mode='intro';
+    function layout(){var r=cv.parentElement.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
+      padX=Math.max(38,W*0.10);
+      N.forEach(function(n){var ax=padX+n.sf*(W-2*padX),ay=padTop+(1-n.tm)*(H-padTop-padBot);
+        if(!P[n.id])P[n.id]={x:W/2,y:H/2,vx:0,vy:0,ph:Math.random()*6.28};P[n.id].ax=ax;P[n.id].ay=ay;});}
+    function ease(t){return 1-Math.pow(1-t,3);}
+    function physics(time){
+      N.forEach(function(n){var p=P[n.id];var sx=reduce?p.ax:p.ax+Math.sin(time*0.0006+p.ph)*5.5,sy=reduce?p.ay:p.ay+Math.cos(time*0.0007+p.ph)*5.5;
+        p.vx+=(sx-p.x)*0.02;p.vy+=(sy-p.y)*0.02;});
+      for(var i=0;i<N.length;i++)for(var j=i+1;j<N.length;j++){var a=P[N[i].id],b=P[N[j].id],dx=a.x-b.x,dy=a.y-b.y,d2=dx*dx+dy*dy||1;
+        if(d2<2600){var d=Math.sqrt(d2),f=180/d2,ux=dx/d,uy=dy/d;a.vx+=ux*f;a.vy+=uy*f;b.vx-=ux*f;b.vy-=uy*f;}}
+      N.forEach(function(n){var p=P[n.id];p.vx*=0.82;p.vy*=0.82;p.x+=p.vx;p.y+=p.vy;});
+    }
+    function curve(a,b){var mx=(a.x+b.x)/2,my=(a.y+b.y)/2-Math.abs(a.x-b.x)*0.10-8;return 'M'+a.x+' '+a.y+' Q'+mx+' '+my+' '+b.x+' '+b.y;}
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      ctx.strokeStyle='rgba(17,24,39,0.05)';ctx.lineWidth=1;
+      for(var g=1;g<4;g++){var gx=padX+(g/4)*(W-2*padX),gy=padTop+(g/4)*(H-padTop-padBot);
+        ctx.beginPath();ctx.moveTo(gx,padTop);ctx.lineTo(gx,H-padBot);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(padX,gy);ctx.lineTo(W-padX,gy);ctx.stroke();}
+      var focus=hov||sel, active=focus?nbr[focus].concat([focus]):null;
+      E.forEach(function(e){var a=P[e[0]],b=P[e[1]],on=focus&&(e[0]===focus||e[1]===focus);
+        ctx.strokeStyle=on?'rgba(17,24,39,0.9)':(focus?'rgba(17,24,39,0.05)':'rgba(17,24,39,0.14)');ctx.lineWidth=on?1.7:1;ctx.stroke(new Path2D(curve(a,b)));});
+      N.forEach(function(n){var p=P[n.id],isHub=n.id==='q3',inA=!active||active.indexOf(n.id)>-1,r=isHub?7:5;
+        if(isHub&&!focus){ctx.strokeStyle='rgba(17,24,39,0.4)';ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(p.x,p.y,11,0,6.2832);ctx.stroke();}
+        ctx.beginPath();ctx.arc(p.x,p.y,r,0,6.2832);
+        if(n.id===sel||n.id===hov)ctx.fillStyle='#111827';else if(active&&active.indexOf(n.id)>-1)ctx.fillStyle='#111827';else ctx.fillStyle=focus?'rgba(17,24,39,0.18)':'#111827';
+        ctx.fill();
+        if(n.id===sel){ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.beginPath();ctx.arc(p.x,p.y,r,0,6.2832);ctx.stroke();ctx.strokeStyle='#111827';ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(p.x,p.y,r+4,0,6.2832);ctx.stroke();}
+        if(inA){ctx.fillStyle=(n.id===focus)?'#111827':(focus?'#111827':'rgba(17,24,39,0.5)');ctx.font='500 10px "Inter", sans-serif';ctx.textAlign='center';ctx.fillText(n.th.toLowerCase(),p.x,p.y-r-6);}});
+    }
+    function loop(time){if(t0===null)t0=time;
+      if(mode==='intro'){var p=ease(Math.min(1,(time-t0)/1100));N.forEach(function(n){var q=P[n.id];q.x=W/2+(q.ax-W/2)*p;q.y=H/2+(q.ay-H/2)*p;});draw();if(p>=1){mode='live';N.forEach(function(n){P[n.id].vx=0;P[n.id].vy=0;});}}
+      else{physics(time);draw();}
+      raf=requestAnimationFrame(loop);}
+    function resHTML(id){var n=byId[id];if(!n.r||!n.r.length)return '';
+      var links=n.r.map(function(k){var x=R[k];return '<a class="res" href="'+x.u+'" target="_blank" rel="noopener"><span class="k">'+x.k+'</span>'+x.t+'<span class="arw">&#8599;</span></a>';}).join('');
+      return '<p class="rl">Read the work beneath this question</p><div class="reslinks">'+links+'</div>';}
+    function renderCap(id){
+      if(!id){cap.innerHTML='<p class="lbl">The map</p><p class="q">Fourteen questions, placed by the tensions they live inside and joined by what they share.</p><p class="rl">Two axes</p><div class="chips"><span class="gochip" style="cursor:default"><b>Structure to Flow</b>&nbsp; horizontal</span><span class="gochip" style="cursor:default"><b>Immediate to Generational</b>&nbsp; vertical</span></div>';return;}
+      var n=byId[id];
+      var chips=nbr[id].map(function(o){return '<button class="gochip" data-go="'+o+'"><b>'+byId[o].th+'</b>&nbsp; '+esc(trunc(byId[o].q,28))+'</button>';}).join('');
+      cap.innerHTML='<p class="lbl">'+n.th+(id==='q3'?' · paradigm question':'')+'</p><p class="q">'+esc(n.q)+'</p>'+
+        '<p class="rl">Walk to a connected question ('+nbr[id].length+')</p><div class="chips">'+chips+'</div>'+resHTML(id);
+      [].forEach.call(cap.querySelectorAll('.gochip[data-go]'),function(b){b.addEventListener('click',function(){select(b.getAttribute('data-go'));});});
+    }
+    function select(id){sel=id;hov=null;renderCap(id);hint.textContent=id?'Walk the connections, or pick another point':(touch?'Tap a question, then walk its connections':'Hover to preview, tap to hold');if(reduce)draw();}
+    function at(cx,cy){var r=cv.getBoundingClientRect(),mx=cx-r.left,my=cy-r.top,best=null,bd=touch?30:22;
+      N.forEach(function(n){var p=P[n.id],dx=p.x-mx,dy=p.y-my,d=Math.sqrt(dx*dx+dy*dy);if(d<bd){bd=d;best=n.id;}});return best;}
+    if(!touch){cv.addEventListener('mousemove',function(e){var id=at(e.clientX,e.clientY);if(id!==hov){hov=id;if(!sel)renderCap(id);if(reduce)draw();}cv.style.cursor=id?'pointer':'default';});
+      cv.addEventListener('mouseleave',function(){hov=null;if(!sel)renderCap(null);if(reduce)draw();});}
+    cv.addEventListener('click',function(e){var id=at(e.clientX,e.clientY);select(id||null);});
+    cv.setAttribute('tabindex','0');cv.setAttribute('role','application');cv.setAttribute('aria-label','Interactive map of INVRT questions');
+    var started=false;
+    function start(){if(started)return;started=true;if(reduce){mode='live';N.forEach(function(n){P[n.id].x=P[n.id].ax;P[n.id].y=P[n.id].ay;});draw();}else raf=requestAnimationFrame(loop);}
+    var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){start();if(!reduce&&!raf){t0=null;raf=requestAnimationFrame(loop);}}else if(raf&&!reduce){cancelAnimationFrame(raf);raf=null;}});},{threshold:0.03});
+    function boot(){layout();renderCap(null);io.observe(cv);if(reduce)start();}
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(boot);else boot();
+    var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){layout();if(reduce)draw();},160);});
+  })();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INVRT - Building Enduring Quality Through Strategic Advisory</title>
+  <meta name="description" content="We partner with exceptional founders, family businesses, and growth companies to build enterprises designed to create value for generations.">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    
+    .font-serif {
+      font-family: 'Crimson Text', serif;
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Navigation animations */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -4px;
+      left: 0;
+      background-color: #111827;
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+    
+    /* Fade in animation */
+    .fade-in {
+      animation: fadeIn 0.8s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Stagger animation */
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    
+    /* Button transitions */
+    .btn-primary {
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      transition: left 0.3s ease;
+    }
+    
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+    
+    /* Mobile menu */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+    
+    /* Exponential curve animation */
+    .curve-animate {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawCurve 2s ease-out forwards;
+    }
+    
+    @keyframes drawCurve {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+    
+    /* Card hover effects */
+    .service-card {
+      transition: all 0.3s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-4px);
+    }
+    
+    /* Scroll reveal */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    
+    .scroll-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="font-light text-gray-900 bg-white antialiased">
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed w-full bg-white bg-opacity-95 backdrop-blur-sm z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="text-lg font-light tracking-wide text-gray-900">
+          <a href="index.html" class="hover:text-gray-600 transition-colors">
+            INVRT
+          </a>
+        </div>
+        
+        <div class="hidden md:flex items-center space-x-10">
+          <a href="insights.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Ideas</a>
+          <a href="clients.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Clients</a>
+          <a href="advisory.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Practice</a>
+          <a href="philosophy.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Perspective</a>
+          <a href="questions.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Questions</a>
+          <a href="contact.html" class="text-sm px-5 py-2.5 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
+            Contact
+          </a>
+        </div>
+        
+        <button id="mobile-menu-button" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center pt-20 bg-white">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+      <div class="fade-in">
+        <p class="text-sm tracking-[0.2em] text-gray-500 mb-8 uppercase">Strategic Advisory</p>
+        <h1 class="text-5xl md:text-7xl font-extralight leading-[1.1] mb-8">
+          Building Enduring Quality<br/>
+          Into <em class="font-serif font-normal not-italic">Systems </em>
+        </h1>
+        <p class="text-xl md:text-2xl font-light text-gray-700 max-w-3xl mb-12 leading-relaxed">
+          We partner with exceptional founders, family businesses, and growth companies 
+          to build enterprises designed to create value for generations.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#value" class="btn-primary inline-block text-center text-sm tracking-wide px-8 py-4 bg-gray-900 text-white hover:bg-gray-800">
+            Explore Our Approach
+          </a>
+          <a href="#services" class="inline-block text-center text-sm tracking-wide px-8 py-4 border border-gray-900 text-gray-900 hover:bg-gray-50 transition-colors">
+            Our Practice
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- The Value of Compounding -->
+  <section id="value" class="py-32 bg-white scroll-reveal">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-20">
+        <h2 class="text-4xl md:text-5xl font-extralight mb-6">The Value of Compounding</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          We bring a systems thinking approach to every engagement, drawing on principles from 
+          natural design, multi generational family businesses, and quality focused organizations.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-10 md:gap-12">
+        <!-- Capital Compounding -->
+        <div class="text-center scroll-reveal stagger-1">
+          <div class="mb-10 h-16 flex items-center justify-center">
+            <svg width="150" height="60" viewBox="0 0 150 60" class="overflow-visible">
+              <path class="curve-animate" d="M8 52 C50 51 84 42 142 8" fill="none" stroke="#111827" stroke-width="1.25"/>
+              <circle cx="142" cy="8" r="2.4" fill="#111827"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-light mb-4">Capital Compounding</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Quality businesses generate superior returns through durable competitive 
+            advantages that strengthen with age, pricing power that improves with 
+            reputation, and efficient capital allocation.
+          </p>
+        </div>
+        
+        <!-- Relationship Compounding -->
+        <div class="text-center scroll-reveal stagger-2">
+          <div class="mb-10 h-16 flex items-center justify-center">
+            <svg width="150" height="60" viewBox="0 0 150 60">
+              <g stroke="#111827" stroke-width="1" opacity="0.45" fill="none">
+                <path d="M22 42 48 22 62 46 22 42M62 46 92 26 108 44 62 46M92 26 134 16M108 44 134 16"/>
+              </g>
+              <g fill="#111827">
+                <circle cx="22" cy="42" r="2.2"/><circle cx="48" cy="22" r="2.2"/><circle cx="62" cy="46" r="2.2"/><circle cx="92" cy="26" r="2.2"/><circle cx="108" cy="44" r="2.2"/><circle cx="134" cy="16" r="2.6"/>
+              </g>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-light mb-4">Relationship Compounding</h3>
+          <p class="text-gray-600 leading-relaxed">
+            The most valuable relationships compound through deepening trust, 
+            expanded opportunity access through network effects, and resilience 
+            during market disruptions.
+          </p>
+        </div>
+        
+        <!-- Systems Value Creation -->
+        <div class="text-center scroll-reveal stagger-3">
+          <div class="mb-10 h-16 flex items-center justify-center">
+            <svg width="150" height="60" viewBox="0 0 150 60">
+              <path d="M75 30 C58 13 26 13 26 30 C26 47 58 47 75 30 C92 13 124 13 124 30 C124 47 92 47 75 30 Z" fill="none" stroke="#111827" stroke-width="1.25"/>
+              <circle cx="75" cy="30" r="2.4" fill="#111827"/>
+              <circle cx="26" cy="30" r="2" fill="#9ca3af"/><circle cx="124" cy="30" r="2" fill="#9ca3af"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-light mb-4">Systems Value Creation</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Systems oriented businesses create accelerating value through reinforcing 
+            feedback loops, network effects that increase with scale and time, and 
+            adaptability that converts challenges into growth opportunities.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy Preview -->
+  <section id="philosophy" class="py-32 bg-white scroll-reveal">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-extralight">Perspective</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-12 mt-20">
+        <div class="scroll-reveal">
+          <div class="flex items-start mb-4">
+            <div>
+              <h3 class="text-2xl font-light mb-3">Quality Over Scale</h3>
+              <p class="text-gray-600 leading-relaxed">
+                We've studied the patterns of businesses that endure for decades and even centuries. 
+                The common thread isn't rapid growth but thoughtful evolution.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="scroll-reveal">
+          <div class="flex items-start mb-4">
+            <div>
+              <h3 class="text-2xl font-light mb-3">Systems That Adapt</h3>
+              <p class="text-gray-600 leading-relaxed">
+                Like natural systems that thrive through adaptation rather than rigid control, 
+                we help build businesses that balance structure with flow.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="scroll-reveal">
+          <div class="flex items-start mb-4">
+            <div>
+              <h3 class="text-2xl font-light mb-3">The Value of Maintenance</h3>
+              <p class="text-gray-600 leading-relaxed">
+                The greatest businesses are designed from the outset with regeneration in mind. 
+                They get better with age through intentional care and evolution.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="scroll-reveal">
+          <div class="flex items-start mb-4">
+            <div>
+              <h3 class="text-2xl font-light mb-3">Deserved Trust Networks</h3>
+              <p class="text-gray-600 leading-relaxed">
+                We focus on building webs of trust with all stakeholders. This trust becomes 
+                a durable competitive advantage that strengthens over time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-16">
+        <a href="philosophy.html" class="inline-block text-sm tracking-wide text-gray-900 border-b-2 border-gray-900 pb-1 hover:text-gray-600 hover:border-gray-600 transition-colors">
+          Explore Our Full Perspective
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-32 bg-white scroll-reveal">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-extralight mb-6">Practice</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          We focus on three core areas of compounding value creation, each designed to 
+          strengthen rather than dilute the quality of your business system.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-10 md:gap-12">
+        <!-- Compounding Business Value -->
+        <div class="bg-gray-50 p-8">
+          <h3 class="text-2xl font-light mb-5 leading-snug">Compounding Business Value</h3>
+          <div class="w-7 h-px bg-gray-900 mb-6"></div>
+          <p class="text-gray-600 mb-6 leading-relaxed">Strategic acquisitions that strengthen the system rather than dilute it.</p>
+          <div class="space-y-2.5 text-sm text-gray-500 mb-8 leading-relaxed">
+            <p>Strategic fit, read as a system</p>
+            <p>Target identification and evaluation</p>
+            <p>Integration for long term value</p>
+          </div>
+          <a href="advisory.html#business" class="nav-link inline-block text-sm text-gray-900">Learn more</a>
+        </div>
+
+        <!-- Compounding Equity Value -->
+        <div class="bg-gray-50 p-8">
+          <h3 class="text-2xl font-light mb-5 leading-snug">Compounding Equity Value</h3>
+          <div class="w-7 h-px bg-gray-900 mb-6"></div>
+          <p class="text-gray-600 mb-6 leading-relaxed">Portfolio design and governance for multi generational success.</p>
+          <div class="space-y-2.5 text-sm text-gray-500 mb-8 leading-relaxed">
+            <p>Governance, autonomy with alignment</p>
+            <p>Capital allocation strategy</p>
+            <p>Leadership and succession</p>
+          </div>
+          <a href="advisory.html#equity" class="nav-link inline-block text-sm text-gray-900">Learn more</a>
+        </div>
+
+        <!-- Compounding Investor Value -->
+        <div class="bg-gray-50 p-8">
+          <h3 class="text-2xl font-light mb-5 leading-snug">Compounding Investor Value</h3>
+          <div class="w-7 h-px bg-gray-900 mb-6"></div>
+          <p class="text-gray-600 mb-6 leading-relaxed">Partners who share the long horizon, and the structures that hold them.</p>
+          <div class="space-y-2.5 text-sm text-gray-500 mb-8 leading-relaxed">
+            <p>Capital structure</p>
+            <p>Post transaction relationships</p>
+            <p>Human, tech and financial capital</p>
+          </div>
+          <a href="advisory.html#investor" class="nav-link inline-block text-sm text-gray-900">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder Section -->
+  <section id="founder" class="py-32 bg-white scroll-reveal">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-extralight mb-8">Founder</h2>
+        <h3 class="text-2xl font-light">Paul Higgins</h3>
+      </div>
+
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="text-lg text-gray-600 leading-relaxed mb-8">
+          With over two decades of experience across diverse industries, Paul brings a systems
+          thinking approach to every client engagement. His background in quality focused business
+          development has helped founders and business owners build enterprises designed
+          for multi generational success.
+        </p>
+
+        <p class="text-lg text-gray-600 leading-relaxed mb-12">
+          Paul founded INVRT based on the belief that businesses can be designed to improve with time,
+          creating compounding value for all stakeholders across generations.
+        </p>
+        
+        <!-- Recognition -->
+        <div class="mt-16 pt-16 border-t border-gray-200">
+          <h3 class="text-xl font-light mb-6">Recognition</h3>
+          <p class="text-gray-700 leading-relaxed max-w-2xl mx-auto">
+            Paul is a contributor to Eric Markowitz's <a href="https://www.outlastbook.com/" target="_blank" rel="noopener noreferrer" class="font-serif italic border-b border-gray-300 hover:border-gray-900 transition-colors">OUTLAST</a> (Scribner, 2027).
+            His writing on enduring enterprises has been highlighted by Stewart Brand and featured in Big Think's
+            <a href="https://www.outlastbook.com/nightcrawler" target="_blank" rel="noopener noreferrer" class="border-b border-gray-300 hover:border-gray-900 transition-colors">The Nightcrawler</a>, and he is acknowledged in
+            <a href="https://benbellabooks.com/shop/the-contemplative-leader/" target="_blank" rel="noopener noreferrer" class="font-serif italic border-b border-gray-300 hover:border-gray-900 transition-colors">The Contemplative Leader</a>
+            by Patrick Boland and <a href="https://endersen.com/the-compounders-element/" target="_blank" rel="noopener noreferrer" class="font-serif italic border-b border-gray-300 hover:border-gray-900 transition-colors">The Compounder's Element</a> by Laurence Endersen.
+          </p>
+        </div>
+        
+        <!-- Global Network Section -->
+        <div class="mt-16 pt-16 border-t border-gray-200">
+          <h3 class="text-xl font-light mb-6">Global Network</h3>
+          <p class="text-gray-600 leading-relaxed mb-8">
+            INVRT is part of a global network of aligned business builders, investors, and thinkers 
+            who share our commitment to building enduring enterprises. Through these partnerships, 
+            our clients gain access to:
+          </p>
+          
+          <div class="grid md:grid-cols-3 gap-10 text-sm text-left">
+            <a href="https://inpractise.com/" target="_blank" class="group block bg-gray-50 p-6">
+              <h4 class="font-medium text-gray-900 mb-2 group-hover:text-gray-500 transition-colors">In Practise</h4>
+              <p class="text-gray-500 leading-relaxed">Deep operator insights and case studies from exceptional businesses worldwide</p>
+            </a>
+            <a href="https://www.theleading-edge.org/" target="_blank" class="group block bg-gray-50 p-6">
+              <h4 class="font-medium text-gray-900 mb-2 group-hover:text-gray-500 transition-colors">The Leading Edge</h4>
+              <p class="text-gray-500 leading-relaxed">A community of senior executives focused on personal and organizational transformation</p>
+            </a>
+            <a href="https://ltcwrk.com/" target="_blank" class="group block bg-gray-50 p-6">
+              <h4 class="font-medium text-gray-900 mb-2 group-hover:text-gray-500 transition-colors">LTCWRK</h4>
+              <p class="text-gray-500 leading-relaxed">Long term thinking practitioners building businesses designed to last</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Insights Preview -->
+  <section id="insights" class="py-32 bg-white scroll-reveal">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-extralight mb-6">Ideas</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Frameworks and research from our work with founders and families building for generations
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-10 md:gap-12 mb-16">
+        <article class="bg-gray-50 p-8">
+          <div class="text-xs tracking-widest text-gray-500 mb-4">COMPREHENSIVE DECK</div>
+          <h3 class="text-2xl font-light mb-3">Project Quality 3.0</h3>
+          <p class="text-gray-600 mb-5 leading-relaxed">Our comprehensive deck exploring how quality compounds over time in business systems.</p>
+          <a href="insights.html#quality" class="nav-link inline-block text-sm text-gray-900">Download</a>
+        </article>
+
+        <article class="bg-gray-50 p-8">
+          <div class="text-xs tracking-widest text-gray-500 mb-4">ANALYSIS</div>
+          <h3 class="text-2xl font-light mb-3">Patterns of Endurance</h3>
+          <p class="text-gray-600 mb-5 leading-relaxed">What we learned from studying 50 companies that have thrived for over 100 years.</p>
+          <a href="insights.html#patterns" class="nav-link inline-block text-sm text-gray-900">Read more</a>
+        </article>
+
+        <article class="bg-gray-50 p-8">
+          <div class="text-xs tracking-widest text-gray-500 mb-4">PODCAST</div>
+          <h3 class="text-2xl font-light mb-3">The Art of Quality</h3>
+          <p class="text-gray-600 mb-5 leading-relaxed">Conversations exploring the patterns that lead to enduring excellence across disciplines.</p>
+          <a href="insights.html#podcast" class="nav-link inline-block text-sm text-gray-900">Listen</a>
+        </article>
+      </div>
+      
+      <div class="text-center">
+        <a href="insights.html" class="inline-block text-sm tracking-wide px-8 py-4 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors">
+          View All Ideas
+        </a>
+      </div>
+    </div>
+  </section>
+
+<!-- Newsletter / Writing -->
+  <section id="subscribe" class="py-32 bg-white scroll-reveal border-t border-gray-100">
+    <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+      <p class="text-sm tracking-[0.2em] text-gray-500 mb-6 uppercase">The Writing</p>
+      <h2 class="text-4xl md:text-5xl font-extralight mb-6">Stay close to the thinking</h2>
+      <p class="text-lg text-gray-600 max-w-xl mx-auto mb-8 leading-relaxed">
+        Essays on capital allocation, quality, and enduring enterprises, roughly monthly.
+      </p>
+      <p class="text-gray-500 max-w-2xl mx-auto mb-12 leading-relaxed">
+        Paul Higgins is a contributor to Eric Markowitz's <span class="font-serif italic">OUTLAST</span> (Scribner, 2027).
+        His writing has been highlighted by Stewart Brand and featured in Big Think's The Nightcrawler.
+      </p>
+      <form action="https://invrt.substack.com/subscribe" method="get" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+        <input type="email" name="email" placeholder="Your email" aria-label="Your email"
+          class="flex-1 px-2 py-3 border-b border-gray-300 bg-transparent focus:border-gray-900 focus:outline-none text-center sm:text-left transition-colors"/>
+        <button type="submit" class="btn-primary px-8 py-3.5 bg-gray-900 text-white text-sm tracking-wide hover:bg-gray-800 transition-colors">
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-20 border-t border-gray-800">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-12 mb-12">
+      <div class="md:col-span-2">
+        <h3 class="text-2xl font-light mb-6">INVRT</h3>
+      </div>
+      
+      <div>
+        <h4 class="font-normal mb-6">Quick Links</h4>
+        <ul class="space-y-3 text-gray-400">
+          <li><a href="philosophy.html" class="hover:text-white transition-colors">Perspective</a></li>
+          <li><a href="advisory.html" class="hover:text-white transition-colors">Practice</a></li>
+          <li><a href="insights.html" class="hover:text-white transition-colors">Ideas</a></li>
+          <li><a href="clients.html" class="hover:text-white transition-colors">Clients</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="font-normal mb-6">Connect</h4>
+        <div class="space-y-3">
+          <a href="https://invrt.substack.com/" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-white transition-colors">
+            Subscribe to Substack
+          </a>
+          <a href="https://open.spotify.com/show/62autSn7DeWpMURIob0Ox3?si=d91a6c886dca4e2c" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-white transition-colors">
+            Subscribe to Podcast
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
+      © 2026 INVRT Limited. All rights reserved.
+    </div>
+  </div>
+</footer>
+  
+  <script>
+    
+    // Mobile menu functionality
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+
+mobileMenuButton.addEventListener('click', () => {
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (!mobileMenu) {
+    const menu = document.createElement('div');
+    menu.id = 'mobile-menu';
+    menu.className = 'mobile-menu fixed right-0 top-0 h-full w-64 bg-white shadow-lg md:hidden z-50';
+    menu.innerHTML = `
+      <div class="p-6">
+        <button id="close-menu" class="mb-8">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <div class="space-y-4">
+            <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Ideas</a>
+            <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
+            <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Practice</a>
+            <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Perspective</a>
+            <a href="questions.html" class="block text-gray-900 hover:text-gray-600">Questions</a>
+            <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
+              Contact
+            </a>
+          </div>
+      </div>
+    `;
+    document.body.appendChild(menu);
+    
+    setTimeout(() => {
+      menu.classList.add('active');
+      const closeBtn = document.getElementById('close-menu');
+      closeBtn.addEventListener('click', () => {
+        menu.classList.remove('active');
+        setTimeout(() => menu.remove(), 300);
+      });
+    }, 10);
+  }
+});
+    
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('shadow-lg');
+      } else {
+        navbar.classList.remove('shadow-lg');
+      }
+    });
+    
+    // Scroll reveal
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

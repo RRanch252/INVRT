@@ -3,7 +3,7 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>INVRT - Insights & Resources</title>
+ <title>INVRT - Ideas</title>
  <meta name="description" content="Frameworks, research, and insights from our work with founders and families building for generations.">
  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
  <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -184,7 +184,16 @@
      border-color: #111827;
      transform: translateY(-2px);
    }
- </style>
+ 
+    /* consistency pass: subtle boxes, no heavy borders/shadows/lifts */
+    .service-card,.resource-card,.question-card,.approach-card,.client-card,.contact-card,.case-study-card{
+      background:#fafafa !important;border-color:transparent !important;box-shadow:none !important;border-radius:0 !important;
+    }
+    .service-card:hover,.resource-card:hover,.question-card:hover,.approach-card:hover,.client-card:hover,.contact-card:hover,.case-study-card:hover{
+      transform:none !important;box-shadow:none !important;border-color:transparent !important;
+    }
+    .question-card::before{display:none !important;}
+  </style>
 </head>
 <body class="font-light text-gray-900 bg-white antialiased">
  <!-- Navigation -->
@@ -198,15 +207,15 @@
        </div>
        
        <div class="hidden md:flex items-center space-x-10">
-         <a href="philosophy.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Philosophy</a>
-         <a href="advisory.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Services</a>
-         <a href="insights.html" class="nav-link active text-sm text-gray-900">Insights</a>
-         <a href="#systems-explorer" class="nav-link text-sm text-gray-600 hover:text-gray-900">Systems Explorer</a>
-         <a href="clients.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Clients</a>
-         <a href="contact.html" class="text-sm px-5 py-2.5 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors">
-           Contact
-         </a>
-       </div>
+          <a href="insights.html" class="nav-link active text-sm text-gray-900">Ideas</a>
+          <a href="clients.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Clients</a>
+          <a href="advisory.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Practice</a>
+          <a href="philosophy.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Perspective</a>
+          <a href="questions.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Questions</a>
+          <a href="contact.html" class="text-sm px-5 py-2.5 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
+            Contact
+          </a>
+        </div>
        
        <button id="mobile-menu-button" class="md:hidden">
          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -221,7 +230,7 @@
  <section class="min-h-screen flex items-center pt-20 bg-white">
    <div class="max-w-5xl mx-auto px-6 lg:px-8">
      <div class="fade-in">
-       <p class="text-sm tracking-[0.2em] text-gray-500 mb-6 uppercase">Insights & Resources</p>
+       <p class="text-sm tracking-[0.2em] text-gray-500 mb-6 uppercase">Ideas</p>
        <h1 class="text-4xl md:text-6xl font-extralight leading-tight mb-8">
          Frameworks for Building<br/>
          <em class="font-serif font-normal not-italic">Enduring Enterprises</em>
@@ -230,13 +239,6 @@
          Research, insights, and conversations from our work with founders and families 
          building businesses designed to improve with time.
        </p>
-     </div>
-     
-     <!-- Scroll indicator -->
-     <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 fade-in stagger-3">
-       <div class="w-6 h-10 border border-gray-400 rounded-full flex justify-center">
-         <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
-       </div>
      </div>
    </div>
  </section>
@@ -282,13 +284,13 @@
                <svg class="w-5 h-5 mr-3 mt-0.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"></path>
                </svg>
-               <span>150+ pages of insights and frameworks</span>
+               <span>150+ slides of insights and frameworks</span>
              </li>
              <li class="flex items-start">
                <svg class="w-5 h-5 mr-3 mt-0.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"></path>
                </svg>
-               <span>Case studies from 50+ century-old companies</span>
+               <span>Case studies from 50+ century old companies</span>
              </li>
              <li class="flex items-start">
                <svg class="w-5 h-5 mr-3 mt-0.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -343,7 +345,7 @@
            What patterns allow some businesses to improve with age while most degrade over time?
          </h3>
          <p class="text-sm text-gray-600 leading-relaxed">
-           Our research into century-old companies reveals specific organizational patterns: they prioritize maintenance over innovation, build redundancy into critical systems, and cultivate adaptive capacity.
+           Our research into century old companies reveals specific organizational patterns: they prioritize maintenance over innovation, build redundancy into critical systems, and cultivate adaptive capacity.
          </p>
          <div class="mt-4 flex items-center text-sm text-gray-900">
            <span>Explore this question</span>
@@ -404,7 +406,7 @@
        <div class="question-card">
          <p class="text-xs tracking-widest text-gray-500 mb-4">LEADERSHIP & CULTURE</p>
          <h3 class="text-lg font-light mb-3 text-gray-900">
-           Why do founder-led businesses dramatically outperform professionally managed ones over decades?
+           Why do founder led businesses dramatically outperform professionally managed ones over decades?
          </h3>
          <p class="text-sm text-gray-600 leading-relaxed">
            Todd Combs notes that founders operate as fiduciaries with radically longer time horizons. They make decisions that seem irrational quarterly but compound advantageously over generations.
@@ -423,7 +425,7 @@
            How do enduring enterprises balance redundancy with efficiency in their systems?
          </h3>
          <p class="text-sm text-gray-600 leading-relaxed">
-           Century-old companies build strategic redundancy into critical systems while maintaining operational efficiency—a paradox that creates both resilience and competitive advantage.
+           Century old companies build strategic redundancy into critical systems while maintaining operational efficiency, a paradox that creates both resilience and competitive advantage.
          </p>
          <div class="mt-4 flex items-center text-sm text-gray-900">
            <span>Explore this question</span>
@@ -476,7 +478,7 @@
            <h3 class="text-xl font-light mb-3">The Endurance Patterns Matrix</h3>
            <p class="text-gray-600 mb-6 leading-relaxed">
              An interactive spreadsheet tool for identifying and analyzing patterns 
-             in companies built for multi-generational success.
+             in companies built for multi generational success.
            </p>
            <a href="https://docs.google.com/spreadsheets/d/18flZbJesoRvgrFXU5qwlFnwKelQ_lhFbOvTUn7AzeIo/edit?gid=1592233509#gid=1592233509" target="_blank" class="text-sm font-medium text-gray-900 inline-flex items-center group">
              Access Tool 
@@ -516,6 +518,9 @@
        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
          Deep explorations of quality, systems thinking, and building for the long term
        </p>
+       <p class="text-sm text-gray-500 max-w-2xl mx-auto mt-6 leading-relaxed">
+         Stewart Brand highlighted the maintenance essays as <span class="font-serif italic">"interesting riffs on Maintenance"</span>, and Big Think's The Nightcrawler featured the writing alongside Leonardo da Vinci and 28 years of Amazon shareholder letters.
+       </p>
      </div>
      
      <div class="max-w-3xl mx-auto">
@@ -526,7 +531,7 @@
          <h3 class="text-2xl font-light mb-4">INVRT on Substack</h3>
          <p class="text-gray-600 mb-6 leading-relaxed">
            Our collection of essays exploring the intersection of quality, time, and business building. 
-           From the nature of maintenance to the patterns of century-old companies, these pieces 
+           From the nature of maintenance to the patterns of century old companies, these pieces 
            offer frameworks for thinking about enduring value creation.
          </p>
          <a href="https://invrt.substack.com/" target="_blank" class="inline-flex items-center px-6 py-3 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
@@ -562,8 +567,8 @@
              Deep Conversations on Building for Generations
            </h3>
            <p class="text-gray-300 mb-6 leading-relaxed">
-             Join us for thoughtful discussions with leaders of century-old businesses, 
-             master craftspeople, systems thinkers, and quality-focused founders. Each 
+             Join us for thoughtful discussions with leaders of century old businesses, 
+             master craftspeople, systems thinkers, and quality focused founders. Each 
              episode explores what it takes to build something worthy of lasting.
            </p>
            <div class="flex flex-col sm:flex-row gap-4">
@@ -588,7 +593,7 @@
          <h3 class="text-lg font-medium mb-6">About the Podcast</h3>
          <p class="text-gray-600 leading-relaxed mb-6">
            Each episode features in-depth conversations with leaders who have built 
-           something worthy of lasting. From century-old family businesses to master 
+           something worthy of lasting. From century old family businesses to master 
            craftspeople, we explore the patterns and principles that create enduring value.
          </p>
          <p class="text-sm text-gray-500">
@@ -600,95 +605,7 @@
    </div>
  </section>
 
- <!-- The Systems Explorer Section -->
- <section id="systems-explorer" class="py-16 bg-white">
-   <div class="max-w-6xl mx-auto px-6 lg:px-8">
-     <div class="text-center mb-12">
-       <h2 class="text-3xl font-extralight mb-4">The Systems Explorer</h2>
-       <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-         Engage in thoughtful dialogue about building enduring enterprises through 
-         our AI analyst trained on quality patterns and systems thinking
-       </p>
-     </div>
-     
-     <div class="grid lg:grid-cols-3 gap-8">
-       <!-- Featured Explorer -->
-       <div class="lg:col-span-2">
-         <div class="bg-gray-900 text-white rounded-lg p-8">
-           <p class="text-sm tracking-widest text-gray-400 mb-4">INTERACTIVE TOOL</p>
-           <h3 class="text-2xl font-light mb-4">
-             Explore Quality Principles Through Conversation
-           </h3>
-           <p class="text-gray-300 mb-6 leading-relaxed">
-             Our AI analyst draws on decades of research into century-old companies, 
-             systems thinking principles, and patterns of enduring enterprises. Ask questions, 
-             explore frameworks, and discover how these principles apply to your specific context.
-           </p>
-           
-           <!-- Chatbot Container -->
-           <div class="bg-white rounded-lg p-4 mb-6">
-             <div data-chatbot-id="cm0f66vag0001cgx9iem40hk7" data-chatbot-mode="standard"></div>
-           </div>
-           
-           <!-- Sample Topics -->
-           <div class="border-t border-gray-800 pt-6">
-             <p class="text-xs tracking-widest text-gray-500 mb-3">EXPLORE TOPICS LIKE</p>
-             <div class="flex flex-wrap gap-2">
-               <span class="text-xs px-3 py-1 bg-gray-800 rounded-full text-gray-300">
-                 Century-old company patterns
-               </span>
-               <span class="text-xs px-3 py-1 bg-gray-800 rounded-full text-gray-300">
-                 Quality vs. scale trade-offs
-               </span>
-               <span class="text-xs px-3 py-1 bg-gray-800 rounded-full text-gray-300">
-                 Compounding value creation
-               </span>
-               <span class="text-xs px-3 py-1 bg-gray-800 rounded-full text-gray-300">
-                 Systems that adapt
-               </span>
-               <span class="text-xs px-3 py-1 bg-gray-800 rounded-full text-gray-300">
-                 Trust network effects
-               </span>
-             </div>
-           </div>
-         </div>
-       </div>
-       
-       <!-- Explorer Info -->
-       <div>
-         <h3 class="text-lg font-medium mb-6">About This Tool</h3>
-         <p class="text-gray-600 leading-relaxed mb-6">
-           The Systems Explorer is designed to help you discover and apply quality 
-           principles to your specific challenges. Whether you're building a new 
-           venture or transforming an existing enterprise, explore how systems 
-           thinking can guide your approach.
-         </p>
-         
-         <div class="border border-gray-200 rounded-lg p-6 bg-gray-50">
-           <h4 class="text-sm font-medium text-gray-900 mb-3">Try These Questions:</h4>
-           <ul class="space-y-2 text-sm text-gray-600">
-             <li class="flex items-start">
-               <span class="text-gray-400 mr-2 mt-0.5">→</span>
-               <span>What patterns do century-old companies share?</span>
-             </li>
-             <li class="flex items-start">
-               <span class="text-gray-400 mr-2 mt-0.5">→</span>
-               <span>How does maintenance create more value than innovation?</span>
-             </li>
-             <li class="flex items-start">
-               <span class="text-gray-400 mr-2 mt-0.5">→</span>
-               <span>What makes trust networks compound over time?</span>
-             </li>
-             <li class="flex items-start">
-               <span class="text-gray-400 mr-2 mt-0.5">→</span>
-               <span>How do I balance quality with growth pressures?</span>
-             </li>
-           </ul>
-         </div>
-       </div>
-     </div>
-   </div>
- </section>
+ 
 
 <!-- Footer -->
 <footer class="bg-gray-900 text-white py-20 border-t border-gray-800">
@@ -696,19 +613,15 @@
     <div class="grid md:grid-cols-4 gap-12 mb-12">
       <div class="md:col-span-2">
         <h3 class="text-2xl font-light mb-6">INVRT</h3>
-        <p class="text-gray-400 italic mb-6 text-lg leading-relaxed">
-          "The greatest achievements take time. We plant seeds today 
-          for forests that future generations will enjoy."
-        </p>
       </div>
       
       <div>
         <h4 class="font-normal mb-6">Quick Links</h4>
         <ul class="space-y-3 text-gray-400">
-          <li><a href="philosophy.html" class="hover:text-white transition-colors">Philosophy</a></li>
-          <li><a href="advisory.html" class="hover:text-white transition-colors">Services</a></li>
-          <li><a href="insights.html" class="hover:text-white transition-colors">Insights</a></li>
-          <li><a href="#systems-explorer" class="hover:text-white transition-colors">Systems Explorer</a></li>
+          <li><a href="philosophy.html" class="hover:text-white transition-colors">Perspective</a></li>
+          <li><a href="advisory.html" class="hover:text-white transition-colors">Practice</a></li>
+          <li><a href="insights.html" class="hover:text-white transition-colors">Ideas</a></li>
+          
           <li><a href="clients.html" class="hover:text-white transition-colors">Clients</a></li>
         </ul>
       </div>
@@ -727,12 +640,12 @@
     </div>
     
     <div class="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
-      © 2025 INVRT Limited. All rights reserved.
+      © 2026 INVRT Limited. All rights reserved.
     </div>
   </div>
 </footer>
 
- <script src="https://app.teamai.com/chatbot-embed.js" defer></script>
+ 
  <script>
    // Mobile menu functionality
    const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -751,15 +664,15 @@
              </svg>
            </button>
            <div class="space-y-4">
-             <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Philosophy</a>
-             <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Services</a>
-             <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Insights</a>
-             <a href="#systems-explorer" class="block text-gray-900 hover:text-gray-600">Systems Explorer</a>
-             <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
-             <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 border border-gray-900 text-gray-900">
-               Contact
-             </a>
-           </div>
+            <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Ideas</a>
+            <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
+            <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Practice</a>
+            <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Perspective</a>
+            <a href="questions.html" class="block text-gray-900 hover:text-gray-600">Questions</a>
+            <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
+              Contact
+            </a>
+          </div>
          </div>
        `;
        document.body.appendChild(menu);
@@ -812,16 +725,7 @@
      observer.observe(el);
    });
    
-   // Smooth scroll to Systems Explorer when clicking navigation links
-   document.querySelectorAll('a[href="#systems-explorer"]').forEach(anchor => {
-     anchor.addEventListener('click', function (e) {
-       e.preventDefault();
-       document.querySelector('#systems-explorer').scrollIntoView({
-         behavior: 'smooth',
-         block: 'start'
-       });
-     });
-   });
+   
  </script>
 </body>
 </html>

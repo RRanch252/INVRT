@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>INVRT - Advisory Services</title>
-  <meta name="description" content="Strategic advisory services focused on compounding business value, equity value, and investor value for multi-generational success.">
+  <title>INVRT - Practice</title>
+  <meta name="description" content="Strategic advisory services focused on compounding business value, equity value, and investor value for multi generational success.">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -112,6 +112,15 @@
       border-color: #111827;
       transform: translateY(-4px);
     }
+  
+    /* consistency pass: subtle boxes, no heavy borders/shadows/lifts */
+    .service-card,.resource-card,.question-card,.approach-card,.client-card,.contact-card,.case-study-card{
+      background:#fafafa !important;border-color:transparent !important;box-shadow:none !important;border-radius:0 !important;
+    }
+    .service-card:hover,.resource-card:hover,.question-card:hover,.approach-card:hover,.client-card:hover,.contact-card:hover,.case-study-card:hover{
+      transform:none !important;box-shadow:none !important;border-color:transparent !important;
+    }
+    .question-card::before{display:none !important;}
   </style>
 </head>
 <body class="font-light text-gray-900 bg-white antialiased">
@@ -126,10 +135,11 @@
         </div>
         
         <div class="hidden md:flex items-center space-x-10">
-          <a href="philosophy.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Philosophy</a>
-          <a href="advisory.html" class="nav-link active text-sm text-gray-900">Services</a>
-          <a href="insights.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Insights</a>
+          <a href="insights.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Ideas</a>
           <a href="clients.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Clients</a>
+          <a href="advisory.html" class="nav-link active text-sm text-gray-900">Practice</a>
+          <a href="philosophy.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Perspective</a>
+          <a href="questions.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Questions</a>
           <a href="contact.html" class="text-sm px-5 py-2.5 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
             Contact
           </a>
@@ -148,7 +158,7 @@
   <section class="min-h-screen flex items-center pt-20 bg-white">
     <div class="max-w-5xl mx-auto px-6 lg:px-8">
       <div class="fade-in">
-        <p class="text-sm tracking-[0.2em] text-gray-500 mb-8 uppercase">Advisory Services</p>
+        <p class="text-sm tracking-[0.2em] text-gray-500 mb-8 uppercase">Practice</p>
         <h1 class="text-5xl md:text-7xl font-extralight leading-[1.1] mb-8">
           Designing Systems That<br/>
           <em class="font-serif font-normal not-italic">Compound Value</em> Over Time
@@ -157,13 +167,6 @@
           We guide clients through the entire value creation journey, ensuring each decision 
           strengthens rather than dilutes the quality of your business system.
         </p>
-      </div>
-      
-      <!-- Scroll indicator -->
-      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 fade-in">
-        <div class="w-6 h-10 border border-gray-400 rounded-full flex justify-center">
-          <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
-        </div>
       </div>
     </div>
   </section>
@@ -174,36 +177,27 @@
       <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-extralight mb-6">How We Work</h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Our approach combines strategic thinking with hands-on partnership, 
-          always focused on multi-generational value creation.
+          Our approach combines strategic thinking with hands on partnership, 
+          always focused on multi generational value creation.
         </p>
       </div>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="approach-card bg-white p-6 rounded-lg">
-          <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-            <span class="text-sm font-medium">01</span>
-          </div>
-          <h3 class="text-lg font-light mb-3">Long-Term Orientation</h3>
+          <h3 class="text-lg font-light mb-3">Long Term Orientation</h3>
           <p class="text-sm text-gray-600 leading-relaxed">
             We work with clients who measure success in decades, enabling sustainable value creation.
           </p>
         </div>
         
         <div class="approach-card bg-white p-6 rounded-lg">
-          <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-            <span class="text-sm font-medium">02</span>
-          </div>
-          <h3 class="text-lg font-light mb-3">Hands-On Partnership</h3>
+          <h3 class="text-lg font-light mb-3">Hands On Partnership</h3>
           <p class="text-sm text-gray-600 leading-relaxed">
             We roll up our sleeves and work alongside your teams to solve real challenges.
           </p>
         </div>
         
         <div class="approach-card bg-white p-6 rounded-lg">
-          <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-            <span class="text-sm font-medium">03</span>
-          </div>
           <h3 class="text-lg font-light mb-3">Global Perspective</h3>
           <p class="text-sm text-gray-600 leading-relaxed">
             Our network spans continents, providing insights beyond your immediate environment.
@@ -211,12 +205,9 @@
         </div>
         
         <div class="approach-card bg-white p-6 rounded-lg">
-          <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-            <span class="text-sm font-medium">04</span>
-          </div>
           <h3 class="text-lg font-light mb-3">Aligned Incentives</h3>
           <p class="text-sm text-gray-600 leading-relaxed">
-            Our success is tied to your long-term success - we win together or not at all.
+            Our success is tied to your long term success. We win together, or not at all.
           </p>
         </div>
       </div>
@@ -227,7 +218,7 @@
   <section class="py-32 bg-white">
     <div class="max-w-4xl mx-auto px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-extralight mb-6">Our Process</h2>
+        <h2 class="text-3xl md:text-4xl font-extralight mb-6">Process</h2>
         <p class="text-lg text-gray-600">
           A systematic approach to building enduring value
         </p>
@@ -287,7 +278,7 @@
   <section id="services" class="py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-extralight mb-6">Our Services</h2>
+        <h2 class="text-3xl md:text-4xl font-extralight mb-6">Practice</h2>
         <p class="text-lg text-gray-600 max-w-3xl mx-auto">
           Three core areas of focus, each designed to create compounding value across generations
         </p>
@@ -306,7 +297,7 @@
           <div class="p-8">
             <p class="text-lg text-gray-700 mb-8 leading-relaxed">
               We guide clients through the entire acquisition process, from target identification 
-              to post-merger integration, ensuring each transaction strengthens rather than dilutes 
+              to post merger integration, ensuring each transaction strengthens rather than dilutes 
               the quality of your business system.
             </p>
             
@@ -340,14 +331,14 @@
                 </h4>
                 <p class="text-sm text-gray-600 ml-5">
                   We design deal structures that align incentives across all stakeholders 
-                  for long-term value creation.
+                  for long term value creation.
                 </p>
               </div>
               
               <div class="service-detail">
                 <h4 class="font-medium text-gray-900 mb-3 flex items-center">
                   <span class="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
-                  Integration planning focused on long-term value
+                  Integration planning focused on long term value
                 </h4>
                 <p class="text-sm text-gray-600 ml-5">
                   We develop integration approaches that preserve the best of both cultures 
@@ -383,14 +374,14 @@
           <div class="bg-gray-900 text-white p-8">
             <h3 class="text-3xl font-extralight mb-4">Compounding Equity Value</h3>
             <p class="text-lg text-gray-300">
-              Portfolio optimization for multi-generational success
+              Portfolio optimization for multi generational success
             </p>
           </div>
           
           <div class="p-8">
             <p class="text-lg text-gray-700 mb-8 leading-relaxed">
               We work with holding companies to optimize their portfolio structure, governance, 
-              and value creation approach across diverse businesses with a focus on multi-generational success.
+              and value creation approach across diverse businesses with a focus on multi generational success.
             </p>
             
             <div class="grid md:grid-cols-2 gap-8">
@@ -422,8 +413,8 @@
                   Capital allocation strategy
                 </h4>
                 <p class="text-sm text-gray-600 ml-5">
-                  We develop frameworks for allocating capital that prioritize long-term 
-                  compounding over short-term returns.
+                  We develop frameworks for allocating capital that prioritize long term 
+                  compounding over short term returns.
                 </p>
               </div>
               
@@ -441,7 +432,7 @@
               <div class="service-detail md:col-span-2">
                 <h4 class="font-medium text-gray-900 mb-3 flex items-center">
                   <span class="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
-                  Long-term strategic roadmapping
+                  Long term strategic roadmapping
                 </h4>
                 <p class="text-sm text-gray-600 ml-5">
                   We create adaptive strategic frameworks that provide direction while 
@@ -466,14 +457,14 @@
           <div class="bg-gray-900 text-white p-8">
             <h3 class="text-3xl font-extralight mb-4">Compounding Investor Value</h3>
             <p class="text-lg text-gray-300">
-              Attracting partners who share your long-term vision
+              Attracting partners who share your long term vision
             </p>
           </div>
           
           <div class="p-8">
             <p class="text-lg text-gray-700 mb-8 leading-relaxed">
               We help clients navigate capital raising and market positioning with an emphasis 
-              on attracting the right partners who share your long-term vision and quality orientation.
+              on attracting the right partners who share your long term vision and quality orientation.
             </p>
             
             <div class="grid md:grid-cols-2 gap-8">
@@ -483,7 +474,7 @@
                   Capital structure optimization
                 </h4>
                 <p class="text-sm text-gray-600 ml-5">
-                  We design capital structures that provide flexibility for long-term value 
+                  We design capital structures that provide flexibility for long term value 
                   creation while protecting your ability to operate with a quality focus.
                 </p>
               </div>
@@ -526,49 +517,7 @@
     </div>
   </section>
 
-  <!-- Client Testimonials -->
-  <section class="py-32 bg-white">
-    <div class="max-w-6xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-extralight mb-6">Client Perspectives</h2>
-        <p class="text-lg text-gray-600">
-          What our clients say about working with INVRT
-        </p>
-      </div>
-      
-      <div class="grid md:grid-cols-2 gap-12">
-        <div class="bg-white border border-gray-200 p-8 rounded-lg">
-          <blockquote class="text-lg text-gray-700 mb-6 italic leading-relaxed">
-            "INVRT helped us see our family business as a system rather than a collection 
-            of separate units. The governance framework they designed has allowed us to 
-            maintain our culture while expanding globally."
-          </blockquote>
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
-            <div>
-              <p class="font-medium text-gray-900">Third-Generation Family Business Owner</p>
-              <p class="text-sm text-gray-600">Global Manufacturing</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-white border border-gray-200 p-8 rounded-lg">
-          <blockquote class="text-lg text-gray-700 mb-6 italic leading-relaxed">
-            "The most valuable insight INVRT brought was understanding the power of 
-            feedback loops between our portfolio companies. We've shifted from a financial 
-            holding model to a systems-based approach."
-          </blockquote>
-          <div class="flex items-center">
-            <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
-            <div>
-              <p class="font-medium text-gray-900">Private Holding Company CEO</p>
-              <p class="text-sm text-gray-600">Diversified Portfolio</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <!-- Call to Action -->
   <section class="py-32 bg-white">
@@ -600,18 +549,14 @@
     <div class="grid md:grid-cols-4 gap-12 mb-12">
       <div class="md:col-span-2">
         <h3 class="text-2xl font-light mb-6">INVRT</h3>
-        <p class="text-gray-400 italic mb-6 text-lg leading-relaxed">
-          "The greatest achievements take time. We plant seeds today 
-          for forests that future generations will enjoy."
-        </p>
       </div>
       
       <div>
         <h4 class="font-normal mb-6">Quick Links</h4>
         <ul class="space-y-3 text-gray-400">
-          <li><a href="philosophy.html" class="hover:text-white transition-colors">Philosophy</a></li>
-          <li><a href="advisory.html" class="hover:text-white transition-colors">Services</a></li>
-          <li><a href="insights.html" class="hover:text-white transition-colors">Insights</a></li>
+          <li><a href="philosophy.html" class="hover:text-white transition-colors">Perspective</a></li>
+          <li><a href="advisory.html" class="hover:text-white transition-colors">Practice</a></li>
+          <li><a href="insights.html" class="hover:text-white transition-colors">Ideas</a></li>
           <li><a href="clients.html" class="hover:text-white transition-colors">Clients</a></li>
         </ul>
       </div>
@@ -630,7 +575,7 @@
     </div>
     
     <div class="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
-      © 2025 INVRT Limited. All rights reserved.
+      © 2026 INVRT Limited. All rights reserved.
     </div>
   </div>
 </footer>
@@ -654,14 +599,15 @@ mobileMenuButton.addEventListener('click', () => {
           </svg>
         </button>
         <div class="space-y-4">
-          <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Philosophy</a>
-          <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Services</a>
-          <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Insights</a>
-          <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
-          <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
-            Contact
-          </a>
-        </div>
+            <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Ideas</a>
+            <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
+            <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Practice</a>
+            <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Perspective</a>
+            <a href="questions.html" class="block text-gray-900 hover:text-gray-600">Questions</a>
+            <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
+              Contact
+            </a>
+          </div>
       </div>
     `;
     document.body.appendChild(menu);

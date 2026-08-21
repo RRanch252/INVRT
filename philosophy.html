@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>INVRT - Our Philosophy</title>
+  <title>INVRT - Perspective</title>
   <meta name="description" content="Our philosophy centers on quality over scale, systems that adapt, the value of maintenance, and deserved trust networks.">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,6 +12,7 @@
   <style>
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow-x: hidden;
     }
     
     .font-serif {
@@ -21,6 +22,7 @@
     /* Smooth scrolling */
     html {
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
     
     /* Navigation animations */
@@ -47,7 +49,8 @@
     
     /* Pace Layers */
     .layer {
-      transform: translateX(-100%);
+      opacity: 0;
+      transform: translateY(16px);
       animation: slideIn 0.8s ease-out forwards;
     }
     
@@ -58,7 +61,7 @@
     .layer:nth-child(5) { animation-delay: 0.5s; }
     
     @keyframes slideIn {
-      to { transform: translateX(0); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
     /* Quote animations */
@@ -139,6 +142,15 @@
     .stagger-2 { animation-delay: 0.2s; }
     .stagger-3 { animation-delay: 0.3s; }
     .stagger-4 { animation-delay: 0.4s; }
+  
+    /* consistency pass: subtle boxes, no heavy borders/shadows/lifts */
+    .service-card,.resource-card,.question-card,.approach-card,.client-card,.contact-card,.case-study-card,.principle-card{
+      background:#fafafa !important;border-color:transparent !important;box-shadow:none !important;border-radius:0 !important;
+    }
+    .service-card:hover,.resource-card:hover,.question-card:hover,.approach-card:hover,.client-card:hover,.contact-card:hover,.case-study-card:hover,.principle-card:hover{
+      transform:none !important;box-shadow:none !important;border-color:transparent !important;
+    }
+    .question-card::before{display:none !important;}
   </style>
 </head>
 <body class="font-light text-gray-900 bg-white antialiased">
@@ -153,10 +165,11 @@
         </div>
         
         <div class="hidden md:flex items-center space-x-10">
-          <a href="philosophy.html" class="nav-link active text-sm text-gray-900">Philosophy</a>
-          <a href="advisory.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Services</a>
-          <a href="insights.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Insights</a>
+          <a href="insights.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Ideas</a>
           <a href="clients.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Clients</a>
+          <a href="advisory.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Practice</a>
+          <a href="philosophy.html" class="nav-link active text-sm text-gray-900">Perspective</a>
+          <a href="questions.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Questions</a>
           <a href="contact.html" class="text-sm px-5 py-2.5 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
             Contact
           </a>
@@ -175,22 +188,15 @@
   <section class="min-h-screen flex items-center pt-20 bg-white">
     <div class="max-w-5xl mx-auto px-6 lg:px-8">
       <div class="fade-in">
-        <p class="text-sm tracking-[0.2em] text-gray-500 mb-8 uppercase">Our Philosophy</p>
+        <p class="text-sm tracking-[0.2em] text-gray-500 mb-8 uppercase">Perspective</p>
         <h1 class="text-5xl md:text-7xl font-extralight leading-[1.1] mb-8">
           Building Businesses That<br/>
           <em class="font-serif font-normal not-italic">Improve With Time</em>
         </h1>
         <p class="text-xl md:text-2xl font-light text-gray-700 max-w-3xl mb-12 leading-relaxed">
           Our philosophy draws from the patterns of businesses that endure for decades and even centuries,
-          combined with insights from natural systems and quality-focused organizations.
+          combined with insights from natural systems and quality focused organizations.
         </p>
-      </div>
-      
-      <!-- Scroll indicator -->
-      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 fade-in">
-        <div class="w-6 h-10 border border-gray-400 rounded-full flex justify-center">
-          <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
-        </div>
       </div>
     </div>
   </section>
@@ -213,12 +219,12 @@
               <h3 class="text-2xl font-light mb-3">Quality Over Scale</h3>
               <p class="text-gray-600 leading-relaxed mb-4">
                 We've studied the patterns of businesses that endure. The common thread isn't rapid growth 
-                but thoughtful evolution—companies that prioritize quality of relationships, products, and 
+                but thoughtful evolution: companies that prioritize quality of relationships, products, and 
                 decisions over the quantity of transactions.
               </p>
               <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700">
                 "It's far better to buy a wonderful company at a fair price than a fair company at a wonderful price."
-                <cite class="block text-sm mt-2 not-italic">— Warren Buffett</cite>
+                <cite class="block text-sm mt-2 not-italic">Warren Buffett</cite>
               </blockquote>
             </div>
           </div>
@@ -234,13 +240,13 @@
               <h3 class="text-2xl font-light mb-3">Systems That Adapt</h3>
               <p class="text-gray-600 leading-relaxed mb-4">
                 Like natural systems that thrive through adaptation rather than rigid control, we help build 
-                businesses that balance structure with flow, stability with innovation, and short-term needs 
-                with long-term vision.
+                businesses that balance structure with flow, stability with innovation, and short term needs 
+                with long term vision.
               </p>
               <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700">
                 "The major problems in the world are the result of the difference between how nature works and 
                 the way people think."
-                <cite class="block text-sm mt-2 not-italic">— Gregory Bateson</cite>
+                <cite class="block text-sm mt-2 not-italic">Gregory Bateson</cite>
               </blockquote>
             </div>
           </div>
@@ -261,7 +267,7 @@
               </p>
               <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700">
                 "There is no design that can overcome the cumulative effect of neglect."
-                <cite class="block text-sm mt-2 not-italic">— Stewart Brand</cite>
+                <cite class="block text-sm mt-2 not-italic">Stewart Brand</cite>
               </blockquote>
             </div>
           </div>
@@ -276,12 +282,12 @@
             <div>
               <h3 class="text-2xl font-light mb-3">Deserved Trust Networks</h3>
               <p class="text-gray-600 leading-relaxed mb-4">
-                We focus on building webs of trust with all stakeholders—customers, employees, partners, 
+                We focus on building webs of trust with all stakeholders: customers, employees, partners, 
                 and communities. This trust becomes a durable competitive advantage that strengthens over time.
               </p>
               <blockquote class="border-l-4 border-gray-300 pl-4 italic text-gray-700">
                 "Remember that reputation and integrity are your most valuable assets—and can be lost in a heartbeat."
-                <cite class="block text-sm mt-2 not-italic">— Charlie Munger</cite>
+                <cite class="block text-sm mt-2 not-italic">Charlie Munger</cite>
               </blockquote>
             </div>
           </div>
@@ -325,7 +331,7 @@
                 <p class="text-xs text-gray-700 italic leading-relaxed">
                   "A business that makes nothing but money is a poor business."
                 </p>
-                <p class="text-xs text-gray-500 mt-1">— Henry Ford</p>
+                <p class="text-xs text-gray-500 mt-1">Henry Ford</p>
               </div>
             </div>
           </div>
@@ -369,7 +375,7 @@
                 <p class="text-xs text-gray-700 italic leading-relaxed">
                   "Be stubborn on vision, flexible on details."
                 </p>
-                <p class="text-xs text-gray-500 mt-1">— Jeff Bezos</p>
+                <p class="text-xs text-gray-500 mt-1">Jeff Bezos</p>
               </div>
             </div>
           </div>
@@ -432,7 +438,7 @@
       <div class="inline-block bg-gray-50 px-8 py-6 rounded-lg">
         <h3 class="text-xl font-light mb-3">The Paradox of Endurance</h3>
         <p class="text-gray-600 leading-relaxed">
-          Lasting businesses maintain rock-solid foundations while staying fluid at the edges. 
+          Lasting businesses maintain rock solid foundations while staying fluid at the edges. 
           The slower layers provide stability and identity; the faster layers provide adaptability and relevance. 
           Disruption happens when these layers fall out of sync.
         </p>
@@ -453,7 +459,7 @@
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="advisory.html" class="inline-block px-8 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
-          Explore Our Services
+          Explore Our Practice
         </a>
         <a href="https://invrt.substack.com/" target="_blank" class="inline-block px-8 py-4 border border-gray-900 text-gray-900 hover:bg-gray-50 transition-colors">
           Subscribe on Substack
@@ -471,18 +477,14 @@
     <div class="grid md:grid-cols-4 gap-12 mb-12">
       <div class="md:col-span-2">
         <h3 class="text-2xl font-light mb-6">INVRT</h3>
-        <p class="text-gray-400 italic mb-6 text-lg leading-relaxed">
-          "The greatest achievements take time. We plant seeds today 
-          for forests that future generations will enjoy."
-        </p>
       </div>
       
       <div>
         <h4 class="font-normal mb-6">Quick Links</h4>
         <ul class="space-y-3 text-gray-400">
-          <li><a href="philosophy.html" class="hover:text-white transition-colors">Philosophy</a></li>
-          <li><a href="advisory.html" class="hover:text-white transition-colors">Services</a></li>
-          <li><a href="insights.html" class="hover:text-white transition-colors">Insights</a></li>
+          <li><a href="philosophy.html" class="hover:text-white transition-colors">Perspective</a></li>
+          <li><a href="advisory.html" class="hover:text-white transition-colors">Practice</a></li>
+          <li><a href="insights.html" class="hover:text-white transition-colors">Ideas</a></li>
           <li><a href="clients.html" class="hover:text-white transition-colors">Clients</a></li>
         </ul>
       </div>
@@ -501,7 +503,7 @@
     </div>
     
     <div class="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
-      © 2025 INVRT Limited. All rights reserved.
+      © 2026 INVRT Limited. All rights reserved.
     </div>
   </div>
 </footer>
@@ -525,14 +527,15 @@ mobileMenuButton.addEventListener('click', () => {
           </svg>
         </button>
         <div class="space-y-4">
-          <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Philosophy</a>
-          <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Services</a>
-          <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Insights</a>
-          <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
-          <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
-            Contact
-          </a>
-        </div>
+            <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Ideas</a>
+            <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
+            <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Practice</a>
+            <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Perspective</a>
+            <a href="questions.html" class="block text-gray-900 hover:text-gray-600">Questions</a>
+            <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
+              Contact
+            </a>
+          </div>
       </div>
     `;
     document.body.appendChild(menu);

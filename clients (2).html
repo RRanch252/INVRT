@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INVRT - Clients</title>
+  <meta name="description" content="INVRT works with a small number of principals over long horizons. Who they are, when they engage us, and how the relationship is structured.">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .font-serif {
+      font-family: 'Crimson Text', serif;
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Navigation animations */
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -4px;
+      left: 0;
+      background-color: #111827;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Fade animations */
+    .fade-in {
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stagger-3 { animation-delay: 0.3s; }
+
+    /* Mobile menu */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+
+    /* Scroll reveal */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .scroll-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Label plus body rows */
+    .item-row { display: grid; grid-template-columns: minmax(0,1fr); gap: 0.5rem; }
+    @media (min-width: 768px) { .item-row { grid-template-columns: 220px 1fr; gap: 3rem; } }
+    .item-label { font-weight: 500; color: #111827; letter-spacing: 0.01em; }
+    .item-body { color: #4b5563; line-height: 1.75; }
+  
+    /* consistency pass: subtle boxes, no heavy borders/shadows/lifts */
+    .service-card,.resource-card,.question-card,.approach-card,.client-card,.contact-card,.case-study-card{
+      background:#fafafa !important;border-color:transparent !important;box-shadow:none !important;border-radius:0 !important;
+    }
+    .service-card:hover,.resource-card:hover,.question-card:hover,.approach-card:hover,.client-card:hover,.contact-card:hover,.case-study-card:hover{
+      transform:none !important;box-shadow:none !important;border-color:transparent !important;
+    }
+    .question-card::before{display:none !important;}
+  </style>
+</head>
+<body class="font-light text-gray-900 bg-white antialiased">
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed w-full bg-white bg-opacity-95 backdrop-blur-sm z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="text-lg font-light tracking-wide text-gray-900">
+          <a href="index.html" class="hover:text-gray-600 transition-colors">
+            INVRT
+          </a>
+        </div>
+
+        <div class="hidden md:flex items-center space-x-10">
+          <a href="insights.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Ideas</a>
+          <a href="clients.html" class="nav-link active text-sm text-gray-900">Clients</a>
+          <a href="advisory.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Practice</a>
+          <a href="philosophy.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Perspective</a>
+          <a href="questions.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Questions</a>
+          <a href="contact.html" class="text-sm px-5 py-2.5 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
+            Contact
+          </a>
+        </div>
+
+        <button id="mobile-menu-button" class="md:hidden">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center pt-20 bg-white">
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+      <div class="fade-in">
+        <p class="text-sm tracking-[0.2em] text-gray-500 mb-8 uppercase">Clients</p>
+        <h1 class="text-5xl md:text-7xl font-extralight leading-[1.1] mb-8">
+          A Small Number of Principals,<br/>
+          <em class="font-serif font-normal not-italic">Over Long Horizons</em>
+        </h1>
+        <p class="text-xl md:text-2xl font-light text-gray-700 max-w-3xl leading-relaxed">
+          A practice built around a few long relationships rather than many short ones.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Principals -->
+  <section class="py-24 border-t border-gray-200 bg-white scroll-reveal">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-extralight text-gray-900 mb-14">The principals we work with</h2>
+
+      <div class="space-y-10">
+        <div class="item-row">
+          <div class="item-label">Experienced founders</div>
+          <p class="item-body">Owner operators who have built a business of substance and are now thinking about what it should look like when they are no longer running it. The common thread is a founder who has stopped optimising for the next quarter.</p>
+        </div>
+        <div class="item-row">
+          <div class="item-label">Family offices</div>
+          <p class="item-body">Multi generational offices allocating direct capital alongside their managed exposures. They treat capital allocation as a system rather than a series of one off decisions.</p>
+        </div>
+        <div class="item-row">
+          <div class="item-label">Family owned businesses</div>
+          <p class="item-body">Established operating companies working through the intersection of family, ownership, and enterprise. Typically at a moment where legacy and evolution are in tension.</p>
+        </div>
+        <div class="item-row">
+          <div class="item-label">Private holding companies</div>
+          <p class="item-body">Owner operated holdcos with two or more operating businesses under one roof. Principals looking to turn a collection of businesses into a coherent system.</p>
+        </div>
+        <div class="item-row">
+          <div class="item-label">Boards and portfolio company CEOs</div>
+          <p class="item-body">Boards, sponsors, or founder investors who bring INVRT into a portfolio company to work alongside the CEO and senior team on strategy that ties back to what the shareholder base needs to see.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: When -->
+  <section class="py-24 border-t border-gray-200 bg-gray-50 scroll-reveal">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-extralight text-gray-900 mb-14">When principals engage us</h2>
+
+      <div class="space-y-10">
+        <div class="item-row">
+          <div class="item-label">A first of a kind decision</div>
+          <p class="item-body">A first acquisition, a first outside capital event, or a first transfer of ownership, where the principal has built the business by doing things they had done before and is now facing a decision they have not.</p>
+        </div>
+        <div class="item-row">
+          <div class="item-label">A business that has outgrown the way it is being run</div>
+          <p class="item-body">Decisions that used to sit naturally with the principal now sit awkwardly, and the organisation is producing information the principal cannot act on or acting on decisions the principal did not make.</p>
+        </div>
+        <div class="item-row">
+          <div class="item-label">A moment when capital or ownership is about to move</div>
+          <p class="item-body">A sale, a fundraise, an exit, a secondary or tertiary transaction, a change in the cap table, or a transfer between generations. Any point where ownership or a material amount of capital is about to change hands and the decision will shape the next twenty years.</p>
+        </div>
+        <div class="item-row">
+          <div class="item-label">A need for a standing thinking partner</div>
+          <p class="item-body">Not a project but a relationship, where the decisions that matter most are ones no one inside the business is positioned to challenge and the existing advisors are transactional rather than strategic.</p>
+        </div>
+        <div class="item-row">
+          <div class="item-label">A live transaction where the advisor web needs orchestrating</div>
+          <p class="item-body">The principal is the client. Every other advisor around the deal has a defined scope. The founder needs someone whose only job is the founder's interests across all of them, and who protects the core relationships the transaction depends on.</p>
+        </div>
+        <div class="item-row">
+          <div class="item-label">A portfolio company where strategy and shareholder priorities need to be reconnected</div>
+          <p class="item-body">A board level operating role inside a company backed by founders, sponsors, or investors, working with the CEO and senior team on product strategy and multi year go to market planning, holding the line back to the funding thesis and the next round.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: How -->
+  <section class="py-24 border-t border-gray-200 bg-white scroll-reveal">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-extralight text-gray-900 mb-14">How we engage</h2>
+
+      <div class="space-y-10">
+        <div class="item-row">
+          <div class="item-label">Horizon</div>
+          <p class="item-body">Engagements begin as three month or longer commitments and are built with the intent of continuing for years, because the value of the work compounds with accumulated context.</p>
+        </div>
+        <div class="item-row">
+          <div class="item-label">Cadence</div>
+          <p class="item-body">A standing monthly working session with the principal, supplemented by targeted work between sessions. Deliberately unhurried, because advisory value comes from depth rather than frequency of contact.</p>
+        </div>
+        <div class="item-row">
+          <div class="item-label">Fees</div>
+          <p class="item-body">Anchored to outcomes and the value created rather than hours billed or documents delivered, with the structure set at the outset and revisited annually.</p>
+        </div>
+        <div class="item-row">
+          <div class="item-label">Sequence</div>
+          <p class="item-body">In complex situations our role is often to insist on the right order rather than to optimise the visible step, particularly on transactions, transfers, and capital structure decisions where the order of operations changes the eventual outcome by orders of magnitude.</p>
+        </div>
+        <div class="item-row">
+          <div class="item-label">What we decline</div>
+          <p class="item-body">Engagements that are a single document, a single transaction with no context beyond it, or a role that displaces an existing trusted advisor rather than complementing them, and situations where the horizon does not match or the principal is not the person we would be working with.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: References -->
+  <section class="py-20 border-t border-gray-200 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <p class="font-serif text-2xl md:text-3xl italic leading-snug text-gray-700">
+        References are shared with qualified prospects after a first conversation.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="py-24 border-t border-gray-200 bg-white">
+    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+      <a href="contact.html" class="inline-block text-sm tracking-wide px-8 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
+        Request a conversation
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-20 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div class="md:col-span-2">
+          <h3 class="text-2xl font-light mb-6">INVRT</h3>
+        </div>
+
+        <div>
+          <h4 class="font-normal mb-6">Quick Links</h4>
+          <ul class="space-y-3 text-gray-400">
+            <li><a href="philosophy.html" class="hover:text-white transition-colors">Perspective</a></li>
+            <li><a href="advisory.html" class="hover:text-white transition-colors">Practice</a></li>
+            <li><a href="insights.html" class="hover:text-white transition-colors">Ideas</a></li>
+            <li><a href="clients.html" class="hover:text-white transition-colors">Clients</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-normal mb-6">Connect</h4>
+          <div class="space-y-3">
+            <a href="https://invrt.substack.com/" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-white transition-colors">
+              Subscribe to Substack
+            </a>
+            <a href="https://open.spotify.com/show/62autSn7DeWpMURIob0Ox3?si=d91a6c886dca4e2c" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-white transition-colors">
+              Subscribe to Podcast
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
+        © 2026 INVRT Limited. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu functionality
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+
+    mobileMenuButton.addEventListener('click', () => {
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (!mobileMenu) {
+        const menu = document.createElement('div');
+        menu.id = 'mobile-menu';
+        menu.className = 'mobile-menu fixed right-0 top-0 h-full w-64 bg-white shadow-lg md:hidden z-50';
+        menu.innerHTML = `
+          <div class="p-6">
+            <button id="close-menu" class="mb-8" aria-label="Close menu">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+            <div class="space-y-4">
+            <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Ideas</a>
+            <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
+            <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Practice</a>
+            <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Perspective</a>
+            <a href="questions.html" class="block text-gray-900 hover:text-gray-600">Questions</a>
+            <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
+              Contact
+            </a>
+          </div>
+          </div>
+        `;
+        document.body.appendChild(menu);
+
+        setTimeout(() => {
+          menu.classList.add('active');
+          const closeBtn = document.getElementById('close-menu');
+          closeBtn.addEventListener('click', () => {
+            menu.classList.remove('active');
+            setTimeout(() => menu.remove(), 300);
+          });
+        }, 10);
+      }
+    });
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('shadow-lg');
+      } else {
+        navbar.classList.remove('shadow-lg');
+      }
+    });
+
+    // Scroll reveal
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

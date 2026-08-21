@@ -103,6 +103,11 @@
      background-color: #111827;
      color: white;
    }
+
+   /* offset jump-links so headings clear the fixed nav + sticky filter bar */
+   #quality, #frameworks, #essays, #podcast, #tools {
+     scroll-margin-top: 150px;
+   }
    
    /* Podcast player */
    .podcast-card {
@@ -247,19 +252,19 @@
  <section class="py-8 bg-white border-t border-b border-gray-200 sticky top-20 z-40">
    <div class="max-w-6xl mx-auto px-6 lg:px-8">
      <div class="flex flex-wrap gap-3 justify-center">
-       <button class="category-pill active px-6 py-2 rounded-full text-sm border border-gray-300">
+       <button data-target="#quality" class="category-pill active px-6 py-2 rounded-full text-sm border border-gray-300">
          All Resources
        </button>
-       <button class="category-pill px-6 py-2 rounded-full text-sm border border-gray-300">
+       <button data-target="#frameworks" class="category-pill px-6 py-2 rounded-full text-sm border border-gray-300">
          Research & Frameworks
        </button>
-       <button class="category-pill px-6 py-2 rounded-full text-sm border border-gray-300">
+       <button data-target="#essays" class="category-pill px-6 py-2 rounded-full text-sm border border-gray-300">
          Articles & Essays
        </button>
-       <button class="category-pill px-6 py-2 rounded-full text-sm border border-gray-300">
+       <button data-target="#podcast" class="category-pill px-6 py-2 rounded-full text-sm border border-gray-300">
          Podcast Episodes
        </button>
-       <button class="category-pill px-6 py-2 rounded-full text-sm border border-gray-300">
+       <button data-target="#tools" class="category-pill px-6 py-2 rounded-full text-sm border border-gray-300">
          Tools & Templates
        </button>
      </div>
@@ -450,7 +455,7 @@
  <!-- Research & Frameworks -->
  <section class="py-16 bg-white">
    <div class="max-w-6xl mx-auto px-6 lg:px-8">
-     <h2 class="text-3xl font-extralight mb-12">Research & Frameworks</h2>
+     <h2 id="frameworks" class="text-3xl font-extralight mb-12">Research & Frameworks</h2>
      
      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
        <!-- Framework 1 -->
@@ -475,7 +480,7 @@
        <article class="resource-card bg-white rounded-lg overflow-hidden">
          <div class="p-8">
            <p class="text-xs tracking-widest text-gray-500 mb-4">TOOL</p>
-           <h3 class="text-xl font-light mb-3">The Endurance Patterns Matrix</h3>
+           <h3 id="tools" class="text-xl font-light mb-3">The Endurance Patterns Matrix</h3>
            <p class="text-gray-600 mb-6 leading-relaxed">
              An interactive spreadsheet tool for identifying and analyzing patterns 
              in companies built for multi generational success.
@@ -514,7 +519,7 @@
  <section class="py-16 bg-white">
    <div class="max-w-6xl mx-auto px-6 lg:px-8">
      <div class="text-center mb-12">
-       <h2 class="text-3xl font-extralight mb-4">Essays & Long-form Thinking</h2>
+       <h2 id="essays" class="text-3xl font-extralight mb-4">Essays & Long-form Thinking</h2>
        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
          Deep explorations of quality, systems thinking, and building for the long term
        </p>
@@ -694,6 +699,15 @@
      pill.addEventListener('click', function() {
        categoryPills.forEach(p => p.classList.remove('active'));
        this.classList.add('active');
+       const sel = this.getAttribute('data-target');
+       const el = sel && document.querySelector(sel);
+       if (el) {
+         const nav = document.getElementById('navbar');
+         const bar = this.closest('section');
+         const offset = (nav ? nav.offsetHeight : 80) + (bar ? bar.offsetHeight : 60) + 16;
+         const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
+         window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+       }
      });
    });
    

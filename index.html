@@ -142,7 +142,10 @@
     }
     /* Standalone links keep their look but carry a 44px tap area on touch screens */
     @media (pointer: coarse) {
-      p > .link:only-child, .after .link, .area-foot .link, .idea .link, .practice-item .link { padding-block: 0.65rem; margin-block: -0.65rem; background-position: 0 calc(100% - 0.65rem); }
+      p > .link:only-child, .after .link, .area-foot .link, .idea .link, .practice-item .link,
+      .body .link, .reading .link, .lead .link, .contact-aside .link, .contact-consent .link { padding-block: 0.65rem; margin-block: -0.65rem; background-position: 0 calc(100% - 0.65rem); }
+      .legal-link { padding-block: 0.85rem; margin-block: -0.85rem; }
+      .contact-consent label { min-height: 2.75rem; }
     }
     .link:active { opacity: 0.55; }
     @media (hover: hover) { .link:hover { background-size: 0% 1px; background-position: 100% 100%; } }
@@ -163,7 +166,7 @@
     }
     .nav.is-scrolled::after { opacity: 1; }
     .nav .wrap { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; }
-    .brand { font-size: 1.0625rem; font-weight: 400; letter-spacing: 0.14em; padding: 0.5rem 0; }
+    .brand { font-size: 1.0625rem; font-weight: 400; letter-spacing: 0.14em; padding: 0.8rem 0; }
     .nav-links { display: flex; align-items: center; gap: 2.25rem; }
     .nav-links a:not(.btn) {
       font-size: 0.875rem; font-weight: 400; letter-spacing: -0.003em; color: var(--ink-2);
@@ -362,6 +365,7 @@
     .profile-toggle::after { content: ''; display: inline-block; width: 0.45em; height: 0.45em; margin-left: 0.5em; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: translateY(-0.2em) rotate(45deg); transition: transform 260ms var(--ease-out); }
     .profile-toggle[aria-expanded="true"]::after { transform: translateY(0.05em) rotate(-135deg); }
     @media (max-width: 860px) { .profile-cols { column-count: 1; } }
+    @media (pointer: coarse) { .profile-toggle { padding-block: 0.8rem; margin-block: -0.8rem; background-position: 0 calc(100% - 0.65rem); } }
 
   </style>
 </head>

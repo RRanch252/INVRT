@@ -319,7 +319,7 @@
     @media (max-width: 600px) { .practice-item { grid-template-columns: 1fr; } }
 
     /* Founder */
-    .founder-name { margin-top: 0.5rem; }
+    .founder-role { margin-top: 0.5rem; }
     .reading + .reading { margin-top: 1.25em; }
     .sub { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--hairline); }
     .sub .h3 { margin-bottom: 1rem; }
@@ -366,6 +366,19 @@
     .profile-toggle[aria-expanded="true"]::after { transform: translateY(0.05em) rotate(-135deg); }
     @media (max-width: 860px) { .profile-cols { column-count: 1; } }
     @media (pointer: coarse) { .profile-toggle { padding-block: 0.8rem; margin-block: -0.8rem; background-position: 0 calc(100% - 0.65rem); } }
+
+    /* Subscribe: two channels on one quiet panel */
+    .channels { margin-top: clamp(3rem, 6vw, 5rem); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+    .channel { background: #f5f5f7; border-radius: 1.25rem; padding: clamp(1.75rem, 3vw, 2.75rem); display: flex; flex-direction: column; }
+    .channel .h3 { margin-top: 0.5rem; }
+    .channel .body { margin-top: 0.75rem; color: var(--ink-2); max-width: 30rem; }
+    .channel .field { margin-top: auto; padding-top: 2rem; max-width: none; }
+    .channel .field input { background: var(--paper); }
+    .channel-actions { margin-top: auto; padding-top: 2rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .btn-spotify { background: #1f7a4d; color: #fff; border-color: #1f7a4d; }
+    .btn-spotify:active { background: #19603d; }
+    @media (hover: hover) { .btn-spotify:hover { background: #19603d; } }
+    @media (max-width: 860px) { .channels { grid-template-columns: 1fr; } }
 
   </style>
 </head>
@@ -466,36 +479,6 @@
       </div>
     </section>
 
-    <!-- Perspective -->
-    <section id="philosophy" class="rule-top">
-      <div class="wrap rail">
-        <div class="rail-head">
-          <h2 class="h2">Perspective</h2>
-        </div>
-        <div>
-          <div class="principles">
-            <div>
-              <h3 class="h3">Quality Over Scale</h3>
-              <p class="body">We've studied the patterns of businesses that endure for decades and even centuries. The common thread isn't rapid growth but thoughtful evolution.</p>
-            </div>
-            <div>
-              <h3 class="h3">Systems That Adapt</h3>
-              <p class="body">Like natural systems that thrive through adaptation rather than rigid control, we help build businesses that balance structure with flow.</p>
-            </div>
-            <div>
-              <h3 class="h3">The Value of Maintenance</h3>
-              <p class="body">The greatest businesses are designed from the outset with regeneration in mind. They get better with age through intentional care and evolution.</p>
-            </div>
-            <div>
-              <h3 class="h3">Deserved Trust Networks</h3>
-              <p class="body">We focus on building webs of trust with all stakeholders. This trust becomes a durable competitive advantage that strengthens over time.</p>
-            </div>
-          </div>
-          <p class="after"><a href="philosophy.html" class="link">Explore Our Full Perspective</a></p>
-        </div>
-      </div>
-    </section>
-
     <!-- Practice -->
     <section id="services" class="rule-top">
       <div class="wrap rail">
@@ -533,29 +516,29 @@
     <section id="founder" class="rule-top">
       <div class="wrap rail">
         <div class="rail-head">
-          <h2 class="h2">Principal</h2>
-          <p class="h3 founder-name">Paul Higgins</p>
+          <h2 class="h2">Paul Higgins</h2>
+          <p class="meta founder-role">Principal</p>
         </div>
         <div>
-          <p class="reading">Paul has more than fifteen years of experience across private equity, corporate finance and M&amp;A, and has worked as an investor, a deal adviser, an adviser to CEOs and their operating teams, a board member and a builder of software products.</p>
+          <p class="reading">More than fifteen years across private equity, corporate finance and M&amp;A, working as an investor, a deal adviser, an adviser to CEOs and their operating teams, a board member and a builder of software products.</p>
           <p class="reading">Since 2020, through INVRT, he has advised on ten acquisitions across Ireland, continental Europe, North America and Latin America, ranging from €10M to more than $150M with a combined enterprise value above €300M. The work spans acquisitions, exits, succession and capital structure, in industries from healthcare, waste management and insurance broking to food and beverage, industrial manufacturing, consulting services and software. Alongside the transactions, he works directly with chief executives and operating executives, and with the general partners, limited partners and venture firms behind them, on the business itself: go to market, operating model, hiring and execution, unit economics and the path to exit. With family offices and family boards he advises across generations, on ownership, governance and the transition from operating company to holding company.</p>
           <div class="profile-more" id="profile-more" hidden>
             <div class="profile-cols">
               <p class="body">Before founding INVRT he worked at Waterland Private Equity, in Accenture's Global M&amp;A team across Europe, the UK and the US, where he advised the board on capital allocation, and in Ernst &amp; Young's Corporate Finance division in the UK and Ireland, where he completed more than ten cross border transactions, including take private acquisitions valued at several hundred million dollars. His formative experience was as an analyst at Wallace Capital Management, a value oriented investment firm in Dallas.</p>
               <p class="body">He has served on the boards of companies in healthcare and scientific testing. From 2021 to 2023 he advised Stripe on the 2023 edition of <em class="title">Poor Charlie's Almanack</em>, building the network of subject matter experts that carried Munger's principles beyond finance to founders and operators. He writes on capital allocation, maintenance and enduring enterprises, and is the creator and co host of The Art of Quality podcast.</p>
-              <p class="body">Paul holds a BA in Economics from University College Dublin, is a Chartered Accountant with Chartered Accountants Ireland, and completed the Executive Value Investing Programme at Columbia Business School.</p>
+              <p class="body">He holds a BA in Economics from University College Dublin, is a Chartered Accountant with Chartered Accountants Ireland, and completed the Executive Value Investing Programme at Columbia Business School.</p>
             </div>
           </div>
           <p class="profile-toggle-row"><button type="button" class="link profile-toggle" id="profile-toggle" aria-expanded="false" aria-controls="profile-more">Full profile</button></p>
           
           <div class="sub">
             <h3 class="h3">Recognition</h3>
-            <p class="body">Paul is a contributor to Eric Markowitz's <a class="link" href="https://www.outlastbook.com/" target="_blank" rel="noopener noreferrer"><em class="title">OUTLAST</em></a> (Scribner, 2027). His writing on enduring enterprises has been highlighted by Stewart Brand and featured in Big Think's <a class="link" href="https://www.outlastbook.com/nightcrawler" target="_blank" rel="noopener noreferrer">The Nightcrawler</a>, and he is acknowledged in <a class="link" href="https://benbellabooks.com/shop/the-contemplative-leader/" target="_blank" rel="noopener noreferrer"><em class="title">The Contemplative Leader</em></a> by Patrick Boland and <a class="link" href="https://endersen.com/the-compounders-element/" target="_blank" rel="noopener noreferrer"><em class="title">The Compounder's Element</em></a> by Laurence Endersen.</p>
+            <p class="body">He is a contributor to Eric Markowitz's <a class="link" href="https://www.outlastbook.com/" target="_blank" rel="noopener noreferrer"><em class="title">OUTLAST</em></a> (Scribner, 2027). His writing on enduring enterprises has been highlighted by Stewart Brand and featured in Big Think's <a class="link" href="https://www.outlastbook.com/nightcrawler" target="_blank" rel="noopener noreferrer">The Nightcrawler</a>, and he is acknowledged in <a class="link" href="https://benbellabooks.com/shop/the-contemplative-leader/" target="_blank" rel="noopener noreferrer"><em class="title">The Contemplative Leader</em></a> by Patrick Boland and <a class="link" href="https://endersen.com/the-compounders-element/" target="_blank" rel="noopener noreferrer"><em class="title">The Compounder's Element</em></a> by Laurence Endersen.</p>
           </div>
 
           <div class="sub">
             <h3 class="h3">Global Network</h3>
-            <p class="body">Through these partnerships, our clients gain access to:</p>
+            <p class="body">Communities he belongs to and learns from.</p>
             <div class="network">
               <a href="https://inpractise.com/" target="_blank" rel="noopener noreferrer"><strong>In Practise</strong><span class="body">Deep operator insights and case studies from exceptional businesses worldwide</span></a>
               <a href="https://www.theleading-edge.org/" target="_blank" rel="noopener noreferrer"><strong>The Leading Edge</strong><span class="body">A community of senior executives focused on personal and organizational transformation</span></a>
@@ -566,48 +549,36 @@
       </div>
     </section>
 
-    <!-- Ideas -->
-    <section id="insights" class="rule-top">
+    <!-- Stay close to the thinking -->
+    <section id="subscribe" class="rule-top">
       <div class="wrap">
         <div class="compounding-head">
-          <h2 class="h2">Ideas</h2>
-          <p class="lead">Frameworks and research from our work with founders and families building for generations.</p>
+          <h2 class="h2">Stay close to the thinking</h2>
+          <p class="lead">The research, essays and conversations behind the work, in two places.</p>
         </div>
-        <div class="ideas" style="margin-top: clamp(3rem, 6vw, 5rem);">
-          <article class="idea">
-            <p class="meta">Deck</p>
-            <h3 class="h3">Project Quality 3.0</h3>
-            <p class="body">Our comprehensive deck exploring how quality compounds over time in business systems.</p>
-            <a href="insights.html#quality" class="link">Download</a>
+        <div class="channels">
+          <article class="channel">
+            <p class="meta">Substack</p>
+            <h3 class="h3">INVRT on Substack</h3>
+            <p class="body">Essays on capital allocation, quality, maintenance and enduring enterprises, roughly monthly. Free to read.</p>
+            <form class="field" action="https://invrt.substack.com/subscribe" method="get">
+              <input type="email" name="email" placeholder="Your email" aria-label="Your email" autocomplete="email" required>
+              <button type="submit" class="btn btn-solid">Subscribe</button>
+            </form>
           </article>
-          <article class="idea">
-            <p class="meta">Analysis</p>
-            <h3 class="h3">Patterns of Endurance</h3>
-            <p class="body">What we learned from studying 50 companies that have thrived for over 100 years.</p>
-            <a href="insights.html#patterns" class="link">Read more</a>
-          </article>
-          <article class="idea">
+          <article class="channel">
             <p class="meta">Podcast</p>
             <h3 class="h3">The Art of Quality</h3>
-            <p class="body">Conversations exploring the patterns that lead to enduring excellence across disciplines.</p>
-            <a href="insights.html#podcast" class="link">Listen</a>
+            <p class="body">Conversations with the people behind businesses, crafts and institutions that have lasted, on what it takes to build something worthy of persisting.</p>
+            <p class="channel-actions">
+              <a href="https://open.spotify.com/show/62autSn7DeWpMURIob0Ox3?si=d91a6c886dca4e2c" target="_blank" rel="noopener noreferrer" class="btn btn-spotify">Listen on Spotify</a>
+              <a href="insights.html#podcast" class="link">All episodes</a>
+            </p>
           </article>
         </div>
-        <p class="after"><a href="insights.html" class="btn btn-line">View All Ideas</a></p>
       </div>
     </section>
 
-    <!-- Subscribe -->
-    <section id="subscribe" class="rule-top">
-      <div class="wrap subscribe">
-        <h2 class="h2">Stay close to the thinking</h2>
-        <p class="lead">Essays on capital allocation, quality, and enduring enterprises, roughly monthly.</p>
-        <form class="field" action="https://invrt.substack.com/subscribe" method="get">
-          <input type="email" name="email" placeholder="Your email" aria-label="Your email" autocomplete="email" required>
-          <button type="submit" class="btn btn-solid">Subscribe</button>
-        </form>
-      </div>
-    </section>
   </main>
 
   <footer>

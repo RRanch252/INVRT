@@ -167,13 +167,13 @@
     .nav-links { display: flex; align-items: center; gap: 2.25rem; }
     .nav-links a:not(.btn) {
       font-size: 0.875rem; font-weight: 400; letter-spacing: -0.003em; color: var(--ink-2);
-      padding: 0.5rem 0; transition: color 160ms ease;
+      padding: 0.95rem 0; transition: color 160ms ease;
     }
     .nav-links a:not(.btn):active { color: var(--ink); }
     @media (hover: hover) { .nav-links a:not(.btn):hover { color: var(--ink); } }
     .nav-links a[aria-current="page"]:not(.btn) { color: var(--ink); }
     .sheet a[aria-current="page"]:not(.btn) { color: var(--ink-3); }
-    .nav-links .btn { min-height: 2.25rem; padding: 0 1.05rem; font-size: 0.875rem; }
+    .nav-links .btn { min-height: 2.5rem; padding: 0 1.05rem; font-size: 0.875rem; }
 
     .menu-toggle {
       display: none; width: 2.75rem; height: 2.75rem; margin-right: -0.6rem;
@@ -244,7 +244,7 @@
     .foot { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 3fr) minmax(0, 3fr); gap: 2.5rem; }
     .foot h4 { font-size: var(--t-small); font-weight: 400; color: var(--ink); margin-bottom: 1rem; }
     .foot ul { list-style: none; margin: 0; padding: 0; }
-    .foot li a { display: inline-block; padding: 0.3rem 0; font-size: var(--t-small); color: var(--ink-3); transition: color 160ms ease; }
+    .foot li a { display: inline-block; padding: 0.75rem 0; margin: -0.45rem 0; font-size: var(--t-small); color: var(--ink-3); transition: color 160ms ease; }
     @media (hover: hover) { .foot li a:hover { color: var(--ink); } }
     .legal { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--hairline); }
     .legal-link { margin-left: 1rem; color: var(--ink); }
@@ -262,7 +262,7 @@
       *, *::before, *::after { transition-duration: 0.01ms !important; }
     }
     /* ============ Interior pages ============ */
-    .page-hero { padding-top: calc(var(--nav-h) + clamp(5rem, 12vw, 9rem)); padding-bottom: clamp(4rem, 8vw, 6rem); }
+    .page-hero { padding-top: calc(var(--nav-h) + clamp(3.5rem, 8vw, 6rem)); padding-bottom: clamp(3rem, 6vw, 4.5rem); }
     .page-hero .display { font-size: clamp(2.5rem, 1.5rem + 4.2vw, 4.75rem); max-width: 16ch; }
     .page-hero .lead { max-width: 36rem; margin-top: clamp(1.5rem, 3vw, 2.25rem); }
     .prose { max-width: var(--measure); }
@@ -378,7 +378,7 @@
       <div class="wrap feature">
         <div>
           <h2 class="h2">Project Quality 3.0</h2>
-          <p class="lead">How quality compounds over time in business systems.</p>
+          <p class="lead">How quality compounds over time in business systems. The questions behind the research are on the <a href="questions.html" class="link">Questions</a> page.</p>
           <ul class="feature-list">
             <li>150+ slides of insights and frameworks</li>
             <li>Case studies from 50+ century old companies</li>
@@ -395,42 +395,6 @@
       </div>
     </section>
 
-    <!-- Fundamental Questions -->
-    <section class="rule-top">
-      <div class="wrap">
-        <div class="section-head">
-          <h2 class="h2">Fundamental Questions</h2>
-          <p class="lead">Six of the questions that guide the research. The full list, and the map that joins them, is on the Questions page.</p>
-        </div>
-        <div class="ideas ideas-2">
-          <article class="idea">
-            <p class="meta">Systems &amp; adaptation</p>
-            <h3 class="h3">What patterns allow some businesses to improve with age while most degrade over time?</h3>
-          </article>
-          <article class="idea">
-            <p class="meta">Quality &amp; craft</p>
-            <h3 class="h3">Why do we struggle to perceive quality in its early stages, yet recognize it instantly in mature form?</h3>
-          </article>
-          <article class="idea">
-            <p class="meta">Time &amp; maintenance</p>
-            <h3 class="h3">How does the relationship between maintenance and growth shift as systems mature?</h3>
-          </article>
-          <article class="idea">
-            <p class="meta">Value creation</p>
-            <h3 class="h3">What makes trust networks compound in value while transactional relationships decay?</h3>
-          </article>
-          <article class="idea">
-            <p class="meta">Leadership &amp; culture</p>
-            <h3 class="h3">Why do founder led businesses dramatically outperform professionally managed ones over decades?</h3>
-          </article>
-          <article class="idea">
-            <p class="meta">Resilience &amp; risk</p>
-            <h3 class="h3">How do enduring enterprises balance redundancy with efficiency in their systems?</h3>
-          </article>
-        </div>
-        <p class="after"><a href="questions.html" class="link">All questions</a></p>
-      </div>
-    </section>
 
     <!-- Research & Frameworks -->
     <section id="patterns" class="rule-top">

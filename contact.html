@@ -16,10 +16,13 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&family=Crimson+Text:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+    /* ============ Fonts (self hosted, Latin subsets) ============ */
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap; src: url(fonts/inter-latin.woff2) format('woff2-variations'); }
+    @font-face { font-family: 'Crimson Text'; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/crimson-latin.woff2) format('woff2'); }
+    @font-face { font-family: 'Crimson Text'; font-style: italic; font-weight: 400; font-display: swap; src: url(fonts/crimson-latin-italic.woff2) format('woff2'); }
+
     /* ============ Tokens ============ */
     :root {
       --ink: #111827;          /* site accent, retained */
@@ -244,6 +247,7 @@
     .foot li a { display: inline-block; padding: 0.3rem 0; font-size: var(--t-small); color: var(--ink-3); transition: color 160ms ease; }
     @media (hover: hover) { .foot li a:hover { color: var(--ink); } }
     .legal { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--hairline); }
+    .legal-link { margin-left: 1rem; color: var(--ink); }
     @media (max-width: 600px) { .foot { grid-template-columns: 1fr 1fr; } .foot > :first-child { grid-column: 1 / -1; } }
 
     /* ============ Accessibility preferences ============ */
@@ -337,6 +341,10 @@
     .direct a:last-child { border-bottom: 1px solid var(--hairline); }
     .direct a:active { color: var(--ink-3); }
     @media (hover: hover) { .direct a:hover { color: var(--ink-3); } }
+    .contact-trap { position: absolute; left: -9999px; top: 0; height: 0; overflow: hidden; }
+    .contact-consent label { display: flex; align-items: flex-start; gap: 0.75rem; min-height: 2.75rem; padding: 0.5rem 0; color: var(--ink-2); font-size: 0.9375rem; cursor: pointer; }
+    .contact-consent input { margin-top: 0.3rem; width: 1rem; height: 1rem; flex: none; accent-color: var(--ink); }
+    .contact-submit .btn[disabled] { opacity: 0.55; cursor: default; }
 
   </style>
 </head>
@@ -381,7 +389,7 @@
         <div class="rail-head">
           <h2 class="h2">Tell Us About Your Vision</h2>
         </div>
-        <form class="contact">
+        <form class="contact" action="https://formspree.io/f/FORMSPREE_ID" method="POST" data-endpoint="https://formspree.io/f/FORMSPREE_ID">
           <div class="contact-pair">
             <div class="contact-field">
               <label for="first-name">First Name</label>
@@ -429,6 +437,11 @@
             <textarea id="message" name="message" rows="6" placeholder="Tell us about your business, your vision, and how you think we might work together..."></textarea>
           </div>
 
+          <div class="contact-field contact-consent">
+            <label><input type="checkbox" id="consent" name="consent" value="yes" required><span>I agree that INVRT may hold these details to respond to my enquiry, as described in the <a href="privacy.html" class="link">privacy notice</a>.</span></label>
+          </div>
+          <div class="contact-trap" aria-hidden="true"><label for="website">Leave this field empty</label><input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off"></div>
+          <input type="hidden" name="_subject" value="New enquiry from invrt.io">
           <div class="contact-submit">
             <button type="submit" class="btn btn-solid">Send Message</button>
             <p class="meta">We reply within two business days</p>
@@ -461,13 +474,13 @@
           </ul>
         </div>
       </div>
-      <p class="meta legal">© 2026 INVRT Limited. All rights reserved.</p>
+      <p class="meta legal">© 2026 INVRT Limited. All rights reserved. <a href="privacy.html" class="legal-link">Privacy</a></p>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+  <script src="js/gsap.min.js"></script>
+  <script src="js/ScrollTrigger.min.js"></script>
+  <script src="js/SplitText.min.js"></script>
   <script>
   (function () {
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -549,7 +562,8 @@
     var messages = {
       'first-name': 'Please enter your first name',
       'last-name': 'Please enter your last name',
-      'email': 'Please enter your email'
+      'email': 'Please enter your email',
+      'consent': 'Please tick the box so we can reply to you'
     };
     var badEmail = 'Please enter a valid email address';
     var fields = Array.prototype.slice.call(form.querySelectorAll('input[required], select[required], textarea[required]'));
@@ -598,9 +612,27 @@
         firstBad.focus();
         return;
       }
+      /* Send to the form service; the page stays put and reports the result in place */
+      var button = form.querySelector('button[type=submit]');
+      var endpoint = form.getAttribute('data-endpoint') || form.action;
+      button.disabled = true;
       status.classList.remove('is-error');
       status.hidden = false;
-      status.textContent = 'Thank you for your message. We\'ll be in touch within 2 business days.';
+      status.textContent = 'Sending\u2026';
+      var data = new FormData(form);
+      fetch(endpoint, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+        .then(function (r) { if (!r.ok) throw new Error('bad response'); return r.json(); })
+        .then(function () {
+          form.reset();
+          fields.forEach(function (input) { input.closest('.contact-field').classList.remove('is-invalid'); delete input.dataset.touched; });
+          status.textContent = 'Thank you for your message. We\'ll be in touch within 2 business days.';
+          button.disabled = false;
+        })
+        .catch(function () {
+          status.classList.add('is-error');
+          status.textContent = 'Your message could not be sent. Please try again, or email paul@invrt.co.';
+          button.disabled = false;
+        });
     });
   })();
 

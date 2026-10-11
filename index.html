@@ -2,626 +2,684 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>INVRT - Building Enduring Quality Through Strategic Advisory</title>
   <meta name="description" content="We partner with exceptional founders, family businesses, and growth companies to build enterprises designed to create value for generations.">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="INVRT">
+  <meta property="og:title" content="INVRT - Building Enduring Quality Through Strategic Advisory">
+  <meta property="og:description" content="We partner with exceptional founders, family businesses, and growth companies to build enterprises designed to create value for generations.">
+  <meta property="og:image" content="https://invrt.io/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&family=Crimson+Text:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
   <style>
+    /* ============ Tokens ============ */
+    :root {
+      --ink: #111827;          /* site accent, retained */
+      --ink-2: #4b5563;        /* body secondary */
+      --ink-3: #6b7280;        /* meta */
+      --hairline: #e5e7eb;
+      --hairline-strong: #d1d5db;
+      --paper: #ffffff;
+      --glass: rgba(255, 255, 255, 0.72);
+
+      --sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --serif: 'Crimson Text', Georgia, serif;
+
+      /* Type scale: tracking tightens as size grows, leading tightens as size grows */
+      --t-display: clamp(2.75rem, 1.6rem + 5.2vw, 5.75rem);
+      --t-h2: clamp(2rem, 1.5rem + 2.2vw, 3.25rem);
+      --t-h3: 1.375rem;
+      --t-lead: clamp(1.1875rem, 1.05rem + 0.5vw, 1.4375rem);
+      --t-body: 1.0625rem;
+      --t-small: 0.875rem;
+
+      --gutter: clamp(1.25rem, 4vw, 3rem);
+      --measure: 36rem;
+      --section: clamp(6rem, 4rem + 9vw, 11rem);
+      --nav-h: 4.25rem;
+
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ============ Base ============ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 300 var(--t-body)/1.6 var(--sans);
+      letter-spacing: -0.003em;
+      font-optical-sizing: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
-    
-    .font-serif {
-      font-family: 'Crimson Text', serif;
+    h1, h2, h3, h4, p { margin: 0; }
+    a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+    img, svg { display: block; }
+    em.title { font-family: var(--serif); font-style: italic; font-size: 1.08em; letter-spacing: 0; }
+
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+    .skip { position: absolute; left: -9999px; top: 0; }
+    .skip:focus { left: var(--gutter); top: 0.75rem; z-index: 100; background: var(--paper); padding: 0.5rem 0.75rem; }
+
+    .wrap { max-width: 75rem; margin: 0 auto; padding-inline: max(var(--gutter), env(safe-area-inset-left)); }
+
+    /* ============ Type roles ============ */
+    .display {
+      font-size: var(--t-display);
+      font-weight: 300;
+      line-height: 1.02;
+      letter-spacing: -0.038em;
     }
-    
-    /* Smooth scrolling */
-    html {
-      scroll-behavior: smooth;
+    .h2 {
+      font-size: var(--t-h2);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.028em;
     }
-    
-    /* Navigation animations */
-    .nav-link {
-      position: relative;
-      transition: color 0.3s ease;
+    .h3 {
+      font-size: var(--t-h3);
+      font-weight: 400;
+      line-height: 1.3;
+      letter-spacing: -0.014em;
     }
-    
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 1px;
-      bottom: -4px;
-      left: 0;
-      background-color: #111827;
-      transition: width 0.3s ease;
+    .lead {
+      font-size: var(--t-lead);
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: -0.011em;
+      color: var(--ink-2);
     }
-    
-    .nav-link:hover::after,
-    .nav-link.active::after {
-      width: 100%;
+    .body { color: var(--ink-2); }
+    .meta { font-size: var(--t-small); font-weight: 400; letter-spacing: 0.002em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+    .reading {
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 1.15rem + 0.35vw, 1.4375rem);
+      line-height: 1.62;
+      letter-spacing: 0;
+      color: #1f2937;
     }
-    
-    /* Fade in animation */
-    .fade-in {
-      animation: fadeIn 0.8s ease-out;
+
+    /* ============ Controls ============ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 2.875rem; padding: 0 1.5rem;
+      font: 400 0.9375rem/1 var(--sans); letter-spacing: -0.006em;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      transition: transform 120ms var(--ease-out), background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+      touch-action: manipulation;
+      cursor: pointer;
     }
-    
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .btn:active { transform: scale(0.97); transition-duration: 80ms; }
+    .btn-solid { background: var(--ink); color: #fff; }
+    .btn-line { background: transparent; color: var(--ink); border-color: var(--hairline-strong); }
+    @media (hover: hover) {
+      .btn-solid:hover { background: #1f2937; }
+      .btn-line:hover { border-color: var(--ink); }
     }
-    
-    /* Stagger animation */
-    .stagger-1 { animation-delay: 0.1s; }
-    .stagger-2 { animation-delay: 0.2s; }
-    .stagger-3 { animation-delay: 0.3s; }
-    
-    /* Button transitions */
-    .btn-primary {
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+
+    .link {
+      display: inline-block;
+      font-size: 0.9375rem; font-weight: 400; letter-spacing: -0.006em;
+      color: var(--ink);
+      background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+      padding-bottom: 2px;
+      transition: background-size 260ms var(--ease-out), opacity 160ms ease;
     }
-    
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.1);
-      transition: left 0.3s ease;
+    /* Standalone links keep their look but carry a 44px tap area on touch screens */
+    @media (pointer: coarse) {
+      p > .link:only-child, .after .link, .area-foot .link, .idea .link, .practice-item .link { padding-block: 0.65rem; margin-block: -0.65rem; background-position: 0 calc(100% - 0.65rem); }
     }
-    
-    .btn-primary:hover::before {
-      left: 100%;
+    .link:active { opacity: 0.55; }
+    @media (hover: hover) { .link:hover { background-size: 0% 1px; background-position: 100% 100%; } }
+
+    /* ============ Navigation (translucent material) ============ */
+    .nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      height: calc(var(--nav-h) + env(safe-area-inset-top));
+      padding-top: env(safe-area-inset-top);
+      background: var(--glass);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      backdrop-filter: saturate(180%) blur(20px);
     }
-    
-    /* Mobile menu */
-    .mobile-menu {
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
+    .nav::after { /* scroll edge: a soft fade where content passes beneath the material, no hard rule */
+      content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 1.5rem; pointer-events: none;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0));
+      opacity: 0; transition: opacity 320ms ease;
     }
-    
-    .mobile-menu.active {
-      transform: translateX(0);
+    .nav.is-scrolled::after { opacity: 1; }
+    .nav .wrap { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-size: 1.0625rem; font-weight: 400; letter-spacing: 0.14em; padding: 0.5rem 0; }
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; }
+    .nav-links a:not(.btn) {
+      font-size: 0.875rem; font-weight: 400; letter-spacing: -0.003em; color: var(--ink-2);
+      padding: 0.5rem 0; transition: color 160ms ease;
     }
-    
-    /* Exponential curve animation */
-    .curve-animate {
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-      animation: drawCurve 2s ease-out forwards;
+    .nav-links a:not(.btn):active { color: var(--ink); }
+    @media (hover: hover) { .nav-links a:not(.btn):hover { color: var(--ink); } }
+    .nav-links a[aria-current="page"]:not(.btn) { color: var(--ink); }
+    .sheet a[aria-current="page"]:not(.btn) { color: var(--ink-3); }
+    .nav-links .btn { min-height: 2.25rem; padding: 0 1.05rem; font-size: 0.875rem; }
+
+    .menu-toggle {
+      display: none; width: 2.75rem; height: 2.75rem; margin-right: -0.6rem;
+      border: 0; background: none; color: var(--ink); cursor: pointer; touch-action: manipulation;
+      align-items: center; justify-content: center;
     }
-    
-    @keyframes drawCurve {
-      to {
-        stroke-dashoffset: 0;
-      }
+    .menu-toggle span { position: relative; width: 18px; height: 1px; background: currentColor; transition: transform 260ms var(--ease-out), opacity 160ms ease; }
+    .menu-toggle span::before, .menu-toggle span::after { content: ''; position: absolute; left: 0; width: 18px; height: 1px; background: currentColor; transition: transform 260ms var(--ease-out); }
+    .menu-toggle span::before { transform: translateY(-5px); }
+    .menu-toggle span::after { transform: translateY(5px); }
+    .menu-open .menu-toggle span { background: transparent; }
+    .menu-open .menu-toggle span::before { transform: rotate(45deg); }
+    .menu-open .menu-toggle span::after { transform: rotate(-45deg); }
+
+    .sheet {
+      position: fixed; z-index: 49; left: 0; right: 0;
+      top: calc(var(--nav-h) + env(safe-area-inset-top));
+      padding: 0.5rem var(--gutter) 2rem;
+      background: rgba(255, 255, 255, 0.92);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      backdrop-filter: saturate(180%) blur(24px);
+      border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+      visibility: hidden; opacity: 0;
+      transform-origin: top right;
     }
-    
-    /* Card hover effects */
-    .service-card {
-      transition: all 0.3s ease;
+    .sheet a:not(.btn) {
+      display: block; padding: 0.85rem 0;
+      font-size: 1.625rem; font-weight: 300; letter-spacing: -0.02em; line-height: 1.2;
+      border-bottom: 1px solid var(--hairline);
     }
-    
-    .service-card:hover {
-      transform: translateY(-4px);
+    .sheet a:not(.btn):active { color: var(--ink-3); }
+    .sheet .btn { width: 100%; margin-top: 1.5rem; }
+    .scrim { position: fixed; inset: 0; z-index: 48; background: rgba(17, 24, 39, 0.12); visibility: hidden; opacity: 0; }
+
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: inline-flex; }
     }
-    
-    /* Scroll reveal */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
+
+    /* ============ Hero ============ */
+    .hero {
+      min-height: 100svh;
+      display: flex; align-items: flex-end;
+      padding-top: calc(var(--nav-h) + 4rem);
+      padding-bottom: clamp(4rem, 12vh, 8rem);
     }
-    
-    .scroll-reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .hero > .wrap { width: 100%; }
+    .hero .display { max-width: 13ch; }
+    .hero .lead { max-width: 34rem; margin-top: clamp(1.75rem, 3vw, 2.5rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }
+    .line-mask { overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+
+    /* ============ Sections ============ */
+    section { padding-block: var(--section); }
+    .rule-top { border-top: 1px solid var(--hairline); }
+
+    /* Rail layout: heading holds its place while the content scrolls */
+    .rail { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(2.5rem, 5vw, 6rem); }
+    .rail-head { position: sticky; top: calc(var(--nav-h) + 2.5rem); align-self: start; }
+    .rail-head .meta { margin-top: 1rem; max-width: 18rem; }
+    @media (max-width: 860px) {
+      .rail { grid-template-columns: 1fr; gap: 3rem; }
+      .rail-head { position: static; }
     }
+
+        /* Footer */
+    footer { border-top: 1px solid var(--hairline); padding: 4rem 0 calc(2.5rem + env(safe-area-inset-bottom)); }
+    .foot { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 3fr) minmax(0, 3fr); gap: 2.5rem; }
+    .foot h4 { font-size: var(--t-small); font-weight: 400; color: var(--ink); margin-bottom: 1rem; }
+    .foot ul { list-style: none; margin: 0; padding: 0; }
+    .foot li a { display: inline-block; padding: 0.3rem 0; font-size: var(--t-small); color: var(--ink-3); transition: color 160ms ease; }
+    @media (hover: hover) { .foot li a:hover { color: var(--ink); } }
+    .legal { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--hairline); }
+    @media (max-width: 600px) { .foot { grid-template-columns: 1fr 1fr; } .foot > :first-child { grid-column: 1 / -1; } }
+
+    /* ============ Accessibility preferences ============ */
+    @media (prefers-reduced-transparency: reduce) {
+      .nav, .sheet { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; }
+    }
+    @media (prefers-contrast: more) {
+      :root { --ink-2: #1f2937; --ink-3: #374151; --hairline: #9ca3af; }
+      .nav::after { opacity: 1; height: 1px; background: #6b7280; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+    /* ============ Interior pages ============ */
+    .page-hero { padding-top: calc(var(--nav-h) + clamp(5rem, 12vw, 9rem)); padding-bottom: clamp(4rem, 8vw, 6rem); }
+    .page-hero .display { font-size: clamp(2.5rem, 1.5rem + 4.2vw, 4.75rem); max-width: 16ch; }
+    .page-hero .lead { max-width: 36rem; margin-top: clamp(1.5rem, 3vw, 2.25rem); }
+    .prose { max-width: var(--measure); }
+    .prose p + p { margin-top: 1.1em; }
+    .stack > * + * { margin-top: 1rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem clamp(2rem, 4vw, 4rem); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 3.5rem); }
+    @media (max-width: 860px) { .grid-3 { grid-template-columns: 1fr; gap: 3rem; } }
+    @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .rows > * { padding: 1.75rem 0; border-top: 1px solid var(--hairline); }
+    .rows > *:last-child { border-bottom: 1px solid var(--hairline); }
+    .after { margin-top: 3.5rem; }
+    .section-head { max-width: 46rem; margin-bottom: clamp(3rem, 6vw, 4.5rem); }
+    .section-head .lead { margin-top: 1.25rem; }
+    .label-list { list-style: none; margin: 0; padding: 0; }
+    .label-list li { padding: 0.35rem 0; color: var(--ink-2); }
+    .label-list li strong { font-weight: 400; color: var(--ink); }
+    [data-split] > div { padding-bottom: 0.14em; margin-bottom: -0.14em; }
+    section[id], [id].h2, h2[id], h3[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 1.5rem); }
+
+    /* ============ Page ============ */
+/* Compounding: one figure grammar, three behaviours */
+    .compounding-head { max-width: 46rem; }
+    .compounding-head .lead { margin-top: 1.5rem; }
+    .multiples { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 4rem); margin-top: clamp(3rem, 5vw, 4.5rem); }
+    .multiple figure { margin: 0; }
+    .multiple svg { width: 100%; height: auto; overflow: visible; }
+    .multiple .axis { stroke: var(--ink); stroke-width: 1; opacity: 0.55; }
+    .multiple .axis-label { font: 400 12.5px var(--sans); fill: var(--ink-3); }
+    .multiple .end-label { font: 400 13px var(--sans); fill: var(--ink); letter-spacing: -0.005em; }
+    .multiple .curve { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+    .multiple .end { fill: var(--ink); }
+    .multiple .h3 { margin-top: 1.5rem; }
+    .multiple .body { margin-top: 0.75rem; max-width: 22rem; }
+    .figure-note { margin-top: 3rem; }
+    @media (max-width: 860px) { .multiples { grid-template-columns: 1fr; gap: 4rem; } }
+
+    /* Principles list */
+    .principles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3.5rem clamp(2rem, 4vw, 4rem); }
+    .principles .body { margin-top: 0.75rem; }
+    .after { margin-top: 3.5rem; }
+    @media (max-width: 600px) { .principles { grid-template-columns: 1fr; gap: 2.75rem; } }
+
+    /* Practice: unboxed columns separated by hairlines */
+    .practice { display: grid; grid-template-columns: 1fr; }
+    .practice-item { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 1rem 2.5rem; padding: 2.25rem 0; border-top: 1px solid var(--hairline); }
+    .practice-item:last-child { border-bottom: 1px solid var(--hairline); }
+    .practice-item ul { list-style: none; margin: 1.25rem 0 1.5rem; padding: 0; }
+    .practice-item li { font-size: 0.9375rem; color: var(--ink-3); padding: 0.2rem 0; }
+    .practice-item .body + .link { margin-top: 1rem; }
+    @media (max-width: 600px) { .practice-item { grid-template-columns: 1fr; } }
+
+    /* Founder */
+    .founder-name { margin-top: 0.5rem; }
+    .reading + .reading { margin-top: 1.25em; }
+    .sub { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--hairline); }
+    .sub .h3 { margin-bottom: 1rem; }
+    .reading a { background: linear-gradient(var(--hairline-strong), var(--hairline-strong)) 0 100% / 100% 1px no-repeat; transition: background-image 160ms ease; }
+    @media (hover: hover) { .reading a:hover { background-image: linear-gradient(var(--ink), var(--ink)); } }
+    .network { margin-top: 1.75rem; }
+    .network a { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 0.25rem 2rem; padding: 1.1rem 0; border-top: 1px solid var(--hairline); transition: opacity 160ms ease; }
+    .network a:last-child { border-bottom: 1px solid var(--hairline); }
+    .network a:active { opacity: 0.55; }
+    .network strong { font-weight: 400; letter-spacing: -0.01em; }
+    @media (max-width: 600px) { .network a { grid-template-columns: 1fr; } }
+
+    /* Ideas */
+    .ideas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 3.5rem); }
+    .idea { padding-top: 1.5rem; border-top: 1px solid var(--ink); }
+    .idea .h3 { margin-top: 0.75rem; }
+    .idea .body { margin-top: 0.75rem; margin-bottom: 1.25rem; }
+    @media (max-width: 860px) { .ideas { grid-template-columns: 1fr; gap: 3rem; } }
+
+    /* Subscribe */
+    .subscribe { text-align: left; }
+    .subscribe .lead { margin-top: 1.25rem; max-width: 32rem; }
+    .subscribe .meta { margin-top: 1.25rem; max-width: 32rem; line-height: 1.6; }
+    .field { display: flex; gap: 0.75rem; margin-top: 2.5rem; max-width: 30rem; }
+    .field input {
+      flex: 1; min-width: 0; min-height: 2.875rem; padding: 0 1.1rem;
+      font: 300 1rem/1 var(--sans); color: var(--ink);
+      border: 1px solid var(--hairline-strong); border-radius: 999px; background: #fff;
+      transition: border-color 160ms ease;
+    }
+    .field input::placeholder { color: #9ca3af; }
+    .field input:focus { outline: none; border-color: var(--ink); }
+    @media (max-width: 480px) { .field { flex-direction: column; } .field .btn { width: 100%; } }
+
+
   </style>
 </head>
-<body class="font-light text-gray-900 bg-white antialiased">
-  <!-- Navigation -->
-  <nav id="navbar" class="fixed w-full bg-white bg-opacity-95 backdrop-blur-sm z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
-        <div class="text-lg font-light tracking-wide text-gray-900">
-          <a href="index.html" class="hover:text-gray-600 transition-colors">
-            INVRT
-          </a>
-        </div>
-        
-        <div class="hidden md:flex items-center space-x-10">
-          <a href="insights.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Ideas</a>
-          <a href="clients.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Clients</a>
-          <a href="advisory.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Practice</a>
-          <a href="philosophy.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Perspective</a>
-          <a href="questions.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Questions</a>
-          <a href="contact.html" class="text-sm px-5 py-2.5 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
-            Contact
-          </a>
-        </div>
-        
-        <button id="mobile-menu-button" class="md:hidden">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a href="index.html" class="brand" aria-label="INVRT home">INVRT</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="insights.html">Ideas</a>
+        <a href="clients.html">Clients</a>
+        <a href="advisory.html">Practice</a>
+        <a href="philosophy.html">Perspective</a>
+        <a href="questions.html">Questions</a>
+        <a href="contact.html" class="btn btn-solid">Contact</a>
+      </nav>
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span></button>
     </div>
+  </header>
+  <div class="scrim" id="scrim"></div>
+  <nav class="sheet" id="sheet" aria-label="Mobile">
+    <a href="insights.html">Ideas</a>
+    <a href="clients.html">Clients</a>
+    <a href="advisory.html">Practice</a>
+    <a href="philosophy.html">Perspective</a>
+    <a href="questions.html">Questions</a>
+    <a href="contact.html" class="btn btn-solid">Contact</a>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="min-h-screen flex items-center pt-20 bg-white">
-    <div class="max-w-5xl mx-auto px-6 lg:px-8">
-      <div class="fade-in">
-        <p class="text-sm tracking-[0.2em] text-gray-500 mb-8 uppercase">Strategic Advisory</p>
-        <h1 class="text-5xl md:text-7xl font-extralight leading-[1.1] mb-8">
-          Building Enduring Quality<br/>
-          Into <em class="font-serif font-normal not-italic">Systems </em>
-        </h1>
-        <p class="text-xl md:text-2xl font-light text-gray-700 max-w-3xl mb-12 leading-relaxed">
-          We partner with exceptional founders, family businesses, and growth companies 
-          to build enterprises designed to create value for generations.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#value" class="btn-primary inline-block text-center text-sm tracking-wide px-8 py-4 bg-gray-900 text-white hover:bg-gray-800">
-            Explore Our Approach
-          </a>
-          <a href="#services" class="inline-block text-center text-sm tracking-wide px-8 py-4 border border-gray-900 text-gray-900 hover:bg-gray-50 transition-colors">
-            Our Practice
-          </a>
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap">
+        <h1 class="display" id="hero-title" data-split>Building Enduring Quality Into Systems</h1>
+        <p class="lead" id="hero-lead" data-follow>We partner with founders, family businesses, and growth companies to build enterprises designed to create value for generations.</p>
+        <div class="hero-actions" id="hero-actions" data-follow>
+          <a href="#value" class="btn btn-solid">Our approach</a>
+          <a href="#services" class="btn btn-line">Our practice</a>
         </div>
       </div>
-      
-    </div>
-  </section>
+    </section>
 
-  <!-- The Value of Compounding -->
-  <section id="value" class="py-32 bg-white scroll-reveal">
-    <div class="max-w-5xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-20">
-        <h2 class="text-4xl md:text-5xl font-extralight mb-6">The Value of Compounding</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          We bring a systems thinking approach to every engagement, drawing on principles from 
-          natural design, multi generational family businesses, and quality focused organizations.
-        </p>
-      </div>
-      
-      <div class="grid md:grid-cols-3 gap-10 md:gap-12">
-        <!-- Capital Compounding -->
-        <div class="text-center scroll-reveal stagger-1">
-          <div class="mb-10 h-16 flex items-center justify-center">
-            <svg width="150" height="60" viewBox="0 0 150 60" class="overflow-visible">
-              <path class="curve-animate" d="M8 52 C50 51 84 42 142 8" fill="none" stroke="#111827" stroke-width="1.25"/>
-              <circle cx="142" cy="8" r="2.4" fill="#111827"/>
-            </svg>
-          </div>
-          <h3 class="text-2xl font-light mb-4">Capital Compounding</h3>
-          <p class="text-gray-600 leading-relaxed">
-            Quality businesses generate superior returns through durable competitive 
-            advantages that strengthen with age, pricing power that improves with 
-            reputation, and efficient capital allocation.
-          </p>
+    <!-- The Value of Compounding -->
+    <section id="value" class="rule-top">
+      <div class="wrap">
+        <div class="compounding-head">
+          <h2 class="h2">The Value of Compounding</h2>
+          <p class="lead">We bring a systems thinking approach to every engagement, drawing on principles from natural design, multi generational family businesses, and quality focused organizations.</p>
         </div>
-        
-        <!-- Relationship Compounding -->
-        <div class="text-center scroll-reveal stagger-2">
-          <div class="mb-10 h-16 flex items-center justify-center">
-            <svg width="150" height="60" viewBox="0 0 150 60">
-              <g stroke="#111827" stroke-width="1" opacity="0.45" fill="none">
-                <path d="M22 42 48 22 62 46 22 42M62 46 92 26 108 44 62 46M92 26 134 16M108 44 134 16"/>
-              </g>
-              <g fill="#111827">
-                <circle cx="22" cy="42" r="2.2"/><circle cx="48" cy="22" r="2.2"/><circle cx="62" cy="46" r="2.2"/><circle cx="92" cy="26" r="2.2"/><circle cx="108" cy="44" r="2.2"/><circle cx="134" cy="16" r="2.6"/>
-              </g>
-            </svg>
-          </div>
-          <h3 class="text-2xl font-light mb-4">Relationship Compounding</h3>
-          <p class="text-gray-600 leading-relaxed">
-            The most valuable relationships compound through deepening trust, 
-            expanded opportunity access through network effects, and resilience 
-            during market disruptions.
-          </p>
-        </div>
-        
-        <!-- Systems Value Creation -->
-        <div class="text-center scroll-reveal stagger-3">
-          <div class="mb-10 h-16 flex items-center justify-center">
-            <svg width="150" height="60" viewBox="0 0 150 60">
-              <path d="M75 30 C58 13 26 13 26 30 C26 47 58 47 75 30 C92 13 124 13 124 30 C124 47 92 47 75 30 Z" fill="none" stroke="#111827" stroke-width="1.25"/>
-              <circle cx="75" cy="30" r="2.4" fill="#111827"/>
-              <circle cx="26" cy="30" r="2" fill="#9ca3af"/><circle cx="124" cy="30" r="2" fill="#9ca3af"/>
-            </svg>
-          </div>
-          <h3 class="text-2xl font-light mb-4">Systems Value Creation</h3>
-          <p class="text-gray-600 leading-relaxed">
-            Systems oriented businesses create accelerating value through reinforcing 
-            feedback loops, network effects that increase with scale and time, and 
-            adaptability that converts challenges into growth opportunities.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Philosophy Preview -->
-  <section id="philosophy" class="py-32 bg-white scroll-reveal">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-extralight">Perspective</h2>
+        <div class="multiples" id="multiples">
+          <div class="multiple" data-draw-trigger>
+            <figure>
+              <svg viewBox="0 0 400 158" role="img" aria-label="Value rising slowly at first, then steepening over time">
+                <line class="axis" x1="8" y1="132" x2="272" y2="132"/>
+                <text class="axis-label" x="8" y="151">Early</text>
+                <text class="axis-label" x="272" y="151" text-anchor="end">Mature</text>
+                <path class="curve" data-draw d="M8.0 132.0 L12.4 131.7 L16.8 131.3 L21.2 130.9 L25.6 130.6 L30.0 130.2 L34.4 129.7 L38.8 129.3 L43.2 128.8 L47.6 128.3 L52.0 127.8 L56.4 127.2 L60.8 126.7 L65.2 126.1 L69.6 125.4 L74.0 124.7 L78.4 124.0 L82.8 123.3 L87.2 122.5 L91.6 121.7 L96.0 120.8 L100.4 119.9 L104.8 119.0 L109.2 118.0 L113.6 116.9 L118.0 115.8 L122.4 114.7 L126.8 113.4 L131.2 112.2 L135.6 110.8 L140.0 109.4 L144.4 107.9 L148.8 106.3 L153.2 104.7 L157.6 102.9 L162.0 101.1 L166.4 99.2 L170.8 97.2 L175.2 95.1 L179.6 92.8 L184.0 90.5 L188.4 88.0 L192.8 85.4 L197.2 82.7 L201.6 79.9 L206.0 76.9 L210.4 73.7 L214.8 70.4 L219.2 66.9 L223.6 63.2 L228.0 59.3 L232.4 55.3 L236.8 51.0 L241.2 46.5 L245.6 41.8 L250.0 36.9 L254.4 31.7 L258.8 26.2 L263.2 20.4 L267.6 14.4 L272.0 8.0"/>
+                <circle class="end" cx="272" cy="8" r="2.5"/>
+                <text class="end-label" x="281" y="11.5">Steady accrual</text>
+              </svg>
+            </figure>
+            <h3 class="h3">Capital Compounding</h3>
+            <p class="body">Quality businesses generate superior returns through durable competitive advantages that strengthen with age, pricing power that improves with reputation, and efficient capital allocation.</p>
+          </div>
+
+          <div class="multiple" data-draw-trigger>
+            <figure>
+              <svg viewBox="0 0 400 158" role="img" aria-label="Value rising in steps, each step larger than the last">
+                <line class="axis" x1="8" y1="132" x2="272" y2="132"/>
+                <text class="axis-label" x="8" y="151">Early</text>
+                <text class="axis-label" x="272" y="151" text-anchor="end">Mature</text>
+                <path class="curve" data-draw d="M8.0 129.5 L30.0 129.5 L32.2 129.4 L34.4 129.4 L36.6 129.2 L38.8 128.8 L41.0 128.2 L43.2 127.3 L45.4 126.2 L47.6 125.1 L49.8 124.3 L52.0 123.8 L54.2 123.6 L56.4 123.4 L58.6 123.4 L60.8 123.3 L76.2 123.3 L78.4 123.2 L80.6 123.2 L82.8 123.0 L85.0 122.6 L87.2 121.9 L89.4 120.7 L91.6 119.1 L93.8 117.3 L96.0 115.7 L98.2 114.6 L100.4 114.0 L102.6 113.7 L104.8 113.5 L107.0 113.5 L109.2 113.4 L122.4 113.4 L124.6 113.3 L126.8 113.2 L129.0 113.1 L131.2 112.7 L133.4 112.0 L135.6 110.7 L137.8 108.6 L140.0 106.0 L142.2 103.3 L144.4 101.2 L146.6 99.9 L148.8 99.2 L151.0 98.9 L153.2 98.7 L155.4 98.6 L157.6 98.6 L159.8 98.5 L164.2 98.5 L166.4 98.4 L168.6 98.3 L170.8 98.1 L173.0 97.7 L175.2 96.8 L177.4 95.1 L179.6 92.4 L181.8 88.8 L184.0 84.9 L186.2 81.8 L188.4 79.7 L190.6 78.6 L192.8 78.0 L195.0 77.7 L197.2 77.6 L199.4 77.5 L201.6 77.4 L203.8 77.3 L206.0 77.1 L208.2 76.8 L210.4 76.0 L212.6 74.6 L214.8 72.0 L217.0 67.9 L219.2 62.6 L221.4 57.2 L223.6 53.1 L225.8 50.5 L228.0 49.1 L230.2 48.3 L232.4 47.9 L234.6 47.7 L236.8 47.4 L239.0 47.0 L241.2 46.3 L243.4 44.8 L245.6 42.1 L247.8 37.4 L250.0 30.8 L252.2 23.5 L254.4 17.2 L256.6 12.9 L258.8 10.5 L261.0 9.2 L263.2 8.6 L265.4 8.3 L267.6 8.1 L272.0 8.0"/>
+                <circle class="end" cx="272" cy="8" r="2.5"/>
+                <text class="end-label" x="281" y="11.5">Trust in steps</text>
+              </svg>
+            </figure>
+            <h3 class="h3">Relationship Compounding</h3>
+            <p class="body">The most valuable relationships compound through deepening trust, expanded opportunity access through network effects, and resilience during market disruptions.</p>
+          </div>
+
+          <div class="multiple" data-draw-trigger>
+            <figure>
+              <svg viewBox="0 0 400 158" role="img" aria-label="Value rising with two setbacks, each followed by a steeper recovery">
+                <line class="axis" x1="8" y1="132" x2="272" y2="132"/>
+                <text class="axis-label" x="8" y="151">Early</text>
+                <text class="axis-label" x="272" y="151" text-anchor="end">Mature</text>
+                <path class="curve" data-draw d="M8.0 132.0 L11.8 131.6 L15.5 131.2 L19.3 130.8 L23.1 130.4 L26.9 130.0 L30.6 129.6 L34.4 129.1 L38.2 128.6 L41.9 128.2 L45.7 127.6 L49.5 127.1 L53.3 126.6 L57.0 126.0 L60.8 125.4 L64.6 124.8 L68.3 124.2 L72.1 123.6 L75.9 122.9 L79.7 122.2 L83.4 121.6 L87.2 121.0 L91.0 120.7 L94.7 120.8 L98.5 121.4 L102.3 122.1 L106.1 122.3 L109.8 121.1 L113.6 118.7 L117.4 115.3 L121.1 111.8 L124.9 108.8 L128.7 106.3 L132.5 104.4 L136.2 102.8 L140.0 101.4 L143.8 100.0 L147.5 98.7 L151.3 97.3 L155.1 95.9 L158.9 94.5 L162.6 93.1 L166.4 91.6 L170.2 90.2 L173.9 89.1 L177.7 88.6 L181.5 88.8 L185.3 89.5 L189.0 89.8 L192.8 88.4 L196.6 84.9 L200.3 79.5 L204.1 73.5 L207.9 67.9 L211.7 63.2 L215.4 59.3 L219.2 56.1 L223.0 53.1 L226.7 50.3 L230.5 47.5 L234.3 44.6 L238.1 41.7 L241.8 38.6 L245.6 35.5 L249.4 32.3 L253.1 29.0 L256.9 25.5 L260.7 21.9 L264.5 18.3 L268.2 14.4 L272.0 10.5"/>
+                <circle class="end" cx="272" cy="10.5" r="2.5"/>
+                <text class="end-label" x="281" y="14.0">Setbacks absorbed</text>
+              </svg>
+            </figure>
+            <h3 class="h3">Systems Value Creation</h3>
+            <p class="body">Systems oriented businesses create accelerating value through reinforcing feedback loops, network effects that increase with scale and time, and adaptability that converts challenges into growth opportunities.</p>
+          </div>
+        </div>
+        <p class="meta figure-note">Curves are illustrative shapes, not data.</p>
       </div>
-      
-      <div class="grid md:grid-cols-2 gap-12 mt-20">
-        <div class="scroll-reveal">
-          <div class="flex items-start mb-4">
+    </section>
+
+    <!-- Perspective -->
+    <section id="philosophy" class="rule-top">
+      <div class="wrap rail">
+        <div class="rail-head">
+          <h2 class="h2">Perspective</h2>
+        </div>
+        <div>
+          <div class="principles">
             <div>
-              <h3 class="text-2xl font-light mb-3">Quality Over Scale</h3>
-              <p class="text-gray-600 leading-relaxed">
-                We've studied the patterns of businesses that endure for decades and even centuries. 
-                The common thread isn't rapid growth but thoughtful evolution.
-              </p>
+              <h3 class="h3">Quality Over Scale</h3>
+              <p class="body">We've studied the patterns of businesses that endure for decades and even centuries. The common thread isn't rapid growth but thoughtful evolution.</p>
+            </div>
+            <div>
+              <h3 class="h3">Systems That Adapt</h3>
+              <p class="body">Like natural systems that thrive through adaptation rather than rigid control, we help build businesses that balance structure with flow.</p>
+            </div>
+            <div>
+              <h3 class="h3">The Value of Maintenance</h3>
+              <p class="body">The greatest businesses are designed from the outset with regeneration in mind. They get better with age through intentional care and evolution.</p>
+            </div>
+            <div>
+              <h3 class="h3">Deserved Trust Networks</h3>
+              <p class="body">We focus on building webs of trust with all stakeholders. This trust becomes a durable competitive advantage that strengthens over time.</p>
             </div>
           </div>
+          <p class="after"><a href="philosophy.html" class="link">Explore Our Full Perspective</a></p>
         </div>
-        
-        <div class="scroll-reveal">
-          <div class="flex items-start mb-4">
+      </div>
+    </section>
+
+    <!-- Practice -->
+    <section id="services" class="rule-top">
+      <div class="wrap rail">
+        <div class="rail-head">
+          <h2 class="h2">Practice</h2>
+          <p class="meta">Three areas of compounding value creation.</p>
+        </div>
+        <div class="practice">
+          <div class="practice-item">
+            <h3 class="h3">Compounding Business Value</h3>
             <div>
-              <h3 class="text-2xl font-light mb-3">Systems That Adapt</h3>
-              <p class="text-gray-600 leading-relaxed">
-                Like natural systems that thrive through adaptation rather than rigid control, 
-                we help build businesses that balance structure with flow.
-              </p>
+              <p class="body">Strategic acquisitions that strengthen the system rather than dilute it.</p>
+              <a href="advisory.html#business" class="link">Learn more</a>
             </div>
           </div>
-        </div>
-        
-        <div class="scroll-reveal">
-          <div class="flex items-start mb-4">
+          <div class="practice-item">
+            <h3 class="h3">Compounding Equity Value</h3>
             <div>
-              <h3 class="text-2xl font-light mb-3">The Value of Maintenance</h3>
-              <p class="text-gray-600 leading-relaxed">
-                The greatest businesses are designed from the outset with regeneration in mind. 
-                They get better with age through intentional care and evolution.
-              </p>
+              <p class="body">Portfolio design and governance for multi generational success.</p>
+              <a href="advisory.html#equity" class="link">Learn more</a>
             </div>
           </div>
-        </div>
-        
-        <div class="scroll-reveal">
-          <div class="flex items-start mb-4">
+          <div class="practice-item">
+            <h3 class="h3">Compounding Investor Value</h3>
             <div>
-              <h3 class="text-2xl font-light mb-3">Deserved Trust Networks</h3>
-              <p class="text-gray-600 leading-relaxed">
-                We focus on building webs of trust with all stakeholders. This trust becomes 
-                a durable competitive advantage that strengthens over time.
-              </p>
+              <p class="body">Partners who share the long horizon, and the structures that hold them.</p>
+              <a href="advisory.html#investor" class="link">Learn more</a>
             </div>
           </div>
         </div>
       </div>
-      
-      <div class="text-center mt-16">
-        <a href="philosophy.html" class="inline-block text-sm tracking-wide text-gray-900 border-b-2 border-gray-900 pb-1 hover:text-gray-600 hover:border-gray-600 transition-colors">
-          Explore Our Full Perspective
-        </a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Services -->
-  <section id="services" class="py-32 bg-white scroll-reveal">
-    <div class="max-w-5xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-extralight mb-6">Practice</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          We focus on three core areas of compounding value creation, each designed to 
-          strengthen rather than dilute the quality of your business system.
-        </p>
-      </div>
-      
-      <div class="grid md:grid-cols-3 gap-10 md:gap-12">
-        <!-- Compounding Business Value -->
-        <div class="bg-white border border-gray-200 p-8">
-          <h3 class="text-2xl font-light mb-5 leading-snug">Compounding Business Value</h3>
-          <div class="w-7 h-px bg-gray-900 mb-6"></div>
-          <p class="text-gray-600 mb-6 leading-relaxed">Strategic acquisitions that strengthen the system rather than dilute it.</p>
-          <div class="space-y-2.5 text-sm text-gray-500 mb-8 leading-relaxed">
-            <p>Strategic fit, read as a system</p>
-            <p>Target identification and evaluation</p>
-            <p>Integration for long term value</p>
-          </div>
-          <a href="advisory.html#business" class="nav-link inline-block text-sm text-gray-900">Learn more</a>
+    <!-- Founder -->
+    <section id="founder" class="rule-top">
+      <div class="wrap rail">
+        <div class="rail-head">
+          <h2 class="h2">Founder</h2>
+          <p class="h3 founder-name">Paul Higgins</p>
         </div>
-
-        <!-- Compounding Equity Value -->
-        <div class="bg-white border border-gray-200 p-8">
-          <h3 class="text-2xl font-light mb-5 leading-snug">Compounding Equity Value</h3>
-          <div class="w-7 h-px bg-gray-900 mb-6"></div>
-          <p class="text-gray-600 mb-6 leading-relaxed">Portfolio design and governance for multi generational success.</p>
-          <div class="space-y-2.5 text-sm text-gray-500 mb-8 leading-relaxed">
-            <p>Governance, autonomy with alignment</p>
-            <p>Capital allocation strategy</p>
-            <p>Leadership and succession</p>
-          </div>
-          <a href="advisory.html#equity" class="nav-link inline-block text-sm text-gray-900">Learn more</a>
-        </div>
-
-        <!-- Compounding Investor Value -->
-        <div class="bg-white border border-gray-200 p-8">
-          <h3 class="text-2xl font-light mb-5 leading-snug">Compounding Investor Value</h3>
-          <div class="w-7 h-px bg-gray-900 mb-6"></div>
-          <p class="text-gray-600 mb-6 leading-relaxed">Partners who share the long horizon, and the structures that hold them.</p>
-          <div class="space-y-2.5 text-sm text-gray-500 mb-8 leading-relaxed">
-            <p>Capital structure</p>
-            <p>Post transaction relationships</p>
-            <p>Human, tech and financial capital</p>
-          </div>
-          <a href="advisory.html#investor" class="nav-link inline-block text-sm text-gray-900">Learn more</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Founder Section -->
-  <section id="founder" class="py-32 bg-white scroll-reveal">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-extralight mb-8">Founder</h2>
-        <h3 class="text-2xl font-light">Paul Higgins</h3>
-      </div>
-
-      <div class="max-w-3xl mx-auto text-center">
-        <p class="text-lg text-gray-600 leading-relaxed mb-8">
-          With over two decades of experience across diverse industries, Paul brings a systems
-          thinking approach to every client engagement. His background in quality focused business
-          development has helped founders and business owners build enterprises designed
-          for multi generational success.
-        </p>
-
-        <p class="text-lg text-gray-600 leading-relaxed mb-12">
-          Paul founded INVRT based on the belief that businesses can be designed to improve with time,
-          creating compounding value for all stakeholders across generations.
-        </p>
-        
-        <!-- Recognition -->
-        <div class="mt-16 pt-16 border-t border-gray-200">
-          <h3 class="text-xl font-light mb-6">Recognition</h3>
-          <p class="text-gray-700 leading-relaxed max-w-2xl mx-auto">
-            Paul is a contributor to Eric Markowitz's <a href="https://www.outlastbook.com/" target="_blank" rel="noopener noreferrer" class="font-serif italic border-b border-gray-300 hover:border-gray-900 transition-colors">OUTLAST</a> (Scribner, 2027).
-            His writing on enduring enterprises has been highlighted by Stewart Brand and featured in Big Think's
-            <a href="https://www.outlastbook.com/nightcrawler" target="_blank" rel="noopener noreferrer" class="border-b border-gray-300 hover:border-gray-900 transition-colors">The Nightcrawler</a>, and he is acknowledged in
-            <a href="https://benbellabooks.com/shop/the-contemplative-leader/" target="_blank" rel="noopener noreferrer" class="font-serif italic border-b border-gray-300 hover:border-gray-900 transition-colors">The Contemplative Leader</a>
-            by Patrick Boland and <a href="https://endersen.com/the-compounders-element/" target="_blank" rel="noopener noreferrer" class="font-serif italic border-b border-gray-300 hover:border-gray-900 transition-colors">The Compounder's Element</a> by Laurence Endersen.
-          </p>
-        </div>
-        
-        <!-- Global Network Section -->
-        <div class="mt-16 pt-16 border-t border-gray-200">
-          <h3 class="text-xl font-light mb-6">Global Network</h3>
-          <p class="text-gray-600 leading-relaxed mb-8">
-            INVRT is part of a global network of aligned business builders, investors, and thinkers 
-            who share our commitment to building enduring enterprises. Through these partnerships, 
-            our clients gain access to:
-          </p>
+        <div>
+          <p class="reading">With more than fifteen years of experience across diverse industries, Paul brings a systems thinking approach to every client engagement. His background in quality focused business development has helped founders and business owners build enterprises designed for multi generational success.</p>
           
-          <div class="grid md:grid-cols-3 gap-10 text-sm text-left">
-            <a href="https://inpractise.com/" target="_blank" class="group block bg-white border border-gray-200 p-6">
-              <h4 class="font-medium text-gray-900 mb-2 group-hover:text-gray-500 transition-colors">In Practise</h4>
-              <p class="text-gray-500 leading-relaxed">Deep operator insights and case studies from exceptional businesses worldwide</p>
-            </a>
-            <a href="https://www.theleading-edge.org/" target="_blank" class="group block bg-white border border-gray-200 p-6">
-              <h4 class="font-medium text-gray-900 mb-2 group-hover:text-gray-500 transition-colors">The Leading Edge</h4>
-              <p class="text-gray-500 leading-relaxed">A community of senior executives focused on personal and organizational transformation</p>
-            </a>
-            <a href="https://ltcwrk.com/" target="_blank" class="group block bg-white border border-gray-200 p-6">
-              <h4 class="font-medium text-gray-900 mb-2 group-hover:text-gray-500 transition-colors">LTCWRK</h4>
-              <p class="text-gray-500 leading-relaxed">Long term thinking practitioners building businesses designed to last</p>
-            </a>
+          <div class="sub">
+            <h3 class="h3">Recognition</h3>
+            <p class="body">Paul is a contributor to Eric Markowitz's <a class="link" href="https://www.outlastbook.com/" target="_blank" rel="noopener noreferrer"><em class="title">OUTLAST</em></a> (Scribner, 2027). His writing on enduring enterprises has been highlighted by Stewart Brand and featured in Big Think's <a class="link" href="https://www.outlastbook.com/nightcrawler" target="_blank" rel="noopener noreferrer">The Nightcrawler</a>, and he is acknowledged in <a class="link" href="https://benbellabooks.com/shop/the-contemplative-leader/" target="_blank" rel="noopener noreferrer"><em class="title">The Contemplative Leader</em></a> by Patrick Boland and <a class="link" href="https://endersen.com/the-compounders-element/" target="_blank" rel="noopener noreferrer"><em class="title">The Compounder's Element</em></a> by Laurence Endersen.</p>
+          </div>
+
+          <div class="sub">
+            <h3 class="h3">Global Network</h3>
+            <p class="body">Through these partnerships, our clients gain access to:</p>
+            <div class="network">
+              <a href="https://inpractise.com/" target="_blank" rel="noopener noreferrer"><strong>In Practise</strong><span class="body">Deep operator insights and case studies from exceptional businesses worldwide</span></a>
+              <a href="https://www.theleading-edge.org/" target="_blank" rel="noopener noreferrer"><strong>The Leading Edge</strong><span class="body">A community of senior executives focused on personal and organizational transformation</span></a>
+              <a href="https://ltcwrk.com/" target="_blank" rel="noopener noreferrer"><strong>LTCWRK</strong><span class="body">Long term thinking practitioners building businesses designed to last</span></a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Insights Preview -->
-  <section id="insights" class="py-32 bg-white scroll-reveal">
-    <div class="max-w-5xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-extralight mb-6">Ideas</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Frameworks and research from our work with founders and families building for generations
-        </p>
+    <!-- Ideas -->
+    <section id="insights" class="rule-top">
+      <div class="wrap">
+        <div class="compounding-head">
+          <h2 class="h2">Ideas</h2>
+          <p class="lead">Frameworks and research from our work with founders and families building for generations.</p>
+        </div>
+        <div class="ideas" style="margin-top: clamp(3rem, 6vw, 5rem);">
+          <article class="idea">
+            <p class="meta">Deck</p>
+            <h3 class="h3">Project Quality 3.0</h3>
+            <p class="body">Our comprehensive deck exploring how quality compounds over time in business systems.</p>
+            <a href="insights.html#quality" class="link">Download</a>
+          </article>
+          <article class="idea">
+            <p class="meta">Analysis</p>
+            <h3 class="h3">Patterns of Endurance</h3>
+            <p class="body">What we learned from studying 50 companies that have thrived for over 100 years.</p>
+            <a href="insights.html#patterns" class="link">Read more</a>
+          </article>
+          <article class="idea">
+            <p class="meta">Podcast</p>
+            <h3 class="h3">The Art of Quality</h3>
+            <p class="body">Conversations exploring the patterns that lead to enduring excellence across disciplines.</p>
+            <a href="insights.html#podcast" class="link">Listen</a>
+          </article>
+        </div>
+        <p class="after"><a href="insights.html" class="btn btn-line">View All Ideas</a></p>
       </div>
-      
-      <div class="grid md:grid-cols-3 gap-10 md:gap-12 mb-16">
-        <article class="bg-white border border-gray-200 p-8">
-          <div class="text-xs tracking-widest text-gray-500 mb-4">COMPREHENSIVE DECK</div>
-          <h3 class="text-2xl font-light mb-3">Project Quality 3.0</h3>
-          <p class="text-gray-600 mb-5 leading-relaxed">Our comprehensive deck exploring how quality compounds over time in business systems.</p>
-          <a href="insights.html#quality" class="nav-link inline-block text-sm text-gray-900">Download</a>
-        </article>
+    </section>
 
-        <article class="bg-white border border-gray-200 p-8">
-          <div class="text-xs tracking-widest text-gray-500 mb-4">ANALYSIS</div>
-          <h3 class="text-2xl font-light mb-3">Patterns of Endurance</h3>
-          <p class="text-gray-600 mb-5 leading-relaxed">What we learned from studying 50 companies that have thrived for over 100 years.</p>
-          <a href="insights.html#patterns" class="nav-link inline-block text-sm text-gray-900">Read more</a>
-        </article>
+    <!-- Subscribe -->
+    <section id="subscribe" class="rule-top">
+      <div class="wrap subscribe">
+        <h2 class="h2">Stay close to the thinking</h2>
+        <p class="lead">Essays on capital allocation, quality, and enduring enterprises, roughly monthly.</p>
+        <form class="field" action="https://invrt.substack.com/subscribe" method="get">
+          <input type="email" name="email" placeholder="Your email" aria-label="Your email" autocomplete="email" required>
+          <button type="submit" class="btn btn-solid">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
 
-        <article class="bg-white border border-gray-200 p-8">
-          <div class="text-xs tracking-widest text-gray-500 mb-4">PODCAST</div>
-          <h3 class="text-2xl font-light mb-3">The Art of Quality</h3>
-          <p class="text-gray-600 mb-5 leading-relaxed">Conversations exploring the patterns that lead to enduring excellence across disciplines.</p>
-          <a href="insights.html#podcast" class="nav-link inline-block text-sm text-gray-900">Listen</a>
-        </article>
-      </div>
-      
-      <div class="text-center">
-        <a href="insights.html" class="inline-block text-sm tracking-wide px-8 py-4 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors">
-          View All Ideas
-        </a>
-      </div>
-    </div>
-  </section>
-
-<!-- Newsletter / Writing -->
-  <section id="subscribe" class="py-32 bg-white scroll-reveal border-t border-gray-100">
-    <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-      <p class="text-sm tracking-[0.2em] text-gray-500 mb-6 uppercase">The Writing</p>
-      <h2 class="text-4xl md:text-5xl font-extralight mb-6">Stay close to the thinking</h2>
-      <p class="text-lg text-gray-600 max-w-xl mx-auto mb-8 leading-relaxed">
-        Essays on capital allocation, quality, and enduring enterprises, roughly monthly.
-      </p>
-      <p class="text-gray-500 max-w-2xl mx-auto mb-12 leading-relaxed">
-        Paul Higgins is a contributor to Eric Markowitz's <span class="font-serif italic">OUTLAST</span> (Scribner, 2027).
-        His writing has been highlighted by Stewart Brand and featured in Big Think's The Nightcrawler.
-      </p>
-      <form action="https://invrt.substack.com/subscribe" method="get" class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-        <input type="email" name="email" placeholder="Your email" aria-label="Your email"
-          class="flex-1 px-2 py-3 border-b border-gray-300 bg-transparent focus:border-gray-900 focus:outline-none text-center sm:text-left transition-colors"/>
-        <button type="submit" class="btn-primary px-8 py-3.5 bg-gray-900 text-white text-sm tracking-wide hover:bg-gray-800 transition-colors">
-          Subscribe
-        </button>
-      </form>
-    </div>
-  </section>
-
-<!-- Footer -->
-<footer class="bg-gray-900 text-white py-20 border-t border-gray-800">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid md:grid-cols-4 gap-12 mb-12">
-      <div class="md:col-span-2">
-        <h3 class="text-2xl font-light mb-6">INVRT</h3>
-      </div>
-      
-      <div>
-        <h4 class="font-normal mb-6">Quick Links</h4>
-        <ul class="space-y-3 text-gray-400">
-          <li><a href="philosophy.html" class="hover:text-white transition-colors">Perspective</a></li>
-          <li><a href="advisory.html" class="hover:text-white transition-colors">Practice</a></li>
-          <li><a href="insights.html" class="hover:text-white transition-colors">Ideas</a></li>
-          <li><a href="clients.html" class="hover:text-white transition-colors">Clients</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h4 class="font-normal mb-6">Connect</h4>
-        <div class="space-y-3">
-          <a href="https://invrt.substack.com/" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-white transition-colors">
-            Subscribe to Substack
-          </a>
-          <a href="https://open.spotify.com/show/62autSn7DeWpMURIob0Ox3?si=d91a6c886dca4e2c" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-white transition-colors">
-            Subscribe to Podcast
-          </a>
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div><a href="index.html" class="brand">INVRT</a></div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="philosophy.html">Perspective</a></li>
+            <li><a href="advisory.html">Practice</a></li>
+            <li><a href="insights.html">Ideas</a></li>
+            <li><a href="clients.html">Clients</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://invrt.substack.com/" target="_blank" rel="noopener noreferrer">Subscribe to Substack</a></li>
+            <li><a href="https://open.spotify.com/show/62autSn7DeWpMURIob0Ox3?si=d91a6c886dca4e2c" target="_blank" rel="noopener noreferrer">Subscribe to Podcast</a></li>
+          </ul>
         </div>
       </div>
+      <p class="meta legal">© 2026 INVRT Limited. All rights reserved.</p>
     </div>
-    
-    <div class="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
-      © 2026 INVRT Limited. All rights reserved.
-    </div>
-  </div>
-</footer>
-  
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
   <script>
-    
-    // Mobile menu functionality
-const mobileMenuButton = document.getElementById('mobile-menu-button');
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hasGsap = typeof window.gsap !== 'undefined';
 
-mobileMenuButton.addEventListener('click', () => {
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (!mobileMenu) {
-    const menu = document.createElement('div');
-    menu.id = 'mobile-menu';
-    menu.className = 'mobile-menu fixed right-0 top-0 h-full w-64 bg-white shadow-lg md:hidden z-50';
-    menu.innerHTML = `
-      <div class="p-6">
-        <button id="close-menu" class="mb-8">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-        <div class="space-y-4">
-            <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Ideas</a>
-            <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
-            <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Practice</a>
-            <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Perspective</a>
-            <a href="questions.html" class="block text-gray-900 hover:text-gray-600">Questions</a>
-            <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
-              Contact
-            </a>
-          </div>
-      </div>
-    `;
-    document.body.appendChild(menu);
-    
-    setTimeout(() => {
-      menu.classList.add('active');
-      const closeBtn = document.getElementById('close-menu');
-      closeBtn.addEventListener('click', () => {
-        menu.classList.remove('active');
-        setTimeout(() => menu.remove(), 300);
-      });
-    }, 10);
-  }
-});
-    
-    // Navbar scroll effect
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        navbar.classList.add('shadow-lg');
+    /* Scroll edge on the nav */
+    var nav = document.getElementById('nav');
+    var onScroll = function () { nav.classList.toggle('is-scrolled', window.scrollY > 8); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* Mobile sheet: drops from the bar, closes the way it came, interruptible */
+    var toggle = document.getElementById('menu-toggle');
+    var sheet = document.getElementById('sheet');
+    var scrim = document.getElementById('scrim');
+    var open = false;
+    function setMenu(next) {
+      open = next;
+      document.body.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (hasGsap) {
+        var dur = reduce ? 0.15 : 0.32;
+        gsap.to([sheet, scrim], { autoAlpha: open ? 1 : 0, duration: dur, ease: open ? 'power3.out' : 'power2.in', overwrite: 'auto' });
+        if (!reduce) gsap.to(sheet, { y: open ? 0 : -12, duration: dur, ease: open ? 'power3.out' : 'power2.in', overwrite: 'auto' });
       } else {
-        navbar.classList.remove('shadow-lg');
+        sheet.style.visibility = scrim.style.visibility = open ? 'visible' : 'hidden';
+        sheet.style.opacity = scrim.style.opacity = open ? 1 : 0;
       }
-    });
-    
-    // Scroll reveal
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-    
-    document.querySelectorAll('.scroll-reveal').forEach(el => {
-      observer.observe(el);
-    });
-    
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+      if (open) { var first = sheet.querySelector('a'); if (first) first.focus({ preventScroll: true }); }
+    }
+    if (hasGsap && !reduce) gsap.set(sheet, { y: -12 });
+    toggle.addEventListener('click', function () { setMenu(!open); });
+    scrim.addEventListener('click', function () { setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) { setMenu(false); toggle.focus(); } });
+    sheet.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    window.matchMedia('(min-width: 861px)').addEventListener('change', function (m) { if (m.matches && open) setMenu(false); });
+
+    if (!hasGsap || reduce) return;
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    /* One orchestrated moment on load: the headline settles line by line */
+    document.fonts.ready.then(function () {
+      var title = document.querySelector('[data-split]');
+      if (!title) return;
+      SplitText.create(title, {
+        type: 'lines', mask: 'lines', autoSplit: true,
+        onSplit: function (self) {
+          return gsap.timeline()
+            .from(self.lines, { yPercent: 105, duration: 1.1, ease: 'expo.out', stagger: 0.09 })
+            .from(title.parentNode.querySelectorAll('[data-follow]'), { autoAlpha: 0, y: 8, duration: 0.8, ease: 'power2.out', stagger: 0.08 }, '-=0.7')
+            .add(function () { self.revert(); });
         }
       });
     });
+
+    /* The compounding curves draw themselves as they come into view */
+    gsap.utils.toArray('[data-draw]').forEach(function (path, i) {
+      var len = path.getTotalLength();
+      var dot = path.parentNode.querySelector('.end') || path;
+      gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+      gsap.set(dot, { autoAlpha: 0 });
+      /* Each curve draws once, the first time it enters view, and then stays drawn */
+      var tl = gsap.timeline({
+        scrollTrigger: { trigger: path.closest('[data-draw-trigger]') || path, start: 'top 85%', once: true }
+      });
+      tl.to(path, { strokeDashoffset: 0, ease: 'power1.inOut', duration: 1.4 })
+        .to(dot, { autoAlpha: 1, duration: 0.2, ease: 'none' }, '-=0.1');
+    });
+  })();
   </script>
 </body>
 </html>

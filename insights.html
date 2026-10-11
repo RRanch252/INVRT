@@ -1,742 +1,601 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>INVRT - Ideas</title>
- <meta name="description" content="Frameworks, research, and insights from our work with founders and families building for generations.">
- <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
- <style>
-   body {
-     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-   }
-   
-   .font-serif {
-     font-family: 'Crimson Text', serif;
-   }
-   
-   /* Smooth scrolling */
-   html {
-     scroll-behavior: smooth;
-   }
-   
-   /* Navigation animations */
-   .nav-link {
-     position: relative;
-     transition: color 0.3s ease;
-   }
-   
-   .nav-link::after {
-     content: '';
-     position: absolute;
-     width: 0;
-     height: 1px;
-     bottom: -4px;
-     left: 0;
-     background-color: #111827;
-     transition: width 0.3s ease;
-   }
-   
-   .nav-link:hover::after,
-   .nav-link.active::after {
-     width: 100%;
-   }
-   
-   /* Resource cards */
-   .resource-card {
-     transition: all 0.3s ease;
-     border: 1px solid #e5e7eb;
-   }
-   
-   .resource-card:hover {
-     transform: translateY(-4px);
-     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-     border-color: #111827;
-   }
-   
-   /* Question cards */
-   .question-card {
-     background: white;
-     border: 1px solid #e5e7eb;
-     padding: 32px;
-     transition: all 0.3s ease;
-     cursor: pointer;
-     position: relative;
-     overflow: hidden;
-   }
-   
-   .question-card::before {
-     content: '';
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 3px;
-     height: 0;
-     background: #111827;
-     transition: height 0.3s ease;
-   }
-   
-   .question-card:hover {
-     border-color: #111827;
-     transform: translateY(-2px);
-     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-   }
-   
-   .question-card:hover::before {
-     height: 100%;
-   }
-   
-   /* Category pills */
-   .category-pill {
-     transition: all 0.2s ease;
-   }
-   
-   .category-pill:hover {
-     background-color: #111827;
-     color: white;
-   }
-   
-   .category-pill.active {
-     background-color: #111827;
-     color: white;
-   }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>INVRT - Ideas</title>
+  <meta name="description" content="Frameworks, research, and insights from our work with founders and families building for generations.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="INVRT">
+  <meta property="og:title" content="INVRT - Ideas">
+  <meta property="og:description" content="Frameworks, research, and insights from our work with founders and families building for generations.">
+  <meta property="og:image" content="https://invrt.io/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&family=Crimson+Text:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ============ Tokens ============ */
+    :root {
+      --ink: #111827;          /* site accent, retained */
+      --ink-2: #4b5563;        /* body secondary */
+      --ink-3: #6b7280;        /* meta */
+      --hairline: #e5e7eb;
+      --hairline-strong: #d1d5db;
+      --paper: #ffffff;
+      --glass: rgba(255, 255, 255, 0.72);
 
-   /* offset jump-links so headings clear the fixed nav + sticky filter bar */
-   #quality, #frameworks, #essays, #podcast {
-     scroll-margin-top: 150px;
-   }
-   
-   /* Podcast player */
-   .podcast-card {
-     transition: all 0.3s ease;
-   }
-   
-   .podcast-card:hover {
-     background-color: #f9fafb;
-   }
-   
-   /* Play button */
-   .play-button {
-     transition: all 0.3s ease;
-   }
-   
-   .play-button:hover {
-     transform: scale(1.1);
-     background-color: #1f2937;
-   }
-   
-   /* Download button */
-   .download-link {
-     transition: all 0.3s ease;
-   }
-   
-   .download-link:hover {
-     padding-left: 1rem;
-   }
-   
-   /* Fade animations */
-   .fade-in {
-     animation: fadeIn 0.8s ease-out;
-   }
-   
-   @keyframes fadeIn {
-     from {
-       opacity: 0;
-       transform: translateY(20px);
-     }
-     to {
-       opacity: 1;
-       transform: translateY(0);
-     }
-   }
-   
-   /* Stagger animation */
-   .stagger-1 { animation-delay: 0.1s; }
-   .stagger-2 { animation-delay: 0.2s; }
-   .stagger-3 { animation-delay: 0.3s; }
-   
-   /* Mobile menu */
-   .mobile-menu {
-     transform: translateX(100%);
-     transition: transform 0.3s ease;
-   }
-   
-   .mobile-menu.active {
-     transform: translateX(0);
-   }
-   
-   /* Scroll reveal */
-   .scroll-reveal {
-     opacity: 0;
-     transform: translateY(30px);
-     transition: all 0.8s ease;
-   }
-   
-   .scroll-reveal.visible {
-     opacity: 1;
-     transform: translateY(0);
-   }
-   
-   /* Newsletter form */
-   .newsletter-input {
-     transition: all 0.3s ease;
-   }
-   
-   .newsletter-input:focus {
-     border-color: #111827;
-     transform: translateY(-2px);
-   }
- 
-    /* consistency pass: subtle boxes, no heavy borders/shadows/lifts */
-    .service-card,.resource-card,.question-card,.approach-card,.client-card,.contact-card,.case-study-card{
-      background:#ffffff !important;border:1px solid #e5e7eb !important;box-shadow:none !important;border-radius:0 !important;
+      --sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --serif: 'Crimson Text', Georgia, serif;
+
+      /* Type scale: tracking tightens as size grows, leading tightens as size grows */
+      --t-display: clamp(2.75rem, 1.6rem + 5.2vw, 5.75rem);
+      --t-h2: clamp(2rem, 1.5rem + 2.2vw, 3.25rem);
+      --t-h3: 1.375rem;
+      --t-lead: clamp(1.1875rem, 1.05rem + 0.5vw, 1.4375rem);
+      --t-body: 1.0625rem;
+      --t-small: 0.875rem;
+
+      --gutter: clamp(1.25rem, 4vw, 3rem);
+      --measure: 36rem;
+      --section: clamp(6rem, 4rem + 9vw, 11rem);
+      --nav-h: 4.25rem;
+
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .service-card:hover,.resource-card:hover,.question-card:hover,.approach-card:hover,.client-card:hover,.contact-card:hover,.case-study-card:hover{
-      transform:none !important;box-shadow:none !important;border-color:#d1d5db !important;
+
+    /* ============ Base ============ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 300 var(--t-body)/1.6 var(--sans);
+      letter-spacing: -0.003em;
+      font-optical-sizing: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
-    .question-card::before{display:none !important;}
+    h1, h2, h3, h4, p { margin: 0; }
+    a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+    img, svg { display: block; }
+    em.title { font-family: var(--serif); font-style: italic; font-size: 1.08em; letter-spacing: 0; }
+
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+    .skip { position: absolute; left: -9999px; top: 0; }
+    .skip:focus { left: var(--gutter); top: 0.75rem; z-index: 100; background: var(--paper); padding: 0.5rem 0.75rem; }
+
+    .wrap { max-width: 75rem; margin: 0 auto; padding-inline: max(var(--gutter), env(safe-area-inset-left)); }
+
+    /* ============ Type roles ============ */
+    .display {
+      font-size: var(--t-display);
+      font-weight: 300;
+      line-height: 1.02;
+      letter-spacing: -0.038em;
+    }
+    .h2 {
+      font-size: var(--t-h2);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.028em;
+    }
+    .h3 {
+      font-size: var(--t-h3);
+      font-weight: 400;
+      line-height: 1.3;
+      letter-spacing: -0.014em;
+    }
+    .lead {
+      font-size: var(--t-lead);
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: -0.011em;
+      color: var(--ink-2);
+    }
+    .body { color: var(--ink-2); }
+    .meta { font-size: var(--t-small); font-weight: 400; letter-spacing: 0.002em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+    .reading {
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 1.15rem + 0.35vw, 1.4375rem);
+      line-height: 1.62;
+      letter-spacing: 0;
+      color: #1f2937;
+    }
+
+    /* ============ Controls ============ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 2.875rem; padding: 0 1.5rem;
+      font: 400 0.9375rem/1 var(--sans); letter-spacing: -0.006em;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      transition: transform 120ms var(--ease-out), background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+      touch-action: manipulation;
+      cursor: pointer;
+    }
+    .btn:active { transform: scale(0.97); transition-duration: 80ms; }
+    .btn-solid { background: var(--ink); color: #fff; }
+    .btn-line { background: transparent; color: var(--ink); border-color: var(--hairline-strong); }
+    @media (hover: hover) {
+      .btn-solid:hover { background: #1f2937; }
+      .btn-line:hover { border-color: var(--ink); }
+    }
+
+    .link {
+      display: inline-block;
+      font-size: 0.9375rem; font-weight: 400; letter-spacing: -0.006em;
+      color: var(--ink);
+      background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+      padding-bottom: 2px;
+      transition: background-size 260ms var(--ease-out), opacity 160ms ease;
+    }
+    /* Standalone links keep their look but carry a 44px tap area on touch screens */
+    @media (pointer: coarse) {
+      p > .link:only-child, .after .link, .area-foot .link, .idea .link, .practice-item .link { padding-block: 0.65rem; margin-block: -0.65rem; background-position: 0 calc(100% - 0.65rem); }
+    }
+    .link:active { opacity: 0.55; }
+    @media (hover: hover) { .link:hover { background-size: 0% 1px; background-position: 100% 100%; } }
+
+    /* ============ Navigation (translucent material) ============ */
+    .nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      height: calc(var(--nav-h) + env(safe-area-inset-top));
+      padding-top: env(safe-area-inset-top);
+      background: var(--glass);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      backdrop-filter: saturate(180%) blur(20px);
+    }
+    .nav::after { /* scroll edge: a soft fade where content passes beneath the material, no hard rule */
+      content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 1.5rem; pointer-events: none;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0));
+      opacity: 0; transition: opacity 320ms ease;
+    }
+    .nav.is-scrolled::after { opacity: 1; }
+    .nav .wrap { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-size: 1.0625rem; font-weight: 400; letter-spacing: 0.14em; padding: 0.5rem 0; }
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; }
+    .nav-links a:not(.btn) {
+      font-size: 0.875rem; font-weight: 400; letter-spacing: -0.003em; color: var(--ink-2);
+      padding: 0.5rem 0; transition: color 160ms ease;
+    }
+    .nav-links a:not(.btn):active { color: var(--ink); }
+    @media (hover: hover) { .nav-links a:not(.btn):hover { color: var(--ink); } }
+    .nav-links a[aria-current="page"]:not(.btn) { color: var(--ink); }
+    .sheet a[aria-current="page"]:not(.btn) { color: var(--ink-3); }
+    .nav-links .btn { min-height: 2.25rem; padding: 0 1.05rem; font-size: 0.875rem; }
+
+    .menu-toggle {
+      display: none; width: 2.75rem; height: 2.75rem; margin-right: -0.6rem;
+      border: 0; background: none; color: var(--ink); cursor: pointer; touch-action: manipulation;
+      align-items: center; justify-content: center;
+    }
+    .menu-toggle span { position: relative; width: 18px; height: 1px; background: currentColor; transition: transform 260ms var(--ease-out), opacity 160ms ease; }
+    .menu-toggle span::before, .menu-toggle span::after { content: ''; position: absolute; left: 0; width: 18px; height: 1px; background: currentColor; transition: transform 260ms var(--ease-out); }
+    .menu-toggle span::before { transform: translateY(-5px); }
+    .menu-toggle span::after { transform: translateY(5px); }
+    .menu-open .menu-toggle span { background: transparent; }
+    .menu-open .menu-toggle span::before { transform: rotate(45deg); }
+    .menu-open .menu-toggle span::after { transform: rotate(-45deg); }
+
+    .sheet {
+      position: fixed; z-index: 49; left: 0; right: 0;
+      top: calc(var(--nav-h) + env(safe-area-inset-top));
+      padding: 0.5rem var(--gutter) 2rem;
+      background: rgba(255, 255, 255, 0.92);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      backdrop-filter: saturate(180%) blur(24px);
+      border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+      visibility: hidden; opacity: 0;
+      transform-origin: top right;
+    }
+    .sheet a:not(.btn) {
+      display: block; padding: 0.85rem 0;
+      font-size: 1.625rem; font-weight: 300; letter-spacing: -0.02em; line-height: 1.2;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .sheet a:not(.btn):active { color: var(--ink-3); }
+    .sheet .btn { width: 100%; margin-top: 1.5rem; }
+    .scrim { position: fixed; inset: 0; z-index: 48; background: rgba(17, 24, 39, 0.12); visibility: hidden; opacity: 0; }
+
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: inline-flex; }
+    }
+
+    /* ============ Hero ============ */
+    .hero {
+      min-height: 100svh;
+      display: flex; align-items: flex-end;
+      padding-top: calc(var(--nav-h) + 4rem);
+      padding-bottom: clamp(4rem, 12vh, 8rem);
+    }
+    .hero > .wrap { width: 100%; }
+    .hero .display { max-width: 13ch; }
+    .hero .lead { max-width: 34rem; margin-top: clamp(1.75rem, 3vw, 2.5rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }
+    .line-mask { overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+
+    /* ============ Sections ============ */
+    section { padding-block: var(--section); }
+    .rule-top { border-top: 1px solid var(--hairline); }
+
+    /* Rail layout: heading holds its place while the content scrolls */
+    .rail { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(2.5rem, 5vw, 6rem); }
+    .rail-head { position: sticky; top: calc(var(--nav-h) + 2.5rem); align-self: start; }
+    .rail-head .meta { margin-top: 1rem; max-width: 18rem; }
+    @media (max-width: 860px) {
+      .rail { grid-template-columns: 1fr; gap: 3rem; }
+      .rail-head { position: static; }
+    }
+
+        /* Footer */
+    footer { border-top: 1px solid var(--hairline); padding: 4rem 0 calc(2.5rem + env(safe-area-inset-bottom)); }
+    .foot { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 3fr) minmax(0, 3fr); gap: 2.5rem; }
+    .foot h4 { font-size: var(--t-small); font-weight: 400; color: var(--ink); margin-bottom: 1rem; }
+    .foot ul { list-style: none; margin: 0; padding: 0; }
+    .foot li a { display: inline-block; padding: 0.3rem 0; font-size: var(--t-small); color: var(--ink-3); transition: color 160ms ease; }
+    @media (hover: hover) { .foot li a:hover { color: var(--ink); } }
+    .legal { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--hairline); }
+    @media (max-width: 600px) { .foot { grid-template-columns: 1fr 1fr; } .foot > :first-child { grid-column: 1 / -1; } }
+
+    /* ============ Accessibility preferences ============ */
+    @media (prefers-reduced-transparency: reduce) {
+      .nav, .sheet { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; }
+    }
+    @media (prefers-contrast: more) {
+      :root { --ink-2: #1f2937; --ink-3: #374151; --hairline: #9ca3af; }
+      .nav::after { opacity: 1; height: 1px; background: #6b7280; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+    /* ============ Interior pages ============ */
+    .page-hero { padding-top: calc(var(--nav-h) + clamp(5rem, 12vw, 9rem)); padding-bottom: clamp(4rem, 8vw, 6rem); }
+    .page-hero .display { font-size: clamp(2.5rem, 1.5rem + 4.2vw, 4.75rem); max-width: 16ch; }
+    .page-hero .lead { max-width: 36rem; margin-top: clamp(1.5rem, 3vw, 2.25rem); }
+    .prose { max-width: var(--measure); }
+    .prose p + p { margin-top: 1.1em; }
+    .stack > * + * { margin-top: 1rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem clamp(2rem, 4vw, 4rem); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 3.5rem); }
+    @media (max-width: 860px) { .grid-3 { grid-template-columns: 1fr; gap: 3rem; } }
+    @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .rows > * { padding: 1.75rem 0; border-top: 1px solid var(--hairline); }
+    .rows > *:last-child { border-bottom: 1px solid var(--hairline); }
+    .after { margin-top: 3.5rem; }
+    .section-head { max-width: 46rem; margin-bottom: clamp(3rem, 6vw, 4.5rem); }
+    .section-head .lead { margin-top: 1.25rem; }
+    .label-list { list-style: none; margin: 0; padding: 0; }
+    .label-list li { padding: 0.35rem 0; color: var(--ink-2); }
+    .label-list li strong { font-weight: 400; color: var(--ink); }
+    [data-split] > div { padding-bottom: 0.14em; margin-bottom: -0.14em; }
+    section[id], [id].h2, h2[id], h3[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 1.5rem); }
+
+    /* ============ Page ============ */
+    /* Anchors clear the fixed nav */
+    main [id] { scroll-margin-top: calc(var(--nav-h) + 1.5rem); }
+
+    /* Hero jump links */
+    .jump { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }
+
+    /* Featured deck */
+    .feature { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+    .feature .lead { margin-top: 1.5rem; max-width: 36rem; }
+    .feature-list { list-style: none; margin: 2rem 0 2.5rem; padding: 0; max-width: 36rem; }
+    .feature-list li { padding: 0.75rem 0; border-top: 1px solid var(--hairline); color: var(--ink-2); }
+    .feature-list li:last-child { border-bottom: 1px solid var(--hairline); }
+    .deck { margin: 0; align-self: center; }
+    .deck-quote { margin: 0; padding-left: 1.25rem; border-left: 1px solid var(--ink); }
+    .deck-quote .reading { font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); line-height: 1.35; }
+    .deck figcaption { margin-top: 1rem; padding-left: 1.25rem; }
+    @media (max-width: 860px) { .feature { grid-template-columns: 1fr; } .deck { max-width: 28rem; } }
+
+    /* Idea items: homepage idiom, top rule in ink, unboxed */
+    .ideas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 3.5rem); }
+    .ideas-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: clamp(3rem, 5vw, 4rem); }
+    .idea { padding-top: 1.5rem; border-top: 1px solid var(--ink); }
+    .idea .h3 { margin-top: 0.75rem; }
+    .idea .h3:first-child { margin-top: 0; }
+    .idea .body { margin-top: 0.75rem; margin-bottom: 1.25rem; }
+    .idea .explore { font-size: 0.9375rem; font-weight: 400; color: var(--ink); }
+    @media (max-width: 860px) { .ideas { grid-template-columns: 1fr; gap: 3rem; } }
+
+    /* Essays */
+    #essays .reading { max-width: var(--measure); }
+    #essays .reading em { font-style: italic; }
+    .substack { margin-top: 3.5rem; max-width: var(--measure); }
+    .substack-note { margin-top: 1rem; }
+
+    /* Podcast */
+    .podcast { max-width: 40rem; }
+    .podcast .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+    .podcast .meta { line-height: 1.6; }
+
+    /* The one colour exception: Spotify green, at legible contrast */
+    .btn-spotify { background: #1db954; border-color: #1db954; color: #000; }
+    @media (hover: hover) { .btn-spotify:hover { background: #1ed760; border-color: #1ed760; } }
+
+    /* Inline text links keep their look but get a 44px hit area */
+    main .link { position: relative; }
+    main .link::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 2.75rem; transform: translateY(-50%); }
+
   </style>
 </head>
-<body class="font-light text-gray-900 bg-white antialiased">
- <!-- Navigation -->
- <nav id="navbar" class="fixed w-full bg-white bg-opacity-95 backdrop-blur-sm z-50 transition-all duration-300">
-   <div class="max-w-7xl mx-auto px-6 lg:px-8">
-     <div class="flex justify-between items-center h-20">
-       <div class="text-lg font-light tracking-wide text-gray-900">
-         <a href="index.html" class="hover:text-gray-600 transition-colors">
-           INVRT
-         </a>
-       </div>
-       
-       <div class="hidden md:flex items-center space-x-10">
-          <a href="insights.html" class="nav-link active text-sm text-gray-900">Ideas</a>
-          <a href="clients.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Clients</a>
-          <a href="advisory.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Practice</a>
-          <a href="philosophy.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Perspective</a>
-          <a href="questions.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Questions</a>
-          <a href="contact.html" class="text-sm px-5 py-2.5 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
-            Contact
-          </a>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a href="index.html" class="brand" aria-label="INVRT home">INVRT</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="insights.html" aria-current="page">Ideas</a>
+        <a href="clients.html">Clients</a>
+        <a href="advisory.html">Practice</a>
+        <a href="philosophy.html">Perspective</a>
+        <a href="questions.html">Questions</a>
+        <a href="contact.html" class="btn btn-solid">Contact</a>
+      </nav>
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span></button>
+    </div>
+  </header>
+  <div class="scrim" id="scrim"></div>
+  <nav class="sheet" id="sheet" aria-label="Mobile">
+    <a href="insights.html" aria-current="page">Ideas</a>
+    <a href="clients.html">Clients</a>
+    <a href="advisory.html">Practice</a>
+    <a href="philosophy.html">Perspective</a>
+    <a href="questions.html">Questions</a>
+    <a href="contact.html" class="btn btn-solid">Contact</a>
+  </nav>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="page-hero">
+      <div class="wrap">
+        <h1 class="display" data-split>Frameworks for Building Enduring Enterprises</h1>
+        <p class="lead" data-follow>Research, essays and conversations from the work.</p>
+        <nav class="jump" aria-label="Ideas sections" data-follow>
+          <a href="#frameworks" class="btn btn-line">Research &amp; Frameworks</a>
+          <a href="#essays" class="btn btn-line">Articles &amp; Essays</a>
+          <a href="#podcast" class="btn btn-line">Podcast Episodes</a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Project Quality 3.0 -->
+    <section id="quality" class="rule-top">
+      <div class="wrap feature">
+        <div>
+          <h2 class="h2">Project Quality 3.0</h2>
+          <p class="lead">How quality compounds over time in business systems.</p>
+          <ul class="feature-list">
+            <li>150+ slides of insights and frameworks</li>
+            <li>Case studies from 50+ century old companies</li>
+            <li>Systems thinking principles applied to business</li>
+          </ul>
+          <a href="https://docs.google.com/presentation/d/1uKJIvrW0NFYeoTcBzKJrxb2tZH8gUoysvkUpZzaCTTA/edit#slide=id.g184dc891c86_0_129" target="_blank" rel="noopener noreferrer" class="btn btn-solid">View Presentation</a>
         </div>
-       
-       <button id="mobile-menu-button" class="md:hidden">
-         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
-         </svg>
-       </button>
-     </div>
-   </div>
- </nav>
-
- <!-- Hero Section -->
- <section class="min-h-screen flex items-center pt-20 bg-white">
-   <div class="max-w-5xl mx-auto px-6 lg:px-8">
-     <div class="fade-in">
-       <p class="text-sm tracking-[0.2em] text-gray-500 mb-6 uppercase">Ideas</p>
-       <h1 class="text-4xl md:text-6xl font-extralight leading-tight mb-8">
-         Frameworks for Building<br/>
-         <em class="font-serif font-normal not-italic">Enduring Enterprises</em>
-       </h1>
-       <p class="text-xl text-gray-700 max-w-3xl leading-relaxed">
-         Research, insights, and conversations from our work with founders and families 
-         building businesses designed to improve with time.
-       </p>
-     </div>
-   </div>
- </section>
-
- <!-- Category Filter -->
- <section class="py-8 bg-white border-t border-b border-gray-200 sticky top-20 z-40">
-   <div class="max-w-6xl mx-auto px-6 lg:px-8">
-     <div class="flex flex-wrap gap-3 justify-center">
-       <button data-target="#quality" class="category-pill active px-6 py-2 rounded-full text-sm border border-gray-300">
-         All Resources
-       </button>
-       <button data-target="#frameworks" class="category-pill px-6 py-2 rounded-full text-sm border border-gray-300">
-         Research & Frameworks
-       </button>
-       <button data-target="#essays" class="category-pill px-6 py-2 rounded-full text-sm border border-gray-300">
-         Articles & Essays
-       </button>
-       <button data-target="#podcast" class="category-pill px-6 py-2 rounded-full text-sm border border-gray-300">
-         Podcast Episodes
-       </button>
-     </div>
-   </div>
- </section>
-
- <!-- Featured Resource -->
- <section id="quality" class="py-16 bg-white">
-   <div class="max-w-6xl mx-auto px-6 lg:px-8">
-     <div class="bg-gray-900 text-white rounded-lg overflow-hidden">
-       <div class="grid md:grid-cols-2">
-         <div class="p-12">
-           <p class="text-sm tracking-widest mb-4 text-gray-400">FEATURED RESOURCE</p>
-           <h2 class="text-3xl font-extralight mb-4">Project Quality 3.0</h2>
-           <p class="text-lg text-gray-300 mb-6 leading-relaxed">
-             Our comprehensive deck exploring how quality compounds over time in business systems. 
-             Drawing from decades of research into enduring enterprises, this resource provides 
-             frameworks for recognizing and building quality at every level.
-           </p>
-           <ul class="space-y-3 mb-8 text-gray-300">
-             <li class="flex items-start">
-               <svg class="w-5 h-5 mr-3 mt-0.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"></path>
-               </svg>
-               <span>150+ slides of insights and frameworks</span>
-             </li>
-             <li class="flex items-start">
-               <svg class="w-5 h-5 mr-3 mt-0.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"></path>
-               </svg>
-               <span>Case studies from 50+ century old companies</span>
-             </li>
-             <li class="flex items-start">
-               <svg class="w-5 h-5 mr-3 mt-0.5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"></path>
-               </svg>
-               <span>Systems thinking principles applied to business</span>
-             </li>
-           </ul>
-           <a href="https://docs.google.com/presentation/d/1uKJIvrW0NFYeoTcBzKJrxb2tZH8gUoysvkUpZzaCTTA/edit#slide=id.g184dc891c86_0_129" target="_blank" class="download-link inline-flex items-center px-6 py-3 bg-white text-gray-900 hover:bg-gray-100 transition-all">
-             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-             </svg>
-             View Presentation
-           </a>
-         </div>
-         <div class="bg-gray-800 p-12 flex items-center justify-center">
-           <div class="text-center">
-             <div class="bg-gray-700 rounded-lg p-8 max-w-sm mx-auto">
-               <div class="mb-4">
-                 <svg class="w-16 h-16 mx-auto text-gray-500" fill="currentColor" viewBox="0 0 24 24">
-                   <path d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19M13.5,13.5H18V15H13.5V18L9,14L13.5,9.5V13.5Z"/>
-                 </svg>
-               </div>
-               <p class="text-white font-light text-lg mb-2">Project Quality 3.0</p>
-               <p class="text-gray-400 text-sm mb-4">150+ slides</p>
-               <div class="flex justify-center space-x-1">
-                 <div class="w-8 h-1 bg-gray-600 rounded"></div>
-                 <div class="w-8 h-1 bg-gray-600 rounded"></div>
-                 <div class="w-8 h-1 bg-gray-500 rounded"></div>
-               </div>
-             </div>
-             <p class="text-sm text-gray-500 mt-6">Click "View Presentation" to access</p>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
- </section>
-
- <!-- Questions We're Exploring Section -->
- <section class="py-16 bg-white">
-   <div class="max-w-6xl mx-auto px-6 lg:px-8">
-     <h2 class="text-3xl font-extralight mb-4">Fundamental Questions</h2>
-     <p class="text-gray-600 mb-12 max-w-3xl">
-       Core inquiries that guide our research and shape our understanding of what makes enterprises endure across generations.
-     </p>
-     
-     <div class="grid md:grid-cols-2 gap-6">
-       <div class="question-card">
-         <p class="text-xs tracking-widest text-gray-500 mb-4">SYSTEMS & ADAPTATION</p>
-         <h3 class="text-lg font-light mb-3 text-gray-900">
-           What patterns allow some businesses to improve with age while most degrade over time?
-         </h3>
-         <p class="text-sm text-gray-600 leading-relaxed">
-           Our research into century old companies reveals specific organizational patterns: they prioritize maintenance over innovation, build redundancy into critical systems, and cultivate adaptive capacity.
-         </p>
-         <div class="mt-4 flex items-center text-sm text-gray-900">
-           <span>Explore this question</span>
-           <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-           </svg>
-         </div>
-       </div>
-       
-       <div class="question-card">
-         <p class="text-xs tracking-widest text-gray-500 mb-4">QUALITY & CRAFT</p>
-         <h3 class="text-lg font-light mb-3 text-gray-900">
-           Why do we struggle to perceive quality in its early stages, yet recognize it instantly in mature form?
-         </h3>
-         <p class="text-sm text-gray-600 leading-relaxed">
-           Quality emerges from complex system properties that individual parts don't exhibit. Like identifying a future oak in an acorn, recognizing nascent quality requires understanding patterns of potential.
-         </p>
-         <div class="mt-4 flex items-center text-sm text-gray-900">
-           <span>Explore this question</span>
-           <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-           </svg>
-         </div>
-       </div>
-       
-       <div class="question-card">
-         <p class="text-xs tracking-widest text-gray-500 mb-4">TIME & MAINTENANCE</p>
-         <h3 class="text-lg font-light mb-3 text-gray-900">
-           How does the relationship between maintenance and growth shift as systems mature?
-         </h3>
-         <p class="text-sm text-gray-600 leading-relaxed">
-           Geoffrey West's research shows that organisms dedicate increasing energy to maintenance as they mature. We see parallel patterns in enduring businesses that shift from growth-obsession to excellence.
-         </p>
-         <div class="mt-4 flex items-center text-sm text-gray-900">
-           <span>Explore this question</span>
-           <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-           </svg>
-         </div>
-       </div>
-       
-       <div class="question-card">
-         <p class="text-xs tracking-widest text-gray-500 mb-4">VALUE CREATION</p>
-         <h3 class="text-lg font-light mb-3 text-gray-900">
-           What makes trust networks compound in value while transactional relationships decay?
-         </h3>
-         <p class="text-sm text-gray-600 leading-relaxed">
-           Peter Kaufman identifies "deserved trust" as creating compound returns through reduced transaction costs, expanded opportunity access, and resilience during disruptions.
-         </p>
-         <div class="mt-4 flex items-center text-sm text-gray-900">
-           <span>Explore this question</span>
-           <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-           </svg>
-         </div>
-       </div>
-       
-       <div class="question-card">
-         <p class="text-xs tracking-widest text-gray-500 mb-4">LEADERSHIP & CULTURE</p>
-         <h3 class="text-lg font-light mb-3 text-gray-900">
-           Why do founder led businesses dramatically outperform professionally managed ones over decades?
-         </h3>
-         <p class="text-sm text-gray-600 leading-relaxed">
-           Todd Combs notes that founders operate as fiduciaries with radically longer time horizons. They make decisions that seem irrational quarterly but compound advantageously over generations.
-         </p>
-         <div class="mt-4 flex items-center text-sm text-gray-900">
-           <span>Explore this question</span>
-           <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-           </svg>
-         </div>
-       </div>
-       
-       <div class="question-card">
-         <p class="text-xs tracking-widest text-gray-500 mb-4">RESILIENCE & RISK</p>
-         <h3 class="text-lg font-light mb-3 text-gray-900">
-           How do enduring enterprises balance redundancy with efficiency in their systems?
-         </h3>
-         <p class="text-sm text-gray-600 leading-relaxed">
-           Century old companies build strategic redundancy into critical systems while maintaining operational efficiency, a paradox that creates both resilience and competitive advantage.
-         </p>
-         <div class="mt-4 flex items-center text-sm text-gray-900">
-           <span>Explore this question</span>
-           <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-           </svg>
-         </div>
-       </div>
-     </div>
-     
-     <div class="text-center mt-12">
-       <a href="#" class="inline-flex items-center text-sm font-medium text-gray-900 border-b-2 border-gray-900 hover:text-gray-600 hover:border-gray-600 transition-colors">
-         View All Questions We're Exploring
-         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-         </svg>
-       </a>
-     </div>
-   </div>
- </section>
-
- <!-- Research & Frameworks -->
- <section class="py-16 bg-white">
-   <div class="max-w-6xl mx-auto px-6 lg:px-8">
-     <h2 id="frameworks" class="text-3xl font-extralight mb-12">Research & Frameworks</h2>
-     
-     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-       <!-- Framework 1 -->
-       <article class="resource-card bg-white rounded-lg overflow-hidden">
-         <div class="p-8">
-           <p class="text-xs tracking-widest text-gray-500 mb-4">FRAMEWORK</p>
-           <h3 class="text-xl font-light mb-3">Quality Patterns Deck</h3>
-           <p class="text-gray-600 mb-6 leading-relaxed">
-             A comprehensive collection of patterns identified in enduring enterprises, 
-             with visual frameworks and practical applications.
-           </p>
-           <a href="https://docs.google.com/presentation/d/1KbkTRrNWoGFk9yAaYfzM_0hf80Vca-94VNuknQkOPZU/edit#slide=id.g159724dde76_0_36" target="_blank" class="text-sm font-medium text-gray-900 inline-flex items-center group">
-             View Framework 
-             <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-             </svg>
-           </a>
-         </div>
-       </article>
-       
-       <!-- Framework 2 -->
-       <article class="resource-card bg-white rounded-lg overflow-hidden">
-         <div class="p-8">
-           <p class="text-xs tracking-widest text-gray-500 mb-4">TOOL</p>
-           <h3 class="text-xl font-light mb-3">The Endurance Patterns Matrix</h3>
-           <p class="text-gray-600 mb-6 leading-relaxed">
-             An interactive spreadsheet tool for identifying and analyzing patterns 
-             in companies built for multi generational success.
-           </p>
-           <a href="https://docs.google.com/spreadsheets/d/18flZbJesoRvgrFXU5qwlFnwKelQ_lhFbOvTUn7AzeIo/edit?gid=1592233509#gid=1592233509" target="_blank" class="text-sm font-medium text-gray-900 inline-flex items-center group">
-             Access Tool 
-             <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-             </svg>
-           </a>
-         </div>
-       </article>
-       
-       <!-- Framework 3 -->
-       <article class="resource-card bg-white rounded-lg overflow-hidden">
-         <div class="p-8">
-           <p class="text-xs tracking-widest text-gray-500 mb-4">RESEARCH</p>
-           <h3 class="text-xl font-light mb-3">Systems Thinking Applied</h3>
-           <p class="text-gray-600 mb-6 leading-relaxed">
-             Practical applications of complexity science and systems thinking 
-             to business strategy and organizational design.
-           </p>
-           <a href="https://invrt.substack.com/" target="_blank" class="text-sm font-medium text-gray-900 inline-flex items-center group">
-             Read More 
-             <svg class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-             </svg>
-           </a>
-         </div>
-       </article>
-     </div>
-   </div>
- </section>
-
- <!-- Articles & Essays -->
- <section class="py-16 bg-white">
-   <div class="max-w-6xl mx-auto px-6 lg:px-8">
-     <div class="text-center mb-12">
-       <h2 id="essays" class="text-3xl font-extralight mb-4">Essays & Long-form Thinking</h2>
-       <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-         Deep explorations of quality, systems thinking, and building for the long term
-       </p>
-       <p class="text-sm text-gray-500 max-w-2xl mx-auto mt-6 leading-relaxed">
-         Stewart Brand highlighted the maintenance essays as <span class="font-serif italic">"interesting riffs on Maintenance"</span>, and Big Think's The Nightcrawler featured the writing alongside Leonardo da Vinci and 28 years of Amazon shareholder letters.
-       </p>
-     </div>
-     
-     <div class="max-w-3xl mx-auto">
-       <div class="bg-white rounded-lg p-8 text-center border border-gray-200">
-         <svg class="w-16 h-16 mx-auto mb-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-           <path d="M3 3v18h18V3H3zm16 16H5V5h14v14zm-7-7h5v2h-5v5h-2v-5H5v-2h5V7h2v5z"/>
-         </svg>
-         <h3 class="text-2xl font-light mb-4">INVRT on Substack</h3>
-         <p class="text-gray-600 mb-6 leading-relaxed">
-           Our collection of essays exploring the intersection of quality, time, and business building. 
-           From the nature of maintenance to the patterns of century old companies, these pieces 
-           offer frameworks for thinking about enduring value creation.
-         </p>
-         <a href="https://invrt.substack.com/" target="_blank" class="inline-flex items-center px-6 py-3 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
-           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-           </svg>
-           Read on Substack
-         </a>
-         <p class="text-sm text-gray-500 mt-4">
-           New essays published monthly • Free to subscribe
-         </p>
-       </div>
-     </div>
-   </div>
- </section>
-
- <!-- The Art of Quality Podcast -->
- <section id="podcast" class="py-16 bg-white">
-   <div class="max-w-6xl mx-auto px-6 lg:px-8">
-     <div class="text-center mb-12">
-       <h2 class="text-3xl font-extralight mb-4">The Art of Quality Podcast</h2>
-       <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-         Conversations exploring the patterns that lead to enduring excellence across disciplines
-       </p>
-     </div>
-     
-     <div class="grid lg:grid-cols-3 gap-8">
-       <!-- Featured Episode -->
-       <div class="lg:col-span-2">
-         <div class="bg-gray-900 text-white rounded-lg p-8">
-           <p class="text-sm tracking-widest text-gray-400 mb-4">LATEST EPISODES</p>
-           <h3 class="text-2xl font-light mb-4">
-             Deep Conversations on Building for Generations
-           </h3>
-           <p class="text-gray-300 mb-6 leading-relaxed">
-             Join us for thoughtful discussions with leaders of century old businesses, 
-             master craftspeople, systems thinkers, and quality focused founders. Each 
-             episode explores what it takes to build something worthy of lasting.
-           </p>
-           <div class="flex flex-col sm:flex-row gap-4">
-             <a href="https://theartofquality.co/" target="_blank" class="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 hover:bg-gray-100 transition-colors">
-               <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-               </svg>
-               Visit Website
-             </a>
-             <a href="https://open.spotify.com/show/62autSn7DeWpMURIob0Ox3?si=fdf542b37b004e5c" target="_blank" class="inline-flex items-center justify-center px-6 py-3 bg-green-600 text-white hover:bg-green-700 transition-colors">
-               <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                 <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M15.5,16.71L14.5,15.29C16.28,14.17 17,13.04 17,12C17,9.58 14.03,7.55 11,8.68L10.45,7C14.55,5.31 19,8.08 19,12C19,13.83 17.71,15.29 15.5,16.71M11.5,11.71L10.5,10.29C11.28,9.83 12,9.13 12,8.5C12,7.83 11.71,7.29 10.5,6.71L11.5,5.29C13.28,6.17 14,7.33 14,8.5C14,9.67 13.28,10.83 11.5,11.71M7.5,16.71L6.5,15.29C8.28,14.17 9,13.04 9,12C9,10.96 8.28,9.83 6.5,8.71L7.5,7.29C9.71,8.42 11,9.96 11,12C11,14.04 9.71,15.58 7.5,16.71Z"/>
-               </svg>
-               Listen on Spotify
-             </a>
-           </div>
-         </div>
-       </div>
-       
-       <!-- Podcast Info -->
-       <div>
-         <h3 class="text-lg font-medium mb-6">About the Podcast</h3>
-         <p class="text-gray-600 leading-relaxed mb-6">
-           Each episode features in-depth conversations with leaders who have built 
-           something worthy of lasting. From century old family businesses to master 
-           craftspeople, we explore the patterns and principles that create enduring value.
-         </p>
-         <p class="text-sm text-gray-500">
-           New episodes released bi-weekly<br/>
-           Available on all major podcast platforms
-         </p>
-       </div>
-     </div>
-   </div>
- </section>
-
- 
-
-<!-- Footer -->
-<footer class="bg-gray-900 text-white py-20 border-t border-gray-800">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid md:grid-cols-4 gap-12 mb-12">
-      <div class="md:col-span-2">
-        <h3 class="text-2xl font-light mb-6">INVRT</h3>
+        <figure class="deck">
+          <blockquote class="deck-quote">
+            <p class="reading">If Quality emerges over time, how can we see it around us?</p>
+          </blockquote>
+          <figcaption class="meta">The question the deck opens with</figcaption>
+        </figure>
       </div>
-      
-      <div>
-        <h4 class="font-normal mb-6">Quick Links</h4>
-        <ul class="space-y-3 text-gray-400">
-          <li><a href="philosophy.html" class="hover:text-white transition-colors">Perspective</a></li>
-          <li><a href="advisory.html" class="hover:text-white transition-colors">Practice</a></li>
-          <li><a href="insights.html" class="hover:text-white transition-colors">Ideas</a></li>
-          
-          <li><a href="clients.html" class="hover:text-white transition-colors">Clients</a></li>
-        </ul>
+    </section>
+
+    <!-- Fundamental Questions -->
+    <section class="rule-top">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">Fundamental Questions</h2>
+          <p class="lead">Six of the questions that guide the research. The full list, and the map that joins them, is on the Questions page.</p>
+        </div>
+        <div class="ideas ideas-2">
+          <article class="idea">
+            <p class="meta">Systems &amp; adaptation</p>
+            <h3 class="h3">What patterns allow some businesses to improve with age while most degrade over time?</h3>
+          </article>
+          <article class="idea">
+            <p class="meta">Quality &amp; craft</p>
+            <h3 class="h3">Why do we struggle to perceive quality in its early stages, yet recognize it instantly in mature form?</h3>
+          </article>
+          <article class="idea">
+            <p class="meta">Time &amp; maintenance</p>
+            <h3 class="h3">How does the relationship between maintenance and growth shift as systems mature?</h3>
+          </article>
+          <article class="idea">
+            <p class="meta">Value creation</p>
+            <h3 class="h3">What makes trust networks compound in value while transactional relationships decay?</h3>
+          </article>
+          <article class="idea">
+            <p class="meta">Leadership &amp; culture</p>
+            <h3 class="h3">Why do founder led businesses dramatically outperform professionally managed ones over decades?</h3>
+          </article>
+          <article class="idea">
+            <p class="meta">Resilience &amp; risk</p>
+            <h3 class="h3">How do enduring enterprises balance redundancy with efficiency in their systems?</h3>
+          </article>
+        </div>
+        <p class="after"><a href="questions.html" class="link">All questions</a></p>
       </div>
-      
-      <div>
-        <h4 class="font-normal mb-6">Connect</h4>
-        <div class="space-y-3">
-          <a href="https://invrt.substack.com/" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-white transition-colors">
-            Subscribe to Substack
-          </a>
-          <a href="https://open.spotify.com/show/62autSn7DeWpMURIob0Ox3?si=d91a6c886dca4e2c" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-white transition-colors">
-            Subscribe to Podcast
-          </a>
+    </section>
+
+    <!-- Research & Frameworks -->
+    <section id="patterns" class="rule-top">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2" id="frameworks">Research &amp; Frameworks</h2>
+        </div>
+        <div class="ideas">
+          <article class="idea">
+            <p class="meta">Framework</p>
+            <h3 class="h3">Quality Patterns Deck</h3>
+            <p class="body">A comprehensive collection of patterns identified in enduring enterprises, with visual frameworks and practical applications.</p>
+            <a href="https://docs.google.com/presentation/d/1KbkTRrNWoGFk9yAaYfzM_0hf80Vca-94VNuknQkOPZU/edit#slide=id.g159724dde76_0_36" target="_blank" rel="noopener noreferrer" class="link">View Framework</a>
+          </article>
+          <article class="idea">
+            <p class="meta">Tool</p>
+            <h3 class="h3">The Endurance Patterns Matrix</h3>
+            <p class="body">An interactive spreadsheet tool for identifying and analyzing patterns in companies built for multi generational success.</p>
+            <a href="https://docs.google.com/spreadsheets/d/18flZbJesoRvgrFXU5qwlFnwKelQ_lhFbOvTUn7AzeIo/edit?gid=1592233509#gid=1592233509" target="_blank" rel="noopener noreferrer" class="link">Access Tool</a>
+          </article>
+          <article class="idea">
+            <p class="meta">Research</p>
+            <h3 class="h3">Systems Thinking Applied</h3>
+            <p class="body">Practical applications of complexity science and systems thinking to business strategy and organizational design.</p>
+            <a href="https://invrt.substack.com/" target="_blank" rel="noopener noreferrer" class="link">Read More</a>
+          </article>
         </div>
       </div>
-    </div>
-    
-    <div class="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
-      © 2026 INVRT Limited. All rights reserved.
-    </div>
-  </div>
-</footer>
+    </section>
 
- 
- <script>
-   // Mobile menu functionality
-   const mobileMenuButton = document.getElementById('mobile-menu-button');
-   const mobileMenu = document.getElementById('mobile-menu');
-   
-   mobileMenuButton.addEventListener('click', () => {
-     if (!mobileMenu) {
-       const menu = document.createElement('div');
-       menu.id = 'mobile-menu';
-       menu.className = 'mobile-menu fixed right-0 top-0 h-full w-64 bg-white shadow-lg md:hidden z-50';
-       menu.innerHTML = `
-         <div class="p-6">
-           <button id="close-menu" class="mb-8">
-             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-             </svg>
-           </button>
-           <div class="space-y-4">
-            <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Ideas</a>
-            <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
-            <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Practice</a>
-            <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Perspective</a>
-            <a href="questions.html" class="block text-gray-900 hover:text-gray-600">Questions</a>
-            <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
-              Contact
-            </a>
-          </div>
-         </div>
-       `;
-       document.body.appendChild(menu);
-       
-       setTimeout(() => {
-         menu.classList.add('active');
-         const closeBtn = document.getElementById('close-menu');
-         closeBtn.addEventListener('click', () => {
-           menu.classList.remove('active');
-           setTimeout(() => menu.remove(), 300);
-         });
-       }, 10);
-     }
-   });
-   
-   // Category filter functionality
-   const categoryPills = document.querySelectorAll('.category-pill');
-   categoryPills.forEach(pill => {
-     pill.addEventListener('click', function() {
-       categoryPills.forEach(p => p.classList.remove('active'));
-       this.classList.add('active');
-       const sel = this.getAttribute('data-target');
-       const el = sel && document.querySelector(sel);
-       if (el) {
-         const nav = document.getElementById('navbar');
-         const bar = this.closest('section');
-         const offset = (nav ? nav.offsetHeight : 80) + (bar ? bar.offsetHeight : 60) + 16;
-         const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
-         window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
-       }
-     });
-   });
-   
-   // Navbar scroll effect
-   const navbar = document.getElementById('navbar');
-   window.addEventListener('scroll', () => {
-     if (window.scrollY > 50) {
-       navbar.classList.add('shadow-lg');
-     } else {
-       navbar.classList.remove('shadow-lg');
-     }
-   });
-   
-   // Scroll reveal
-   const observerOptions = {
-     threshold: 0.1,
-     rootMargin: '0px 0px -50px 0px'
-   };
-   
-   const observer = new IntersectionObserver((entries) => {
-     entries.forEach(entry => {
-       if (entry.isIntersecting) {
-         entry.target.classList.add('visible');
-       }
-     });
-   }, observerOptions);
-   
-   document.querySelectorAll('.scroll-reveal').forEach(el => {
-     observer.observe(el);
-   });
-   
-   
- </script>
+    <!-- Essays -->
+    <section id="essays" class="rule-top">
+      <div class="wrap rail">
+        <div class="rail-head">
+          <h2 class="h2">Essays &amp; Long-form Thinking</h2>
+          <p class="meta">Essays on quality, maintenance and building for the long term.</p>
+        </div>
+        <div>
+          <p class="reading">Stewart Brand highlighted the maintenance essays as <em>"interesting riffs on Maintenance"</em>, and Big Think's The Nightcrawler featured the writing alongside Leonardo da Vinci and 28 years of Amazon shareholder letters.</p>
+          <article class="idea substack">
+            <h3 class="h3">INVRT on Substack</h3>
+            <p class="body">From the nature of maintenance to the patterns of century old companies.</p>
+            <a href="https://invrt.substack.com/" target="_blank" rel="noopener noreferrer" class="btn btn-solid">Read on Substack</a>
+            <p class="meta substack-note">New essays published monthly • Free to subscribe</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Art of Quality Podcast -->
+    <section id="podcast" class="rule-top">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">The Art of Quality Podcast</h2>
+          <p class="lead">Conversations with leaders of century old businesses, master craftspeople, systems thinkers and quality focused founders.</p>
+        </div>
+        <div class="podcast">
+          <article class="idea">
+            <h3 class="h3">Deep Conversations on Building for Generations</h3>
+            <p class="body">Each episode explores what it takes to build something worthy of lasting. New episodes released bi-weekly, available on all major podcast platforms.</p>
+            <div class="actions">
+              <a href="https://theartofquality.co/" target="_blank" rel="noopener noreferrer" class="btn btn-line">Visit Website</a>
+              <a href="https://open.spotify.com/show/62autSn7DeWpMURIob0Ox3?si=fdf542b37b004e5c" target="_blank" rel="noopener noreferrer" class="btn btn-spotify">Listen on Spotify</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div><a href="index.html" class="brand">INVRT</a></div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="philosophy.html">Perspective</a></li>
+            <li><a href="advisory.html">Practice</a></li>
+            <li><a href="insights.html">Ideas</a></li>
+            <li><a href="clients.html">Clients</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://invrt.substack.com/" target="_blank" rel="noopener noreferrer">Subscribe to Substack</a></li>
+            <li><a href="https://open.spotify.com/show/62autSn7DeWpMURIob0Ox3?si=d91a6c886dca4e2c" target="_blank" rel="noopener noreferrer">Subscribe to Podcast</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="meta legal">© 2026 INVRT Limited. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+  <script>
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hasGsap = typeof window.gsap !== 'undefined';
+
+    /* Scroll edge on the nav */
+    var nav = document.getElementById('nav');
+    var onScroll = function () { nav.classList.toggle('is-scrolled', window.scrollY > 8); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* Mobile sheet: drops from the bar, closes the way it came, interruptible */
+    var toggle = document.getElementById('menu-toggle');
+    var sheet = document.getElementById('sheet');
+    var scrim = document.getElementById('scrim');
+    var open = false;
+    function setMenu(next) {
+      open = next;
+      document.body.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (hasGsap) {
+        var dur = reduce ? 0.15 : 0.32;
+        gsap.to([sheet, scrim], { autoAlpha: open ? 1 : 0, duration: dur, ease: open ? 'power3.out' : 'power2.in', overwrite: 'auto' });
+        if (!reduce) gsap.to(sheet, { y: open ? 0 : -12, duration: dur, ease: open ? 'power3.out' : 'power2.in', overwrite: 'auto' });
+      } else {
+        sheet.style.visibility = scrim.style.visibility = open ? 'visible' : 'hidden';
+        sheet.style.opacity = scrim.style.opacity = open ? 1 : 0;
+      }
+      if (open) { var first = sheet.querySelector('a'); if (first) first.focus({ preventScroll: true }); }
+    }
+    if (hasGsap && !reduce) gsap.set(sheet, { y: -12 });
+    toggle.addEventListener('click', function () { setMenu(!open); });
+    scrim.addEventListener('click', function () { setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) { setMenu(false); toggle.focus(); } });
+    sheet.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    window.matchMedia('(min-width: 861px)').addEventListener('change', function (m) { if (m.matches && open) setMenu(false); });
+
+    if (!hasGsap || reduce) return;
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    /* One orchestrated moment on load: the headline settles line by line */
+    document.fonts.ready.then(function () {
+      var title = document.querySelector('[data-split]');
+      if (!title) return;
+      SplitText.create(title, {
+        type: 'lines', mask: 'lines', autoSplit: true,
+        onSplit: function (self) {
+          return gsap.timeline()
+            .from(self.lines, { yPercent: 105, duration: 1.1, ease: 'expo.out', stagger: 0.09 })
+            .from(title.parentNode.querySelectorAll('[data-follow]'), { autoAlpha: 0, y: 8, duration: 0.8, ease: 'power2.out', stagger: 0.08 }, '-=0.7')
+            .add(function () { self.revert(); });
+        }
+      });
+    });
+
+    /* The compounding curves draw themselves as they come into view */
+    gsap.utils.toArray('[data-draw]').forEach(function (path, i) {
+      var len = path.getTotalLength();
+      var dot = path.parentNode.querySelector('.end') || path;
+      gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+      gsap.set(dot, { autoAlpha: 0 });
+      /* Each curve draws once, the first time it enters view, and then stays drawn */
+      var tl = gsap.timeline({
+        scrollTrigger: { trigger: path.closest('[data-draw-trigger]') || path, start: 'top 85%', once: true }
+      });
+      tl.to(path, { strokeDashoffset: 0, ease: 'power1.inOut', duration: 1.4 })
+        .to(dot, { autoAlpha: 1, duration: 0.2, ease: 'none' }, '-=0.1');
+    });
+  })();
+  </script>
 </body>
 </html>

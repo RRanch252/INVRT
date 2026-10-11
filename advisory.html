@@ -2,668 +2,624 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>INVRT - Practice</title>
   <meta name="description" content="Strategic advisory services focused on compounding business value, equity value, and investor value for multi generational success.">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="INVRT">
+  <meta property="og:title" content="INVRT - Practice">
+  <meta property="og:description" content="Strategic advisory services focused on compounding business value, equity value, and investor value for multi generational success.">
+  <meta property="og:image" content="https://invrt.io/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&family=Crimson+Text:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
   <style>
+    /* ============ Tokens ============ */
+    :root {
+      --ink: #111827;          /* site accent, retained */
+      --ink-2: #4b5563;        /* body secondary */
+      --ink-3: #6b7280;        /* meta */
+      --hairline: #e5e7eb;
+      --hairline-strong: #d1d5db;
+      --paper: #ffffff;
+      --glass: rgba(255, 255, 255, 0.72);
+
+      --sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --serif: 'Crimson Text', Georgia, serif;
+
+      /* Type scale: tracking tightens as size grows, leading tightens as size grows */
+      --t-display: clamp(2.75rem, 1.6rem + 5.2vw, 5.75rem);
+      --t-h2: clamp(2rem, 1.5rem + 2.2vw, 3.25rem);
+      --t-h3: 1.375rem;
+      --t-lead: clamp(1.1875rem, 1.05rem + 0.5vw, 1.4375rem);
+      --t-body: 1.0625rem;
+      --t-small: 0.875rem;
+
+      --gutter: clamp(1.25rem, 4vw, 3rem);
+      --measure: 36rem;
+      --section: clamp(6rem, 4rem + 9vw, 11rem);
+      --nav-h: 4.25rem;
+
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ============ Base ============ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 300 var(--t-body)/1.6 var(--sans);
+      letter-spacing: -0.003em;
+      font-optical-sizing: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
-    
-    .font-serif {
-      font-family: 'Crimson Text', serif;
+    h1, h2, h3, h4, p { margin: 0; }
+    a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+    img, svg { display: block; }
+    em.title { font-family: var(--serif); font-style: italic; font-size: 1.08em; letter-spacing: 0; }
+
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+    .skip { position: absolute; left: -9999px; top: 0; }
+    .skip:focus { left: var(--gutter); top: 0.75rem; z-index: 100; background: var(--paper); padding: 0.5rem 0.75rem; }
+
+    .wrap { max-width: 75rem; margin: 0 auto; padding-inline: max(var(--gutter), env(safe-area-inset-left)); }
+
+    /* ============ Type roles ============ */
+    .display {
+      font-size: var(--t-display);
+      font-weight: 300;
+      line-height: 1.02;
+      letter-spacing: -0.038em;
     }
-    
-    /* Smooth scrolling */
-    html {
-      scroll-behavior: smooth;
+    .h2 {
+      font-size: var(--t-h2);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.028em;
     }
-    
-    /* Navigation animations */
-    .nav-link {
-      position: relative;
-      transition: color 0.3s ease;
+    .h3 {
+      font-size: var(--t-h3);
+      font-weight: 400;
+      line-height: 1.3;
+      letter-spacing: -0.014em;
     }
-    
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 1px;
-      bottom: -4px;
-      left: 0;
-      background-color: #111827;
-      transition: width 0.3s ease;
+    .lead {
+      font-size: var(--t-lead);
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: -0.011em;
+      color: var(--ink-2);
     }
-    
-    .nav-link:hover::after,
-    .nav-link.active::after {
-      width: 100%;
+    .body { color: var(--ink-2); }
+    .meta { font-size: var(--t-small); font-weight: 400; letter-spacing: 0.002em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+    .reading {
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 1.15rem + 0.35vw, 1.4375rem);
+      line-height: 1.62;
+      letter-spacing: 0;
+      color: #1f2937;
     }
-    
-    /* Process timeline */
-    .timeline-line {
-      background: linear-gradient(to bottom, #e5e7eb 0%, #111827 50%, #e5e7eb 100%);
-      width: 2px;
-      height: 100%;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
+
+    /* ============ Controls ============ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 2.875rem; padding: 0 1.5rem;
+      font: 400 0.9375rem/1 var(--sans); letter-spacing: -0.006em;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      transition: transform 120ms var(--ease-out), background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+      touch-action: manipulation;
+      cursor: pointer;
     }
-    
-    /* Service card animations */
-    .service-detail {
-      transition: all 0.3s ease;
+    .btn:active { transform: scale(0.97); transition-duration: 80ms; }
+    .btn-solid { background: var(--ink); color: #fff; }
+    .btn-line { background: transparent; color: var(--ink); border-color: var(--hairline-strong); }
+    @media (hover: hover) {
+      .btn-solid:hover { background: #1f2937; }
+      .btn-line:hover { border-color: var(--ink); }
     }
-    
-    .service-detail:hover {
-      transform: translateX(8px);
+
+    .link {
+      display: inline-block;
+      font-size: 0.9375rem; font-weight: 400; letter-spacing: -0.006em;
+      color: var(--ink);
+      background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+      padding-bottom: 2px;
+      transition: background-size 260ms var(--ease-out), opacity 160ms ease;
     }
-    
-    /* Fade animations */
-    .fade-in {
-      animation: fadeIn 0.8s ease-out;
+    /* Standalone links keep their look but carry a 44px tap area on touch screens */
+    @media (pointer: coarse) {
+      p > .link:only-child, .after .link, .area-foot .link, .idea .link, .practice-item .link { padding-block: 0.65rem; margin-block: -0.65rem; background-position: 0 calc(100% - 0.65rem); }
     }
-    
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .link:active { opacity: 0.55; }
+    @media (hover: hover) { .link:hover { background-size: 0% 1px; background-position: 100% 100%; } }
+
+    /* ============ Navigation (translucent material) ============ */
+    .nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      height: calc(var(--nav-h) + env(safe-area-inset-top));
+      padding-top: env(safe-area-inset-top);
+      background: var(--glass);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      backdrop-filter: saturate(180%) blur(20px);
     }
-    
-    /* Mobile menu */
-    .mobile-menu {
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
+    .nav::after { /* scroll edge: a soft fade where content passes beneath the material, no hard rule */
+      content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 1.5rem; pointer-events: none;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0));
+      opacity: 0; transition: opacity 320ms ease;
     }
-    
-    .mobile-menu.active {
-      transform: translateX(0);
+    .nav.is-scrolled::after { opacity: 1; }
+    .nav .wrap { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-size: 1.0625rem; font-weight: 400; letter-spacing: 0.14em; padding: 0.5rem 0; }
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; }
+    .nav-links a:not(.btn) {
+      font-size: 0.875rem; font-weight: 400; letter-spacing: -0.003em; color: var(--ink-2);
+      padding: 0.5rem 0; transition: color 160ms ease;
     }
-    
-    /* Scroll reveal */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
+    .nav-links a:not(.btn):active { color: var(--ink); }
+    @media (hover: hover) { .nav-links a:not(.btn):hover { color: var(--ink); } }
+    .nav-links a[aria-current="page"]:not(.btn) { color: var(--ink); }
+    .sheet a[aria-current="page"]:not(.btn) { color: var(--ink-3); }
+    .nav-links .btn { min-height: 2.25rem; padding: 0 1.05rem; font-size: 0.875rem; }
+
+    .menu-toggle {
+      display: none; width: 2.75rem; height: 2.75rem; margin-right: -0.6rem;
+      border: 0; background: none; color: var(--ink); cursor: pointer; touch-action: manipulation;
+      align-items: center; justify-content: center;
     }
-    
-    .scroll-reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .menu-toggle span { position: relative; width: 18px; height: 1px; background: currentColor; transition: transform 260ms var(--ease-out), opacity 160ms ease; }
+    .menu-toggle span::before, .menu-toggle span::after { content: ''; position: absolute; left: 0; width: 18px; height: 1px; background: currentColor; transition: transform 260ms var(--ease-out); }
+    .menu-toggle span::before { transform: translateY(-5px); }
+    .menu-toggle span::after { transform: translateY(5px); }
+    .menu-open .menu-toggle span { background: transparent; }
+    .menu-open .menu-toggle span::before { transform: rotate(45deg); }
+    .menu-open .menu-toggle span::after { transform: rotate(-45deg); }
+
+    .sheet {
+      position: fixed; z-index: 49; left: 0; right: 0;
+      top: calc(var(--nav-h) + env(safe-area-inset-top));
+      padding: 0.5rem var(--gutter) 2rem;
+      background: rgba(255, 255, 255, 0.92);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      backdrop-filter: saturate(180%) blur(24px);
+      border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+      visibility: hidden; opacity: 0;
+      transform-origin: top right;
     }
-    
-    /* Hover cards */
-    .approach-card {
-      transition: all 0.3s ease;
-      border: 1px solid #e5e7eb;
+    .sheet a:not(.btn) {
+      display: block; padding: 0.85rem 0;
+      font-size: 1.625rem; font-weight: 300; letter-spacing: -0.02em; line-height: 1.2;
+      border-bottom: 1px solid var(--hairline);
     }
-    
-    .approach-card:hover {
-      border-color: #111827;
-      transform: translateY(-4px);
+    .sheet a:not(.btn):active { color: var(--ink-3); }
+    .sheet .btn { width: 100%; margin-top: 1.5rem; }
+    .scrim { position: fixed; inset: 0; z-index: 48; background: rgba(17, 24, 39, 0.12); visibility: hidden; opacity: 0; }
+
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: inline-flex; }
     }
-  
-    /* consistency pass: subtle boxes, no heavy borders/shadows/lifts */
-    .service-card,.resource-card,.question-card,.approach-card,.client-card,.contact-card,.case-study-card{
-      background:#ffffff !important;border:1px solid #e5e7eb !important;box-shadow:none !important;border-radius:0 !important;
+
+    /* ============ Hero ============ */
+    .hero {
+      min-height: 100svh;
+      display: flex; align-items: flex-end;
+      padding-top: calc(var(--nav-h) + 4rem);
+      padding-bottom: clamp(4rem, 12vh, 8rem);
     }
-    .service-card:hover,.resource-card:hover,.question-card:hover,.approach-card:hover,.client-card:hover,.contact-card:hover,.case-study-card:hover{
-      transform:none !important;box-shadow:none !important;border-color:#d1d5db !important;
+    .hero > .wrap { width: 100%; }
+    .hero .display { max-width: 13ch; }
+    .hero .lead { max-width: 34rem; margin-top: clamp(1.75rem, 3vw, 2.5rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }
+    .line-mask { overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+
+    /* ============ Sections ============ */
+    section { padding-block: var(--section); }
+    .rule-top { border-top: 1px solid var(--hairline); }
+
+    /* Rail layout: heading holds its place while the content scrolls */
+    .rail { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(2.5rem, 5vw, 6rem); }
+    .rail-head { position: sticky; top: calc(var(--nav-h) + 2.5rem); align-self: start; }
+    .rail-head .meta { margin-top: 1rem; max-width: 18rem; }
+    @media (max-width: 860px) {
+      .rail { grid-template-columns: 1fr; gap: 3rem; }
+      .rail-head { position: static; }
     }
-    .question-card::before{display:none !important;}
+
+        /* Footer */
+    footer { border-top: 1px solid var(--hairline); padding: 4rem 0 calc(2.5rem + env(safe-area-inset-bottom)); }
+    .foot { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 3fr) minmax(0, 3fr); gap: 2.5rem; }
+    .foot h4 { font-size: var(--t-small); font-weight: 400; color: var(--ink); margin-bottom: 1rem; }
+    .foot ul { list-style: none; margin: 0; padding: 0; }
+    .foot li a { display: inline-block; padding: 0.3rem 0; font-size: var(--t-small); color: var(--ink-3); transition: color 160ms ease; }
+    @media (hover: hover) { .foot li a:hover { color: var(--ink); } }
+    .legal { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--hairline); }
+    @media (max-width: 600px) { .foot { grid-template-columns: 1fr 1fr; } .foot > :first-child { grid-column: 1 / -1; } }
+
+    /* ============ Accessibility preferences ============ */
+    @media (prefers-reduced-transparency: reduce) {
+      .nav, .sheet { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; }
+    }
+    @media (prefers-contrast: more) {
+      :root { --ink-2: #1f2937; --ink-3: #374151; --hairline: #9ca3af; }
+      .nav::after { opacity: 1; height: 1px; background: #6b7280; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+    /* ============ Interior pages ============ */
+    .page-hero { padding-top: calc(var(--nav-h) + clamp(5rem, 12vw, 9rem)); padding-bottom: clamp(4rem, 8vw, 6rem); }
+    .page-hero .display { font-size: clamp(2.5rem, 1.5rem + 4.2vw, 4.75rem); max-width: 16ch; }
+    .page-hero .lead { max-width: 36rem; margin-top: clamp(1.5rem, 3vw, 2.25rem); }
+    .prose { max-width: var(--measure); }
+    .prose p + p { margin-top: 1.1em; }
+    .stack > * + * { margin-top: 1rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem clamp(2rem, 4vw, 4rem); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 3.5rem); }
+    @media (max-width: 860px) { .grid-3 { grid-template-columns: 1fr; gap: 3rem; } }
+    @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .rows > * { padding: 1.75rem 0; border-top: 1px solid var(--hairline); }
+    .rows > *:last-child { border-bottom: 1px solid var(--hairline); }
+    .after { margin-top: 3.5rem; }
+    .section-head { max-width: 46rem; margin-bottom: clamp(3rem, 6vw, 4.5rem); }
+    .section-head .lead { margin-top: 1.25rem; }
+    .label-list { list-style: none; margin: 0; padding: 0; }
+    .label-list li { padding: 0.35rem 0; color: var(--ink-2); }
+    .label-list li strong { font-weight: 400; color: var(--ink); }
+    [data-split] > div { padding-bottom: 0.14em; margin-bottom: -0.14em; }
+    section[id], [id].h2, h2[id], h3[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 1.5rem); }
+
+    /* ============ Page ============ */
+    /* How We Work: four principles, unnumbered */
+    .approach { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3.5rem clamp(2rem, 4vw, 4rem); }
+    .approach .body { margin-top: 0.75rem; }
+    @media (max-width: 600px) { .approach { grid-template-columns: 1fr; gap: 2.75rem; } }
+
+    /* Process: a genuine sequence, numbered quietly */
+    .steps { list-style: none; margin: 0; padding: 0; }
+    .steps li { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 0 1rem; padding: 2rem 0; border-top: 1px solid var(--hairline); }
+    .steps li:last-child { border-bottom: 1px solid var(--hairline); }
+    .steps .meta { padding-top: 0.3rem; font-variant-numeric: tabular-nums; }
+    .steps .body { margin-top: 0.6rem; max-width: var(--measure); }
+
+    /* Practice areas: each a rail of its own, anchored from the homepage */
+    .area { padding-top: clamp(3rem, 6vw, 4.5rem); border-top: 1px solid var(--hairline-strong); scroll-margin-top: var(--nav-h); }
+    .area + .area { margin-top: clamp(5rem, 9vw, 8rem); }
+    .area .rail-head .h3 { font-size: clamp(1.625rem, 1.3rem + 1vw, 2.125rem); font-weight: 300; line-height: 1.15; letter-spacing: -0.022em; }
+    .items { margin-top: 0; }
+    .items > div { padding: 1.1rem 0; border-top: 1px solid var(--hairline); }
+    .items > div:last-child { border-bottom: 1px solid var(--hairline); }
+    .items h4 { font-size: var(--t-body); font-weight: 400; line-height: 1.45; letter-spacing: -0.008em; }
+    .area-foot { margin-top: 2.25rem; }
+    .area-foot .link { margin-top: 1rem; }
+
+    /* Closing */
+    .closing .h2 { max-width: 20ch; }
+    .closing .lead { margin-top: 1.5rem; max-width: 36rem; }
+    .closing-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }
+    @media (max-width: 480px) { .closing-actions .btn { width: 100%; } }
+    @media (max-width: 600px) {
+      .steps li { grid-template-columns: 1.75rem minmax(0, 1fr); }
+      .area.rail { gap: 2rem; }
+    }
+
   </style>
 </head>
-<body class="font-light text-gray-900 bg-white antialiased">
-  <!-- Navigation -->
-  <nav id="navbar" class="fixed w-full bg-white bg-opacity-95 backdrop-blur-sm z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
-        <div class="text-lg font-light tracking-wide text-gray-900">
-          <a href="index.html" class="hover:text-gray-600 transition-colors">
-            INVRT
-          </a>
-        </div>
-        
-        <div class="hidden md:flex items-center space-x-10">
-          <a href="insights.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Ideas</a>
-          <a href="clients.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Clients</a>
-          <a href="advisory.html" class="nav-link active text-sm text-gray-900">Practice</a>
-          <a href="philosophy.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Perspective</a>
-          <a href="questions.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Questions</a>
-          <a href="contact.html" class="text-sm px-5 py-2.5 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
-            Contact
-          </a>
-        </div>
-        
-        <button id="mobile-menu-button" class="md:hidden">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a href="index.html" class="brand" aria-label="INVRT home">INVRT</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="insights.html">Ideas</a>
+        <a href="clients.html">Clients</a>
+        <a href="advisory.html" aria-current="page">Practice</a>
+        <a href="philosophy.html">Perspective</a>
+        <a href="questions.html">Questions</a>
+        <a href="contact.html" class="btn btn-solid">Contact</a>
+      </nav>
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span></button>
     </div>
+  </header>
+  <div class="scrim" id="scrim"></div>
+  <nav class="sheet" id="sheet" aria-label="Mobile">
+    <a href="insights.html">Ideas</a>
+    <a href="clients.html">Clients</a>
+    <a href="advisory.html" aria-current="page">Practice</a>
+    <a href="philosophy.html">Perspective</a>
+    <a href="questions.html">Questions</a>
+    <a href="contact.html" class="btn btn-solid">Contact</a>
   </nav>
 
-  <!-- Hero Section - Matching index.html spacing -->
-  <section class="min-h-screen flex items-center pt-20 bg-white">
-    <div class="max-w-5xl mx-auto px-6 lg:px-8">
-      <div class="fade-in">
-        <p class="text-sm tracking-[0.2em] text-gray-500 mb-8 uppercase">Practice</p>
-        <h1 class="text-5xl md:text-7xl font-extralight leading-[1.1] mb-8">
-          Designing Systems That<br/>
-          <em class="font-serif font-normal not-italic">Compound Value</em> Over Time
-        </h1>
-        <p class="text-xl md:text-2xl font-light text-gray-700 max-w-3xl mb-12 leading-relaxed">
-          We guide clients through the entire value creation journey, ensuring each decision 
-          strengthens rather than dilutes the quality of your business system.
-        </p>
+  <main id="main">
+    <!-- Hero -->
+    <section class="page-hero">
+      <div class="wrap">
+        <h1 class="display" data-split>Designing Systems That Compound Value Over Time</h1>
+        <p class="lead" data-follow>We guide clients through the entire value creation journey, ensuring each decision strengthens rather than dilutes the quality of your business system.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Our Approach -->
-  <section class="py-32 bg-white">
-    <div class="max-w-6xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-extralight mb-6">How We Work</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Our approach combines strategic thinking with hands on partnership, 
-          always focused on multi generational value creation.
-        </p>
-      </div>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="approach-card bg-white p-6 rounded-lg">
-          <h3 class="text-lg font-light mb-3">Long Term Orientation</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">
-            We work with clients who measure success in decades, enabling sustainable value creation.
-          </p>
+    <!-- How We Work -->
+    <section id="approach" class="rule-top">
+      <div class="wrap rail">
+        <div class="rail-head">
+          <h2 class="h2">How We Work</h2>
+          <p class="meta">Four commitments that hold across every engagement.</p>
         </div>
-        
-        <div class="approach-card bg-white p-6 rounded-lg">
-          <h3 class="text-lg font-light mb-3">Hands On Partnership</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">
-            We roll up our sleeves and work alongside your teams to solve real challenges.
-          </p>
-        </div>
-        
-        <div class="approach-card bg-white p-6 rounded-lg">
-          <h3 class="text-lg font-light mb-3">Global Perspective</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">
-            Our network spans continents, providing insights beyond your immediate environment.
-          </p>
-        </div>
-        
-        <div class="approach-card bg-white p-6 rounded-lg">
-          <h3 class="text-lg font-light mb-3">Aligned Incentives</h3>
-          <p class="text-sm text-gray-600 leading-relaxed">
-            Our success is tied to your long term success. We win together, or not at all.
-          </p>
+        <div class="approach">
+          <div>
+            <h3 class="h3">Long Term Orientation</h3>
+            <p class="body">We work with clients who measure success in decades.</p>
+          </div>
+          <div>
+            <h3 class="h3">Hands On Partnership</h3>
+            <p class="body">We work alongside your teams on real problems.</p>
+          </div>
+          <div>
+            <h3 class="h3">Global Perspective</h3>
+            <p class="body">Our network spans continents, providing insights beyond your immediate environment.</p>
+          </div>
+          <div>
+            <h3 class="h3">Aligned Incentives</h3>
+            <p class="body">Our success is tied to your long term success.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Process Timeline -->
-  <section class="py-32 bg-white">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-extralight mb-6">Process</h2>
-        <p class="text-lg text-gray-600">
-          A systematic approach to building enduring value
-        </p>
-      </div>
-      
-      <div class="relative">
-        <div class="timeline-line"></div>
-        
-        <div class="space-y-16">
-          <div class="relative flex items-center">
-            <div class="flex-1 text-right pr-8">
-              <h3 class="text-xl font-light mb-2">Systems Assessment</h3>
-              <p class="text-gray-600">
-                We begin by understanding your current state, desired outcomes, 
-                and the feedback loops that govern your enterprise.
-              </p>
-            </div>
-            <div class="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center text-white z-10">
-              1
-            </div>
-            <div class="flex-1 pl-8"></div>
-          </div>
-          
-          <div class="relative flex items-center">
-            <div class="flex-1 pr-8"></div>
-            <div class="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center text-white z-10">
-              2
-            </div>
-            <div class="flex-1 text-left pl-8">
-              <h3 class="text-xl font-light mb-2">Strategic Design</h3>
-              <p class="text-gray-600">
-                We identify leverage points where small changes can produce 
-                large, positive outcomes over time.
-              </p>
-            </div>
-          </div>
-          
-          <div class="relative flex items-center">
-            <div class="flex-1 text-right pr-8">
-              <h3 class="text-xl font-light mb-2">Implementation Partnership</h3>
-              <p class="text-gray-600">
-                We provide ongoing guidance to ensure the system evolves 
-                with changing conditions while maintaining core principles.
-              </p>
-            </div>
-            <div class="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center text-white z-10">
-              3
-            </div>
-            <div class="flex-1 pl-8"></div>
-          </div>
+    <!-- Process -->
+    <section id="process" class="rule-top">
+      <div class="wrap rail">
+        <div class="rail-head">
+          <h2 class="h2">Process</h2>
+          <p class="meta">A systematic approach to building enduring value.</p>
         </div>
+        <ol class="steps">
+          <li>
+            <span class="meta">1</span>
+            <div>
+              <h3 class="h3">Systems Assessment</h3>
+              <p class="body">We begin by understanding your current state, desired outcomes, and the feedback loops that govern your enterprise.</p>
+            </div>
+          </li>
+          <li>
+            <span class="meta">2</span>
+            <div>
+              <h3 class="h3">Strategic Design</h3>
+              <p class="body">We identify leverage points where small changes can produce large, positive outcomes over time.</p>
+            </div>
+          </li>
+          <li>
+            <span class="meta">3</span>
+            <div>
+              <h3 class="h3">Implementation Partnership</h3>
+              <p class="body">We provide ongoing guidance to ensure the system evolves with changing conditions while maintaining core principles.</p>
+            </div>
+          </li>
+        </ol>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Services Detail -->
-  <section id="services" class="py-32 bg-white">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-extralight mb-6">Practice</h2>
-        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-          Three core areas of focus, each designed to create compounding value across generations
-        </p>
-      </div>
-      
-      <!-- Compounding Business Value -->
-      <div id="business" class="mb-20 scroll-reveal">
-        <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
-          <div class="bg-gray-900 text-white p-8">
-            <h3 class="text-3xl font-extralight mb-4">Compounding Business Value</h3>
-            <p class="text-lg text-gray-300">
-              Strategic acquisitions that strengthen your business system
-            </p>
-          </div>
-          
-          <div class="p-8">
-            <p class="text-lg text-gray-700 mb-8 leading-relaxed">
-              We guide clients through the entire acquisition process, from target identification 
-              to post merger integration, ensuring each transaction strengthens rather than dilutes 
-              the quality of your business system.
-            </p>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-              <div class="service-detail">
-                <h4 class="font-medium text-gray-900 mb-3 flex items-center">
-                  <span class="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
-                  Strategic fit assessment using systems thinking
-                </h4>
-                <p class="text-sm text-gray-600 ml-5">
-                  We evaluate potential acquisitions through a systems lens, ensuring they enhance 
-                  rather than complicate your business ecosystem.
-                </p>
-              </div>
-              
-              <div class="service-detail">
-                <h4 class="font-medium text-gray-900 mb-3 flex items-center">
-                  <span class="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
-                  Target identification and evaluation
-                </h4>
-                <p class="text-sm text-gray-600 ml-5">
-                  We help identify businesses that share your quality orientation and can 
-                  strengthen your competitive advantages over time.
-                </p>
-              </div>
-              
-              <div class="service-detail">
-                <h4 class="font-medium text-gray-900 mb-3 flex items-center">
-                  <span class="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
-                  Transaction structuring and negotiation
-                </h4>
-                <p class="text-sm text-gray-600 ml-5">
-                  We design deal structures that align incentives across all stakeholders 
-                  for long term value creation.
-                </p>
-              </div>
-              
-              <div class="service-detail">
-                <h4 class="font-medium text-gray-900 mb-3 flex items-center">
-                  <span class="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
-                  Integration planning focused on long term value
-                </h4>
-                <p class="text-sm text-gray-600 ml-5">
-                  We develop integration approaches that preserve the best of both cultures 
-                  while creating new synergies.
-                </p>
-              </div>
-              
-              <div class="service-detail md:col-span-2">
-                <h4 class="font-medium text-gray-900 mb-3 flex items-center">
-                  <span class="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
-                  Cultural alignment and transition management
-                </h4>
-                <p class="text-sm text-gray-600 ml-5">
-                  We ensure cultural compatibility and manage transitions to maintain momentum 
-                  and morale throughout the process.
-                </p>
-              </div>
-            </div>
-            
-            <div class="mt-8 pt-8 border-t border-gray-200">
-              <p class="text-sm text-gray-600 mb-4">Typical engagement timeline: 6-18 months</p>
-              <a href="contact.html" class="inline-block text-sm font-medium text-gray-900 border-b-2 border-gray-900 hover:text-gray-600 hover:border-gray-600">
-                Discuss your acquisition strategy →
-              </a>
-            </div>
-          </div>
+    <!-- Practice -->
+    <section id="services" class="rule-top">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="h2">Practice</h2>
+          <p class="lead">Three areas of focus.</p>
         </div>
-      </div>
-      
-      <!-- Compounding Equity Value -->
-      <div id="equity" class="mb-20 scroll-reveal">
-        <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
-          <div class="bg-gray-900 text-white p-8">
-            <h3 class="text-3xl font-extralight mb-4">Compounding Equity Value</h3>
-            <p class="text-lg text-gray-300">
-              Portfolio optimization for multi generational success
-            </p>
-          </div>
-          
-          <div class="p-8">
-            <p class="text-lg text-gray-700 mb-8 leading-relaxed">
-              We work with holding companies to optimize their portfolio structure, governance, 
-              and value creation approach across diverse businesses with a focus on multi generational success.
-            </p>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-              <div class="service-detail">
-                <h4 class="font-medium text-gray-900 mb-3 flex items-center">
-                  <span class="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
-                  Portfolio design and optimization
-                </h4>
-                <p class="text-sm text-gray-600 ml-5">
-                  We help structure portfolios to create reinforcing feedback loops between 
-                  businesses, maximizing system-wide value creation.
-                </p>
-              </div>
-              
-              <div class="service-detail">
-                <h4 class="font-medium text-gray-900 mb-3 flex items-center">
-                  <span class="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
-                  Governance frameworks
-                </h4>
-                <p class="text-sm text-gray-600 ml-5">
-                  We design governance structures that give businesses freedom to operate 
-                  while maintaining strategic coherence.
-                </p>
-              </div>
-              
-              <div class="service-detail">
-                <h4 class="font-medium text-gray-900 mb-3 flex items-center">
-                  <span class="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
-                  Capital allocation strategy
-                </h4>
-                <p class="text-sm text-gray-600 ml-5">
-                  We develop frameworks for allocating capital that prioritize long term 
-                  compounding over short term returns.
-                </p>
-              </div>
-              
-              <div class="service-detail">
-                <h4 class="font-medium text-gray-900 mb-3 flex items-center">
-                  <span class="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
-                  Leadership development and succession
-                </h4>
-                <p class="text-sm text-gray-600 ml-5">
-                  We help identify and develop leaders who embody your values and can 
-                  steward the business across generations.
-                </p>
-              </div>
-              
-              <div class="service-detail md:col-span-2">
-                <h4 class="font-medium text-gray-900 mb-3 flex items-center">
-                  <span class="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
-                  Long term strategic roadmapping
-                </h4>
-                <p class="text-sm text-gray-600 ml-5">
-                  We create adaptive strategic frameworks that provide direction while 
-                  allowing for evolution as conditions change.
-                </p>
-              </div>
-            </div>
-            
-            <div class="mt-8 pt-8 border-t border-gray-200">
-              <p class="text-sm text-gray-600 mb-4">Typical engagement timeline: 12-24 months</p>
-              <a href="contact.html" class="inline-block text-sm font-medium text-gray-900 border-b-2 border-gray-900 hover:text-gray-600 hover:border-gray-600">
-                Optimize your portfolio approach →
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Compounding Investor Value -->
-      <div id="investor" class="scroll-reveal">
-        <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
-          <div class="bg-gray-900 text-white p-8">
-            <h3 class="text-3xl font-extralight mb-4">Compounding Investor Value</h3>
-            <p class="text-lg text-gray-300">
-              Attracting partners who share your long term vision
-            </p>
-          </div>
-          
-          <div class="p-8">
-            <p class="text-lg text-gray-700 mb-8 leading-relaxed">
-              We help clients navigate capital raising and market positioning with an emphasis 
-              on attracting the right partners who share your long term vision and quality orientation.
-            </p>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-              <div class="service-detail">
-                <h4 class="font-medium text-gray-900 mb-3 flex items-center">
-                  <span class="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
-                  Capital structure optimization
-                </h4>
-                <p class="text-sm text-gray-600 ml-5">
-                  We design capital structures that provide flexibility for long term value 
-                  creation while protecting your ability to operate with a quality focus.
-                </p>
-              </div>
-              
-              <div class="service-detail">
-                <h4 class="font-medium text-gray-900 mb-3 flex items-center">
-                  <span class="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
-                  Post-transaction relationship management
-                </h4>
-                <p class="text-sm text-gray-600 ml-5">
-                  We help structure ongoing relationships with investors that maintain 
-                  alignment through changing conditions.
-                </p>
-              </div>
-              
-              <div class="service-detail md:col-span-2">
-                <h4 class="font-medium text-gray-900 mb-3 flex items-center">
-                  <span class="w-2 h-2 bg-gray-900 rounded-full mr-3"></span>
-                  Integration of human, tech and financial capital
-                </h4>
-                <p class="text-sm text-gray-600 ml-5">
-                  We provide continuous guidance on optimizing the interplay between your people, 
-                  technology investments, and financial resources to create sustainable competitive 
-                  advantages. This includes aligning incentive structures, building technological 
-                  capabilities that enhance human potential, and ensuring capital allocation 
-                  supports both innovation and operational excellence.
-                </p>
-              </div>
-            </div>
-            
-            <div class="mt-8 pt-8 border-t border-gray-200">
-              <p class="text-sm text-gray-600 mb-4">Typical engagement timeline: 3-12 months</p>
-              <a href="contact.html" class="inline-block text-sm font-medium text-gray-900 border-b-2 border-gray-900 hover:text-gray-600 hover:border-gray-600">
-                Discuss your capital strategy →
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  
+        <!-- Compounding Business Value -->
+        <div id="business" class="area rail">
+          <div class="rail-head">
+            <h3 class="h3">Compounding Business Value</h3>
+            <p class="meta">Strategic acquisitions that strengthen your business system</p>
+          </div>
+          <div>
+            <div class="items">
+              <div>
+                <h4>Strategic fit assessment using systems thinking</h4>
+              </div>
+              <div>
+                <h4>Target identification and evaluation</h4>
+              </div>
+              <div>
+                <h4>Transaction structuring and negotiation</h4>
+              </div>
+              <div>
+                <h4>Integration planning focused on long term value</h4>
+              </div>
+              <div>
+                <h4>Cultural alignment and transition management</h4>
+              </div>
+            </div>
+            <div class="area-foot">
+              <p class="meta">Typical engagement timeline: 6-18 months</p>
+              <a href="contact.html" class="link">Discuss an acquisition</a>
+            </div>
+          </div>
+        </div>
 
-  <!-- Call to Action -->
-  <section class="py-32 bg-white">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-extralight mb-8">
-        Ready to Build an Enterprise Designed to Improve with Time?
-      </h2>
-      <p class="text-lg text-gray-700 mb-12 max-w-2xl mx-auto">
-        If our approach resonates with your vision for creating a business worthy of 
-        persisting through time, we'd welcome a conversation about how we might work together.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="contact.html" class="inline-block px-8 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
-          Start a Conversation
-        </a>
-        <a href="https://invrt.substack.com/" target="_blank" class="inline-block px-8 py-4 border border-gray-900 text-gray-900 hover:bg-gray-50 transition-colors">
-          Subscribe on Substack
-        </a>
-        <a href="https://theartofquality.co/" target="_blank" class="inline-block px-8 py-4 border border-gray-900 text-gray-900 hover:bg-gray-50 transition-colors">
-          Listen to Podcast
-        </a>
-      </div>
-    </div>
-  </section>
+        <!-- Compounding Equity Value -->
+        <div id="equity" class="area rail">
+          <div class="rail-head">
+            <h3 class="h3">Compounding Equity Value</h3>
+            <p class="meta">Portfolio optimization for multi generational success</p>
+          </div>
+          <div>
+            <div class="items">
+              <div>
+                <h4>Portfolio design and optimization</h4>
+              </div>
+              <div>
+                <h4>Governance frameworks</h4>
+              </div>
+              <div>
+                <h4>Capital allocation strategy</h4>
+              </div>
+              <div>
+                <h4>Leadership development and succession</h4>
+              </div>
+              <div>
+                <h4>Long term strategic roadmapping</h4>
+              </div>
+            </div>
+            <div class="area-foot">
+              <p class="meta">Typical engagement timeline: 12-24 months</p>
+              <a href="contact.html" class="link">Discuss your portfolio</a>
+            </div>
+          </div>
+        </div>
 
-<!-- Footer -->
-<footer class="bg-gray-900 text-white py-20 border-t border-gray-800">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="grid md:grid-cols-4 gap-12 mb-12">
-      <div class="md:col-span-2">
-        <h3 class="text-2xl font-light mb-6">INVRT</h3>
-      </div>
-      
-      <div>
-        <h4 class="font-normal mb-6">Quick Links</h4>
-        <ul class="space-y-3 text-gray-400">
-          <li><a href="philosophy.html" class="hover:text-white transition-colors">Perspective</a></li>
-          <li><a href="advisory.html" class="hover:text-white transition-colors">Practice</a></li>
-          <li><a href="insights.html" class="hover:text-white transition-colors">Ideas</a></li>
-          <li><a href="clients.html" class="hover:text-white transition-colors">Clients</a></li>
-        </ul>
-      </div>
-      
-      <div>
-        <h4 class="font-normal mb-6">Connect</h4>
-        <div class="space-y-3">
-          <a href="https://invrt.substack.com/" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-white transition-colors">
-            Subscribe to Substack
-          </a>
-          <a href="https://open.spotify.com/show/62autSn7DeWpMURIob0Ox3?si=d91a6c886dca4e2c" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-white transition-colors">
-            Subscribe to Podcast
-          </a>
+        <!-- Compounding Investor Value -->
+        <div id="investor" class="area rail">
+          <div class="rail-head">
+            <h3 class="h3">Compounding Investor Value</h3>
+            <p class="meta">Attracting partners who share your long term vision</p>
+          </div>
+          <div>
+            <div class="items">
+              <div>
+                <h4>Capital structure optimization</h4>
+              </div>
+              <div>
+                <h4>Post-transaction relationship management</h4>
+              </div>
+              <div>
+                <h4>Integration of human, tech and financial capital</h4>
+              </div>
+            </div>
+            <div class="area-foot">
+              <p class="meta">Typical engagement timeline: 3-12 months</p>
+              <a href="contact.html" class="link">Discuss your capital structure</a>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="conversation" class="rule-top">
+      <div class="wrap closing">
+        <h2 class="h2">Start a conversation</h2>
+        <div class="closing-actions">
+          <a href="contact.html" class="btn btn-solid">Contact</a>
+          <a href="https://invrt.substack.com/" target="_blank" rel="noopener noreferrer" class="btn btn-line">Subscribe on Substack</a>
+          <a href="https://theartofquality.co/" target="_blank" rel="noopener noreferrer" class="btn btn-line">Listen to Podcast</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div><a href="index.html" class="brand">INVRT</a></div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="philosophy.html">Perspective</a></li>
+            <li><a href="advisory.html">Practice</a></li>
+            <li><a href="insights.html">Ideas</a></li>
+            <li><a href="clients.html">Clients</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://invrt.substack.com/" target="_blank" rel="noopener noreferrer">Subscribe to Substack</a></li>
+            <li><a href="https://open.spotify.com/show/62autSn7DeWpMURIob0Ox3?si=d91a6c886dca4e2c" target="_blank" rel="noopener noreferrer">Subscribe to Podcast</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="meta legal">© 2026 INVRT Limited. All rights reserved.</p>
     </div>
-    
-    <div class="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
-      © 2026 INVRT Limited. All rights reserved.
-    </div>
-  </div>
-</footer>
-  
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
   <script>
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hasGsap = typeof window.gsap !== 'undefined';
 
-// Mobile menu functionality
-const mobileMenuButton = document.getElementById('mobile-menu-button');
+    /* Scroll edge on the nav */
+    var nav = document.getElementById('nav');
+    var onScroll = function () { nav.classList.toggle('is-scrolled', window.scrollY > 8); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
-mobileMenuButton.addEventListener('click', () => {
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (!mobileMenu) {
-    const menu = document.createElement('div');
-    menu.id = 'mobile-menu';
-    menu.className = 'mobile-menu fixed right-0 top-0 h-full w-64 bg-white shadow-lg md:hidden z-50';
-    menu.innerHTML = `
-      <div class="p-6">
-        <button id="close-menu" class="mb-8">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-        <div class="space-y-4">
-            <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Ideas</a>
-            <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
-            <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Practice</a>
-            <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Perspective</a>
-            <a href="questions.html" class="block text-gray-900 hover:text-gray-600">Questions</a>
-            <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
-              Contact
-            </a>
-          </div>
-      </div>
-    `;
-    document.body.appendChild(menu);
-    
-    setTimeout(() => {
-      menu.classList.add('active');
-      const closeBtn = document.getElementById('close-menu');
-      closeBtn.addEventListener('click', () => {
-        menu.classList.remove('active');
-        setTimeout(() => menu.remove(), 300);
-      });
-    }, 10);
-  }
-});
-    
-    // Navbar scroll effect
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        navbar.classList.add('shadow-lg');
+    /* Mobile sheet: drops from the bar, closes the way it came, interruptible */
+    var toggle = document.getElementById('menu-toggle');
+    var sheet = document.getElementById('sheet');
+    var scrim = document.getElementById('scrim');
+    var open = false;
+    function setMenu(next) {
+      open = next;
+      document.body.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (hasGsap) {
+        var dur = reduce ? 0.15 : 0.32;
+        gsap.to([sheet, scrim], { autoAlpha: open ? 1 : 0, duration: dur, ease: open ? 'power3.out' : 'power2.in', overwrite: 'auto' });
+        if (!reduce) gsap.to(sheet, { y: open ? 0 : -12, duration: dur, ease: open ? 'power3.out' : 'power2.in', overwrite: 'auto' });
       } else {
-        navbar.classList.remove('shadow-lg');
+        sheet.style.visibility = scrim.style.visibility = open ? 'visible' : 'hidden';
+        sheet.style.opacity = scrim.style.opacity = open ? 1 : 0;
       }
-    });
-    
-    // Scroll reveal
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-    
-    document.querySelectorAll('.scroll-reveal').forEach(el => {
-      observer.observe(el);
-    });
-    
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+      if (open) { var first = sheet.querySelector('a'); if (first) first.focus({ preventScroll: true }); }
+    }
+    if (hasGsap && !reduce) gsap.set(sheet, { y: -12 });
+    toggle.addEventListener('click', function () { setMenu(!open); });
+    scrim.addEventListener('click', function () { setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) { setMenu(false); toggle.focus(); } });
+    sheet.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    window.matchMedia('(min-width: 861px)').addEventListener('change', function (m) { if (m.matches && open) setMenu(false); });
+
+    if (!hasGsap || reduce) return;
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+
+    /* One orchestrated moment on load: the headline settles line by line */
+    document.fonts.ready.then(function () {
+      var title = document.querySelector('[data-split]');
+      if (!title) return;
+      SplitText.create(title, {
+        type: 'lines', mask: 'lines', autoSplit: true,
+        onSplit: function (self) {
+          return gsap.timeline()
+            .from(self.lines, { yPercent: 105, duration: 1.1, ease: 'expo.out', stagger: 0.09 })
+            .from(title.parentNode.querySelectorAll('[data-follow]'), { autoAlpha: 0, y: 8, duration: 0.8, ease: 'power2.out', stagger: 0.08 }, '-=0.7')
+            .add(function () { self.revert(); });
         }
       });
     });
+
+    /* The compounding curves draw themselves as they come into view */
+    gsap.utils.toArray('[data-draw]').forEach(function (path, i) {
+      var len = path.getTotalLength();
+      var dot = path.parentNode.querySelector('.end') || path;
+      gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+      gsap.set(dot, { autoAlpha: 0 });
+      /* Each curve draws once, the first time it enters view, and then stays drawn */
+      var tl = gsap.timeline({
+        scrollTrigger: { trigger: path.closest('[data-draw-trigger]') || path, start: 'top 85%', once: true }
+      });
+      tl.to(path, { strokeDashoffset: 0, ease: 'power1.inOut', duration: 1.4 })
+        .to(dot, { autoAlpha: 1, duration: 0.2, ease: 'none' }, '-=0.1');
+    });
+  })();
   </script>
 </body>
 </html>

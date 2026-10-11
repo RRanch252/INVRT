@@ -2,370 +2,481 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>INVRT - Clients</title>
   <meta name="description" content="INVRT works with a small number of principals over long horizons. Who they are, when they engage us, and how the relationship is structured.">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="INVRT">
+  <meta property="og:title" content="INVRT - Clients">
+  <meta property="og:description" content="INVRT works with a small number of principals over long horizons. Who they are, when they engage us, and how the relationship is structured.">
+  <meta property="og:image" content="https://invrt.io/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500&family=Crimson+Text:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
   <style>
+    /* ============ Tokens ============ */
+    :root {
+      --ink: #111827;          /* site accent, retained */
+      --ink-2: #4b5563;        /* body secondary */
+      --ink-3: #6b7280;        /* meta */
+      --hairline: #e5e7eb;
+      --hairline-strong: #d1d5db;
+      --paper: #ffffff;
+      --glass: rgba(255, 255, 255, 0.72);
+
+      --sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --serif: 'Crimson Text', Georgia, serif;
+
+      /* Type scale: tracking tightens as size grows, leading tightens as size grows */
+      --t-display: clamp(2.75rem, 1.6rem + 5.2vw, 5.75rem);
+      --t-h2: clamp(2rem, 1.5rem + 2.2vw, 3.25rem);
+      --t-h3: 1.375rem;
+      --t-lead: clamp(1.1875rem, 1.05rem + 0.5vw, 1.4375rem);
+      --t-body: 1.0625rem;
+      --t-small: 0.875rem;
+
+      --gutter: clamp(1.25rem, 4vw, 3rem);
+      --measure: 36rem;
+      --section: clamp(6rem, 4rem + 9vw, 11rem);
+      --nav-h: 4.25rem;
+
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ============ Base ============ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 300 var(--t-body)/1.6 var(--sans);
+      letter-spacing: -0.003em;
+      font-optical-sizing: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    h1, h2, h3, h4, p { margin: 0; }
+    a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+    img, svg { display: block; }
+    em.title { font-family: var(--serif); font-style: italic; font-size: 1.08em; letter-spacing: 0; }
+
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+    .skip { position: absolute; left: -9999px; top: 0; }
+    .skip:focus { left: var(--gutter); top: 0.75rem; z-index: 100; background: var(--paper); padding: 0.5rem 0.75rem; }
+
+    .wrap { max-width: 75rem; margin: 0 auto; padding-inline: max(var(--gutter), env(safe-area-inset-left)); }
+
+    /* ============ Type roles ============ */
+    .display {
+      font-size: var(--t-display);
+      font-weight: 300;
+      line-height: 1.02;
+      letter-spacing: -0.038em;
+    }
+    .h2 {
+      font-size: var(--t-h2);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.028em;
+    }
+    .h3 {
+      font-size: var(--t-h3);
+      font-weight: 400;
+      line-height: 1.3;
+      letter-spacing: -0.014em;
+    }
+    .lead {
+      font-size: var(--t-lead);
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: -0.011em;
+      color: var(--ink-2);
+    }
+    .body { color: var(--ink-2); }
+    .meta { font-size: var(--t-small); font-weight: 400; letter-spacing: 0.002em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+    .reading {
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 1.15rem + 0.35vw, 1.4375rem);
+      line-height: 1.62;
+      letter-spacing: 0;
+      color: #1f2937;
     }
 
-    .font-serif {
-      font-family: 'Crimson Text', serif;
+    /* ============ Controls ============ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 2.875rem; padding: 0 1.5rem;
+      font: 400 0.9375rem/1 var(--sans); letter-spacing: -0.006em;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      transition: transform 120ms var(--ease-out), background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+      touch-action: manipulation;
+      cursor: pointer;
+    }
+    .btn:active { transform: scale(0.97); transition-duration: 80ms; }
+    .btn-solid { background: var(--ink); color: #fff; }
+    .btn-line { background: transparent; color: var(--ink); border-color: var(--hairline-strong); }
+    @media (hover: hover) {
+      .btn-solid:hover { background: #1f2937; }
+      .btn-line:hover { border-color: var(--ink); }
     }
 
-    /* Smooth scrolling */
-    html {
-      scroll-behavior: smooth;
+    .link {
+      display: inline-block;
+      font-size: 0.9375rem; font-weight: 400; letter-spacing: -0.006em;
+      color: var(--ink);
+      background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+      padding-bottom: 2px;
+      transition: background-size 260ms var(--ease-out), opacity 160ms ease;
+    }
+    /* Standalone links keep their look but carry a 44px tap area on touch screens */
+    @media (pointer: coarse) {
+      p > .link:only-child, .after .link, .area-foot .link, .idea .link, .practice-item .link { padding-block: 0.65rem; margin-block: -0.65rem; background-position: 0 calc(100% - 0.65rem); }
+    }
+    .link:active { opacity: 0.55; }
+    @media (hover: hover) { .link:hover { background-size: 0% 1px; background-position: 100% 100%; } }
+
+    /* ============ Navigation (translucent material) ============ */
+    .nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      height: calc(var(--nav-h) + env(safe-area-inset-top));
+      padding-top: env(safe-area-inset-top);
+      background: var(--glass);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      backdrop-filter: saturate(180%) blur(20px);
+    }
+    .nav::after { /* scroll edge: a soft fade where content passes beneath the material, no hard rule */
+      content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 1.5rem; pointer-events: none;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0));
+      opacity: 0; transition: opacity 320ms ease;
+    }
+    .nav.is-scrolled::after { opacity: 1; }
+    .nav .wrap { height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-size: 1.0625rem; font-weight: 400; letter-spacing: 0.14em; padding: 0.5rem 0; }
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; }
+    .nav-links a:not(.btn) {
+      font-size: 0.875rem; font-weight: 400; letter-spacing: -0.003em; color: var(--ink-2);
+      padding: 0.5rem 0; transition: color 160ms ease;
+    }
+    .nav-links a:not(.btn):active { color: var(--ink); }
+    @media (hover: hover) { .nav-links a:not(.btn):hover { color: var(--ink); } }
+    .nav-links a[aria-current="page"]:not(.btn) { color: var(--ink); }
+    .sheet a[aria-current="page"]:not(.btn) { color: var(--ink-3); }
+    .nav-links .btn { min-height: 2.25rem; padding: 0 1.05rem; font-size: 0.875rem; }
+
+    .menu-toggle {
+      display: none; width: 2.75rem; height: 2.75rem; margin-right: -0.6rem;
+      border: 0; background: none; color: var(--ink); cursor: pointer; touch-action: manipulation;
+      align-items: center; justify-content: center;
+    }
+    .menu-toggle span { position: relative; width: 18px; height: 1px; background: currentColor; transition: transform 260ms var(--ease-out), opacity 160ms ease; }
+    .menu-toggle span::before, .menu-toggle span::after { content: ''; position: absolute; left: 0; width: 18px; height: 1px; background: currentColor; transition: transform 260ms var(--ease-out); }
+    .menu-toggle span::before { transform: translateY(-5px); }
+    .menu-toggle span::after { transform: translateY(5px); }
+    .menu-open .menu-toggle span { background: transparent; }
+    .menu-open .menu-toggle span::before { transform: rotate(45deg); }
+    .menu-open .menu-toggle span::after { transform: rotate(-45deg); }
+
+    .sheet {
+      position: fixed; z-index: 49; left: 0; right: 0;
+      top: calc(var(--nav-h) + env(safe-area-inset-top));
+      padding: 0.5rem var(--gutter) 2rem;
+      background: rgba(255, 255, 255, 0.92);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      backdrop-filter: saturate(180%) blur(24px);
+      border-bottom: 1px solid rgba(17, 24, 39, 0.06);
+      visibility: hidden; opacity: 0;
+      transform-origin: top right;
+    }
+    .sheet a:not(.btn) {
+      display: block; padding: 0.85rem 0;
+      font-size: 1.625rem; font-weight: 300; letter-spacing: -0.02em; line-height: 1.2;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .sheet a:not(.btn):active { color: var(--ink-3); }
+    .sheet .btn { width: 100%; margin-top: 1.5rem; }
+    .scrim { position: fixed; inset: 0; z-index: 48; background: rgba(17, 24, 39, 0.12); visibility: hidden; opacity: 0; }
+
+    @media (max-width: 860px) {
+      .nav-links { display: none; }
+      .menu-toggle { display: inline-flex; }
     }
 
-    /* Navigation animations */
-    .nav-link {
-      position: relative;
-      transition: color 0.3s ease;
+    /* ============ Hero ============ */
+    .hero {
+      min-height: 100svh;
+      display: flex; align-items: flex-end;
+      padding-top: calc(var(--nav-h) + 4rem);
+      padding-bottom: clamp(4rem, 12vh, 8rem);
+    }
+    .hero > .wrap { width: 100%; }
+    .hero .display { max-width: 13ch; }
+    .hero .lead { max-width: 34rem; margin-top: clamp(1.75rem, 3vw, 2.5rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }
+    .line-mask { overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+
+    /* ============ Sections ============ */
+    section { padding-block: var(--section); }
+    .rule-top { border-top: 1px solid var(--hairline); }
+
+    /* Rail layout: heading holds its place while the content scrolls */
+    .rail { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(2.5rem, 5vw, 6rem); }
+    .rail-head { position: sticky; top: calc(var(--nav-h) + 2.5rem); align-self: start; }
+    .rail-head .meta { margin-top: 1rem; max-width: 18rem; }
+    @media (max-width: 860px) {
+      .rail { grid-template-columns: 1fr; gap: 3rem; }
+      .rail-head { position: static; }
     }
 
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 1px;
-      bottom: -4px;
-      left: 0;
-      background-color: #111827;
-      transition: width 0.3s ease;
-    }
+        /* Footer */
+    footer { border-top: 1px solid var(--hairline); padding: 4rem 0 calc(2.5rem + env(safe-area-inset-bottom)); }
+    .foot { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 3fr) minmax(0, 3fr); gap: 2.5rem; }
+    .foot h4 { font-size: var(--t-small); font-weight: 400; color: var(--ink); margin-bottom: 1rem; }
+    .foot ul { list-style: none; margin: 0; padding: 0; }
+    .foot li a { display: inline-block; padding: 0.3rem 0; font-size: var(--t-small); color: var(--ink-3); transition: color 160ms ease; }
+    @media (hover: hover) { .foot li a:hover { color: var(--ink); } }
+    .legal { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--hairline); }
+    @media (max-width: 600px) { .foot { grid-template-columns: 1fr 1fr; } .foot > :first-child { grid-column: 1 / -1; } }
 
-    .nav-link:hover::after,
-    .nav-link.active::after {
-      width: 100%;
+    /* ============ Accessibility preferences ============ */
+    @media (prefers-reduced-transparency: reduce) {
+      .nav, .sheet { background: #fff; -webkit-backdrop-filter: none; backdrop-filter: none; }
     }
+    @media (prefers-contrast: more) {
+      :root { --ink-2: #1f2937; --ink-3: #374151; --hairline: #9ca3af; }
+      .nav::after { opacity: 1; height: 1px; background: #6b7280; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+    /* ============ Interior pages ============ */
+    .page-hero { padding-top: calc(var(--nav-h) + clamp(5rem, 12vw, 9rem)); padding-bottom: clamp(4rem, 8vw, 6rem); }
+    .page-hero .display { font-size: clamp(2.5rem, 1.5rem + 4.2vw, 4.75rem); max-width: 16ch; }
+    .page-hero .lead { max-width: 36rem; margin-top: clamp(1.5rem, 3vw, 2.25rem); }
+    .prose { max-width: var(--measure); }
+    .prose p + p { margin-top: 1.1em; }
+    .stack > * + * { margin-top: 1rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem clamp(2rem, 4vw, 4rem); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(2rem, 4vw, 3.5rem); }
+    @media (max-width: 860px) { .grid-3 { grid-template-columns: 1fr; gap: 3rem; } }
+    @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .rows > * { padding: 1.75rem 0; border-top: 1px solid var(--hairline); }
+    .rows > *:last-child { border-bottom: 1px solid var(--hairline); }
+    .after { margin-top: 3.5rem; }
+    .section-head { max-width: 46rem; margin-bottom: clamp(3rem, 6vw, 4.5rem); }
+    .section-head .lead { margin-top: 1.25rem; }
+    .label-list { list-style: none; margin: 0; padding: 0; }
+    .label-list li { padding: 0.35rem 0; color: var(--ink-2); }
+    .label-list li strong { font-weight: 400; color: var(--ink); }
+    [data-split] > div { padding-bottom: 0.14em; margin-bottom: -0.14em; }
+    section[id], [id].h2, h2[id], h3[id], div[id] { scroll-margin-top: calc(var(--nav-h) + 1.5rem); }
 
-    /* Fade animations */
-    .fade-in {
-      animation: fadeIn 0.8s ease-out;
-    }
+    /* ============ Page ============ */
+    /* Label colon sentence entries: one calm column, hairline separated */
+    .entries { max-width: 40rem; }
+    .entries li { padding: 1.5rem 0; border-top: 1px solid var(--hairline); line-height: 1.7; }
+    .entries li:last-child { border-bottom: 1px solid var(--hairline); }
+    .entries li strong { letter-spacing: -0.006em; }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    /* Closing: references line, then the single action */
+    @media (max-width: 860px) { #references .rail-head { display: none; } }
 
-    .stagger-3 { animation-delay: 0.3s; }
-
-    /* Mobile menu */
-    .mobile-menu {
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-    }
-
-    .mobile-menu.active {
-      transform: translateX(0);
-    }
-
-    /* Scroll reveal */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
-    }
-
-    .scroll-reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Label plus body rows */
-    .item-row { display: grid; grid-template-columns: minmax(0,1fr); gap: 0.5rem; }
-    @media (min-width: 768px) { .item-row { grid-template-columns: 220px 1fr; gap: 3rem; } }
-    .item-label { font-weight: 500; color: #111827; letter-spacing: 0.01em; }
-    .item-body { color: #4b5563; line-height: 1.75; }
-  
-    /* consistency pass: subtle boxes, no heavy borders/shadows/lifts */
-    .service-card,.resource-card,.question-card,.approach-card,.client-card,.contact-card,.case-study-card{
-      background:#ffffff !important;border:1px solid #e5e7eb !important;box-shadow:none !important;border-radius:0 !important;
-    }
-    .service-card:hover,.resource-card:hover,.question-card:hover,.approach-card:hover,.client-card:hover,.contact-card:hover,.case-study-card:hover{
-      transform:none !important;box-shadow:none !important;border-color:#d1d5db !important;
-    }
-    .question-card::before{display:none !important;}
   </style>
 </head>
-<body class="font-light text-gray-900 bg-white antialiased">
-  <!-- Navigation -->
-  <nav id="navbar" class="fixed w-full bg-white bg-opacity-95 backdrop-blur-sm z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="flex justify-between items-center h-20">
-        <div class="text-lg font-light tracking-wide text-gray-900">
-          <a href="index.html" class="hover:text-gray-600 transition-colors">
-            INVRT
-          </a>
-        </div>
-
-        <div class="hidden md:flex items-center space-x-10">
-          <a href="insights.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Ideas</a>
-          <a href="clients.html" class="nav-link active text-sm text-gray-900">Clients</a>
-          <a href="advisory.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Practice</a>
-          <a href="philosophy.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Perspective</a>
-          <a href="questions.html" class="nav-link text-sm text-gray-600 hover:text-gray-900">Questions</a>
-          <a href="contact.html" class="text-sm px-5 py-2.5 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
-            Contact
-          </a>
-        </div>
-
-        <button id="mobile-menu-button" class="md:hidden">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a href="index.html" class="brand" aria-label="INVRT home">INVRT</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="insights.html">Ideas</a>
+        <a href="clients.html" aria-current="page">Clients</a>
+        <a href="advisory.html">Practice</a>
+        <a href="philosophy.html">Perspective</a>
+        <a href="questions.html">Questions</a>
+        <a href="contact.html" class="btn btn-solid">Contact</a>
+      </nav>
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="sheet" aria-label="Open menu"><span></span></button>
     </div>
+  </header>
+  <div class="scrim" id="scrim"></div>
+  <nav class="sheet" id="sheet" aria-label="Mobile">
+    <a href="insights.html">Ideas</a>
+    <a href="clients.html" aria-current="page">Clients</a>
+    <a href="advisory.html">Practice</a>
+    <a href="philosophy.html">Perspective</a>
+    <a href="questions.html">Questions</a>
+    <a href="contact.html" class="btn btn-solid">Contact</a>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="min-h-screen flex items-center pt-20 bg-white">
-    <div class="max-w-5xl mx-auto px-6 lg:px-8">
-      <div class="fade-in">
-        <p class="text-sm tracking-[0.2em] text-gray-500 mb-8 uppercase">Clients</p>
-        <h1 class="text-5xl md:text-7xl font-extralight leading-[1.1] mb-8">
-          A Small Number of Principals,<br/>
-          <em class="font-serif font-normal not-italic">Over Long Horizons</em>
-        </h1>
-        <p class="text-xl md:text-2xl font-light text-gray-700 max-w-3xl leading-relaxed">
-          A practice built around a few long relationships rather than many short ones.
-        </p>
+  <main id="main">
+    <!-- Hero -->
+    <section class="page-hero">
+      <div class="wrap">
+        <h1 class="display" data-split>A Small Number of Principals, Over Long Horizons</h1>
+        <p class="lead" data-follow>A practice built around a few long relationships rather than many short ones.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section 1: Principals -->
-  <section class="py-24 border-t border-gray-200 bg-white scroll-reveal">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-extralight text-gray-900 mb-14">The principals we work with</h2>
-
-      <div class="space-y-10">
-        <div class="item-row">
-          <div class="item-label">Experienced founders</div>
-          <p class="item-body">Owner operators who have built a business of substance and are now thinking about what it should look like when they are no longer running it. The common thread is a founder who has stopped optimising for the next quarter.</p>
+    <!-- Principals -->
+    <section id="principals" class="rule-top">
+      <div class="wrap rail">
+        <div class="rail-head">
+          <h2 class="h2">The principals we work with</h2>
         </div>
-        <div class="item-row">
-          <div class="item-label">Family offices</div>
-          <p class="item-body">Multi generational offices allocating direct capital alongside their managed exposures. They treat capital allocation as a system rather than a series of one off decisions.</p>
-        </div>
-        <div class="item-row">
-          <div class="item-label">Family owned businesses</div>
-          <p class="item-body">Established operating companies working through the intersection of family, ownership, and enterprise. Typically at a moment where legacy and evolution are in tension.</p>
-        </div>
-        <div class="item-row">
-          <div class="item-label">Private holding companies</div>
-          <p class="item-body">Owner operated holdcos with two or more operating businesses under one roof. Principals looking to turn a collection of businesses into a coherent system.</p>
-        </div>
-        <div class="item-row">
-          <div class="item-label">Boards and portfolio company CEOs</div>
-          <p class="item-body">Boards, sponsors, or founder investors who bring INVRT into a portfolio company to work alongside the CEO and senior team on strategy that ties back to what the shareholder base needs to see.</p>
-        </div>
+        <ul class="label-list entries">
+          <li><strong>Experienced founders:</strong> Owner operators who have built a business of substance and are now thinking about what it should look like when they are no longer running it. The common thread is a founder who has stopped optimising for the next quarter.</li>
+          <li><strong>Family offices:</strong> Multi generational offices allocating direct capital alongside their managed exposures. They treat capital allocation as a system rather than a series of one off decisions.</li>
+          <li><strong>Family owned businesses:</strong> Established operating companies working through the intersection of family, ownership, and enterprise. Typically at a moment where legacy and evolution are in tension.</li>
+          <li><strong>Private holding companies:</strong> Owner operated holdcos with two or more operating businesses under one roof. Principals looking to turn a collection of businesses into a coherent system.</li>
+          <li><strong>Boards and portfolio company CEOs:</strong> Boards, sponsors, or founder investors who bring INVRT into a portfolio company to work alongside the CEO and senior team on strategy that ties back to what the shareholder base needs to see.</li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section 2: When -->
-  <section class="py-24 border-t border-gray-200 bg-gray-50 scroll-reveal">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-extralight text-gray-900 mb-14">When principals engage us</h2>
-
-      <div class="space-y-10">
-        <div class="item-row">
-          <div class="item-label">A first of a kind decision</div>
-          <p class="item-body">A first acquisition, a first outside capital event, or a first transfer of ownership, where the principal has built the business by doing things they had done before and is now facing a decision they have not.</p>
+    <!-- When -->
+    <section id="when" class="rule-top">
+      <div class="wrap rail">
+        <div class="rail-head">
+          <h2 class="h2">When principals engage us</h2>
         </div>
-        <div class="item-row">
-          <div class="item-label">A business that has outgrown the way it is being run</div>
-          <p class="item-body">Decisions that used to sit naturally with the principal now sit awkwardly, and the organisation is producing information the principal cannot act on or acting on decisions the principal did not make.</p>
-        </div>
-        <div class="item-row">
-          <div class="item-label">A moment when capital or ownership is about to move</div>
-          <p class="item-body">A sale, a fundraise, an exit, a secondary or tertiary transaction, a change in the cap table, or a transfer between generations. Any point where ownership or a material amount of capital is about to change hands and the decision will shape the next twenty years.</p>
-        </div>
-        <div class="item-row">
-          <div class="item-label">A need for a standing thinking partner</div>
-          <p class="item-body">Not a project but a relationship, where the decisions that matter most are ones no one inside the business is positioned to challenge and the existing advisors are transactional rather than strategic.</p>
-        </div>
-        <div class="item-row">
-          <div class="item-label">A live transaction where the advisor web needs orchestrating</div>
-          <p class="item-body">The principal is the client. Every other advisor around the deal has a defined scope. The founder needs someone whose only job is the founder's interests across all of them, and who protects the core relationships the transaction depends on.</p>
-        </div>
-        <div class="item-row">
-          <div class="item-label">A portfolio company where strategy and shareholder priorities need to be reconnected</div>
-          <p class="item-body">A board level operating role inside a company backed by founders, sponsors, or investors, working with the CEO and senior team on product strategy and multi year go to market planning, holding the line back to the funding thesis and the next round.</p>
-        </div>
+        <ul class="label-list entries">
+          <li><strong>A first of a kind decision:</strong> A first acquisition, a first outside capital event, or a first transfer of ownership, where the principal has built the business by doing things they had done before and is now facing a decision they have not.</li>
+          <li><strong>A business that has outgrown the way it is being run:</strong> Decisions that used to sit naturally with the principal now sit awkwardly, and the organisation is producing information the principal cannot act on or acting on decisions the principal did not make.</li>
+          <li><strong>A moment when capital or ownership is about to move:</strong> A sale, a fundraise, an exit, a secondary or tertiary transaction, a change in the cap table, or a transfer between generations. Any point where ownership or a material amount of capital is about to change hands and the decision will shape the next twenty years.</li>
+          <li><strong>A need for a standing thinking partner:</strong> Not a project but a relationship, where the decisions that matter most are ones no one inside the business is positioned to challenge and the existing advisors are transactional rather than strategic.</li>
+          <li><strong>A live transaction where the advisor web needs orchestrating:</strong> The principal is the client. Every other advisor around the deal has a defined scope. The founder needs someone whose only job is the founder's interests across all of them, and who protects the core relationships the transaction depends on.</li>
+          <li><strong>A portfolio company where strategy and shareholder priorities need to be reconnected:</strong> A board level operating role inside a company backed by founders, sponsors, or investors, working with the CEO and senior team on product strategy and multi year go to market planning, holding the line back to the funding thesis and the next round.</li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section 3: How -->
-  <section class="py-24 border-t border-gray-200 bg-white scroll-reveal">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-extralight text-gray-900 mb-14">How we engage</h2>
-
-      <div class="space-y-10">
-        <div class="item-row">
-          <div class="item-label">Horizon</div>
-          <p class="item-body">Engagements begin as three month or longer commitments and are built with the intent of continuing for years, because the value of the work compounds with accumulated context.</p>
+    <!-- How -->
+    <section id="how" class="rule-top">
+      <div class="wrap rail">
+        <div class="rail-head">
+          <h2 class="h2">How we engage</h2>
         </div>
-        <div class="item-row">
-          <div class="item-label">Cadence</div>
-          <p class="item-body">A standing monthly working session with the principal, supplemented by targeted work between sessions. Deliberately unhurried, because advisory value comes from depth rather than frequency of contact.</p>
-        </div>
-        <div class="item-row">
-          <div class="item-label">Fees</div>
-          <p class="item-body">Anchored to outcomes and the value created rather than hours billed or documents delivered, with the structure set at the outset and revisited annually.</p>
-        </div>
-        <div class="item-row">
-          <div class="item-label">Sequence</div>
-          <p class="item-body">In complex situations our role is often to insist on the right order rather than to optimise the visible step, particularly on transactions, transfers, and capital structure decisions where the order of operations changes the eventual outcome by orders of magnitude.</p>
-        </div>
-        <div class="item-row">
-          <div class="item-label">What we decline</div>
-          <p class="item-body">Engagements that are a single document, a single transaction with no context beyond it, or a role that displaces an existing trusted advisor rather than complementing them, and situations where the horizon does not match or the principal is not the person we would be working with.</p>
-        </div>
+        <ul class="label-list entries">
+          <li><strong>Horizon:</strong> Engagements begin as three month or longer commitments and are built with the intent of continuing for years, because the value of the work compounds with accumulated context.</li>
+          <li><strong>Cadence:</strong> A standing monthly working session with the principal, supplemented by targeted work between sessions. Deliberately unhurried, because advisory value comes from depth rather than frequency of contact.</li>
+          <li><strong>Fees:</strong> Anchored to outcomes and the value created rather than hours billed or documents delivered, with the structure set at the outset and revisited annually.</li>
+          <li><strong>Sequence:</strong> In complex situations our role is often to insist on the right order rather than to optimise the visible step, particularly on transactions, transfers, and capital structure decisions where the order of operations changes the eventual outcome by orders of magnitude.</li>
+          <li><strong>What we decline:</strong> Engagements that are a single document, a single transaction with no context beyond it, or a role that displaces an existing trusted advisor rather than complementing them, and situations where the horizon does not match or the principal is not the person we would be working with.</li>
+          <li><strong>References:</strong> Shared with qualified prospects after a first conversation.</li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section 4: References -->
-  <section class="py-20 border-t border-gray-200 bg-gray-50">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8">
-      <p class="font-serif text-2xl md:text-3xl italic leading-snug text-gray-700">
-        References are shared with qualified prospects after a first conversation.
-      </p>
-    </div>
-  </section>
 
-  <!-- Contact -->
-  <section class="py-24 border-t border-gray-200 bg-white">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8">
-      <a href="contact.html" class="inline-block text-sm tracking-wide px-8 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-colors">
-        Request a conversation
-      </a>
-    </div>
-  </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-20 border-t border-gray-800">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="grid md:grid-cols-4 gap-12 mb-12">
-        <div class="md:col-span-2">
-          <h3 class="text-2xl font-light mb-6">INVRT</h3>
-        </div>
-
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div><a href="index.html" class="brand">INVRT</a></div>
         <div>
-          <h4 class="font-normal mb-6">Quick Links</h4>
-          <ul class="space-y-3 text-gray-400">
-            <li><a href="philosophy.html" class="hover:text-white transition-colors">Perspective</a></li>
-            <li><a href="advisory.html" class="hover:text-white transition-colors">Practice</a></li>
-            <li><a href="insights.html" class="hover:text-white transition-colors">Ideas</a></li>
-            <li><a href="clients.html" class="hover:text-white transition-colors">Clients</a></li>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="philosophy.html">Perspective</a></li>
+            <li><a href="advisory.html">Practice</a></li>
+            <li><a href="insights.html">Ideas</a></li>
+            <li><a href="clients.html">Clients</a></li>
           </ul>
         </div>
-
         <div>
-          <h4 class="font-normal mb-6">Connect</h4>
-          <div class="space-y-3">
-            <a href="https://invrt.substack.com/" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-white transition-colors">
-              Subscribe to Substack
-            </a>
-            <a href="https://open.spotify.com/show/62autSn7DeWpMURIob0Ox3?si=d91a6c886dca4e2c" target="_blank" rel="noopener noreferrer" class="block text-gray-400 hover:text-white transition-colors">
-              Subscribe to Podcast
-            </a>
-          </div>
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://invrt.substack.com/" target="_blank" rel="noopener noreferrer">Subscribe to Substack</a></li>
+            <li><a href="https://open.spotify.com/show/62autSn7DeWpMURIob0Ox3?si=d91a6c886dca4e2c" target="_blank" rel="noopener noreferrer">Subscribe to Podcast</a></li>
+          </ul>
         </div>
       </div>
-
-      <div class="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
-        © 2026 INVRT Limited. All rights reserved.
-      </div>
+      <p class="meta legal">© 2026 INVRT Limited. All rights reserved.</p>
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
   <script>
-    // Mobile menu functionality
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var hasGsap = typeof window.gsap !== 'undefined';
 
-    mobileMenuButton.addEventListener('click', () => {
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (!mobileMenu) {
-        const menu = document.createElement('div');
-        menu.id = 'mobile-menu';
-        menu.className = 'mobile-menu fixed right-0 top-0 h-full w-64 bg-white shadow-lg md:hidden z-50';
-        menu.innerHTML = `
-          <div class="p-6">
-            <button id="close-menu" class="mb-8" aria-label="Close menu">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-            <div class="space-y-4">
-            <a href="insights.html" class="block text-gray-900 hover:text-gray-600">Ideas</a>
-            <a href="clients.html" class="block text-gray-900 hover:text-gray-600">Clients</a>
-            <a href="advisory.html" class="block text-gray-900 hover:text-gray-600">Practice</a>
-            <a href="philosophy.html" class="block text-gray-900 hover:text-gray-600">Perspective</a>
-            <a href="questions.html" class="block text-gray-900 hover:text-gray-600">Questions</a>
-            <a href="contact.html" class="block mt-6 text-center px-5 py-2.5 bg-gray-900 text-white">
-              Contact
-            </a>
-          </div>
-          </div>
-        `;
-        document.body.appendChild(menu);
+    /* Scroll edge on the nav */
+    var nav = document.getElementById('nav');
+    var onScroll = function () { nav.classList.toggle('is-scrolled', window.scrollY > 8); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
-        setTimeout(() => {
-          menu.classList.add('active');
-          const closeBtn = document.getElementById('close-menu');
-          closeBtn.addEventListener('click', () => {
-            menu.classList.remove('active');
-            setTimeout(() => menu.remove(), 300);
-          });
-        }, 10);
-      }
-    });
-
-    // Navbar scroll effect
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        navbar.classList.add('shadow-lg');
+    /* Mobile sheet: drops from the bar, closes the way it came, interruptible */
+    var toggle = document.getElementById('menu-toggle');
+    var sheet = document.getElementById('sheet');
+    var scrim = document.getElementById('scrim');
+    var open = false;
+    function setMenu(next) {
+      open = next;
+      document.body.classList.toggle('menu-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (hasGsap) {
+        var dur = reduce ? 0.15 : 0.32;
+        gsap.to([sheet, scrim], { autoAlpha: open ? 1 : 0, duration: dur, ease: open ? 'power3.out' : 'power2.in', overwrite: 'auto' });
+        if (!reduce) gsap.to(sheet, { y: open ? 0 : -12, duration: dur, ease: open ? 'power3.out' : 'power2.in', overwrite: 'auto' });
       } else {
-        navbar.classList.remove('shadow-lg');
+        sheet.style.visibility = scrim.style.visibility = open ? 'visible' : 'hidden';
+        sheet.style.opacity = scrim.style.opacity = open ? 1 : 0;
       }
-    });
+      if (open) { var first = sheet.querySelector('a'); if (first) first.focus({ preventScroll: true }); }
+    }
+    if (hasGsap && !reduce) gsap.set(sheet, { y: -12 });
+    toggle.addEventListener('click', function () { setMenu(!open); });
+    scrim.addEventListener('click', function () { setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) { setMenu(false); toggle.focus(); } });
+    sheet.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    window.matchMedia('(min-width: 861px)').addEventListener('change', function (m) { if (m.matches && open) setMenu(false); });
 
-    // Scroll reveal
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
+    if (!hasGsap || reduce) return;
+    gsap.registerPlugin(ScrollTrigger, SplitText);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+    /* One orchestrated moment on load: the headline settles line by line */
+    document.fonts.ready.then(function () {
+      var title = document.querySelector('[data-split]');
+      if (!title) return;
+      SplitText.create(title, {
+        type: 'lines', mask: 'lines', autoSplit: true,
+        onSplit: function (self) {
+          return gsap.timeline()
+            .from(self.lines, { yPercent: 105, duration: 1.1, ease: 'expo.out', stagger: 0.09 })
+            .from(title.parentNode.querySelectorAll('[data-follow]'), { autoAlpha: 0, y: 8, duration: 0.8, ease: 'power2.out', stagger: 0.08 }, '-=0.7')
+            .add(function () { self.revert(); });
         }
       });
-    }, observerOptions);
-
-    document.querySelectorAll('.scroll-reveal').forEach(el => {
-      observer.observe(el);
     });
+
+    /* The compounding curves draw themselves as they come into view */
+    gsap.utils.toArray('[data-draw]').forEach(function (path, i) {
+      var len = path.getTotalLength();
+      var dot = path.parentNode.querySelector('.end') || path;
+      gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+      gsap.set(dot, { autoAlpha: 0 });
+      /* Each curve draws once, the first time it enters view, and then stays drawn */
+      var tl = gsap.timeline({
+        scrollTrigger: { trigger: path.closest('[data-draw-trigger]') || path, start: 'top 85%', once: true }
+      });
+      tl.to(path, { strokeDashoffset: 0, ease: 'power1.inOut', duration: 1.4 })
+        .to(dot, { autoAlpha: 1, duration: 0.2, ease: 'none' }, '-=0.1');
+    });
+  })();
   </script>
 </body>
 </html>

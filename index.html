@@ -352,6 +352,17 @@
     @media (max-width: 480px) { .field { flex-direction: column; } .field .btn { width: 100%; } }
 
 
+    /* Founder: short profile at rest, full profile unfolds in place */
+    .profile-more { overflow: hidden; }
+    .profile-cols { padding-top: 1.75rem; column-count: 2; column-gap: 2.5rem; }
+    .profile-cols .body { margin-bottom: 1em; }
+    .profile-cols .body:last-child { margin-bottom: 0; }
+    .profile-toggle-row { margin-top: 1.5rem; }
+    .profile-toggle { border: 0; background-color: transparent; padding: 0; font-family: var(--sans); cursor: pointer; }
+    .profile-toggle::after { content: ''; display: inline-block; width: 0.45em; height: 0.45em; margin-left: 0.5em; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: translateY(-0.2em) rotate(45deg); transition: transform 260ms var(--ease-out); }
+    .profile-toggle[aria-expanded="true"]::after { transform: translateY(0.05em) rotate(-135deg); }
+    @media (max-width: 860px) { .profile-cols { column-count: 1; } }
+
   </style>
 </head>
 <body>
@@ -522,7 +533,16 @@
           <p class="h3 founder-name">Paul Higgins</p>
         </div>
         <div>
-          <p class="reading">With more than fifteen years of experience across diverse industries, Paul brings a systems thinking approach to every client engagement. His background in quality focused business development has helped founders and business owners build enterprises designed for multi generational success.</p>
+          <p class="reading">Paul has more than fifteen years of experience across private equity, corporate finance and M&amp;A, and has worked as an investor, a deal adviser, a board member and a builder of software products.</p>
+          <p class="reading">Since 2020, through INVRT, he has advised on ten acquisitions across Ireland, continental Europe, North America and Latin America, ranging from €10M to more than $150M with a combined enterprise value above €300M. Much of the work is in software, advising general partners, limited partners and venture firms on their portfolio companies at the product level, from go to market and unit economics to capital structure and exit. The wider work spans acquisitions, exits and succession in industries from industrial manufacturing and energy infrastructure to consulting and construction services.</p>
+          <div class="profile-more" id="profile-more" hidden>
+            <div class="profile-cols">
+              <p class="body">Before founding INVRT he worked at Waterland Private Equity, in Accenture's Global M&amp;A team across Europe, the UK and the US, where he advised the board on capital allocation, and in Ernst &amp; Young's Corporate Finance division in the UK and Ireland, where he completed more than ten cross border transactions, including take private acquisitions valued at several hundred million dollars. His formative experience was as an analyst at Wallace Capital Management, a value oriented investment firm in Dallas.</p>
+              <p class="body">He has served on the boards of companies in healthcare and scientific testing and has advised several family offices on capital allocation. From 2021 to 2023 he advised Stripe on the 2023 edition of <em class="title">Poor Charlie's Almanack</em>, building the network of subject matter experts that carried Munger's principles beyond finance to founders and operators. He writes on capital allocation, maintenance and enduring enterprises, and is the creator and co host of The Art of Quality podcast.</p>
+              <p class="body">Paul holds a BA in Economics from University College Dublin, is a Chartered Accountant with Chartered Accountants Ireland, and completed the Executive Value Investing Programme at Columbia Business School.</p>
+            </div>
+          </div>
+          <p class="profile-toggle-row"><button type="button" class="link profile-toggle" id="profile-toggle" aria-expanded="false" aria-controls="profile-more">Full profile</button></p>
           
           <div class="sub">
             <h3 class="h3">Recognition</h3>
@@ -684,6 +704,31 @@
         .to(dot, { autoAlpha: 1, duration: 0.2, ease: 'none' }, '-=0.1');
     });
   })();
+  </script>
+  <script>
+
+  (function () {
+    /* Full profile: unfolds from the current height and can be reversed mid motion */
+    var btn = document.getElementById('profile-toggle'), more = document.getElementById('profile-more');
+    if (!btn || !more) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches, hasGsap = typeof window.gsap !== 'undefined';
+    var open = false;
+    btn.addEventListener('click', function () {
+      open = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Less' : 'Full profile';
+      if (!hasGsap || reduce) { more.hidden = !open; return; }
+      if (open) {
+        more.hidden = false;
+        gsap.fromTo(more, { height: gsap.getProperty(more, 'height') === 'auto' ? 0 : undefined }, { height: 'auto', duration: 0.55, ease: 'power3.out', overwrite: 'auto', onComplete: function () { gsap.set(more, { clearProps: 'height' }); } });
+        gsap.fromTo(more.firstElementChild, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power2.out', overwrite: 'auto' });
+      } else {
+        gsap.to(more, { height: 0, duration: 0.4, ease: 'power2.in', overwrite: 'auto', onComplete: function () { more.hidden = true; gsap.set(more, { clearProps: 'height' }); } });
+        gsap.to(more.firstElementChild, { autoAlpha: 0, duration: 0.25, overwrite: 'auto' });
+      }
+    });
+  })();
+
   </script>
 </body>
 </html>

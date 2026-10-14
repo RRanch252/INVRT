@@ -249,7 +249,7 @@
     .foot ul { list-style: none; margin: 0; padding: 0; }
     .foot li a { display: inline-block; padding: 0.75rem 0; margin: -0.45rem 0; font-size: var(--t-small); color: var(--ink-3); transition: color 160ms ease; }
     @media (hover: hover) { .foot li a:hover { color: var(--ink); } }
-    .legal { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--hairline); }
+    .legal { margin-top: 3rem; }
     .legal-link { margin-left: 1rem; color: var(--ink); }
     @media (max-width: 600px) { .foot { grid-template-columns: 1fr 1fr; } .foot > :first-child { grid-column: 1 / -1; } }
 
@@ -312,7 +312,6 @@
     /* Practice: unboxed columns separated by hairlines */
     .practice { display: grid; grid-template-columns: 1fr; }
     .practice-item { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 1rem 2.5rem; padding: 2.25rem 0; border-top: 1px solid var(--hairline); }
-    .practice-item:last-child { border-bottom: 1px solid var(--hairline); }
     .practice-item ul { list-style: none; margin: 1.25rem 0 1.5rem; padding: 0; }
     .practice-item li { font-size: 0.9375rem; color: var(--ink-3); padding: 0.2rem 0; }
     .practice-item .body + .link { margin-top: 1rem; }
@@ -321,13 +320,12 @@
     /* Founder */
     .founder-role { margin-top: 0.5rem; }
     .reading + .reading { margin-top: 1.25em; }
-    .sub { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--hairline); }
+    .sub { margin-top: 4.5rem; }
     .sub .h3 { margin-bottom: 1rem; }
     .reading a { background: linear-gradient(var(--hairline-strong), var(--hairline-strong)) 0 100% / 100% 1px no-repeat; transition: background-image 160ms ease; }
     @media (hover: hover) { .reading a:hover { background-image: linear-gradient(var(--ink), var(--ink)); } }
     .network { margin-top: 1.75rem; }
-    .network a { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 0.25rem 2rem; padding: 1.1rem 0; border-top: 1px solid var(--hairline); transition: opacity 160ms ease; }
-    .network a:last-child { border-bottom: 1px solid var(--hairline); }
+    .network a { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 0.25rem 2rem; padding: 0.9rem 0; transition: opacity 160ms ease; }
     .network a:active { opacity: 0.55; }
     .network strong { font-weight: 400; letter-spacing: -0.01em; }
     @media (max-width: 600px) { .network a { grid-template-columns: 1fr; } }
@@ -422,7 +420,7 @@
     </section>
 
     <!-- The Value of Compounding -->
-    <section id="value" class="rule-top">
+    <section id="value">
       <div class="wrap">
         <div class="compounding-head">
           <h2 class="h2">The Value of Compounding</h2>
@@ -480,7 +478,7 @@
     </section>
 
     <!-- Practice -->
-    <section id="services" class="rule-top">
+    <section id="services">
       <div class="wrap rail">
         <div class="rail-head">
           <h2 class="h2">Practice</h2>
@@ -497,14 +495,14 @@
           <div class="practice-item">
             <h3 class="h3">Compounding Equity Value</h3>
             <div>
-              <p class="body">Portfolio design and governance for multi generational success.</p>
+              <p class="body">Portfolio design, governance and product direction for multi generational success.</p>
               <a href="advisory.html#equity" class="link">Learn more</a>
             </div>
           </div>
           <div class="practice-item">
             <h3 class="h3">Compounding Investor Value</h3>
             <div>
-              <p class="body">Partners who share the long horizon, and the structures that hold them.</p>
+              <p class="body">Partners who share the long horizon, the structures that hold them, and the product plans they back.</p>
               <a href="advisory.html#investor" class="link">Learn more</a>
             </div>
           </div>
@@ -513,15 +511,16 @@
     </section>
 
     <!-- Founder -->
-    <section id="founder" class="rule-top">
+    <section id="founder">
       <div class="wrap rail">
         <div class="rail-head">
           <h2 class="h2">Paul Higgins</h2>
           <p class="meta founder-role">Principal</p>
         </div>
         <div>
-          <p class="reading">More than fifteen years across private equity, corporate finance and M&amp;A, working as an investor, a deal adviser, an adviser to CEOs and their operating teams, a board member and a builder of software products.</p>
+          <p class="reading">More than fifteen years across private equity, corporate finance and M&amp;A, working as an investor, a deal adviser, an adviser to CEOs and their operating teams, a board member and a product lead.</p>
           <p class="reading">Since 2020, through INVRT, he has advised on ten acquisitions across Ireland, continental Europe, North America and Latin America, ranging from €10M to more than $150M with a combined enterprise value above €300M. The work spans acquisitions, exits, succession and capital structure, in industries from healthcare, waste management and insurance broking to food and beverage, industrial manufacturing, consulting services and software. Alongside the transactions, he works directly with chief executives and operating executives, and with the general partners, limited partners and venture firms behind them, on the business itself: go to market, operating model, hiring and execution, unit economics and the path to exit. With family offices and family boards he advises across generations, on ownership, governance and the transition from operating company to holding company.</p>
+          <p class="reading">On the product side, he has worked as strategic product lead to boards and executive teams: redesigning product roadmaps with executives, rebuilding workflows around AI, and leading product teams through execution. That work spans hospitality operations software, connected device platforms, payments and financial services, and informs how he advises general partners, limited partners and venture firms on their portfolio companies.</p>
           <div class="profile-more" id="profile-more" hidden>
             <div class="profile-cols">
               <p class="body">Before founding INVRT he worked at Waterland Private Equity, in Accenture's Global M&amp;A team across Europe, the UK and the US, where he advised the board on capital allocation, and in Ernst &amp; Young's Corporate Finance division in the UK and Ireland, where he completed more than ten cross border transactions, including take private acquisitions valued at several hundred million dollars. His formative experience was as an analyst at Wallace Capital Management, a value oriented investment firm in Dallas.</p>
@@ -550,7 +549,7 @@
     </section>
 
     <!-- Stay close to the thinking -->
-    <section id="subscribe" class="rule-top">
+    <section id="subscribe">
       <div class="wrap">
         <div class="compounding-head">
           <h2 class="h2">Stay close to the thinking</h2>

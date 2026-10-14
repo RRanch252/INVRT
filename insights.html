@@ -231,7 +231,7 @@
 
     /* ============ Sections ============ */
     section { padding-block: var(--section); }
-    .rule-top { border-top: 1px solid var(--hairline); }
+    .rule-top { border-top: 0; }
 
     /* Rail layout: heading holds its place while the content scrolls */
     .rail { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(2.5rem, 5vw, 6rem); }
@@ -276,7 +276,6 @@
     @media (max-width: 860px) { .grid-3 { grid-template-columns: 1fr; gap: 3rem; } }
     @media (max-width: 600px) { .grid-2 { grid-template-columns: 1fr; gap: 2.5rem; } }
     .rows > * { padding: 1.75rem 0; border-top: 1px solid var(--hairline); }
-    .rows > *:last-child { border-bottom: 1px solid var(--hairline); }
     .after { margin-top: 3.5rem; }
     .section-head { max-width: 46rem; margin-bottom: clamp(3rem, 6vw, 4.5rem); }
     .section-head .lead { margin-top: 1.25rem; }
@@ -297,8 +296,7 @@
     .feature { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
     .feature .lead { margin-top: 1.5rem; max-width: 36rem; }
     .feature-list { list-style: none; margin: 2rem 0 2.5rem; padding: 0; max-width: 36rem; }
-    .feature-list li { padding: 0.75rem 0; border-top: 1px solid var(--hairline); color: var(--ink-2); }
-    .feature-list li:last-child { border-bottom: 1px solid var(--hairline); }
+    .feature-list li { padding: 0.4rem 0; color: var(--ink-2); }
     .deck { margin: 0; align-self: center; }
     .deck-quote { margin: 0; padding-left: 1.25rem; border-left: 1px solid var(--ink); }
     .deck-quote .reading { font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); line-height: 1.35; }
